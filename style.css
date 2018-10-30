@@ -4,56 +4,49 @@ body{
     color: #EFF2F3;
     font-size: 16px;
 }
-
 .mainpage{
     height: 100vh;
     width: 100vw;
     overflow: hidden;
 }
-.mainpage h3{
+.floatingText{
     display: inline-block;
     margin: 0.2%;
-    font-size: 3em;
-    transition: all 250ms ease-in;
+    font-size: 2.5rem;
+    transition: all 150ms ease-out;
     transform: scale(1);
-    /* transform: skewX(0deg); */
-
-
+    position: relative;
 }
 
-.mainpage h3:hover{
+.floatingText:hover{
     transform: scale(3);
-    /* transform: skewX(25deg); */
 }
-
-.firstname{
-    display: inline-block;
-    font-size: 3.5em;
-    margin : 0 5%;
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    z-index: 101;
+.nameContainer{
     position: absolute;
-    top: 50%;
+    top: 45%;
+    right: 20%;
+    z-index: 100;
+    overflow: hidden;
+}
+.firstname{
+    z-index: 101;
+    float: left;
+}
+.firstname, .lastname{
+    display: inline-block;
+    font-size: 3rem;
+    margin : -0.5% 5%;
+    font-family: 'Lato', sans-serif;
     background: #0F1214;
-    padding: 0px 7%;
-    left: 50%;
-    margin: 1%;
+    font-weight: 700;
+    background: #0F1214;
+    padding: 2% 9%;
 }
 
 .lastname{
-    display: inline-block;
-    font-size: 3.5em;
-    margin : 0 5%;
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
     z-index: 102;
-    position: absolute;
-    top: 58%;
-    background: #0F1214;
-    padding: 0px 7%;
-    left: 58%;
-    margin: 1%;
+    left: 15%;
+    position: relative;
 }
 
 .correctWebsite{
@@ -61,14 +54,30 @@ body{
     padding: none;
     font-family: inherit;
     text-decoration: none;
-    background: none;
-    font-size: 3em;
+    background: #0F1214;
+    z-index: 101;
+    font-size: 3rem;
     color: inherit;
-    margin: 0.2% 4%;
+    margin: 0;
+    padding: 0% 15%;
+    bottom: 9%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 
 button:focus { outline: none; }
 
-@media screen and (max-width:){
-
+@media screen and (max-width: 1024px){
+    .floatingText{
+        font-size: 2rem;
+    }
+    .firstname,.lastname{
+        font-size: 2.5rem;
+        margin : -1.5% 5%;
+    }
+    .nameContainer{
+        top: 43%;
+    }
 }
