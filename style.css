@@ -13,14 +13,24 @@ body{
     display: inline-block;
     margin: 0.2%;
     font-size: 2.5rem;
-    transition: all 150ms ease-out;
+    transition: transform 250ms ease-out;
     transform: scale(1);
-    position: relative;
+}
+
+.floatingmainText{
+    display: inline-block;
+    margin: 0.2%;
+    font-size: 2.5rem;
+    transition: transform 1000ms ease-in 4000ms;
+}
+
+.floatingmainText.gotoPosition{
+    transform: translate(-5000px, 0);
 }
 
 .floatingText:hover{
     transform: scale(3);
-}
+} 
 .nameContainer{
     position: absolute;
     top: 45%;
@@ -42,26 +52,14 @@ body{
     background: #0F1214;
     padding: 2% 9%;
 }
-
 .lastname{
     z-index: 102;
     left: 15%;
     position: relative;
 }
-/* .fall{
-    animation-name: fall;
-    animation-delay: 2000s;
-    animation-timing-function: ease-in;
-} */
-
 .swing
 {
-    animation: shake-crazy 100ms ease-in-out 50 , fall 2000ms ease-in 5000ms 1 forwards;
-    /* animation-name: shake-crazy;
-    animation-duration: 100ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite; */
-    
+    animation: shake-crazy 100ms ease-in-out 20 , fall 2000ms ease-in 2000ms 1 forwards;
 }
 @keyframes fall{
     from {
@@ -73,7 +71,6 @@ body{
         transform: translate3d(0, 10000%, 0);
       }
 }
-
 @keyframes shake-crazy{
     2% {
         transform: translate(-10px, 14px) rotate(13deg); }
@@ -137,6 +134,39 @@ body{
     display: none;
 }
 button:focus { outline: none; }
+
+.waitForClass, .waitForClass2{
+    display:none;
+}
+
+.project{
+	color: #EFF2F3;
+	opacity: 0;
+	transform: translate(-5rem, 20rem) rotate(270deg) scale(2);
+    animation: sideSlide 0.5s ease-out forwards 5s;
+    position: absolute;
+    top: 10%;
+    left: -1%;
+}
+.contact{
+	color: #EFF2F3;
+	opacity: 0;
+	transform: translate(-5rem, -20rem) rotate(270deg) scale(2);
+    animation: sideSlide 0.5s ease-out forwards 6s;
+    position: absolute;
+    bottom: 10%;
+    left: -1%;
+}
+
+@keyframes sideSlide {
+	60% {
+        transform: translate(20rem, 0) rotate(-90deg) scale(0.2);
+    }
+	100% {
+		transform: translate(0) rotate(270deg) scale(1);
+		opacity: 1;
+	}
+}
 
 @media screen and (max-width: 1024px){
     .floatingText{

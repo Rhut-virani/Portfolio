@@ -6,25 +6,31 @@ $(document).ready(function() {
     $(".correctWebsite").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a').attr('class', 'floatingText swing');
-        $( "a:contains('P')" ).first().attr('class', 'floatingText');
-        $( "a:contains('r')" ).first().attr('class', 'floatingText');
-        $( "a:contains('o')" ).first().attr('class', 'floatingText');
-        $( "a:contains('j')" ).first().attr('class', 'floatingText');
-        $( "a:contains('e')" ).first().attr('class', 'floatingText');
-        $( "a:contains('c')" ).first().attr('class', 'floatingText');
-        $( "a:contains('t')" ).first().attr('class', 'floatingText');
-        $( "a:contains('s')" ).first().attr('class', 'floatingText');
-        $( "a:contains('C')" ).eq(1).attr('class', 'floatingText');
-        $( "a:contains('o')" ).eq(1).attr('class', 'floatingText');
-        $( "a:contains('n')" ).first().attr('class', 'floatingText');
-        $( "a:contains('t')" ).eq(1).attr('class', 'floatingText');
-        $( "a:contains('a')" ).first().attr('class', 'floatingText');
-        $( "a:contains('c')" ).eq(2).attr('class', 'floatingText');
-        $( "a:contains('t')" ).eq(2).attr('class', 'floatingText');
-
+        $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('r')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('o')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('j')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('e')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('c')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('t')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('s')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('C')" ).eq(1).attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('o')" ).eq(1).attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('n')" ).first().attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('t')" ).eq(1).attr('class', 'floatingmainText gotoPosition');
+        $( "a:contains('a')" ).first().attr('class',  'floatingmainText gotoPosition');
+        $( "a:contains('c')" ).eq(2).attr('class', 'floatingmainText gotoPosition ');
+        $( "a:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoPosition ');
+        $(".waitForClass").attr('class','project');
+        $(".waitForClass2").attr('class','contact');
         setTimeout(
             function() {
                 $( ".swing" ).remove();
+            },
+            10000);
+        setTimeout(
+            function() {
+                $( ".floatingmainText" ).remove();
             },
             15000);
     });
