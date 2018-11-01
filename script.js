@@ -23,6 +23,8 @@ $(document).ready(function() {
         $( "a:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoPosition ');
         $(".waitForClass").attr('class','project');
         $(".waitForClass2").attr('class','contact');
+        $(".nameContainer").attr('class','nameContainer removeName');
+
         setTimeout(
             function() {
                 $( ".swing" ).remove();
