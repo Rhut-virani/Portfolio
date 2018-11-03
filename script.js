@@ -3,6 +3,7 @@ $(document).ready(function() {
     for (var i = 1; i <=better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
     } 
+// website launch button and functions
     $(".correctWebsite").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a').attr('class', 'floatingText swing');
@@ -50,4 +51,19 @@ $(document).ready(function() {
             },
             15000);
     });
+// button and functions for each sections
+
+    $('div.projectContainer').click(function(){
+        if($("div#leftSectionContainer").hasClass("gotoright")){
+            $("div#leftSectionContainer").removeClass("gotoright");
+            $("div#leftSectionContainer").addClass('gobacktoleft');
+            console.log('came inside if loop');
+        }
+        else{
+            $("div#leftSectionContainer").removeClass("gobacktoleft");
+            $("div#leftSectionContainer").addClass("gotoright");
+            console.log('came inside else loop');
+        }
+    })
+
 });
