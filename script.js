@@ -6,23 +6,37 @@ $(document).ready(function() {
     $(".correctWebsite").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a').attr('class', 'floatingText swing');
-        $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('r')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('o')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('j')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('e')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('c')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('t')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('s')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('C')" ).eq(1).attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('o')" ).eq(1).attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('n')" ).first().attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('t')" ).eq(1).attr('class', 'floatingmainText gotoPosition');
-        $( "a:contains('a')" ).first().attr('class',  'floatingmainText gotoPosition');
-        $( "a:contains('c')" ).eq(2).attr('class', 'floatingmainText gotoPosition ');
-        $( "a:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoPosition ');
+        $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('r')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('o')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('j')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('e')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('c')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('t')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('s')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a:contains('C')" ).eq(1).attr('class', 'floatingmainText gotoRight');
+        $( "a:contains('o')" ).eq(1).attr('class', 'floatingmainText gotoRight');
+        $( "a:contains('n')" ).first().attr('class', 'floatingmainText gotoRight');
+        $( "a:contains('t')" ).eq(1).attr('class', 'floatingmainText gotoRight');
+        $( "a:contains('a')" ).first().attr('class',  'floatingmainText gotoRight');
+        $( "a:contains('c')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
+        $( "a:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
+        $( "a:contains('a')" ).eq(1).attr('class',  'floatingmainText gotodown');
+        $( "a:contains('b')" ).eq(1).attr('class',  'floatingmainText gotodown');
+        $( "a:contains('o')" ).eq(2).attr('class',  'floatingmainText gotodown');
+        $( "a:contains('u')" ).first().attr('class',  'floatingmainText gotodown');
+        $( "a:contains('t')" ).eq(3).attr('class',  'floatingmainText gotodown');
+        $( "a:contains('s')" ).eq(1).attr('class',  'floatingmainText gotoup');
+        $( "a:contains('k')" ).first().attr('class',  'floatingmainText gotoup');
+        $( "a:contains('i')" ).first().attr('class',  'floatingmainText gotoup');
+        $( "a:contains('l')" ).first().attr('class',  'floatingmainText gotoup');
+        $( "a:contains('l')" ).eq(1).attr('class',  'floatingmainText gotoup');
+        $( "a:contains('s')" ).eq(2).attr('class',  'floatingmainText gotoup');
+
         $(".waitForClass").attr('class','project');
         $(".waitForClass2").attr('class','contact');
+        $(".waitForClass3").attr('class','about');
+        $(".waitForClass4").attr('class','skills');
         $(".nameContainer").attr('class','nameContainer removeName');
 
         setTimeout(
