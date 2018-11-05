@@ -4,7 +4,7 @@ $(document).ready(function() {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
     } 
 // website launch button and functions
-    $(".correctWebsite").on('click', function() {
+    $(".buttonContainer").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a').attr('class', 'floatingText swing');
         $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoLeft');
