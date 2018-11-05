@@ -43,8 +43,13 @@ $(document).ready(function() {
         setTimeout(
             function() {
                 $( ".swing" ).remove();
+                $('.project, .contact, .skills, .about').attr('class', ' ');
+                $(".projectContainer > div > span ").attr('class','widerText');
+                $(".contactContainer > div > span ").attr('class','widerText');
+                $(".skillsContainer > div > span ").attr('class','widerText2');
+                $(".aboutContainer > div > span ").attr('class','widerText2');
             },
-            10000);
+            7000);
         setTimeout(
             function() {
                 $( ".floatingmainText" ).remove();
