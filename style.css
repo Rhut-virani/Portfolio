@@ -246,7 +246,8 @@ body{
   .correctWebsite2{
       display: none;
   }
-  button:focus { outline: none; }
+  button:focus { outline: none; 
+  }
 
 
 /* All mainsections header  */
