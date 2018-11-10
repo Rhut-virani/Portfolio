@@ -59,15 +59,21 @@ $(document).ready(function() {
 // button and functions for each sections
 
     $('div.projectContainer').click(function(){
+        var t1 = new TimelineMax();
+        $("div#leftSectionContainer").toggleClass("gotoright");
         if($("div#leftSectionContainer").hasClass("gotoright")){
-            $("div#leftSectionContainer").removeClass("gotoright");
-            $("div#leftSectionContainer").addClass('gobacktoleft');
-            console.log('came inside if loop');
+            t1.to(this, 0.1, {color:'black', zIndex:203})
+              .to('.transitionHelper', 1.5, {xPercent:100})
+              .to(this, 1, {left:"", right:0})
+              .to('div#leftSectionContainer', 1.5, {xPercent:100, opacity:1})
         }
         else{
-            $("div#leftSectionContainer").removeClass("gobacktoleft");
-            $("div#leftSectionContainer").addClass("gotoright");
-            console.log('came inside else loop');
+            t1.to('div#leftSectionContainer', 1.5, {xPercent:0, opacity:1})
+              .to(this, 1.5, {left:0, right:""})
+              .to('.transitionHelper', 1.5, {xPercent:0})
+              .to(this, 0.01, {color:'white', zIndex:100}, "-=0.5")
+
+
         }
     })
 
