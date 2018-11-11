@@ -38,16 +38,14 @@ $(document).ready(function() {
         $(".waitForClass2").attr('class','contact');
         $(".waitForClass3").attr('class','about');
         $(".waitForClass4").attr('class','skills');
-        $(".nameContainer").attr('class','nameContainer removeName');
-
         setTimeout(
             function() {
                 $( ".swing" ).remove();
-                $('.project, .contact, .skills, .about').attr('class', ' ');
                 $(".projectContainer > div > span ").attr('class','widerText');
                 $(".contactContainer > div > span ").attr('class','widerText');
                 $(".skillsContainer > div > span ").attr('class','widerText2');
                 $(".aboutContainer > div > span ").attr('class','widerText2');
+                $('.project, .contact, .skills, .about').attr('class', ' ');
             },
             7000);
         setTimeout(
@@ -56,25 +54,83 @@ $(document).ready(function() {
             },
             15000);
     });
+
+    
 // button and functions for each sections
+
+    // project button and left section 
+    var tp = new TimelineMax({paused:true})
+        .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
+        .to('.projectTransitionHelper', 1.5, {xPercent:100})
+        .to('div.projectContainer', 1, {left:"", right:0})
+        .to('div#leftSectionContainer', 1.5, {xPercent:100, opacity:1})
+        .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25")
 
     $('div.projectContainer').click(function(){
         var t1 = new TimelineMax();
         $("div#leftSectionContainer").toggleClass("gotoright");
         if($("div#leftSectionContainer").hasClass("gotoright")){
-            t1.to(this, 0.1, {color:'black', zIndex:203})
-              .to('.transitionHelper', 1.5, {xPercent:100})
-              .to(this, 1, {left:"", right:0})
-              .to('div#leftSectionContainer', 1.5, {xPercent:100, opacity:1})
+            tp.play();
         }
         else{
-            t1.to('div#leftSectionContainer', 1.5, {xPercent:0, opacity:1})
-              .to(this, 1.5, {left:0, right:""})
-              .to('.transitionHelper', 1.5, {xPercent:0})
-              .to(this, 0.01, {color:'white', zIndex:100}, "-=0.5")
-
-
+            tp.reverse();
         }
     })
 
+    // contact button and right section 
+
+    var tc = new TimelineMax({paused:true})
+        .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
+        .to('.contactTransitionHelper', 1.5, {xPercent:-200})
+        .to('div.contactContainer', 1, {left:0, right:''})
+        .to('div#rightSectionContainer', 1.5, {xPercent:-200, opacity:1})
+        .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
+
+    $('div.contactContainer').click(function(){
+        $("div#rightSectionContainer").toggleClass("gotoleft");
+        if($("div#rightSectionContainer").hasClass("gotoleft")){
+            tc.play();
+        }
+        else{
+            tc.reverse();
+        }
+    })
+
+    // Skills button and top section 
+    var ts = new TimelineMax({paused:true})
+        .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
+        .to('.skillsTransitionHelper', 1.5, {yPercent:100})
+        .to('div.skillsContainer', 1, {bottom:0, top:''})
+        .to('div#topSectionContainer', 1.5, {yPercent:100, opacity:1})
+        .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25");
+
+    $('div.skillsContainer').click(function(){
+        $("div#topSectionContainer").toggleClass("godown");
+
+        if($("div#topSectionContainer").hasClass("godown")){
+            ts.play();
+        }
+        else{
+            ts.reverse();
+        }
+    })
+
+    // about button and bottom section 
+    var ta = new TimelineMax({paused:true})
+        .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
+        .to('.aboutTransitionHelper', 1.5, {yPercent:-100})
+        .to('div.aboutContainer', 1, {top:0, bottom:''})
+        .to('div#bottomSectionContainer', 1.5, {yPercent:-100, opacity:1})
+        .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
+
+    $('div.aboutContainer').click(function(){
+        $("div#bottomSectionContainer").toggleClass("goup");
+        if($("div#bottomSectionContainer").hasClass("goup")){
+            ta.play();
+        }
+        else{
+            ta.reverse();
+        }
+    })
 });
+
