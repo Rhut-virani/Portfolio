@@ -6,7 +6,7 @@ $(document).ready(function() {
 // website launch button and functions
     $(".buttonContainer").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
-        $('a').attr('class', 'floatingText swing');
+        $('a.floatingText').attr('class', 'floatingText swing');
         $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoLeft');
         $( "a:contains('r')" ).first().attr('class', 'floatingmainText gotoLeft');
         $( "a:contains('o')" ).first().attr('class', 'floatingmainText gotoLeft');
@@ -132,5 +132,28 @@ $(document).ready(function() {
             ta.reverse();
         }
     })
+
+
+    // firstproject
+    var project1 = new TimelineMax({paused:true})
+         .to('.thumbImg', 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
+         .from('.firstProjectImg', 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0},0)
+         .from('.imgContainer h1', 0.5, {xPercent:'-100%', opacity:0})
+         .from('.textContent', 0.5, {xPercent:'100%', opacity:0})
+         .from('.backbutton', 0.25, {left:'-50', rotation:180});
+
+    $('.firstProjectContainer > .thumbImg').click(function(){
+        console.log('project 1 function ran');
+        $('.projectPageContainer').css("overflow","hidden")
+        project1.play();
+    })
+    $('.backbutton').click(function(){
+        project1.reverse();
+        setTimeout(function(){
+            $('.projectPageContainer').css("overflow","scroll")
+        },2000)
+
+    })
+
 });
 
