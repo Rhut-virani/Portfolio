@@ -131,9 +131,60 @@ $(document).ready(function() {
         else{
             ta.reverse();
         }
-    })
+    });
 
 
+    var scrollTo2 = new TimelineMax({paused:true})
+        .to('.col1, .col3', 1, {autoAlpha:0})
+        .to('.col2', 1, {autoAlpha:1, scale:1}, 0);
+
+    var scrollTo3 = new TimelineMax({paused:true})
+        .to('.col2, .col1', 1, {autoAlpha:0})
+        .to('.col3', 1, {autoAlpha:1, scale:1}, 0);
+
+    var scrollTo1 = new TimelineMax({paused:true})
+        .to('.col3, .col2', 1, {autoAlpha:0})
+        .to('.col1', 1, {autoAlpha:1, scale:1}, 0);
+
+    function scrolling(e) {
+        console.log(e.originalEvent.deltaY);
+        if(scrollTo1.isTweening || scrollTo2.isTweening || scrollTo3.isTweening){
+            return;
+        }
+        if(e.originalEvent.deltaY > 0){
+            if($('.col1').css('opacity') == 1){
+                scrollTo2.restart();
+                return;
+            }
+            else if($('.col2').css('opacity') == 1){
+                scrollTo3.restart();
+                return;
+            }
+            else if($('.col3').css('opacity') == 1){   
+                scrollTo1.restart();
+                return;
+            }
+        }
+        else if(e.originalEvent.deltaY < 0 ){
+            if($('.col1').css('opacity') == 1){
+                scrollTo3.restart();
+                return;
+            }
+            else if($('.col2').css('opacity') == 1){
+                scrollTo1.restart();
+                return;
+            }
+            else if($('.col3').css('opacity') == 1){   
+                scrollTo2.restart();
+                return;
+            }
+        } 
+    }
+
+    $(".container").on('wheel', _.debounce(scrolling, 50, {"leading":true,"trailing":false}));
+    // $(".container").on('wheel', scrolling);
+
+    
     // firstproject
     var project1 = new TimelineMax({paused:true})
          .to('.thumbImg', 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
@@ -143,16 +194,10 @@ $(document).ready(function() {
          .from('.backbutton', 0.25, {left:'-50', rotation:180});
 
     $('.firstProjectContainer > .thumbImg').click(function(){
-        console.log('project 1 function ran');
-        $('.projectPageContainer').css("overflow","hidden")
         project1.play();
-    })
+    });
     $('.backbutton').click(function(){
         project1.reverse();
-        setTimeout(function(){
-            $('.projectPageContainer').css("overflow","scroll")
-        },2000)
-
     })
 
 });
