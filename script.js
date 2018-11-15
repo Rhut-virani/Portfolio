@@ -133,57 +133,75 @@ $(document).ready(function() {
         }
     });
 
-
     var scrollTo2 = new TimelineMax({paused:true})
-        .to('.col1, .col3', 1, {autoAlpha:0})
-        .to('.col2', 1, {autoAlpha:1, scale:1}, 0);
+        .to('.indicator2', 0.25, {opacity:1, scale: 2})
+        .to('.indicator3, .indicator1', 0.25, {opacity:0.5, scale: 1})
+        .to('.p-t-Left',0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
+        .to('.p-t-Right',0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+        .set('.col1, .col3',{autoAlpha:0})
+        .set('.col2', {autoAlpha:1}, '#reverse')
+        .to('.indicator2', 1, {opacity:1, scale: 2})
+        .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
+        .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
 
     var scrollTo3 = new TimelineMax({paused:true})
-        .to('.col2, .col1', 1, {autoAlpha:0})
-        .to('.col3', 1, {autoAlpha:1, scale:1}, 0);
+        .to('.indicator3', 0.25, {opacity:1, scale: 2})
+        .to('.indicator2, .indicator1', 0.25, {opacity:0.5, scale: 1})
+        .to('.p-t-Left',0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
+        .to('.p-t-Right',0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+        .set('.col2, .col1',{autoAlpha:0})
+        .set('.col3', {autoAlpha:1}, '#reverse')
+        .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
+        .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
 
     var scrollTo1 = new TimelineMax({paused:true})
-        .to('.col3, .col2', 1, {autoAlpha:0})
-        .to('.col1', 1, {autoAlpha:1, scale:1}, 0);
+        .to('.indicator1', 0.25, {opacity:1, scale: 2})
+        .to('.indicator2, .indicator3', 0.25, {opacity:0.5, scale: 1})
+        .to('.p-t-Left',0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
+        .to('.p-t-Right',0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+        .set('.col1', {autoAlpha:1}, '#reverse')
+        .set('.col2, .col3',{autoAlpha:0})
+        .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
+        .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
 
+    var detailsPage = false;
+    
     function scrolling(e) {
-        console.log(e.originalEvent.deltaY);
-        if(scrollTo1.isTweening || scrollTo2.isTweening || scrollTo3.isTweening){
+        if(scrollTo1.isTweening || scrollTo2.isTweening || scrollTo3.isTweening || detailsPage){
             return;
         }
+
         if(e.originalEvent.deltaY > 0){
             if($('.col1').css('opacity') == 1){
-                scrollTo2.restart();
+                scrollTo2.play(0);
                 return;
             }
             else if($('.col2').css('opacity') == 1){
-                scrollTo3.restart();
+                scrollTo3.play(0);
                 return;
             }
             else if($('.col3').css('opacity') == 1){   
-                scrollTo1.restart();
+                scrollTo1.play(0);
                 return;
             }
         }
         else if(e.originalEvent.deltaY < 0 ){
             if($('.col1').css('opacity') == 1){
-                scrollTo3.restart();
+                scrollTo3.play(1);
                 return;
             }
             else if($('.col2').css('opacity') == 1){
-                scrollTo1.restart();
+                scrollTo1.play('#reverse');
                 return;
             }
             else if($('.col3').css('opacity') == 1){   
-                scrollTo2.restart();
+                scrollTo2.play('#reverse');
                 return;
             }
         } 
     }
 
-    $(".container").on('wheel', _.debounce(scrolling, 50, {"leading":true,"trailing":false}));
-    // $(".container").on('wheel', scrolling);
-
+    $(".container").on('wheel', _.debounce(scrolling, 200, {"leading":true,"trailing":false}));
     
     // firstproject
     var project1 = new TimelineMax({paused:true})
@@ -195,9 +213,12 @@ $(document).ready(function() {
 
     $('.firstProjectContainer > .thumbImg').click(function(){
         project1.play();
+        detailsPage = true;
     });
     $('.backbutton').click(function(){
         project1.reverse();
+        detailsPage = false;
+
     })
 
 });
