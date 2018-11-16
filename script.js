@@ -143,7 +143,6 @@ $(document).ready(function() {
         .to('.indicator2', 1, {opacity:1, scale: 2})
         .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
         .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
-
     var scrollTo3 = new TimelineMax({paused:true})
         .to('.indicator3', 0.25, {opacity:1, scale: 2})
         .to('.indicator2, .indicator1', 0.25, {opacity:0.5, scale: 1})
@@ -170,7 +169,6 @@ $(document).ready(function() {
         if(scrollTo1.isTweening || scrollTo2.isTweening || scrollTo3.isTweening || detailsPage){
             return;
         }
-
         if(e.originalEvent.deltaY > 0){
             if($('.col1').css('opacity') == 1){
                 scrollTo2.play(0);
@@ -185,6 +183,7 @@ $(document).ready(function() {
                 return;
             }
         }
+
         else if(e.originalEvent.deltaY < 0 ){
             if($('.col1').css('opacity') == 1){
                 scrollTo3.play(1);
