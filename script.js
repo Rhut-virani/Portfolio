@@ -133,92 +133,120 @@ $(document).ready(function() {
         }
     });
 
-    var scrollTo2 = new TimelineMax({paused:true})
-        .to('.indicator2', 0.25, {opacity:1, scale: 2})
-        .to('.indicator3, .indicator1', 0.25, {opacity:0.5, scale: 1})
-        .to('.p-t-Left',0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
-        .to('.p-t-Right',0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
-        .set('.col1, .col3',{autoAlpha:0})
-        .set('.col2', {autoAlpha:1}, '#reverse')
-        .to('.indicator2', 1, {opacity:1, scale: 2})
-        .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
-        .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
-    var scrollTo3 = new TimelineMax({paused:true})
-        .to('.indicator3', 0.25, {opacity:1, scale: 2})
-        .to('.indicator2, .indicator1', 0.25, {opacity:0.5, scale: 1})
-        .to('.p-t-Left',0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
-        .to('.p-t-Right',0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
-        .set('.col2, .col1',{autoAlpha:0})
-        .set('.col3', {autoAlpha:1}, '#reverse')
-        .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
-        .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
 
-    var scrollTo1 = new TimelineMax({paused:true})
-        .to('.indicator1', 0.25, {opacity:1, scale: 2})
-        .to('.indicator2, .indicator3', 0.25, {opacity:0.5, scale: 1})
-        .to('.p-t-Left',0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
-        .to('.p-t-Right',0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
-        .set('.col1', {autoAlpha:1}, '#reverse')
-        .set('.col2, .col3',{autoAlpha:0})
-        .to('.p-t-Right',0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
-        .to('.p-t-Left',0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
+
+    // declaring variables
+    var $home = $('.home'),
+        $activeSection = $('.active'),
+        $container = $('.container'),
+        $indi = $('.indication'),
+        $indicator1 = $('.indicator1'),
+        $indicator2 = $('.indicator2'),
+        $indicator3 = $('.indicator3'),
+        $ptLeft = $('.p-t-Left'),
+        $ptRight = $('.p-t-Right');
+
+    // lets do the preparation before the animation starts 
+    function first(){ 
+        TweenLite.set($home.not($activeSection), {autoAlpha:0});
+        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5});
+    }
+    //running the first function
+    first();
+
 
     var detailsPage = false;
-    
-    function scrolling(e) {
-        if(scrollTo1.isTweening || scrollTo2.isTweening || scrollTo3.isTweening || detailsPage){
-            return;
-        }
-        if(e.originalEvent.deltaY > 0){
-            if($('.col1').css('opacity') == 1){
-                scrollTo2.play(0);
-                return;
-            }
-            else if($('.col2').css('opacity') == 1){
-                scrollTo3.play(0);
-                return;
-            }
-            else if($('.col3').css('opacity') == 1){   
-                scrollTo1.play(0);
-                return;
-            }
-        }
-
-        else if(e.originalEvent.deltaY < 0 ){
-            if($('.col1').css('opacity') == 1){
-                scrollTo3.play(1);
-                return;
-            }
-            else if($('.col2').css('opacity') == 1){
-                scrollTo1.play('#reverse');
-                return;
-            }
-            else if($('.col3').css('opacity') == 1){   
-                scrollTo2.play('#reverse');
-                return;
-            }
-        } 
+    function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade){
+        var tl = new TimelineMax ()
+            .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5})
+            .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1})
+            .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
+            .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+            .set(sectionfade,{className: '-=active', autoAlpha:0})
+            .set(sectionIn, {className: '+=active',autoAlpha:1})
+            .to($ptRight,0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
+            .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
     }
+    // function scrollUp(sectionIn, sectionfade,indicatorIn, indicatorfade){
+    //     var tl = new TimelineMax ()
+    //         .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5})
+    //         .to(indicatorIn, 0.25, {className: '+=active',opacity:1, scale: 1})
+    //         .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
+    //         .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+    //         .set(sectionfade,{className: '-=active', autoAlpha:0})
+    //         .set(sectionIn, {className: '+=active',autoAlpha:1})
+    //         .to($ptRight,0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
+    //         .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
+    //     }
 
     $(".container").on('wheel', _.debounce(scrolling, 200, {"leading":true,"trailing":false}));
+
+    function scrolling(e) {
+
+            // checking if the previous tween is finished or the detainls page is open or not
+            if(scroll.isTweening || detailsPage){
+                return;
+            }
+            // scroll up if the deltaY value is poistive
+            if(e.originalEvent.deltaY > 0){
+                var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
+                    sectionfade =$('.home.active'),
+                    indicatorIn= $('.indication.active').next($indi).length === 0 ? $('.indication.active').prevAll($indi).last() : $('.indication.active').next($indi),
+                    indicatorfade= $('.indication.active');
+                scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+            }
+            else if(e.originalEvent.deltaY < 0 ){
+                var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
+                sectionfade =$('.home.active'),
+                indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
+                indicatorfade= $('.indication.active');
+                scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+            } 
+        }
+        var clickIndi = function (i){ 
+            return function(){
+            var sectionIn = $('.home.section' + i),
+            sectionfade =$('.home.active'),
+            indicatorIn= $(this),
+            indicatorfade= $('.indication.active');
+            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+        }}
+        for(let i=1; i<4;i+=1){
+            $('.indicator'+ i).click(clickIndi(i));
+        }
+
+
+
     
-    // firstproject
+    // Project Detail function
+
     var project1 = new TimelineMax({paused:true})
-         .to('.thumbImg', 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
-         .from('.firstProjectImg', 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0},0)
-         .from('.imgContainer h1', 0.5, {xPercent:'-100%', opacity:0})
-         .from('.textContent', 0.5, {xPercent:'100%', opacity:0})
+         .to(thumbimg, 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
+         .from(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0},0)
+         .from(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
+         .from(textContainer, 0.5, {xPercent:'100%', opacity:0})
          .from('.backbutton', 0.25, {left:'-50', rotation:180});
 
-    $('.firstProjectContainer > .thumbImg').click(function(){
-        project1.play();
-        detailsPage = true;
-    });
+    var clickImg = function(i){
+            return function(){
+                var thumbImg = $('.thumbImg' + i);
+                    projectImg = $('.pi' + i);
+                    detailsH1 = $('.detail' + i +'> .imgContainer > h1')
+                    textContainer =  $('.detail' + i +'> .textContainer')
+                project.play(thumbImg, projectImg, detailsH1, textContainer);
+                detailsPage = true;
+            }
+    };
+
     $('.backbutton').click(function(){
         project1.reverse();
         detailsPage = false;
 
     })
+
+    for(let i=1; i<4;i+=1){
+        $('.projectDetailContainer > .thumbImg' + i).click(clickImg(i))
+    }
 
 });
 
