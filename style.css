@@ -491,12 +491,14 @@ body{
 
   .indication p{
     top: 50%;
+    left: 0;
     position: relative;
     transform: translateY(-50%);
     text-align: center;
     font-size: 2rem;
     font-weight: 900;
   }
+
   .container{
     min-width: 100%;
     min-height: 100%;
@@ -552,7 +554,6 @@ body{
     left: 3%;
     font-size: 1.8rem;
     color: #f4f4f4;
-    width: 100%;
     cursor: pointer;
   }
 

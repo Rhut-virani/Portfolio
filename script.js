@@ -149,7 +149,7 @@ $(document).ready(function() {
     // lets do the preparation before the animation starts 
     function first(){ 
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
-        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5});
+        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'})
     }
     //running the first function
     first();
@@ -158,8 +158,8 @@ $(document).ready(function() {
     var detailsPage = false;
     function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade){
         var tl = new TimelineMax ({paused:true})
-            .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5})
-            .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1})
+            .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, x:'-10%'})
+            .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, x:'0%'})
             .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
             .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
             .set(sectionfade,{className: '-=active', autoAlpha:0})
