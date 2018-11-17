@@ -484,11 +484,12 @@ body{
     width: 10vh;
     background-color: #0F1214;
   }
-  .indicator1, .indicator2, .indicator3{
-    height: 33%;    
+  .indication{
+    height: 33%;
+    cursor: pointer;   
   }
 
-  .indicator1 p, .indicator2 p, .indicator3 p{
+  .indication p{
     top: 50%;
     position: relative;
     transform: translateY(-50%);
@@ -509,12 +510,6 @@ body{
     padding: 0;
     position: absolute;
   }
-  /* .section2{
-    opacity: 0;
-  }
-  .section3{
-    opacity: 0;
-  }  */
   .projectDetailContainer{
     display: flex;
     width: 100%;
@@ -551,12 +546,14 @@ body{
     text-align: center;
     overflow: scroll;
   }
-  .backbutton{
+  .back{
     position: absolute;
     top: 5%;
     left: 3%;
     font-size: 1.8rem;
     color: #f4f4f4;
+    width: 100%;
+    cursor: pointer;
   }
 
 

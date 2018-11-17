@@ -157,7 +157,7 @@ $(document).ready(function() {
 
     var detailsPage = false;
     function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade){
-        var tl = new TimelineMax ()
+        var tl = new TimelineMax ({paused:true})
             .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5})
             .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1})
             .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
@@ -166,18 +166,8 @@ $(document).ready(function() {
             .set(sectionIn, {className: '+=active',autoAlpha:1})
             .to($ptRight,0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
             .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
+        tl.play();
     }
-    // function scrollUp(sectionIn, sectionfade,indicatorIn, indicatorfade){
-    //     var tl = new TimelineMax ()
-    //         .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5})
-    //         .to(indicatorIn, 0.25, {className: '+=active',opacity:1, scale: 1})
-    //         .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
-    //         .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
-    //         .set(sectionfade,{className: '-=active', autoAlpha:0})
-    //         .set(sectionIn, {className: '+=active',autoAlpha:1})
-    //         .to($ptRight,0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
-    //         .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
-    //     }
 
     $(".container").on('wheel', _.debounce(scrolling, 200, {"leading":true,"trailing":false}));
 
@@ -203,12 +193,16 @@ $(document).ready(function() {
                 scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
             } 
         }
+        // var sectionIn = '',
+        //     sectionfade = '',
+        //     indicatorIn=  '',
+        //     indicatorfade= '';
         var clickIndi = function (i){ 
             return function(){
             var sectionIn = $('.home.section' + i),
-            sectionfade =$('.home.active'),
-            indicatorIn= $(this),
-            indicatorfade= $('.indication.active');
+                sectionfade =$('.home.active'),
+                indicatorIn= $(this),
+                indicatorfade= $('.indication.active');
             scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
         }}
         for(let i=1; i<4;i+=1){
@@ -219,33 +213,53 @@ $(document).ready(function() {
 
     
     // Project Detail function
-
-    var project1 = new TimelineMax({paused:true})
-         .to(thumbimg, 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
+    detail = (thumbImg, projectImg, detailsH1, textContent) => { 
+    let detail = new TimelineMax({paused:true})
+         .to(thumbImg, 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
          .from(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0},0)
          .from(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
-         .from(textContainer, 0.5, {xPercent:'100%', opacity:0})
-         .from('.backbutton', 0.25, {left:'-50', rotation:180});
-
-    var clickImg = function(i){
-            return function(){
-                var thumbImg = $('.thumbImg' + i);
-                    projectImg = $('.pi' + i);
-                    detailsH1 = $('.detail' + i +'> .imgContainer > h1')
-                    textContainer =  $('.detail' + i +'> .textContainer')
-                project.play(thumbImg, projectImg, detailsH1, textContainer);
-                detailsPage = true;
-            }
+         .from(textContent, 0.5, {xPercent:'100%', opacity:0})
+         .from(backbutton, 0.25, {left:'-50', rotation:180})
+        detail.restart();
     };
+    var clickImg = function(j){
+        return function(){
+            var thumbImg = $('.thumbimg' + j);
+                projectImg = $('.pi' + j);
+                detailsH1 = $('.detail' + j +'> .imgContainer > h1')
+                textContent =  $('.detail' + j +' > .textContent')
+                backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-    $('.backbutton').click(function(){
-        project1.reverse();
-        detailsPage = false;
+            detail(thumbImg, projectImg, detailsH1, textContent);
+            detailsPage = true;
+        }
+    };
+    lessdetail = (thumbImg, projectImg, detailsH1, textContent) => { 
+        let click = new TimelineMax({paused:true})
+            .to(backbutton, 0.25, {left:'-50', rotation:180})
+            .to(textContent, 0.5, {xPercent:'100%', opacity:0})
+            .to(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
+            .to(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0})
+            .to(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, '-=0.25');
+        click.restart();
+        };
+    var backclick = function(j){
+        return function(){
+            var thumbImg = $('.thumbimg' + j);
+                projectImg = $('.pi' + j);
+                detailsH1 = $('.detail' + j +'> .imgContainer > h1')
+                textContent =  $('.detail' + j +' > .textContent')
+                backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-    })
+            lessdetail(thumbImg, projectImg, detailsH1, textContent);
+            detailsPage = false;
+        }
+    };    
 
-    for(let i=1; i<4;i+=1){
-        $('.projectDetailContainer > .thumbImg' + i).click(clickImg(i))
+    for(let j=1; j<4;j+=1){
+        $('.thumbimg' + j).click(clickImg(j));
+        $('.backbutton'+ j).click(backclick(j));
+
     }
 
 });
