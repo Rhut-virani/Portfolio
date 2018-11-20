@@ -193,7 +193,7 @@ $(document).ready(function() {
                 scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
             } 
         }
-        
+
         var clickIndi = function (i){ 
             return function(){
             var sectionIn = $('.home.section' + i),
@@ -206,24 +206,24 @@ $(document).ready(function() {
             $('.indicator'+ i).click(clickIndi(i));
         }
 
-
-    
     // Project Detail function
     detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => { 
         var dl = new TimelineMax({paused:true});
-        if(detailsPage){
-            dl.reverse();
-        }
-        else if(!detailsPage){
-            dl.play();
-        };
             dl
                 .fromTo(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
                 .fromTo(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0}, {ease: Back.easeIn.config(1.7),scale:1, autoAlpha:1},0)
                 .fromTo(detailsH1, 0.5, {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
                 .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
                 .fromTo(backbutton, 0.25, {left:'-50', rotation:180}, {left:'3%', rotation:0});
-    };
+
+            if(detailsPage){
+                dl.reverse(0);
+            }
+            else if(!detailsPage){
+                dl.restart();
+            };
+        };
+
     var clickImg = function(j){
         return function(){
             var thumbImg = $('.thumbimg' + j);
