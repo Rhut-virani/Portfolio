@@ -3,41 +3,44 @@ $(document).ready(function() {
     for (var i = 1; i <=better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
     } 
+
+
 // website launch button and functions
     $(".buttonContainer").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a.floatingText').attr('class', 'floatingText swing');
-        $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('r')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('o')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('j')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('e')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('c')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('t')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('s')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('C')" ).eq(1).attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('o')" ).eq(1).attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('n')" ).first().attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('t')" ).eq(1).attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('a')" ).first().attr('class',  'floatingmainText gotoRight');
-        $( "a:contains('c')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
-        $( "a:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
-        $( "a:contains('a')" ).eq(1).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('b')" ).eq(1).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('o')" ).eq(2).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('u')" ).first().attr('class',  'floatingmainText gotodown');
-        $( "a:contains('t')" ).eq(3).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('s')" ).eq(1).attr('class',  'floatingmainText gotoup');
-        $( "a:contains('k')" ).first().attr('class',  'floatingmainText gotoup');
-        $( "a:contains('i')" ).first().attr('class',  'floatingmainText gotoup');
-        $( "a:contains('l')" ).first().attr('class',  'floatingmainText gotoup');
-        $( "a:contains('l')" ).eq(1).attr('class',  'floatingmainText gotoup');
-        $( "a:contains('s')" ).eq(2).attr('class',  'floatingmainText gotoup');
+        $( "a.floatingText:contains('P')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('r')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('o')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('j')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('e')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('c')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('t')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('s')" ).first().attr('class', 'floatingmainText gotoLeft');
+        $( "a.floatingText:contains('C')" ).eq(1).attr('class', 'floatingmainText gotoRight');
+        $( "a.floatingText:contains('o')" ).eq(1).attr('class', 'floatingmainText gotoRight');
+        $( "a.floatingText:contains('n')" ).first().attr('class', 'floatingmainText gotoRight');
+        $( "a.floatingText:contains('t')" ).eq(1).attr('class', 'floatingmainText gotoRight');
+        $( "a.floatingText:contains('a')" ).first().attr('class',  'floatingmainText gotoRight');
+        $( "a.floatingText:contains('c')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
+        $( "a.floatingText:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
+        $( "a.floatingText:contains('a')" ).eq(1).attr('class',  'floatingmainText gotodown');
+        $( "a.floatingText:contains('b')" ).eq(1).attr('class',  'floatingmainText gotodown');
+        $( "a.floatingText:contains('o')" ).eq(2).attr('class',  'floatingmainText gotodown');
+        $( "a.floatingText:contains('u')" ).first().attr('class',  'floatingmainText gotodown');
+        $( "a.floatingText:contains('t')" ).eq(3).attr('class',  'floatingmainText gotodown');
+        $( "a.floatingText:contains('s')" ).eq(1).attr('class',  'floatingmainText gotoup');
+        $( "a.floatingText:contains('k')" ).first().attr('class',  'floatingmainText gotoup');
+        $( "a.floatingText:contains('i')" ).first().attr('class',  'floatingmainText gotoup');
+        $( "a.floatingText:contains('l')" ).first().attr('class',  'floatingmainText gotoup');
+        $( "a.floatingText:contains('l')" ).eq(1).attr('class',  'floatingmainText gotoup');
+        $( "a.floatingText:contains('s')" ).eq(2).attr('class',  'floatingmainText gotoup');
 
-        $(".waitForClass").attr('class','project');
-        $(".waitForClass2").attr('class','contact');
-        $(".waitForClass3").attr('class','about');
-        $(".waitForClass4").attr('class','skills');
+        $(".waitForClass").attr('class','projectNav');
+        $(".waitForClass2").attr('class','contactNav');
+        $(".waitForClass3").attr('class','aboutNav');
+        $(".waitForClass4").attr('class','skillsNav');
+
         setTimeout(
             function() {
                 $( ".swing" ).remove();
@@ -45,97 +48,133 @@ $(document).ready(function() {
                 $(".contactContainer > div > span ").attr('class','widerText');
                 $(".skillsContainer > div > span ").attr('class','widerText2');
                 $(".aboutContainer > div > span ").attr('class','widerText2');
-                $('.project, .contact, .skills, .about').attr('class', ' ');
+                $('.projectNav, .contactNav, .skillsNav, .aboutNav').attr('class', ' ');
             },
             7000);
+        
         setTimeout(
             function() {
                 $( ".floatingmainText" ).remove();
             },
-            15000);
+            7000);
     });
 
+
+    var section = '';
+    var prevSection = '';
     
+    // Navigation using Hashchange values
+    function locationHashChanged(e) {
+        e.preventDefault();
+        prevSection = section;
+        section = location.hash.substring(1);
+        if(section === 'project' || prevSection === 'project' && section === ""){
+            scrollToProject();
+        }
+        else if(section === 'contact' || prevSection === 'contact' && section === ""){
+            scrollToContact();
+        }
+        else if(section === 'about' || prevSection === 'about' && section === ""){
+            scrollToAbout();
+        }
+        else if(section === 'skills' || prevSection === 'skills' && section === ""){
+            scrollToSkills();
+        }
+    };
+
+    window.onhashchange = locationHashChanged;
+
+
 // button and functions for each sections
+
+
 
     // project button and left section 
     var tp = new TimelineMax({paused:true})
         .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
-        .to('.projectTransitionHelper', 1.5, {xPercent:100})
+        .to('.projectTransitionHelper', 1.5, {xPercent:'100'})
         .to('div.projectContainer', 1, {left:"", right:0})
-        .to('div#leftSectionContainer', 1.5, {xPercent:100, opacity:1})
-        .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25")
-
-    $('div.projectContainer').click(function(){
-        var t1 = new TimelineMax();
-        $("div#leftSectionContainer").toggleClass("gotoright");
-        if($("div#leftSectionContainer").hasClass("gotoright")){
-            tp.play();
-        }
-        else{
-            tp.reverse();
-        }
-    })
+        .to('div#project', 1.5, {xPercent:'100', opacity:1})
+        .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25");
 
     // contact button and right section 
-
     var tc = new TimelineMax({paused:true})
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
-        .to('.contactTransitionHelper', 1.5, {xPercent:-200})
+        .to('.contactTransitionHelper', 1.5, {x:'0'})
         .to('div.contactContainer', 1, {left:0, right:''})
-        .to('div#rightSectionContainer', 1.5, {xPercent:-200, opacity:1})
+        .to('div#contact', 1.5, {x:'0', opacity:1})
         .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
-
-    $('div.contactContainer').click(function(){
-        $("div#rightSectionContainer").toggleClass("gotoleft");
-        if($("div#rightSectionContainer").hasClass("gotoleft")){
-            tc.play();
-        }
-        else{
-            tc.reverse();
-        }
-    })
 
     // Skills button and top section 
     var ts = new TimelineMax({paused:true})
         .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
         .to('.skillsTransitionHelper', 1.5, {yPercent:100})
         .to('div.skillsContainer', 1, {bottom:0, top:''})
-        .to('div#topSectionContainer', 1.5, {yPercent:100, opacity:1})
+        .to('div#skills', 1.5, {yPercent:100, opacity:1})
         .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25");
-
-    $('div.skillsContainer').click(function(){
-        $("div#topSectionContainer").toggleClass("godown");
-
-        if($("div#topSectionContainer").hasClass("godown")){
-            ts.play();
-        }
-        else{
-            ts.reverse();
-        }
-    })
 
     // about button and bottom section 
     var ta = new TimelineMax({paused:true})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .to('.aboutTransitionHelper', 1.5, {yPercent:-100})
+        .to('.aboutTransitionHelper', 1.5, {yPercent:'-100'})
         .to('div.aboutContainer', 1, {top:0, bottom:''})
-        .to('div#bottomSectionContainer', 1.5, {yPercent:-100, opacity:1})
+        .to('div#about', 1.5, {yPercent:'-100', opacity:1})
         .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
 
-    $('div.aboutContainer').click(function(){
-        $("div#bottomSectionContainer").toggleClass("goup");
-        if($("div#bottomSectionContainer").hasClass("goup")){
+
+    function scrollToProject(){
+        $("div#project").toggleClass("gotoright");
+        if($("div#project").hasClass("gotoright")){
+            tp.play();
+            $('div.projectContainer').parent().attr('href','#');
+        }
+        else{
+            tp.reverse();
+            $('div.projectContainer').parent().attr('href','#project')
+        }
+    }
+    function scrollToContact(){
+        $("div#contact").toggleClass("gotoleft");
+        if($("div#contact").hasClass("gotoleft")){
+            tc.play();
+            $('div.contactContainer').parent().attr('href','#');
+        }
+        else{
+            tc.reverse();
+            $('div.contactContainer').parent().attr('href','#contact');
+
+        }
+    }
+    function scrollToSkills(){
+        $("div#skills").toggleClass("godown");
+        if($("div#skills").hasClass("godown")){
+            ts.play();
+            $('div.skillsContainer').parent().attr('href','#');            
+        }
+        else{
+            ts.reverse();
+            $('div.skillsContainer').parent().attr('href','#skills');            
+        }
+    }
+    function scrollToAbout(){
+        $("div#about").toggleClass("goup");
+        if($("div#about").hasClass("goup")){
             ta.play();
+            $('div.aboutContainer').parent().attr('href','#');
         }
         else{
             ta.reverse();
+            $('div.aboutContainer').parent().attr('href','#about');
         }
-    });
+    };
 
 
 
-    // declaring variables
+
+
+
+
+    // declaring variables for section transitions
     var $home = $('.home'),
         $activeSection = $('.active'),
         $container = $('.container'),
@@ -173,38 +212,38 @@ $(document).ready(function() {
 
     function scrolling(e) {
 
-            // checking if the previous tween is finished or the detainls page is open or not
-            if(scroll.isTweening || detailsPage){
-                return;
-            }
-            // scroll up if the deltaY value is poistive
-            if(e.originalEvent.deltaY > 0){
-                var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
-                    sectionfade =$('.home.active'),
-                    indicatorIn= $('.indication.active').next($indi).length === 0 ? $('.indication.active').prevAll($indi).last() : $('.indication.active').next($indi),
-                    indicatorfade= $('.indication.active');
-                scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
-            }
-            else if(e.originalEvent.deltaY < 0 ){
-                var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
-                sectionfade =$('.home.active'),
-                indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
-                indicatorfade= $('.indication.active');
-                scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
-            } 
+        // checking if the previous tween is finished or the detainls page is open or not
+        if(scroll.isTweening || detailsPage){
+            return;
         }
-
-        var clickIndi = function (i){ 
-            return function(){
-            var sectionIn = $('.home.section' + i),
+        // scroll up if the deltaY value is poistive
+        if(e.originalEvent.deltaY > 0){
+            var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
                 sectionfade =$('.home.active'),
-                indicatorIn= $(this),
+                indicatorIn= $('.indication.active').next($indi).length === 0 ? $('.indication.active').prevAll($indi).last() : $('.indication.active').next($indi),
                 indicatorfade= $('.indication.active');
             scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
-        }}
-        for(let i=1; i<5;i+=1){
-            $('.indicator'+ i).click(clickIndi(i));
         }
+        else if(e.originalEvent.deltaY < 0 ){
+            var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
+            sectionfade =$('.home.active'),
+            indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
+            indicatorfade= $('.indication.active');
+            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+        } 
+    }
+
+    var clickIndi = function (i){ 
+        return function(){
+        var sectionIn = $('.home.section' + i),
+            sectionfade =$('.home.active'),
+            indicatorIn= $(this),
+            indicatorfade= $('.indication.active');
+        scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+    }}
+    for(let i=1; i<5;i+=1){
+        $('.indicator'+ i).click(clickIndi(i));
+    }
 
     // Project Detail function
     detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => { 
@@ -261,8 +300,8 @@ $(document).ready(function() {
     };    
 
     for(let j=1; j<5;j+=1){
-        $('.thumbimg' + j).click(clickImg(j));
-        $('.backbutton'+ j).click(backclick(j));
+        $('.thumbimg' + j).click(clickImg(j)); // -------todo------------------convert this 2 function to a single function call with a boolean  
+        $('.backbutton'+ j).click(backclick(j)); // ------todo--------------------and an if statement in clickImg or backclick function
     }
 
 });
