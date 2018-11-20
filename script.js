@@ -205,22 +205,27 @@ $(document).ready(function() {
                 indicatorfade= $('.indication.active');
             scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
         }}
-        for(let i=1; i<4;i+=1){
+        for(let i=1; i<5;i+=1){
             $('.indicator'+ i).click(clickIndi(i));
         }
 
 
-
     
     // Project Detail function
-    detail = (thumbImg, projectImg, detailsH1, textContent) => { 
-    let detail = new TimelineMax({paused:true})
-         .to(thumbImg, 0.5, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
-         .from(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0},0)
-         .from(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
-         .from(textContent, 0.5, {xPercent:'100%', opacity:0})
-         .from(backbutton, 0.25, {left:'-50', rotation:180})
-        detail.restart();
+    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => { 
+        var dl = new TimelineMax({paused:true});
+        if(detailsPage){
+            dl.reverse();
+        }
+        else if(!detailsPage){
+            dl.play();
+        };
+            dl
+                .fromTo(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
+                .fromTo(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0}, {ease: Back.easeIn.config(1.7),scale:1, autoAlpha:1},0)
+                .fromTo(detailsH1, 0.5, {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
+                .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
+                .fromTo(backbutton, 0.25, {left:'-50', rotation:180}, {left:'3%', rotation:0});
     };
     var clickImg = function(j){
         return function(){
@@ -229,20 +234,20 @@ $(document).ready(function() {
                 detailsH1 = $('.detail' + j +'> .imgContainer > h1')
                 textContent =  $('.detail' + j +' > .textContent')
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
-
-            detail(thumbImg, projectImg, detailsH1, textContent);
+            
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage);
             detailsPage = true;
         }
     };
-    lessdetail = (thumbImg, projectImg, detailsH1, textContent) => { 
-        let click = new TimelineMax({paused:true})
-            .to(backbutton, 0.25, {left:'-50', rotation:180})
-            .to(textContent, 0.5, {xPercent:'100%', opacity:0})
-            .to(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
-            .to(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0})
-            .to(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, '-=0.25');
-        click.restart();
-        };
+    // lessdetail = (thumbImg, projectImg, detailsH1, textContent) => { 
+    //     let click = new TimelineMax({paused:true})
+    //         .to(backbutton, 0.25, {left:'-50', rotation:180})
+    //         .to(textContent, 0.5, {xPercent:'100%', opacity:0})
+    //         .to(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
+    //         .to(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0})
+    //         .to(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, '-=0.25');
+    //         click.restart();
+    //     };
     var backclick = function(j){
         return function(){
             var thumbImg = $('.thumbimg' + j);
@@ -251,15 +256,16 @@ $(document).ready(function() {
                 textContent =  $('.detail' + j +' > .textContent')
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-            lessdetail(thumbImg, projectImg, detailsH1, textContent);
+            // lessdetail(thumbImg, projectImg, detailsH1, textContent);
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage);
             detailsPage = false;
+
         }
     };    
 
-    for(let j=1; j<4;j+=1){
+    for(let j=1; j<5;j+=1){
         $('.thumbimg' + j).click(clickImg(j));
         $('.backbutton'+ j).click(backclick(j));
-
     }
 
 });
