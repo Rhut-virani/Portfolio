@@ -193,10 +193,7 @@ $(document).ready(function() {
                 scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
             } 
         }
-        // var sectionIn = '',
-        //     sectionfade = '',
-        //     indicatorIn=  '',
-        //     indicatorfade= '';
+        
         var clickIndi = function (i){ 
             return function(){
             var sectionIn = $('.home.section' + i),
