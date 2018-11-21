@@ -424,12 +424,12 @@ body{
   z-index: 202;
   overflow: hidden;
 }
-#project{
+/* #project{
   transform: translateX(-100%);
 }
 #contact{
   transform: translateX(200%);
-}
+} */
 .projectTransitionHelper, .contactTransitionHelper, .aboutTransitionHelper, .skillsTransitionHelper{
   position: absolute;
   background-color: #EFF2F3;
@@ -437,12 +437,12 @@ body{
   width: 100vw;
   z-index: 201;
 }
-.projectTransitionHelper{
+/* .projectTransitionHelper{
   transform: translateX(-100%);
 }
 .contactTransitionHelper{
   transform: translateX(200%);
-}
+} */
 .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer{
   width: calc(100vw - 20vh);
   height: 80vh;
@@ -577,7 +577,7 @@ body{
 /* <-----------top////bottom------------------> */
 
 
-#skills{
+/* #skills{
   transform: translateY(-100%);
 }
 #about{
@@ -588,7 +588,7 @@ body{
 }
 .aboutTransitionHelper{
   transform: translateY(100%);
-}
+} */
 
 
 /* disable hover animation on mobile devices */

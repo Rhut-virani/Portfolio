@@ -59,70 +59,97 @@ $(document).ready(function() {
             7000);
     });
 
+    // declaring variables for section transitions
 
-    var section = '';
-    var prevSection = '';
+    var section = '',
+        prevSection = '',
+        $home = $('.home'),
+        $activeSection = $('.active'),
+        $container = $('.container'),
+        $indi = $('.indication'),
+        $indicator1 = $('.indicator1'),
+        $indicator2 = $('.indicator2'),
+        $indicator3 = $('.indicator3'),
+        $ptLeft = $('.p-t-Left'),
+        $ptRight = $('.p-t-Right');
+        $allContent = $('#project, .projectTransitionHelper, #contact, .contactTransitionHelper, #skills, .skillsTransitionHelper, #about, .aboutTransitionHelper');
+
+    // lets do the preparation before the animation starts 
+    function first(){ 
+        TweenLite.set($home.not($activeSection), {autoAlpha:0});
+        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'})
+        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});;
+        TweenLite.set($allContent, {autoAlpha:0});
+
+    }
     
+    // running the first function
+    first();
+
+
     // Navigation using Hashchange values
     function locationHashChanged(e) {
         e.preventDefault();
         prevSection = section;
         section = location.hash.substring(1);
         if(section === 'project' || prevSection === 'project' && section === ""){
-            scrollToProject();
+            scrollToProject(e);
         }
         else if(section === 'contact' || prevSection === 'contact' && section === ""){
-            scrollToContact();
+            scrollToContact(e);
         }
         else if(section === 'about' || prevSection === 'about' && section === ""){
-            scrollToAbout();
+            scrollToAbout(e);
         }
         else if(section === 'skills' || prevSection === 'skills' && section === ""){
-            scrollToSkills();
+            scrollToSkills(e);
         }
     };
 
     window.onhashchange = locationHashChanged;
 
 
-// button and functions for each sections
+
+    // button and functions for each sections
+
+
 
 
 
     // project button and left section 
     var tp = new TimelineMax({paused:true})
         .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
-        .to('.projectTransitionHelper', 1.5, {xPercent:'100'})
+        .fromTo('.projectTransitionHelper', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 1, {left:"", right:0})
-        .to('div#project', 1.5, {xPercent:'100', opacity:1})
+        .fromTo('div#project', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25");
 
     // contact button and right section 
     var tc = new TimelineMax({paused:true})
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
-        .to('.contactTransitionHelper', 1.5, {x:'0'})
+        .fromTo('.contactTransitionHelper', 1.5, {xPercent:'100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 1, {left:0, right:''})
-        .to('div#contact', 1.5, {x:'0', opacity:1})
+        .fromTo('div#contact', 1.5, {xPercent:'100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
 
     // Skills button and top section 
     var ts = new TimelineMax({paused:true})
         .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
-        .to('.skillsTransitionHelper', 1.5, {yPercent:100})
+        .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 1, {bottom:0, top:''})
-        .to('div#skills', 1.5, {yPercent:100, opacity:1})
+        .fromTo('div#skills', 1.5, {yPercent:'-100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25");
 
     // about button and bottom section 
     var ta = new TimelineMax({paused:true})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .to('.aboutTransitionHelper', 1.5, {yPercent:'-100'})
+        .fromTo('.aboutTransitionHelper', 1.5,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 1, {top:0, bottom:''})
-        .to('div#about', 1.5, {yPercent:'-100', opacity:1})
+        .fromTo('div#about', 1.5, {yPercent:'100%', autoAlpha:1}, {y:'0'})
         .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
 
 
-    function scrollToProject(){
+    function scrollToProject(e){
         $("div#project").toggleClass("gotoright");
         if($("div#project").hasClass("gotoright")){
             tp.play();
@@ -133,7 +160,7 @@ $(document).ready(function() {
             $('div.projectContainer').parent().attr('href','#project')
         }
     }
-    function scrollToContact(){
+    function scrollToContact(e){
         $("div#contact").toggleClass("gotoleft");
         if($("div#contact").hasClass("gotoleft")){
             tc.play();
@@ -145,7 +172,7 @@ $(document).ready(function() {
 
         }
     }
-    function scrollToSkills(){
+    function scrollToSkills(e){
         $("div#skills").toggleClass("godown");
         if($("div#skills").hasClass("godown")){
             ts.play();
@@ -156,7 +183,7 @@ $(document).ready(function() {
             $('div.skillsContainer').parent().attr('href','#skills');            
         }
     }
-    function scrollToAbout(){
+    function scrollToAbout(e){
         $("div#about").toggleClass("goup");
         if($("div#about").hasClass("goup")){
             ta.play();
@@ -173,25 +200,6 @@ $(document).ready(function() {
 
 
 
-
-    // declaring variables for section transitions
-    var $home = $('.home'),
-        $activeSection = $('.active'),
-        $container = $('.container'),
-        $indi = $('.indication'),
-        $indicator1 = $('.indicator1'),
-        $indicator2 = $('.indicator2'),
-        $indicator3 = $('.indicator3'),
-        $ptLeft = $('.p-t-Left'),
-        $ptRight = $('.p-t-Right');
-
-    // lets do the preparation before the animation starts 
-    function first(){ 
-        TweenLite.set($home.not($activeSection), {autoAlpha:0});
-        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'})
-    }
-    //running the first function
-    first();
 
 
     var detailsPage = false;
