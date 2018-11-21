@@ -423,12 +423,7 @@ body{
   z-index: 202;
   overflow: hidden;
 }
-#leftSectionContainer{
-  transform: translateX(-100%);
-}
-#rightSectionContainer{
-  transform: translateX(200%);
-}
+
 .projectTransitionHelper, .contactTransitionHelper, .aboutTransitionHelper, .skillsTransitionHelper{
   position: absolute;
   background-color: #EFF2F3;
@@ -436,12 +431,7 @@ body{
   width: 100vw;
   z-index: 201;
 }
-.projectTransitionHelper{
-  transform: translateX(-100%);
-}
-.contactTransitionHelper{
-  transform: translateX(200%);
-}
+
 .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer{
   width: calc(100vw - 20vh);
   height: 80vh;
@@ -557,10 +547,22 @@ body{
 
 
 
+/* <------------------------------ top section --------------------------> */
 
-
-
-
+.skillsGrid{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.allskills{
+  min-width: 25%;
+  height: auto;
+  background-color: #EFF2F3;
+  margin: 1%;
+}
 
 
 
@@ -575,19 +577,6 @@ body{
 
 /* <-----------top////bottom------------------> */
 
-
-#topSectionContainer{
-  transform: translateY(-100%);
-}
-#bottomSectionContainer{
-  transform: translateY(100%);
-}
-.skillsTransitionHelper{
-  transform: translateY(-100%);
-}
-.aboutTransitionHelper{
-  transform: translateY(100%);
-}
 
 
 /* disable hover animation on mobile devices */

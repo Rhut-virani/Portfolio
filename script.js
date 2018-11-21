@@ -61,9 +61,9 @@ $(document).ready(function() {
     // project button and left section 
     var tp = new TimelineMax({paused:true})
         .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
-        .to('.projectTransitionHelper', 1.5, {xPercent:100})
+        .fromTo('.projectTransitionHelper', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 1, {left:"", right:0})
-        .to('div#leftSectionContainer', 1.5, {xPercent:100, opacity:1})
+        .fromTo('div#leftSectionContainer', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25")
 
     $('div.projectContainer').click(function(){
@@ -81,9 +81,9 @@ $(document).ready(function() {
 
     var tc = new TimelineMax({paused:true})
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
-        .to('.contactTransitionHelper', 1.5, {xPercent:-200})
+        .fromTo('.contactTransitionHelper', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 1, {left:0, right:''})
-        .to('div#rightSectionContainer', 1.5, {xPercent:-200, opacity:1})
+        .fromTo('div#rightSectionContainer', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
 
     $('div.contactContainer').click(function(){
@@ -99,9 +99,9 @@ $(document).ready(function() {
     // Skills button and top section 
     var ts = new TimelineMax({paused:true})
         .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
-        .to('.skillsTransitionHelper', 1.5, {yPercent:100})
+        .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 1, {bottom:0, top:''})
-        .to('div#topSectionContainer', 1.5, {yPercent:100, opacity:1})
+        .fromTo('div#topSectionContainer', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25");
 
     $('div.skillsContainer').click(function(){
@@ -118,9 +118,9 @@ $(document).ready(function() {
     // about button and bottom section 
     var ta = new TimelineMax({paused:true})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .to('.aboutTransitionHelper', 1.5, {yPercent:-100})
+        .fromTo('.aboutTransitionHelper', 1.5,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 1, {top:0, bottom:''})
-        .to('div#bottomSectionContainer', 1.5, {yPercent:-100, opacity:1})
+        .fromTo('div#bottomSectionContainer', 1.5, {yPercent:'100%', autoAlpha:1}, {y:'0'})
         .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
 
     $('div.aboutContainer').click(function(){
@@ -145,11 +145,15 @@ $(document).ready(function() {
         $indicator3 = $('.indicator3'),
         $ptLeft = $('.p-t-Left'),
         $ptRight = $('.p-t-Right');
+        $allContent = $('#project, .projectTransitionHelper, #contact, .contactTransitionHelper, #skills, .skillsTransitionHelper, #about, .aboutTransitionHelper');
+
 
     // lets do the preparation before the animation starts 
     function first(){ 
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
-        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'})
+        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
+        TweenLite.set($allContent, {autoAlpha:0});
+
     }
     //running the first function
     first();
