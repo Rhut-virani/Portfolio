@@ -260,28 +260,28 @@ body{
       display:none;
   }
 
-  .projectNav span:nth-of-type(2), .contactNav span:nth-of-type(2), .skillsNav span:nth-of-type(2), .aboutNav span:nth-of-type(2){
+  .project span:nth-of-type(2), .contact span:nth-of-type(2), .skills span:nth-of-type(2), .about span:nth-of-type(2){
     animation-delay: 5.05s;
   }
-  .projectNav span:nth-of-type(3), .contactNav span:nth-of-type(3), .skillsNav span:nth-of-type(3), .aboutNav span:nth-of-type(3) {
+  .project span:nth-of-type(3), .contact span:nth-of-type(3), .skills span:nth-of-type(3), .about span:nth-of-type(3) {
     animation-delay: 5.1s;
   }
-  .projectNav span:nth-of-type(4), .contactNav span:nth-of-type(4), .skillsNav span:nth-of-type(4), .aboutNav span:nth-of-type(4) {
+  .project span:nth-of-type(4), .contact span:nth-of-type(4), .skills span:nth-of-type(4), .about span:nth-of-type(4) {
     animation-delay: 5.15s;
   }
-  .projectNav span:nth-of-type(5), .contactNav span:nth-of-type(5), .skillsNav span:nth-of-type(5), .aboutNav span:nth-of-type(5) {
+  .project span:nth-of-type(5), .contact span:nth-of-type(5), .skills span:nth-of-type(5), .about span:nth-of-type(5) {
     animation-delay: 5.2s;
   }
-  .projectNav span:nth-of-type(6), .contactNav span:nth-of-type(6), .skillsNav span:nth-of-type(6), .aboutNav span:nth-of-type(6) {
+  .project span:nth-of-type(6), .contact span:nth-of-type(6), .skills span:nth-of-type(6), .about span:nth-of-type(6) {
     animation-delay: 5.25s;
   }
-  .projectNav span:nth-of-type(7), .contactNav span:nth-of-type(7), .skillsNav span:nth-of-type(7), .aboutNav span:nth-of-type(7) {
+  .project span:nth-of-type(7), .contact span:nth-of-type(7), .skills span:nth-of-type(7), .about span:nth-of-type(7) {
     animation-delay: 5.3s;
   }
-  .projectNav span:nth-of-type(8), .contactNav span:nth-of-type(7), .skillsNav span:nth-of-type(7), .aboutNav span:nth-of-type(7) {
+  .project span:nth-of-type(8), .contact span:nth-of-type(7), .skills span:nth-of-type(7), .about span:nth-of-type(7) {
     animation-delay: 5.35s;
   }
-  .projectNav span:nth-of-type(9), .contactNav span:nth-of-type(7), .skillsNav span:nth-of-type(7), .aboutNav span:nth-of-type(7) {
+  .project span:nth-of-type(9), .contact span:nth-of-type(7), .skills span:nth-of-type(7), .about span:nth-of-type(7) {
     animation-delay: 5.4s;
   }
   .projectContainer, .contactContainer, .skillsContainer, .aboutContainer{
@@ -330,19 +330,19 @@ body{
     cursor: pointer;
   }
 
-  .projectNav span, .contactNav span, .skillsNav span, .aboutNav span{
+  .project span, .contact span, .skills span, .about span{
     opacity: 0;
     display: inline-block;
     font-weight: 900;
   }
-  .skillsNav span, .aboutNav span{
+  .skills span, .about span{
     width: 10%;
   }
-  .projectNav span, .contactNav span{
+  .project span, .contact span{
     width: 10%;
   }
   /* individual header animations */
-  .projectNav span{
+  .project span{
     animation: leftentry 0.5s ease-out forwards 5s;
     transform: translate(-50rem, 50rem) rotate(270deg);
   }
@@ -355,7 +355,7 @@ body{
       opacity: 1;
     }
   }
-  .contactNav span{
+  .contact span{
     transform: translate(50rem, 50rem) scale(1);
     animation: rightentry 0.5s ease-out forwards 5s;
   }
@@ -368,7 +368,7 @@ body{
       opacity: 1;
     }
   }
-  .skillsNav span{
+  .skills span{
     transform: translate(0, -50rem) scale(1);
     animation: topentry 0.5s ease-out forwards 5s;
   }
@@ -381,7 +381,7 @@ body{
       opacity: 1;
     }
   }
-  .aboutNav span{
+  .about span{
     transform: translate(0, 50rem) scale(1);
     animation: bottomentry 0.5s ease-out forwards 5s;
 
@@ -395,7 +395,6 @@ body{
       opacity: 1;
     }
   }
-
   /* navtext animation */
 
   .widerText, .widerText2{
@@ -416,7 +415,7 @@ body{
 /* individual sections  */
 
 /* <-----------left////right------------------> */
-#project, #contact, #skills, #about{
+#leftSectionContainer, #rightSectionContainer, #topSectionContainer, #bottomSectionContainer{
   position: absolute;
   background-color: #0F1214;
   height: 100vh;
@@ -424,12 +423,12 @@ body{
   z-index: 202;
   overflow: hidden;
 }
-/* #project{
+#leftSectionContainer{
   transform: translateX(-100%);
 }
-#contact{
+#rightSectionContainer{
   transform: translateX(200%);
-} */
+}
 .projectTransitionHelper, .contactTransitionHelper, .aboutTransitionHelper, .skillsTransitionHelper{
   position: absolute;
   background-color: #EFF2F3;
@@ -437,12 +436,12 @@ body{
   width: 100vw;
   z-index: 201;
 }
-/* .projectTransitionHelper{
+.projectTransitionHelper{
   transform: translateX(-100%);
 }
 .contactTransitionHelper{
   transform: translateX(200%);
-} */
+}
 .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer{
   width: calc(100vw - 20vh);
   height: 80vh;
@@ -577,10 +576,10 @@ body{
 /* <-----------top////bottom------------------> */
 
 
-/* #skills{
+#topSectionContainer{
   transform: translateY(-100%);
 }
-#about{
+#bottomSectionContainer{
   transform: translateY(100%);
 }
 .skillsTransitionHelper{
@@ -588,7 +587,7 @@ body{
 }
 .aboutTransitionHelper{
   transform: translateY(100%);
-} */
+}
 
 
 /* disable hover animation on mobile devices */
@@ -710,13 +709,13 @@ body{
     font-weight: 900;
     transition: width 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
   }
-  .projectNav span, .contactNav span{
+  .project span, .contact span{
     width: 3.5%;
   }
   .widerText{
     width: 3.5%;
   }
-  .skillsNav span, .aboutNav span{
+  .skills span, .about span{
     width: 4.5%;
   }
   .widerText2{
