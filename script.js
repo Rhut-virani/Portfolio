@@ -149,7 +149,7 @@ $(document).ready(function() {
         .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
 
 
-    function scrollToProject(e){
+    
         $("div#project").toggleClass("gotoright");
         if($("div#project").hasClass("gotoright")){
             tp.play();
