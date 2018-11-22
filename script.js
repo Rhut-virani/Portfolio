@@ -97,13 +97,23 @@ $(document).ready(function() {
     })
 
     // Skills button and top section 
-    var ts = new TimelineMax({paused:true})
+    var ts = new TimelineMax({paused:true, onComplete: skillsText})
         .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 1, {bottom:0, top:''})
         .fromTo('div#topSectionContainer', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
-        .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25");
+        .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25")
+        .staggerFromTo('.allskills', 1.5,{x:"2000px", rotation: 360}, {x:"0px", ease: Back.easeOut.config(3)}, 0.1)
+        .staggerFromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 10px 20px #ffd000, 0 3px 10px #ffd000', ease: Power2.easeOut}, 0.1,)
+    var tsp = new TimelineMax({paused:true})
+        .staggerFromTo('.allskills > div > p', 0.5, {y:'-200%', autoAlpha:0},{y:'0%', autoAlpha:1}, 0.25)
+        .staggerTo('.allskills > div > p', 0.5, {y:'200%'}, 0.25)
+        .staggerFromTo('.allskills > div > p', 0.5, {y:'-200%'},{y:'0%'}, 0.25);
 
+    function skillsText(){
+        tsp.play();
+    }
+    
     $('div.skillsContainer').click(function(){
         $("div#topSectionContainer").toggleClass("godown");
 

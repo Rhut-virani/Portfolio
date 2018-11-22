@@ -556,12 +556,30 @@ body{
   flex-direction: row;
   align-items: stretch;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 .allskills{
-  min-width: 25%;
-  height: auto;
+  min-width: 17%;
+  max-height: 40%;
   background-color: #EFF2F3;
-  margin: 1%;
+  margin: 2%;
+  border-radius: 50%;
+  box-shadow: 3px 4px #fddb43;
+}
+.allskills > div{
+  color: #0F1214;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  font-weight: 900;
+  overflow: hidden;
+  width: 100%;
+  height: 25%;
+}
+.allskills > div > p{
+  margin: 5%;
 }
 
 
@@ -617,6 +635,10 @@ body{
     .widerText2{
       width: 2%;
     }
+    .allskills{
+      min-width: 48%;
+      min-height: 24%;
+    }
 }
 
 /* media query for phones */
@@ -653,6 +675,13 @@ body{
   }
   .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
     width: 3.5%;
+  }
+  .allskills{
+    min-width: 98%;
+    min-height: 48%;
+  }
+  .skillsPageContainer{
+    overflow: scroll;
   }
 }
 
@@ -715,5 +744,12 @@ body{
   }
   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
     width: 4.5%;
+  }
+  .allskills{
+    min-width: 98%;
+    min-height: 48%;
+  }
+  .skillsPageContainer{
+    overflow: scroll;
   }
 }
