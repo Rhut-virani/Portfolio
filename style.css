@@ -55,6 +55,7 @@ body{
       transition: transform 250ms ease-in;
       transform: scale(1);
       cursor: pointer;
+      font-weight: 200;
   }
   .floatingmainText{
       display: inline-block;
@@ -575,10 +576,10 @@ body{
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 2%;
+  padding: 10%;
 }
 .skillsGrid2{
-  flex: 1;
+  flex: 2;
   width: 50%;
   height: 100%;
 }
@@ -594,31 +595,35 @@ body{
   border-radius: 50%;
   box-shadow: 3px 4px #1f1f1f;
   position: relative;
+  cursor: pointer;
 }
-/* .g1Screen{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  opacity: 0.1;
-  background-color: #1f1f1f;
-  margin: -1%;
-} */
+
 .allskills > div{
   color: #0F1214;
-  text-align: center;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 1.5rem;
   font-weight: 900;
   overflow: hidden;
   width: 100%;
-  height: 35%;
+  height: 100%;
+  font-family: 'Lato', serif;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .allskills > div > p{
-  width: 100%;
+  flex: 1;
   position: absolute;
-  margin: 2% 0%;
+}
+
+.allskills > div > p.skillName4{
+  font-size: 4rem;
+}
+
+.allskills > div > img.skillName4{
+  padding: 20%;
+  height: 100%;
 }
 
 .skillsContent > p{

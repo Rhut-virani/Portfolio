@@ -108,12 +108,13 @@ $(document).ready(function() {
         .fromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 5px 14px #1f1f1f, 0 2px 9px #eaeaea', ease: Power2.easeOut});
 
     var tsp = new TimelineMax({paused:true})
-        .staggerFromTo('.skillName1', 0.5, {yPercent:'-100', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
-        .staggerTo('.skillName1', 0.5, {yPercent:'100', autoAlpha:0}, 0.05)
-        .staggerFromTo('.skillName2', 0.5, {yPercent:'-100', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
-        .staggerTo('.skillName2', 0.5, {yPercent:'100', autoAlpha:0}, 0.05)
-        .staggerFromTo('.skillName3', 0.5, {yPercent:'-100', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
-        
+        .staggerFromTo('.skillName1', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName1', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName2', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName2', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName3', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName3', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName4', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05);
 
     function skillsText(){
         tsp.play();
@@ -133,14 +134,62 @@ $(document).ready(function() {
 
 
     // Skills names animation 
-    var s1 = new TimelineMax({paused:true})
-        .to('.skills1', 0.5, {xPercent:'150%',yPercent:'150%', scale:1.2, zIndex:100})
-        .to('.skillsName3', 1, {scale:0.2});
 
-    $('.skills1').click(function(){
-        s1.play();
-    })
+    // function skillsNHTML(skill){
+        var blur = $('.allskills').not('.skills1');
+        var s1 = new TimelineMax({paused:true})
+            .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+            .fromTo(blur, 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+            .fromTo('.nonhtml5', 0.5, {margin:'-5% 0'}, {margin:'0 0 0 10%'})
+            .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25');
 
+        $('.skills1').click(function(){
+        $('.skills1').toggleClass('active');
+            if($('.skills1').hasClass('active')){
+            s1.play();
+            }
+            else{
+            s1.reverse();
+            }
+        });
+
+        var blur2 = $('.allskills').not('.skills2');
+        var s2 = new TimelineMax({paused:true})
+            .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+            .fromTo(blur2, 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+            .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900', color:'EF476F'})
+            .to('.cssh2', 0.25, {color:'#7DDF64'})
+            .to('.cssh2', 0.25, {color:'#FF7733'})
+            .to('.cssh2', 0.25, {color:'#FFED66'})
+            .to('.cssh2', 0.25, {color:'#26FFE6'})
+            .fromTo('.css1', 0.25, {fontWeight:'200'},{fontFamily: 'Lato', fontStyle: 'italic', color:'#D6F599'})
+            .fromTo('.css2', 0.25,{fontWeight:'200'}, {fontFamily: 'Dancing Script', fontWeight:'900', color:'#0298CC'})
+            .fromTo('.css3', 0.25, {fontWeight:'200'}, {textDecorationLine: 'line-through', color:'#5D2E8C'})
+            .fromTo('.css4', 0.25, {fontWeight:'200'}, {fontFamily: 'Dancing Script', textDecorationLine: 'underline', fontSize:'2rem', color:'#436436'});
+
+        $('.skills2').click(function(){
+            $('.skills2').toggleClass('active');
+            if($('.skills2').hasClass('active')){
+            s2.play();
+            }
+            else{
+            s2.reverse();
+            }
+        });
+    
+    // }
+    // var skillsClick= function(j){
+    //     return function(){
+    //         $('.skills' + j).toggleClass('active');
+    //         var skill = $('.skills' + j);
+    //         skillsHTML(skill);
+    //     }
+    // }
+    // $('.skills' + j).click(function(){
+    //     $('.skills' + j).toggleClass('active');
+    // for(let j=1; j<9;j+=1){
+    //     $('.skills' + j).click(skillsClick(j));
+    // }
 
 
 
@@ -183,6 +232,8 @@ $(document).ready(function() {
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
         TweenLite.set($allContent, {autoAlpha:0});
+        TweenLite.set('.html5', {autoAlpha:0, color:'#ffd000'});
+        TweenLite.set('.nonhtml5', {margin:'-5% 0'});
 
     }
     //running the first function
