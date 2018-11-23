@@ -548,40 +548,82 @@ body{
 
 
 /* <------------------------------ top section --------------------------> */
-
-.skillsGrid{
+.skillsPageContainer{
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: row;
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-around;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 90vh;
 }
-.allskills{
-  min-width: 17%;
-  max-height: 40%;
-  background-color: #EFF2F3;
+.skillsGrid1{
+  flex: 1;
+  width: 50%;
+  height: 100%;
+  background-color: #ffd000;
+
+}
+.allSkillsContainer{
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin: 2%;
-  border-radius: 50%;
-  box-shadow: 3px 4px #fddb43;
 }
+.skillsGrid2{
+  flex: 1;
+  width: 50%;
+  height: 100%;
+}
+.skillsGrid2 > div{
+  margin: 5%;
+} 
+
+.allskills{
+  width: 8vw;
+  height: 8vw;
+  background-color: #EFF2F3;
+  margin: 0% 10%;
+  border-radius: 50%;
+  box-shadow: 3px 4px #1f1f1f;
+  position: relative;
+}
+/* .g1Screen{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.1;
+  background-color: #1f1f1f;
+  margin: -1%;
+} */
 .allskills > div{
   color: #0F1214;
   text-align: center;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   overflow: hidden;
   width: 100%;
-  height: 25%;
+  height: 35%;
 }
 .allskills > div > p{
-  margin: 5%;
+  width: 100%;
+  position: absolute;
+  margin: 2% 0%;
 }
 
+.skillsContent > p{
+  font-size: 1.5rem;
+}
 
 
 
@@ -636,8 +678,9 @@ body{
       width: 2%;
     }
     .allskills{
-      min-width: 48%;
-      min-height: 24%;
+      min-width: 20vw;
+      min-height: 20vw;
+      margin: 10%;
     }
 }
 
@@ -677,8 +720,9 @@ body{
     width: 3.5%;
   }
   .allskills{
-    min-width: 98%;
-    min-height: 48%;
+    min-width: 20vw;
+    min-height: 20vw;
+    margin: 20%;
   }
   .skillsPageContainer{
     overflow: scroll;
@@ -746,8 +790,8 @@ body{
     width: 4.5%;
   }
   .allskills{
-    min-width: 98%;
-    min-height: 48%;
+    min-width: 48vw;
+    min-height: 48vw;
   }
   .skillsPageContainer{
     overflow: scroll;

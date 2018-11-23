@@ -102,17 +102,23 @@ $(document).ready(function() {
         .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 1, {bottom:0, top:''})
         .fromTo('div#topSectionContainer', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
-        .to('div.skillsContainer', 0.1, {color:'white'},"-=0.25")
-        .staggerFromTo('.allskills', 1.5,{x:"2000px", rotation: 360}, {x:"0px", ease: Back.easeOut.config(3)}, 0.1)
-        .staggerFromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 10px 20px #ffd000, 0 3px 10px #ffd000', ease: Power2.easeOut}, 0.1,)
+        .to('div.skillsContainer', 0.1, {color:'#ffd000'},"-=0.25")
+        .from('.skillsContent', 0.5, {y:'10%', autoAlpha:0})
+        .staggerFromTo('.allskills', 0.5,{sclae:0, autoAlpha:0, y:'-50%'}, {scale: 1, autoAlpha:1,y:"0%", ease: Back.easeOut.config(2)}, 0.1, '-=0.5')
+        .fromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 5px 14px #1f1f1f, 0 2px 9px #eaeaea', ease: Power2.easeOut});
+
     var tsp = new TimelineMax({paused:true})
-        .staggerFromTo('.allskills > div > p', 0.5, {y:'-200%', autoAlpha:0},{y:'0%', autoAlpha:1}, 0.25)
-        .staggerTo('.allskills > div > p', 0.5, {y:'200%'}, 0.25)
-        .staggerFromTo('.allskills > div > p', 0.5, {y:'-200%'},{y:'0%'}, 0.25);
+        .staggerFromTo('.skillName1', 0.5, {yPercent:'-100', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName1', 0.5, {yPercent:'100', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName2', 0.5, {yPercent:'-100', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName2', 0.5, {yPercent:'100', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName3', 0.5, {yPercent:'-100', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        
 
     function skillsText(){
         tsp.play();
     }
+
     
     $('div.skillsContainer').click(function(){
         $("div#topSectionContainer").toggleClass("godown");
@@ -124,6 +130,20 @@ $(document).ready(function() {
             ts.reverse();
         }
     })
+
+
+    // Skills names animation 
+    var s1 = new TimelineMax({paused:true})
+        .to('.skills1', 0.5, {xPercent:'150%',yPercent:'150%', scale:1.2, zIndex:100})
+        .to('.skillsName3', 1, {scale:0.2});
+
+    $('.skills1').click(function(){
+        s1.play();
+    })
+
+
+
+
 
     // about button and bottom section 
     var ta = new TimelineMax({paused:true})
@@ -250,15 +270,7 @@ $(document).ready(function() {
             detailsPage = true;
         }
     };
-    // lessdetail = (thumbImg, projectImg, detailsH1, textContent) => { 
-    //     let click = new TimelineMax({paused:true})
-    //         .to(backbutton, 0.25, {left:'-50', rotation:180})
-    //         .to(textContent, 0.5, {xPercent:'100%', opacity:0})
-    //         .to(detailsH1, 0.5, {xPercent:'-100%', opacity:0})
-    //         .to(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0})
-    //         .to(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, '-=0.25');
-    //         click.restart();
-    //     };
+
     var backclick = function(j){
         return function(){
             var thumbImg = $('.thumbimg' + j);
@@ -267,7 +279,6 @@ $(document).ready(function() {
                 textContent =  $('.detail' + j +' > .textContent')
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-            // lessdetail(thumbImg, projectImg, detailsH1, textContent);
             detail(thumbImg, projectImg, detailsH1, textContent, detailsPage);
             detailsPage = false;
 
@@ -278,6 +289,9 @@ $(document).ready(function() {
         $('.thumbimg' + j).click(clickImg(j));
         $('.backbutton'+ j).click(backclick(j));
     }
+
+
+    
 
 });
 
