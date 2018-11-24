@@ -194,7 +194,7 @@ $(document).ready(function() {
         }
         else if(!detailsPage){
             dl.restart();
-        };
+        }
         };
         
     var clickImg = function(j){
@@ -286,7 +286,7 @@ $(document).ready(function() {
     
     var randomText = " ";
         r = 0;
-        while(r< 14){
+        while(r< 15){
             randomText += "X O X O X O X O X O";
             r++;
         }
@@ -359,7 +359,7 @@ $(document).ready(function() {
     var s1 = new TimelineMax({paused:true})
         .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
         .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.nonhtml5', 0.5, {margin:'-2% 0%'}, {margin:'0 0 0 10%'})
+        .fromTo('.nonhtml5', 0.5, {margin:'-5% 0%'}, {margin:'0 0 0 10%'})
         .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25')
         .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
 
@@ -400,33 +400,31 @@ $(document).ready(function() {
 
     // JS Skill
     var s3 = new TimelineMax({paused:true});
+    function getNewTimeline(){
+        s3.progress(0).clear();//get rid of tween in previous version of t
+        
         s3
         .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
         .fromTo($('.allskills').not('.skills3'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
+        .to('.css4js', 2.5, {text: {value : "  The Time is  " + currentTime + " " , newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
         .to('.css4js', 2.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line3')
         .to('.css4js', 2.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
         .to('.css4js', 2.5, {text: {value : " of " + currentMonth + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
         .to('.css4js', 2.5, {text: {value : "    " + currentYear + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
         .to('.css4js', 2.5, {text: '', ease: Power1.easeIn});
-
-
-
+        return s3;
+      }
+        
     $('.skills3').click(function(){
         $('.skills3').toggleClass('active');
         if($('.skills3').hasClass('active')){
-        var add = TweenMax.to('.css4js', 2.5, 
-                        {text: {value : "  The Time is  " + currentTime + " " , 
-                        newClass:'jsbig'}, 
-                        ease: Power1.easeOut}, 
-                        '#line2')
-        s3.add(add, '#line1+=3')
-
-        s3.play();
+            s3 = getNewTimeline().play().timeScale(1);
         }
         else{
-        s3.reverse('#line3');
+            s3.reverse('#line2');//go faster
         }
+
     });
 
 
@@ -438,9 +436,9 @@ $(document).ready(function() {
 
 
 
-// <#########################################------ABOUT - BOTTOM SECTION--------################################################################>
-// <#########################################------ABOUT - BOTTOM SECTION--------################################################################>
-// <#########################################------ABOUT - BOTTOM SECTION--------################################################################>
+// <#############################################------ABOUT - BOTTOM SECTION--------################################################################>
+// <#############################################------ABOUT - BOTTOM SECTION--------################################################################>
+// <#############################################------ABOUT - BOTTOM SECTION--------################################################################>
 
 
 
