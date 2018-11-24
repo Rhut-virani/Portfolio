@@ -286,7 +286,7 @@ $(document).ready(function() {
     
     var randomText = " ";
         r = 0;
-        while(r< 20){
+        while(r< 14){
             randomText += "X O X O X O X O X O";
             r++;
         }
@@ -415,12 +415,13 @@ $(document).ready(function() {
     $('.skills3').click(function(){
         $('.skills3').toggleClass('active');
         if($('.skills3').hasClass('active')){
-         var add = TweenMax.to('.css4js', 2.5, 
+        var add = TweenMax.to('.css4js', 2.5, 
                         {text: {value : "  The Time is  " + currentTime + " " , 
                         newClass:'jsbig'}, 
                         ease: Power1.easeOut}, 
                         '#line2')
         s3.add(add, '#line1+=3')
+
         s3.play();
         }
         else{
