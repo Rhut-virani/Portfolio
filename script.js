@@ -1,9 +1,41 @@
 $(document).ready(function() {
-    var better = (screen.width>screen.height) ? screen.width : screen.height;
-    for (var i = 1; i <=better; i++) {
+
+    // declaring variables
+    var $home = $('.home'),
+    $activeSection = $('.active'),
+    $container = $('.container'),
+    $indi = $('.indication'),
+    $indicator1 = $('.indicator1'),
+    $indicator2 = $('.indicator2'),
+    $indicator3 = $('.indicator3'),
+    $ptLeft = $('.p-t-Left'),
+    $ptRight = $('.p-t-Right');
+    $allContent = $('#project, .projectTransitionHelper, #contact, .contactTransitionHelper, #skills, .skillsTransitionHelper, #about, .aboutTransitionHelper');
+    better = (screen.width>screen.height) ? screen.width : screen.height;
+
+
+    // lets do the preparation before the any page animation starts 
+    function first(){ 
+        TweenLite.set($home.not($activeSection), {autoAlpha:0});
+        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
+        TweenLite.set($allContent, {autoAlpha:0});
+        TweenLite.set('.html5, .html5body', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
+
+
+    }
+    //running the first function to set all specific variable to their desired state.
+    first();
+
+
+
+
+    for (var i = 1; i <= better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
     } 
-// website launch button and functions
+
+    // website launch button and aniimation function 
+    // selecting text with specific letter and giving it a specific class so they can be animated afterwards
+
     $(".buttonContainer").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a.floatingText').attr('class', 'floatingText swing');
@@ -38,6 +70,7 @@ $(document).ready(function() {
         $(".waitForClass2").attr('class','contact');
         $(".waitForClass3").attr('class','about');
         $(".waitForClass4").attr('class','skills');
+
         setTimeout(
             function() {
                 $( ".swing" ).remove();
@@ -46,25 +79,35 @@ $(document).ready(function() {
                 $(".skillsContainer > div > span ").attr('class','widerText2');
                 $(".aboutContainer > div > span ").attr('class','widerText2');
                 $('.project, .contact, .skills, .about').attr('class', ' ');
-            },
-            7000);
+            }, 7000);
+
         setTimeout(
             function() {
                 $( ".floatingmainText" ).remove();
-            },
-            15000);
+            }, 7000);
     });
+
 
     
 // button and functions for each sections
 
-    // project button and left section 
+
+
+// <#########################################------PROJECT - LEFT SECTION--------################################################################>
+// <#########################################------PROJECT - LEFT SECTION--------################################################################>
+// <#########################################------PROJECT - LEFT SECTION--------################################################################>
+
+
+// project button and left section transition timeline
+
+    var detailsPage = false;
+
     var tp = new TimelineMax({paused:true})
         .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.projectTransitionHelper', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 1, {left:"", right:0})
         .fromTo('div#leftSectionContainer', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
-        .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25")
+        .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25");
 
     $('div.projectContainer').click(function(){
         var t1 = new TimelineMax();
@@ -77,170 +120,8 @@ $(document).ready(function() {
         }
     })
 
-    // contact button and right section 
+    // scroll function that handles the scrolling animation between projects
 
-    var tc = new TimelineMax({paused:true})
-        .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.contactTransitionHelper', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
-        .to('div.contactContainer', 1, {left:0, right:''})
-        .fromTo('div#rightSectionContainer', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
-        .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
-
-    $('div.contactContainer').click(function(){
-        $("div#rightSectionContainer").toggleClass("gotoleft");
-        if($("div#rightSectionContainer").hasClass("gotoleft")){
-            tc.play();
-        }
-        else{
-            tc.reverse();
-        }
-    })
-
-    // Skills button and top section 
-    var ts = new TimelineMax({paused:true, onComplete: skillsText})
-        .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
-        .to('div.skillsContainer', 1, {bottom:0, top:''})
-        .fromTo('div#topSectionContainer', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
-        .to('div.skillsContainer', 0.1, {color:'#ffd000'},"-=0.25")
-        .from('.skillsContent', 0.5, {y:'10%', autoAlpha:0})
-        .staggerFromTo('.allskills', 0.5,{sclae:0, autoAlpha:0, y:'-50%'}, {scale: 1, autoAlpha:1,y:"0%", ease: Back.easeOut.config(2)}, 0.1, '-=0.5')
-        .fromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 5px 14px #1f1f1f, 0 2px 9px #eaeaea', ease: Power2.easeOut});
-
-    var tsp = new TimelineMax({paused:true})
-        .staggerFromTo('.skillName1', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
-        .staggerTo('.skillName1', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
-        .staggerFromTo('.skillName2', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
-        .staggerTo('.skillName2', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
-        .staggerFromTo('.skillName3', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
-        .staggerTo('.skillName3', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
-        .staggerFromTo('.skillName4', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05);
-
-    function skillsText(){
-        tsp.play();
-    }
-
-    
-    $('div.skillsContainer').click(function(){
-        $("div#topSectionContainer").toggleClass("godown");
-
-        if($("div#topSectionContainer").hasClass("godown")){
-            ts.play();
-        }
-        else{
-            ts.reverse();
-        }
-    })
-
-
-    // Skills names animation 
-
-    // function skillsNHTML(skill){
-        var blur = $('.allskills').not('.skills1');
-        var s1 = new TimelineMax({paused:true})
-            .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
-            .fromTo(blur, 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-            .fromTo('.nonhtml5', 0.5, {margin:'-5% 0'}, {margin:'0 0 0 10%'})
-            .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25');
-
-        $('.skills1').click(function(){
-        $('.skills1').toggleClass('active');
-            if($('.skills1').hasClass('active')){
-            s1.play();
-            }
-            else{
-            s1.reverse();
-            }
-        });
-
-        var blur2 = $('.allskills').not('.skills2');
-        var s2 = new TimelineMax({paused:true})
-            .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
-            .fromTo(blur2, 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-            .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900', color:'EF476F'})
-            .to('.cssh2', 0.25, {color:'#7DDF64'})
-            .to('.cssh2', 0.25, {color:'#FF7733'})
-            .to('.cssh2', 0.25, {color:'#FFED66'})
-            .to('.cssh2', 0.25, {color:'#26FFE6'})
-            .fromTo('.css1', 0.25, {fontWeight:'200'},{fontFamily: 'Lato', fontStyle: 'italic', color:'#D6F599'})
-            .fromTo('.css2', 0.25,{fontWeight:'200'}, {fontFamily: 'Dancing Script', fontWeight:'900', color:'#0298CC'})
-            .fromTo('.css3', 0.25, {fontWeight:'200'}, {textDecorationLine: 'line-through', color:'#5D2E8C'})
-            .fromTo('.css4', 0.25, {fontWeight:'200'}, {fontFamily: 'Dancing Script', textDecorationLine: 'underline', fontSize:'2rem', color:'#436436'});
-
-        $('.skills2').click(function(){
-            $('.skills2').toggleClass('active');
-            if($('.skills2').hasClass('active')){
-            s2.play();
-            }
-            else{
-            s2.reverse();
-            }
-        });
-    
-    // }
-    // var skillsClick= function(j){
-    //     return function(){
-    //         $('.skills' + j).toggleClass('active');
-    //         var skill = $('.skills' + j);
-    //         skillsHTML(skill);
-    //     }
-    // }
-    // $('.skills' + j).click(function(){
-    //     $('.skills' + j).toggleClass('active');
-    // for(let j=1; j<9;j+=1){
-    //     $('.skills' + j).click(skillsClick(j));
-    // }
-
-
-
-
-    // about button and bottom section 
-    var ta = new TimelineMax({paused:true})
-        .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.aboutTransitionHelper', 1.5,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
-        .to('div.aboutContainer', 1, {top:0, bottom:''})
-        .fromTo('div#bottomSectionContainer', 1.5, {yPercent:'100%', autoAlpha:1}, {y:'0'})
-        .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
-
-    $('div.aboutContainer').click(function(){
-        $("div#bottomSectionContainer").toggleClass("goup");
-        if($("div#bottomSectionContainer").hasClass("goup")){
-            ta.play();
-        }
-        else{
-            ta.reverse();
-        }
-    });
-
-
-
-    // declaring variables
-    var $home = $('.home'),
-        $activeSection = $('.active'),
-        $container = $('.container'),
-        $indi = $('.indication'),
-        $indicator1 = $('.indicator1'),
-        $indicator2 = $('.indicator2'),
-        $indicator3 = $('.indicator3'),
-        $ptLeft = $('.p-t-Left'),
-        $ptRight = $('.p-t-Right');
-        $allContent = $('#project, .projectTransitionHelper, #contact, .contactTransitionHelper, #skills, .skillsTransitionHelper, #about, .aboutTransitionHelper');
-
-
-    // lets do the preparation before the animation starts 
-    function first(){ 
-        TweenLite.set($home.not($activeSection), {autoAlpha:0});
-        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
-        TweenLite.set($allContent, {autoAlpha:0});
-        TweenLite.set('.html5', {autoAlpha:0, color:'#ffd000'});
-        TweenLite.set('.nonhtml5', {margin:'-5% 0'});
-
-    }
-    //running the first function
-    first();
-
-
-    var detailsPage = false;
     function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade){
         var tl = new TimelineMax ({paused:true})
             .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, x:'-10%'})
@@ -254,44 +135,51 @@ $(document).ready(function() {
         tl.play();
     }
 
+    //function that listens on mousewheel triggers and bounces extra scrolls within 200ms
     $(".container").on('wheel', _.debounce(scrolling, 200, {"leading":true,"trailing":false}));
 
     function scrolling(e) {
 
-            // checking if the previous tween is finished or the detainls page is open or not
-            if(scroll.isTweening || detailsPage){
-                return;
-            }
-            // scroll up if the deltaY value is poistive
-            if(e.originalEvent.deltaY > 0){
-                var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
-                    sectionfade =$('.home.active'),
-                    indicatorIn= $('.indication.active').next($indi).length === 0 ? $('.indication.active').prevAll($indi).last() : $('.indication.active').next($indi),
-                    indicatorfade= $('.indication.active');
-                scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
-            }
-            else if(e.originalEvent.deltaY < 0 ){
-                var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
-                sectionfade =$('.home.active'),
-                indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
-                indicatorfade= $('.indication.active');
-                scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
-            } 
+    // checking if the previous tween is finished or the detainls page is open or not
+        if(scroll.isTweening || detailsPage){
+            return;
         }
 
-        var clickIndi = function (i){ 
-            return function(){
-            var sectionIn = $('.home.section' + i),
+    // scroll up if the deltaY value is poistive
+        if(e.originalEvent.deltaY > 0){
+            var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
                 sectionfade =$('.home.active'),
-                indicatorIn= $(this),
+                indicatorIn= $('.indication.active').next($indi).length === 0 ? $('.indication.active').prevAll($indi).last() : $('.indication.active').next($indi),
                 indicatorfade= $('.indication.active');
             scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
-        }}
-        for(let i=1; i<5;i+=1){
-            $('.indicator'+ i).click(clickIndi(i));
         }
 
-    // Project Detail function
+    // scroll up if the deltaY value is negative
+        else if(e.originalEvent.deltaY < 0 ){
+            var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
+            sectionfade =$('.home.active'),
+            indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
+            indicatorfade= $('.indication.active');
+            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+        } 
+    }
+
+    var clickIndi = function (i){ 
+        return function(){
+        var sectionIn = $('.home.section' + i),
+            sectionfade =$('.home.active'),
+            indicatorIn= $(this),
+            indicatorfade= $('.indication.active');
+        scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+    }}
+    for(let i=1; i<5;i+=1){
+        $('.indicator'+ i).click(clickIndi(i));
+    }
+
+
+
+    // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
+
     detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => { 
         var dl = new TimelineMax({paused:true});
             dl
@@ -301,14 +189,14 @@ $(document).ready(function() {
                 .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
                 .fromTo(backbutton, 0.25, {left:'-50', rotation:180}, {left:'3%', rotation:0});
 
-            if(detailsPage){
-                dl.reverse(0);
-            }
-            else if(!detailsPage){
-                dl.restart();
-            };
+        if(detailsPage){
+            dl.reverse(0);
+        }
+        else if(!detailsPage){
+            dl.restart();
         };
-
+        };
+        
     var clickImg = function(j){
         return function(){
             var thumbImg = $('.thumbimg' + j);
@@ -342,7 +230,242 @@ $(document).ready(function() {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+// <#########################################------CONTACT - RIGHT SECTION--------################################################################>
+// <#########################################------CONTACT - RIGHT SECTION--------################################################################>
+// <#########################################------CONTACT - RIGHT SECTION--------################################################################>
+
+
+
+
+    // contact button and right section 
+
+    var tc = new TimelineMax({paused:true})
+        .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
+        .fromTo('.contactTransitionHelper', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
+        .to('div.contactContainer', 1, {left:0, right:''})
+        .fromTo('div#rightSectionContainer', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
+        .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
+
+    $('div.contactContainer').click(function(){
+        $("div#rightSectionContainer").toggleClass("gotoleft");
+        if($("div#rightSectionContainer").hasClass("gotoleft")){
+            tc.play();
+        }
+        else{
+            tc.reverse();
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+// <#########################################------SKILLS - TOP SECTION--------################################################################>
+// <#########################################------SKILLS - TOP SECTION--------################################################################>
+// <#########################################------SKILLS - TOP SECTION--------################################################################>
+
+
+
+    // Skills button and top section transition which also calls the oncomplete skillstext function 
+    
+    var randomText = " ";
+        r = 0;
+        while(r< 20){
+            randomText += "X O X O X O X O X O";
+            r++;
+        }
+    var currentTime = moment().format('hh:mm a');;
+    setInterval(() => {
+        currentTime = moment().format('hh:mm a');
+      }, 1000)
+    var currentMonth= moment().format('MMMM');
+    var currentDay= moment().format('dddd');
+    var currentDate= moment().format('Do');
+    var currentYear= moment().format('YYYY');
+
+    console.log(currentYear, currentDate, currentDay, currentMonth,currentTime);
+    
+    var ts = new TimelineMax({
+            paused:true, 
+            onComplete: skillsText, 
+            onCompleteParams:[false], 
+            onReverseComplete: skillsText,
+            onReverseCompleteParams:[true]})
+        .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
+        .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
+        .to('div.skillsContainer', 1, {bottom:0, top:''})
+        .fromTo('div#topSectionContainer', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
+        .to('div.skillsContainer', 0.1, {color:'#ffd000'},"-=0.25")
+        .from('.skillsContent', 0.5, {y:'10%', autoAlpha:0})
+        .staggerFromTo('.allskills', 0.5,{sclae:0, autoAlpha:0, y:'-50%'}, {scale: 1, autoAlpha:1,y:"0%", ease: Back.easeOut.config(2)}, 0.1, '-=0.5')
+        .fromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 5px 14px #1f1f1f, 0 2px 9px #eaeaea', ease: Power2.easeOut});
+
+
+    // animation as soon as the skills page loads
+    // text content and the skill displaying globes
+    var tsp = new TimelineMax({paused:true})
+        .staggerFromTo('.skillName1', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName1', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName2', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName2', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName3', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05)
+        .staggerTo('.skillName3', 0.5, {yPercent:'40', autoAlpha:0}, 0.05)
+        .staggerFromTo('.skillName4', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05);
+
+    function skillsText(isreversed){
+        if(isreversed){
+          tsp.reverse(0);  
+        }
+        else{
+          tsp.play();
+        }
+    }
+    
+    $('div.skillsContainer').click(function(){
+        $("div#topSectionContainer").toggleClass("godown");
+
+        if($("div#topSectionContainer").hasClass("godown")){
+            ts.play();
+        }
+        else{
+            ts.reverse();
+        }
+    })
+
+
+
+
+
+
+    // Skills names animation 
+
+    // HTML5 skill
+    var s1 = new TimelineMax({paused:true})
+        .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+        .fromTo('.nonhtml5', 0.5, {margin:'-2% 0%'}, {margin:'0 0 0 10%'})
+        .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25')
+        .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
+
+    $('.skills1').click(function(){
+    $('.skills1').toggleClass('active');
+        if($('.skills1').hasClass('active')){
+        s1.play();
+        }
+        else{
+        s1.reverse();
+        }
+    });
+
+    // CSS3 skills
+    var s2 = new TimelineMax({paused:true})
+        .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo($('.allskills').not('.skills2'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+        .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900',                       color:'EF476F'})
+        .to('.cssh2', 0.25, {color:'#7DDF64'})
+        .to('.cssh2', 0.25, {color:'#FF7733'})
+        .to('.cssh2', 0.25, {color:'#FFED66'})
+        .to('.cssh2', 0.25, {color:'#26FFE6'})
+        .fromTo('.css1', 0.25, {fontWeight:'200'},{fontFamily: 'Lato', fontStyle: 'italic', color:'#D6F599'})
+        .fromTo('.css2', 0.25,{fontWeight:'200'}, {fontFamily: 'Dancing Script', fontWeight:'900', color:'#0298CC'})
+        .fromTo('.css3', 0.25, {fontWeight:'200'}, {textDecorationLine: 'line-through', color:'#5D2E8C'})
+        .fromTo('.css4', 0.25, {fontWeight:'200'}, {fontFamily: 'Dancing Script', textDecorationLine: 'underline', fontSize:'2rem', color:'#436436'});
+
+    $('.skills2').click(function(){
+        $('.skills2').toggleClass('active');
+        if($('.skills2').hasClass('active')){
+        s2.play();
+        }
+        else{
+        s2.reverse();
+        }
+    });
     
 
+    // JS Skill
+    var s3 = new TimelineMax({paused:true});
+        s3
+        .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo($('.allskills').not('.skills3'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
+        .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
+        .to('.css4js', 2.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line3')
+        .to('.css4js', 2.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
+        .to('.css4js', 2.5, {text: {value : " of " + currentMonth + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
+        .to('.css4js', 2.5, {text: {value : "    " + currentYear + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
+        .to('.css4js', 2.5, {text: '', ease: Power1.easeIn});
+
+
+
+    $('.skills3').click(function(){
+        $('.skills3').toggleClass('active');
+        if($('.skills3').hasClass('active')){
+         var add = TweenMax.to('.css4js', 2.5, 
+                        {text: {value : "  The Time is  " + currentTime + " " , 
+                        newClass:'jsbig'}, 
+                        ease: Power1.easeOut}, 
+                        '#line2')
+        s3.add(add, '#line1+=3')
+        s3.play();
+        }
+        else{
+        s3.reverse('#line3');
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+// <#########################################------ABOUT - BOTTOM SECTION--------################################################################>
+// <#########################################------ABOUT - BOTTOM SECTION--------################################################################>
+// <#########################################------ABOUT - BOTTOM SECTION--------################################################################>
+
+
+
+
+
+    // about button and bottom section 
+    var ta = new TimelineMax({paused:true})
+        .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
+        .fromTo('.aboutTransitionHelper', 1.5,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .to('div.aboutContainer', 1, {top:0, bottom:''})
+        .fromTo('div#bottomSectionContainer', 1.5, {yPercent:'100%', autoAlpha:1}, {y:'0'})
+        .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
+
+    $('div.aboutContainer').click(function(){
+        $("div#bottomSectionContainer").toggleClass("goup");
+        if($("div#bottomSectionContainer").hasClass("goup")){
+            ta.play();
+        }
+        else{
+            ta.reverse();
+        }
+    });
+
 });
+
+
+
+
 
