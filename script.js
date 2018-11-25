@@ -18,9 +18,10 @@ $(document).ready(function() {
     function first(){ 
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
+        TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set('.html5, .html5body', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
-        TweenLite.set('.sun', {autoAlpha:0});
+        TweenLite.set('.sun', {autoAlpha:0, yPercent: 200});
 
 
     }
@@ -108,7 +109,7 @@ $(document).ready(function() {
         .fromTo('.projectTransitionHelper', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 1, {left:"", right:0})
         .fromTo('div#leftSectionContainer', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
-        .to('div.projectContainer', 0.1, {color:'white'}, "-=0.25");
+        .to('div.projectContainer', 0.1, {color:'#ffd000'}, "-=0.25");
 
     $('div.projectContainer').click(function(){
         var t1 = new TimelineMax();
@@ -125,8 +126,8 @@ $(document).ready(function() {
 
     function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade){
         var tl = new TimelineMax ({paused:true})
-            .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, x:'-10%'})
-            .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, x:'0%'})
+            .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, x:'-10%', color:'#f4f4f4'})
+            .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, x:'0%', color:'#ffd000'})
             .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
             .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
             .set(sectionfade,{className: '-=active', autoAlpha:0})
@@ -302,16 +303,21 @@ $(document).ready(function() {
     var timeZone= moment().format('Z');
       console.log(timeZone);
     var wishes;
+    var wishanimation;
 
-    if (moment().format('k') > 12 && moment().format('k') < 17 ){
+    if (moment().format('k') >= 12 && moment().format('k') < 17 ){
         wishes= 'Good AfterNoon';
+        wishanimation= '.sunaf';
     }
-    else if (moment().format('k') > 5 && moment().format('k') < 12 ){
+    else if (moment().format('k') >= 5 && moment().format('k') < 12 ){
         wishes= 'Good Morning';
+        wishanimation= '.sunrise';
     }
     else{
         wishes= 'Good Evening';
+        wishanimation= '.moon';
     }
+
 
     var isSkillRunning;
     var skillRunning;
@@ -439,8 +445,9 @@ $(document).ready(function() {
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
         .to('.css4js', 1.5, {text: {value : ' ' + wishes + ' ', newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
         .to('.css4js', 0.5, {text: '', ease: Power1.easeOut})
-        .to('.sun', 20.5, {autoAlpha:0.5})
-        .to('.sun', 1.5, {autoAlpha:0})
+        .to(wishanimation, 0.1, {autoAlpha:1}, '-=0.5')
+        .to(wishanimation, 1.5, {yPercent: 0}, '-=0.5')
+        .to(wishanimation, 1.5, {autoAlpha:0}, '+=1')
         .to('.css4js', 1.5, {text: {value : "  The Time is  " + currentTime + " " , newClass:'jsbig'}, ease: Power1.easeOut}, '#line3')
         .to('.css4js', 1.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line4')
         .to('.css4js', 1.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
@@ -455,8 +462,6 @@ $(document).ready(function() {
         if($('.skills3').hasClass('active')){
             s3 = getNewTimeline().play().timeScale(1);
             skillRunning = s3;
-
-
         }
         else{
             s3.reverse('#line2'); // starts in reverse at #line2

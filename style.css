@@ -52,10 +52,11 @@ body{
       display: inline-block;
       margin: 0.2%;
       font-size: 2.5rem;
-      transition: transform 250ms ease-in;
+      transition: all 250ms ease-in;
       transform: scale(1);
       cursor: pointer;
       font-weight: 200;
+      color: #EFF2F3;
   }
   .floatingmainText{
       display: inline-block;
@@ -411,6 +412,7 @@ body{
   }
   .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
     width:10%;
+    color: #ffd000
   }
 
 /* individual sections  */
@@ -542,7 +544,7 @@ body{
     top: 5%;
     left: 3%;
     font-size: 1.8rem;
-    color: #f4f4f4;
+    color: #ffd000;
     cursor: pointer;
   }
 
