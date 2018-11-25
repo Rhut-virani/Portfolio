@@ -20,6 +20,7 @@ $(document).ready(function() {
         TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
         TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set('.html5, .html5body', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
+        TweenLite.set('.sun', {autoAlpha:0});
 
 
     }
@@ -289,14 +290,28 @@ $(document).ready(function() {
             r++;
         }
 
-    var currentTime = moment().format('hh:mm a');;
+    var currentTime = moment().format('hh:mm:ss a');;
     setInterval(() => {
-        currentTime = moment().format('hh:mm a');
+        currentTime = moment().format('hh:mm:ss a');
       }, 1000)
     var currentMonth= moment().format('MMMM');
     var currentDay= moment().format('dddd');
     var currentDate= moment().format('Do');
     var currentYear= moment().format('YYYY');
+
+    var timeZone= moment().format('Z');
+      console.log(timeZone);
+    var wishes;
+
+    if (moment().format('k') > 12 && moment().format('k') < 17 ){
+        wishes= 'Good AfterNoon';
+    }
+    else if (moment().format('k') > 5 && moment().format('k') < 12 ){
+        wishes= 'Good Morning';
+    }
+    else{
+        wishes= 'Good Evening';
+    }
 
     var isSkillRunning;
     var skillRunning;
@@ -329,7 +344,7 @@ $(document).ready(function() {
         .staggerFromTo('.skillName4', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05);
 
     function skillsText(isreversed){
-        
+
         /// if any of the skills have class active meaning they are running so value will be true
         isSkillRunning = ($('.allskills').hasClass('active')) ? true : false; 
         
@@ -371,7 +386,7 @@ $(document).ready(function() {
     var s1 = new TimelineMax({paused:true})
         .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
         .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.nonhtml5', 0.5, {margin:'-5% 0%'}, {margin:'0 0 0 10%'})
+        .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
         .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25')
         .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
 
@@ -412,21 +427,26 @@ $(document).ready(function() {
     });
     
 
-    // JS Skill
+    // --------------------JS Skill--------------------------------
+    //-------------------------------------------------------------
     var s3 = new TimelineMax({paused:true});
     function getNewTimeline(){
-        s3.progress(0).clear();//get rid of tween in previous version of t
-        
+        s3.progress(0).clear();//get rid of tween in previous version of timeline
+    
         s3
         .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
         .fromTo($('.allskills').not('.skills3'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
-        .to('.css4js', 2.5, {text: {value : "  The Time is  " + currentTime + " " , newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
-        .to('.css4js', 2.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line3')
-        .to('.css4js', 2.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
-        .to('.css4js', 2.5, {text: {value : " of " + currentMonth + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
-        .to('.css4js', 2.5, {text: {value : "    " + currentYear + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
-        .to('.css4js', 2.5, {text: '', ease: Power1.easeIn});
+        .to('.css4js', 1.5, {text: {value : ' ' + wishes + ' ', newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
+        .to('.css4js', 0.5, {text: '', ease: Power1.easeOut})
+        .to('.sun', 20.5, {autoAlpha:0.5})
+        .to('.sun', 1.5, {autoAlpha:0})
+        .to('.css4js', 1.5, {text: {value : "  The Time is  " + currentTime + " " , newClass:'jsbig'}, ease: Power1.easeOut}, '#line3')
+        .to('.css4js', 1.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line4')
+        .to('.css4js', 1.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
+        .to('.css4js', 1.5, {text: {value : " of " + currentMonth + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
+        .to('.css4js', 1.5, {text: {value : "    " + currentYear + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
+        .to('.css4js', 1.5, {text: '', ease: Power1.easeIn});
         return s3;
       }
         

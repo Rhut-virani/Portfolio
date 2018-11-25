@@ -615,6 +615,8 @@ body{
 .allskills > div > p{
   flex: 1;
   position: absolute;
+  justify-content: center;
+  align-items: center;
 }
 
 .allskills > div > p.skillName4{
@@ -626,13 +628,16 @@ body{
   height: 100%;
 }
 
+.skillsContent{
+  height: 90vh;
+}
 .skillsContent > p{
   font-size: 1.5rem;
-
 }
 .js1{
   color: #ffd000;
   font-style: italic;
+  line-height: 1rem;
 }
 .css4js{
   line-height: 0;
@@ -642,6 +647,14 @@ body{
   text-align: center;
   font-weight: 900;
   letter-spacing: 0.1rem;
+}
+
+.sun{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
 }
 
 
