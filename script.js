@@ -179,22 +179,19 @@ $(document).ready(function() {
 
 
     // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
+    var dl = new TimelineMax({paused:true});
 
-    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => { 
-        var dl = new TimelineMax({paused:true});
-            dl
-                .fromTo(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
-                .fromTo(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0}, {ease: Back.easeIn.config(1.7),scale:1, autoAlpha:1},0)
-                .fromTo(detailsH1, 0.5, {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
-                .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
-                .fromTo(backbutton, 0.25, {left:'-50', rotation:180}, {left:'3%', rotation:0});
+    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => {
+        dl.progress(0).clear();//get rid of tween in previous version of t
 
-        if(detailsPage){
-            dl.reverse(0);
-        }
-        else if(!detailsPage){
-            dl.restart();
-        }
+        dl
+            .fromTo(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
+            .fromTo(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0}, {ease: Back.easeIn.config(1.7),scale:1, autoAlpha:1},0)
+            .fromTo(detailsH1, 0.5, {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
+            .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
+            .fromTo(backbutton, 0.25, {left:'-50', rotation:180}, {left:'3%', rotation:0});
+            
+        return dl
         };
         
     var clickImg = function(j){
@@ -205,7 +202,8 @@ $(document).ready(function() {
                 textContent =  $('.detail' + j +' > .textContent')
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
             
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage);
+            
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage).play();
             detailsPage = true;
         }
     };
@@ -218,7 +216,7 @@ $(document).ready(function() {
                 textContent =  $('.detail' + j +' > .textContent')
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage);
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage).reverse(0);
             detailsPage = false;
 
         }
@@ -290,6 +288,7 @@ $(document).ready(function() {
             randomText += "X O X O X O X O X O";
             r++;
         }
+
     var currentTime = moment().format('hh:mm a');;
     setInterval(() => {
         currentTime = moment().format('hh:mm a');
@@ -299,7 +298,8 @@ $(document).ready(function() {
     var currentDate= moment().format('Do');
     var currentYear= moment().format('YYYY');
 
-    console.log(currentYear, currentDate, currentDay, currentMonth,currentTime);
+    var isSkillRunning;
+    var skillRunning;
     
     var ts = new TimelineMax({
             paused:true, 
@@ -329,8 +329,20 @@ $(document).ready(function() {
         .staggerFromTo('.skillName4', 0.5, {yPercent:'-40', autoAlpha:0},{yPercent:'0', autoAlpha:1}, 0.05);
 
     function skillsText(isreversed){
+        
+        /// if any of the skills have class active meaning they are running so value will be true
+        isSkillRunning = ($('.allskills').hasClass('active')) ? true : false; 
+        
         if(isreversed){
-          tsp.reverse(0);  
+          tsp.reverse(0);
+
+            // checking if any skills globes are open or not , if open reverse them as well
+          if(isSkillRunning){ 
+            skillRunning.reverse(0);
+
+            // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
+            $('.allskills').removeClass('active'); 
+          }
         }
         else{
           tsp.play();
@@ -367,6 +379,7 @@ $(document).ready(function() {
     $('.skills1').toggleClass('active');
         if($('.skills1').hasClass('active')){
         s1.play();
+        skillRunning = s1;
         }
         else{
         s1.reverse();
@@ -390,10 +403,11 @@ $(document).ready(function() {
     $('.skills2').click(function(){
         $('.skills2').toggleClass('active');
         if($('.skills2').hasClass('active')){
-        s2.play();
+            s2.play();
+            skillRunning = s2;
         }
         else{
-        s2.reverse();
+            s2.reverse();
         }
     });
     
@@ -420,9 +434,12 @@ $(document).ready(function() {
         $('.skills3').toggleClass('active');
         if($('.skills3').hasClass('active')){
             s3 = getNewTimeline().play().timeScale(1);
+            skillRunning = s3;
+
+
         }
         else{
-            s3.reverse('#line2');//go faster
+            s3.reverse('#line2'); // starts in reverse at #line2
         }
 
     });
