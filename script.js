@@ -286,7 +286,7 @@ $(document).ready(function() {
     
     var randomText = " ";
         r = 0;
-        while(r< 15){
+        while(r< 20){
             randomText += "X O X O X O X O X O";
             r++;
         }
@@ -359,7 +359,7 @@ $(document).ready(function() {
 
             // checking if any skills globes are open or not , if open reverse them as well
           if(isSkillRunning){ 
-            skillRunning.reverse(0);
+            skillRunning.reverse(0.9);
 
             // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
             $('.allskills').removeClass('active'); 
@@ -469,6 +469,24 @@ $(document).ready(function() {
 
     });
 
+    var s4 = new TimelineMax({paused:true});
+        s4.progress(0).clear();//get rid of tween in previous version of timeline
+        s4
+        .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25');
+        
+    $('.skills4').click(function(){
+        $('.skills4').toggleClass('active');
+        if($('.skills4').hasClass('active')){
+            console.log('react is active')
+            s4.play().timeScale(1);
+            skillRunning = s4;
+        }
+        else{
+            s4.reverse(0); // starts in reverse at #line2
+        }
+
+    });
 
 
 

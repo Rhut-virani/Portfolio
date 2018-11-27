@@ -635,6 +635,7 @@ body{
 }
 .skillsContent > p{
   font-size: 1.5rem;
+  text-align: justify;
 }
 .js1{
   color: #ffd000;
@@ -646,7 +647,6 @@ body{
 }
 .jsbig, .css4js{
   font-size: 2.5rem;
-  text-align: center;
   font-weight: 900;
   letter-spacing: 0.1rem;
 }
