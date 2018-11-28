@@ -630,6 +630,11 @@ body{
   height: 100%;
 }
 
+.skills6 > div > img.skillName4{
+  padding: 20%;
+  height: 90%;
+}
+
 .skillsContent{
   height: 90vh;
 }
@@ -659,6 +664,31 @@ body{
   height: 50%;
 }
 
+.react1{
+  color: #ffd000;
+  font-style: italic;
+  line-height: 1rem;
+  font-size: 1.5rem;
+}
+.reacth1{
+  color: #ffd000;
+  font-style: italic;
+  font-size: 2rem;
+  margin-right: 1%;
+}
+.react2{
+  margin: 0 0 0 5%;
+text-align: center
+}
+.react3{
+  margin: 0 0 0 10%;
+}
+
+.css4n{
+  font-size: 2rem;
+  color: #ffd000;
+  
+}
 
 
 

@@ -301,7 +301,6 @@ $(document).ready(function() {
     var currentYear= moment().format('YYYY');
 
     var timeZone= moment().format('Z');
-      console.log(timeZone);
     var wishes;
     var wishanimation;
 
@@ -403,7 +402,7 @@ $(document).ready(function() {
         skillRunning = s1;
         }
         else{
-        s1.reverse();
+        s1.reverse().timeScale(2);
         }
     });
 
@@ -428,7 +427,7 @@ $(document).ready(function() {
             skillRunning = s2;
         }
         else{
-            s2.reverse();
+            s2.reverse().timeScale(2);
         }
     });
     
@@ -464,7 +463,7 @@ $(document).ready(function() {
             skillRunning = s3;
         }
         else{
-            s3.reverse('#line2'); // starts in reverse at #line2
+            s3.reverse('#line2').timeScale(2); // starts in reverse at #line2
         }
 
     });
@@ -473,22 +472,65 @@ $(document).ready(function() {
         s4.progress(0).clear();//get rid of tween in previous version of timeline
         s4
         .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
-        .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25');
+        .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
+        .to('.cssh2', 3, {text:{value: ' import  <span class="reacth1">  React, { Component }  </span>  from  <span class="reacth1">  "react" </span>; </br>  import  <span                                      class="reacth1">  SkillsContent  </span> from <span class="reacth1">"  ./SkillsContent  " </span>; '}, 
+                                        ease: Power1.easeOut})
+        .to('.css1, .css2, .css3, .css4', 1, {text: '   </br>', ease: Power1.easeIn}, '-=1')
+        .to('.css1', 1, {text:{value: ' render() { </br> </br>  return ( </br> <span class="react2"> < div className = "skillsContentGrid" > </span> </br> '},  
+                                ease: Power1.easeIn})
+        .to('.css4js', 1.5, {text:{value: '<span class="react3"> < <b>SkillsContent</b> content = { this.state.currentContent } /> </span>', 
+                                             oldClass:"css4js",
+                                             newClass:"react1"},
+                                             ease: Power1.easeIn})
+        .to('.css2', 0.5, {text:{value: ' <span class="react2"> </br> < / div > </span> </br>'}, ease: Power1.easeIn})
+        .to('.css3', 0.5, {text:{value: ' <span class="react2"> )  </span> </br>'}, ease: Power1.easeIn})
+        .to('.css4', 0.5, {text:{value: ' } </br>'}, ease: Power1.easeIn})
+
         
     $('.skills4').click(function(){
         $('.skills4').toggleClass('active');
         if($('.skills4').hasClass('active')){
-            console.log('react is active')
             s4.play().timeScale(1);
             skillRunning = s4;
         }
         else{
-            s4.reverse(0); // starts in reverse at #line2
+            s4.reverse(0).timeScale(1.5); // starts in reverse at 1.5x speed
         }
 
     });
 
+    var s5 = new TimelineMax({paused:true});
+    s5.progress(0).clear();//get rid of tween in previous version of timeline
+    s5
+    .fromTo('.skills5', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+    .fromTo($('.allskills').not('.skills5'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
+    .to('.cssh2', 1, {text: 'nodeExample.js', ease: Power1.easeOut})
+    .to('.css1, .css2, .css3, .css4', 0.25, {autoAlpha:0, ease: Power1.easeIn})
+    .to('.css1, .css2, .css3, .css4', 0.1, {text:{value: ' '}, ease: Power1.easeIn}, "#line1")
+    .to('.css4n', 2, {text:{value: ' npm init'}, ease: Power1.easeIn})
+    .to('.css4n', 2, {text:{value: ' npm install lodash --save'}, ease: Power1.easeIn})
+    .to('.css4n', 2, {text:{value: ' npm install moment --save '}, ease: Power1.easeIn})
+    .to('.css4n', 2, {text:{value: ' console.log(moment().format("hh:mm:ss"))'}, ease: Power1.easeIn})
+    .to('.css4n', 2, {text:{value: ' console.log(_.camelCase("why-so-serious")'}, ease: Power1.easeIn})
+    .to('.css4n', 2, {text:{value: ' $ node nodeExample.js'}, ease: Power1.easeIn});
 
+    
+    $('.skills5').click(function(){
+        $('.skills5').toggleClass('active');
+        if($('.skills5').hasClass('active')){
+            console.log('react is active')
+            s5.play().timeScale(1);
+            skillRunning = s5;
+            setTimeout(() => {
+                console.log(currentTime);
+                console.log("WhySoSerious");
+            }, 7000);
+        }
+        else{
+            s5.reverse('#line1'); // starts in reverse at 1.5x speed
+        }
+
+});
 
 
 
