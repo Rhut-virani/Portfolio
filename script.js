@@ -20,7 +20,7 @@ $(document).ready(function() {
         TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set($allContent, {autoAlpha:0});
-        TweenLite.set('.html5, .html5body', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
+        TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
         TweenLite.set('.sun', {autoAlpha:0, yPercent: 200});
 
 
@@ -530,7 +530,37 @@ $(document).ready(function() {
             s5.reverse('#line1'); // starts in reverse at 1.5x speed
         }
 
-});
+    });
+
+    // BootStrap skill
+    var s6 = new TimelineMax({paused:true})
+    .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+    .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+    .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
+    .to('.bs1', 0.1, {text: '<i>< h2 class = "text-right" ></i>'})
+    .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
+    .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
+    .to('.cssh2', 0.5, {autoAlpha: 0})
+    .to('.cssh2', 0.1, {textAlign:'center'})
+    .to('.cssh2', 0.5, {autoAlpha:1})
+    .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
+    .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
+    .to('.bs4', 0.5 , {border: '1px solid #ffd000'});
+
+
+
+    $('.skills6').click(function(){
+    $('.skills6').toggleClass('active');
+        if($('.skills6').hasClass('active')){
+        s6.play();
+        skillRunning = s6;
+        }
+        else{
+        s6.reverse().timeScale(2);
+        }
+    });
+
+
 
 
 
