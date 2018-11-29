@@ -240,21 +240,30 @@ $(document).ready(function() {
 
 
 
-// <#########################################------CONTACT - RIGHT SECTION--------################################################################>
-// <#########################################------CONTACT - RIGHT SECTION--------################################################################>
-// <#########################################------CONTACT - RIGHT SECTION--------################################################################>
+// <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>
+// <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>
+// <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>
 
 
 
 
     // contact button and right section 
 
-    var tc = new TimelineMax({paused:true})
+    var tc = new TimelineMax({
+        paused:true,
+        onComplete: contactText, 
+        onCompleteParams:[false], 
+        onReverseComplete: contactText,
+        onReverseCompleteParams:[true]
+    })
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.contactTransitionHelper', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 1, {left:0, right:''})
         .fromTo('div#rightSectionContainer', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
-        .to('div.contactContainer', 0.1, {color:'white'},"-=0.25");
+        .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
+        .from('.contactPageContainer', 1 , {borderRadius:'50%', width:'2vw', height:'2vw', top:'50vh', left:'50vw'})
+        .from('.contactPageContainer', 1 , {autoAlpha:0})
+
 
     $('div.contactContainer').click(function(){
         $("div#rightSectionContainer").toggleClass("gotoleft");
@@ -262,9 +271,41 @@ $(document).ready(function() {
             tc.play();
         }
         else{
-            tc.reverse();
+            tc.reverse().timeScale(2);
         }
     })
+
+    var tcp = new TimelineMax({paused:true})
+        .fromTo('.greetings', 1, {autoAlpha:0, yPercent:'-10'}, {autoAlpha:1, yPercent:'0'})
+        .fromTo('.email', 1, {autoAlpha:0, yPercent:'-10'}, {autoAlpha:1, yPercent:'0'})
+        .fromTo('.links', 1, {autoAlpha:0, yPercent:'-10'}, {autoAlpha:1, yPercent:'0'})
+
+
+        function contactText (isreversed) {
+         /// if any of the skills have class active meaning they are running so value will be true
+        //  isSkillRunning = ($('.allskills').hasClass('active')) ? true : false; 
+        
+         if(isreversed){
+           tcp.reverse(0).timeScale(2);
+ 
+             // checking if any skills globes are open or not , if open reverse them as well
+        //    if(isSkillRunning){ 
+        //      skillRunning.reverse(0.9);
+ 
+        //      // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
+        //      $('.allskills').removeClass('active'); 
+        //    }
+         }
+         else{
+           tcp.play();
+         }
+    }
+
+
+
+
+
+
 
 
 
