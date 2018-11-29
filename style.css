@@ -642,7 +642,9 @@ body{
   font-size: 1.5rem;
   text-align: justify;
 }
-
+.bs4{
+  padding: 1%;
+}
 .js1{
   color: #ffd000;
   font-style: italic;

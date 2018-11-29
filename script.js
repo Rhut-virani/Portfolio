@@ -537,14 +537,14 @@ $(document).ready(function() {
     .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
     .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
     .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
-    .to('.bs1', 0.1, {text: '<i>< h2 class = "text-right" ></i>'})
+    .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
     .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
     .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
-    .to('.cssh2', 0.5, {autoAlpha: 0})
-    .to('.cssh2', 0.1, {textAlign:'center'})
-    .to('.cssh2', 0.5, {autoAlpha:1})
     .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
     .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
+    .to('.cssh2', 0.5, {autoAlpha: 0})
+    .to('.cssh2', 0.1, {textAlign:'center', fontWeight: '900'})
+    .to('.cssh2', 0.5, {autoAlpha:1})
     .to('.bs4', 0.5 , {border: '1px solid #ffd000'});
 
 
