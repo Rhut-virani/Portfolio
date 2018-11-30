@@ -622,7 +622,7 @@ $(document).ready(function() {
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.aboutTransitionHelper', 1.5,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 1, {top:0, bottom:''})
-        .fromTo('div#bottomSectionContainer', 1.5, {yPercent:'100%', autoAlpha:1}, {y:'0'})
+        .fromTo('div#bottomSectionContainer', 1.5, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
 
     $('div.aboutContainer').click(function(){
