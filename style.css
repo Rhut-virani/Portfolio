@@ -586,7 +586,7 @@ body{
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 2%;
+  padding: 2% 0%;
 }
 .skillsGrid2{
   flex: 2;
