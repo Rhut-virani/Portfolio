@@ -7,6 +7,7 @@ body{
     line-height: 1.5;
 
 }
+
 ::-webkit-scrollbar {
   width: 0% !important;  /* remove scrollbar space */
   height: 0% !important;
@@ -418,7 +419,7 @@ body{
   }
   .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
     width:10%;
-    color: #ffd000
+    /* color: #ffd000 */
   }
 
 /* individual sections  */
@@ -435,7 +436,7 @@ body{
 
 .projectTransitionHelper, .contactTransitionHelper, .aboutTransitionHelper, .skillsTransitionHelper{
   position: absolute;
-  background-color: #EFF2F3;
+  background-color: #ffd000;
   height: 100vh;
   width: 100vw;
   z-index: 201;
@@ -535,7 +536,7 @@ body{
   .imgContainer{
     flex:1 ;
     width: 50%;
-    padding: 5%;
+    padding: 3% 3%;
   }
   .thumbImg{
   width: calc(100vw - 10vh);
@@ -544,17 +545,19 @@ body{
   position: absolute;
   z-index: 100;
   }
+
   .thumbimg3{
     filter: invert(1);
   }
-.fa-vr-cardboard{
-  z-index: 199;
-  font-size: 4rem;
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  color: #ffd000;
-}
+
+  .fa-vr-cardboard{
+    z-index: 199;
+    font-size: 4rem;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    color: #ffd000;
+  }
  span.heading{
     font-size: 9rem;
     letter-spacing: 0.5rem;
@@ -572,31 +575,49 @@ body{
     pointer-events: none;
   }
   .projectImg{
-    width: 100% ;
+    width: 80% ;
+    padding: 3% 10%
   }
   .imgContainer h1{
     text-align: center;
-    padding-bottom: 2%;
+    padding: 5%;
+    font-size: 2.5rem;
     color: #f4f4f4;
   }
   .textContent{
     flex : 1;
     width: 50%;
-    padding: 5%;
+    height: 80%;
+    padding: 3% 3%;
     color: #f4f4f4;
     font-size: 2rem;
-    text-align: center;
+    text-align: justify;
     overflow: scroll;
   }
   .back{
     position: absolute;
+    padding: 1%;
     top: 5%;
-    left: 3%;
+    left: 5%;
     font-size: 1.8rem;
     color: #ffd000;
     cursor: pointer;
+    z-index: 1;
+  }
+  .external-links{
+    text-align: center;
+    font-size: 3rem;
   }
 
+  .external-links > a{
+    margin: 5%;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .external-links > a:hover{
+    color: #ffd000;
+  }
 
 
 /* <------------------------------ top section --------------------------> */

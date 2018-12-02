@@ -11,11 +11,11 @@
     $ptRight = $('.p-t-Right');
     $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper, .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer');
     better = (screen.width>screen.height) ? screen.width : screen.height;
-    
-    TweenLite.set($allContent, {autoAlpha:0});
+
 
     // lets do the preparation before the any page animation starts 
     function first(){ 
+        TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
@@ -107,11 +107,11 @@
     var detailsPage = false;
 
     var tp = new TimelineMax({paused:true})
-        .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
+        .set('div.projectContainer', {color:'black', zIndex:203})
         .fromTo('.projectTransitionHelper', 0.75, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
-        .to('div.projectContainer', 0.75, {left:"", right:0})
-        .fromTo('div#leftSectionContainer', 0.75, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
-        .to('div.projectContainer', 0.1, {color:'#ffd000'}, "-=0.25")
+        .to('div.projectContainer', 0.75, {left:"", right:0}, '-=0.25')
+        .fromTo('div#leftSectionContainer', 0.55, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
+        .to('div.projectContainer', 0.1, {color:'#ffd000'})
         .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
         .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0});
 
@@ -120,10 +120,10 @@
         var t1 = new TimelineMax();
         $("div#leftSectionContainer").toggleClass("gotoright");
         if($("div#leftSectionContainer").hasClass("gotoright")){
-            tp.play().timescale(1);
+            tp.play().timeScale(1);
         }
         else{
-            tp.reverse(0).timescale(2);
+            tp.reverse(0).timeScale(2);
         }
     })
 
@@ -196,16 +196,17 @@
     // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
     var dl = new TimelineMax({paused:true});
 
-    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage) => {
+    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks) => {
         dl.progress(0).clear();//get rid of tween in previous version of t
 
         dl
-            .fromTo(thumbImg, 0.5, {scale:1,ease: Back.easeOut.config(1.7), xPercent:"0", autoAlpha:1}, {scale:0.50,ease: Back.easeOut.config(1.7), xPercent:"-10%", autoAlpha:0})
-            .fromTo(projectImg, 0.5, {ease: Back.easeIn.config(1.7),scale:0, autoAlpha:0}, {ease: Back.easeIn.config(1.7),scale:1, autoAlpha:1},0)
-            .fromTo(detailsH1, 0.5, {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
+            .to(heading, 0.25, {autoAlpha:0, yPercent:'-10'})
+            .fromTo(thumbImg, 0.25,   { autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
+            .fromTo(projectImg, 0.5,  {autoAlpha:0}, {ease: Back.easeIn.config(1.7), autoAlpha:1})
+            .fromTo(detailsH1, 0.5,   {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
             .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
-            .fromTo(backbutton, 0.25, {left:'-50', rotation:180}, {left:'3%', rotation:0});
-            
+            .staggerFromTo(exlinks, 0.30, {autoAlpha:0},{autoAlpha:1}, 0.1)
+            .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0});            
         return dl
         };
         
@@ -213,12 +214,14 @@
         return function(){
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.pi' + j);
-                detailsH1 = $('.detail' + j +'> .imgContainer > h1')
-                textContent =  $('.detail' + j +' > .textContent')
+                heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') :$('.heading' + j);
+                detailsH1 = $('.detail' + j +'> .imgContainer > h1');
+                textContent =  $('.detail' + j +' > .textContent');
+                exlinks= $('.ex-links' + j + '> a');
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
             
             
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage).play();
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks).play();
             detailsPage = true;
         }
     };
@@ -227,11 +230,13 @@
         return function(){
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.pi' + j);
+                heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') : $('.heading' + j);
                 detailsH1 = $('.detail' + j +'> .imgContainer > h1')
                 textContent =  $('.detail' + j +' > .textContent')
+                exlinks= $('.ex-links' + j + '> a');
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage).reverse(0);
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks).reverse(0);
             detailsPage = false;
 
         }
