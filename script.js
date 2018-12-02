@@ -9,18 +9,19 @@
     $indicator3 = $('.indicator3'),
     $ptLeft = $('.p-t-Left'),
     $ptRight = $('.p-t-Right');
-    $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper');
+    $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper, .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer');
     better = (screen.width>screen.height) ? screen.width : screen.height;
-
+    
+    TweenLite.set($allContent, {autoAlpha:0});
 
     // lets do the preparation before the any page animation starts 
     function first(){ 
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
-        // TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
-        TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
         TweenLite.set('.sun', {autoAlpha:0, yPercent: 200});
+        TweenLite.set('.pageIndicator > div', {autoAlpha:0, xPercent: -10});
+        TweenLite.set('.projectPageContainer', {autoAlpha:0, yPercent: -2});
 
     }
     //running the first function to set all specific variable to their desired state.
@@ -107,19 +108,22 @@
 
     var tp = new TimelineMax({paused:true})
         .to('div.projectContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.projectTransitionHelper', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
-        .to('div.projectContainer', 1, {left:"", right:0})
-        .fromTo('div#leftSectionContainer', 1.5, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
-        .to('div.projectContainer', 0.1, {color:'#ffd000'}, "-=0.25");
+        .fromTo('.projectTransitionHelper', 0.75, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
+        .to('div.projectContainer', 0.75, {left:"", right:0})
+        .fromTo('div#leftSectionContainer', 0.75, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
+        .to('div.projectContainer', 0.1, {color:'#ffd000'}, "-=0.25")
+        .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
+        .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0});
+
 
     $('div.projectContainer').click(function(){
         var t1 = new TimelineMax();
         $("div#leftSectionContainer").toggleClass("gotoright");
         if($("div#leftSectionContainer").hasClass("gotoright")){
-            tp.play();
+            tp.play().timescale(1);
         }
         else{
-            tp.reverse();
+            tp.reverse(0).timescale(2);
         }
     })
 
@@ -127,18 +131,16 @@
 
     function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn){
         var tl = new TimelineMax ({paused:true})
-            // .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, color:'#f4f4f4'})
-            .to(indicatorfade, 0.25, {className: '-=active', color:'#f4f4f4'})
-            // .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, color:'#ffd000'})
-            .to(indicatorIn, 0.25, {className: '+=active', color:'#ffd000'})
-            .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
-            .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+            .to($ptLeft,         0.5,  {ease: Power4.easeOut , xPercent:'51%'})
+            .to(indicatorfade,   0.10, {className: '-=active', color:'#f4f4f4', scale:1})
+            .to(indicatorIn,     0.10, {className: '+=active', color:'#ffd000', scale:1.2}, '-=0.25')
+            .to($ptRight,        0.5,  {ease: Power4.easeOut, xPercent:'-51%'})
             .fromTo(headingfade, 0.25, {autoAlpha:1}, {className: '-=active',autoAlpha:0})
-            .set(sectionfade,{className: '-=active', autoAlpha:0})
-            .set(sectionIn, {className: '+=active',autoAlpha:1})
-            .to($ptRight,0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
-            .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75')
-            .fromTo(headingIn, 0.25, {autoAlpha:0}, {className: '+=active',autoAlpha:1});
+            .set(sectionfade,          {className: '-=active', autoAlpha:0})
+            .set(sectionIn,            {className: '+=active',autoAlpha:1})
+            .to($ptRight,        0.75, {ease: Power4.easeIn, xPercent:'51%'})
+            .to($ptLeft,         0.75, {ease: Power4.easeIn, xPercent:'-51%'}, '-=0.75')
+            .fromTo(headingIn,   0.25, {autoAlpha:0}, {className: '+=active',autoAlpha:1});
         tl.play();
     }
 
@@ -179,9 +181,11 @@
         return function(){
         var sectionIn = $('.home.section' + i),
             sectionfade =$('.home.active'),
+            headingIn = $(sectionIn).children().children('.heading'),
+            headingfade = $('.heading.active'),
             indicatorIn= $(this),
             indicatorfade= $('.indication.active');
-        scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+        scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn);
     }}
     for(let i=1; i<5;i+=1){
         $('.indicator'+ i).click(clickIndi(i));

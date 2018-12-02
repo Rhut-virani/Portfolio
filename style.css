@@ -487,26 +487,28 @@ body{
   .pageIndicator{
     position: absolute;
     left: 0%;
-    top:0%;
-    height: 10vh;
-    width: 100vw;
-    background-color: #0f12141c;
+    top: 50%;
+    height: 50vh;
+    transform: translateY(-50%);
+    width: 10vh;
+    background-color: transparent;
     z-index: 201;
   }
   .indication{
-    width: 24%;
+    height: 24%;
     cursor: pointer; 
-    display: inline-block;
-
+    flex-direction: column;
+    display: flex;
   }
 
   .indication p{
+    flex: 1;
     top: 0%;
     left: 0;
     position: relative;
     text-align: center;
-    font-size: 2rem;
-    font-weight: 900;
+    font-size: 3rem;
+    font-weight: 400;
     margin: 0%;
   }
 
@@ -542,6 +544,9 @@ body{
   position: absolute;
   z-index: 100;
   }
+  .thumbimg3{
+    filter: invert(1);
+  }
 .fa-vr-cardboard{
   z-index: 199;
   font-size: 4rem;
@@ -551,7 +556,7 @@ body{
   color: #ffd000;
 }
  span.heading{
-    font-size: 10rem;
+    font-size: 9rem;
     letter-spacing: 0.5rem;
     font-family: 'lato';
     text-align: center;
@@ -563,7 +568,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
+    width: 90%;
     pointer-events: none;
   }
   .projectImg{
