@@ -16,7 +16,7 @@
     // lets do the preparation before the any page animation starts 
     function first(){ 
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
-        TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5, x:'-10%'});
+        // TweenLite.set($indi.not($activeSection), {autoAlpha:0.5, scale:0.5});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
@@ -127,8 +127,10 @@
 
     function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn){
         var tl = new TimelineMax ({paused:true})
-            .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, x:'-10%', color:'#f4f4f4'})
-            .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, x:'0%', color:'#ffd000'})
+            // .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, color:'#f4f4f4'})
+            .to(indicatorfade, 0.25, {className: '-=active', color:'#f4f4f4'})
+            // .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, color:'#ffd000'})
+            .to(indicatorIn, 0.25, {className: '+=active', color:'#ffd000'})
             .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
             .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
             .fromTo(headingfade, 0.25, {autoAlpha:1}, {className: '-=active',autoAlpha:0})

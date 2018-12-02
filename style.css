@@ -441,7 +441,16 @@ body{
   z-index: 201;
 }
 
-.projectPageContainer, .skillsPageContainer{
+.projectPageContainer{
+  width: calc(100vw - 10vh);
+  height: 100vh;
+  background-color: #0F1214;
+  position: relative;
+  top: 0vh;
+  left: 0vh ;
+  overflow: hidden;
+}
+.skillsPageContainer{
   width: calc(100vw - 20vh);
   height: 80vh;
   background-color: #0F1214;
@@ -477,23 +486,24 @@ body{
   }
   .pageIndicator{
     position: absolute;
-    left: 0;
-    top:50%;
-    transform: translateY(-50%);
-    height: 50vh;
-    width: 10vh;
-    background-color: #0F1214;
+    left: 0%;
+    top:0%;
+    height: 10vh;
+    width: 100vw;
+    background-color: #0f12141c;
+    z-index: 201;
   }
   .indication{
-    height: 25%;
-    cursor: pointer;   
+    width: 24%;
+    cursor: pointer; 
+    display: inline-block;
+
   }
 
   .indication p{
-    top: 50%;
+    top: 0%;
     left: 0;
     position: relative;
-    transform: translateY(-50%);
     text-align: center;
     font-size: 2rem;
     font-weight: 900;
@@ -507,7 +517,7 @@ body{
     padding: 0;
   }
   .home{
-    height: 80vh;
+    height: 100vh;
     width: 100%;
     margin:0;
     padding: 0;
@@ -526,13 +536,20 @@ body{
     padding: 5%;
   }
   .thumbImg{
-  width: calc(100vw - 20vh);
-  height: 80vh;
+  width: calc(100vw - 10vh);
+  height: 100vh;
   object-fit: cover;
   position: absolute;
   z-index: 100;
   }
-
+.fa-vr-cardboard{
+  z-index: 199;
+  font-size: 4rem;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  color: #ffd000;
+}
  span.heading{
     font-size: 10rem;
     letter-spacing: 0.5rem;
@@ -547,6 +564,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    pointer-events: none;
   }
   .projectImg{
     width: 100% ;
