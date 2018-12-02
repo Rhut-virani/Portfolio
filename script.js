@@ -1,7 +1,6 @@
-$(document).ready(function() {
-
     // declaring variables
     var $home = $('.home'),
+    $heading = $('.heading')
     $activeSection = $('.active'),
     $container = $('.container'),
     $indi = $('.indication'),
@@ -10,7 +9,7 @@ $(document).ready(function() {
     $indicator3 = $('.indicator3'),
     $ptLeft = $('.p-t-Left'),
     $ptRight = $('.p-t-Right');
-    $allContent = $('#project, .projectTransitionHelper, #contact, .contactTransitionHelper, #skills, .skillsTransitionHelper, #about, .aboutTransitionHelper');
+    $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper');
     better = (screen.width>screen.height) ? screen.width : screen.height;
 
 
@@ -23,10 +22,12 @@ $(document).ready(function() {
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
         TweenLite.set('.sun', {autoAlpha:0, yPercent: 200});
 
-
     }
     //running the first function to set all specific variable to their desired state.
     first();
+
+    $(document).ready(function() {
+
 
 
 
@@ -124,16 +125,18 @@ $(document).ready(function() {
 
     // scroll function that handles the scrolling animation between projects
 
-    function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade){
+    function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn){
         var tl = new TimelineMax ({paused:true})
             .to(indicatorfade, 0.25, {className: '-=active',opacity:0.5, scale: 0.5, x:'-10%', color:'#f4f4f4'})
             .to(indicatorIn, 0.25, {className: '+=active', opacity:1, scale: 1, x:'0%', color:'#ffd000'})
             .to($ptLeft,0.75,{ease: Back.easeOut.config(1.7) , xPercent:'51%'})
             .to($ptRight,0.75,{ease: Back.easeOut.config(1.7), xPercent:'-51%'})
+            .fromTo(headingfade, 0.25, {autoAlpha:1}, {className: '-=active',autoAlpha:0})
             .set(sectionfade,{className: '-=active', autoAlpha:0})
             .set(sectionIn, {className: '+=active',autoAlpha:1})
             .to($ptRight,0.75,{ease: Back.easeIn.config(1.7), xPercent:'51%'})
-            .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75');
+            .to($ptLeft,0.75,{ease: Back.easeIn.config(1.7), xPercent:'-51%'}, '-=0.75')
+            .fromTo(headingIn, 0.25, {autoAlpha:0}, {className: '+=active',autoAlpha:1});
         tl.play();
     }
 
@@ -151,18 +154,22 @@ $(document).ready(function() {
         if(e.originalEvent.deltaY > 0){
             var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
                 sectionfade =$('.home.active'),
+                headingIn = $(sectionIn).children().children('.heading'),
+                headingfade = $('.heading.active'),
                 indicatorIn= $('.indication.active').next($indi).length === 0 ? $('.indication.active').prevAll($indi).last() : $('.indication.active').next($indi),
                 indicatorfade= $('.indication.active');
-            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn);
         }
 
     // scroll up if the deltaY value is negative
         else if(e.originalEvent.deltaY < 0 ){
             var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
-            sectionfade =$('.home.active'),
-            indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
-            indicatorfade= $('.indication.active');
-            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade);
+                sectionfade =$('.home.active'),
+                headingIn = $(sectionIn).children().children('.heading'),
+                headingfade = $('.heading.active'),
+                indicatorIn= $('.indication.active').prev($indi).length === 0 ? $('.indication.active').nextAll($indi).last() : $('.indication.active').prev($indi),
+                indicatorfade= $('.indication.active');
+            scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn);
         } 
     }
 
@@ -504,13 +511,13 @@ $(document).ready(function() {
             skillRunning = s3;
         }
         else{
-            s3.reverse('#line2').timeScale(2); // starts in reverse at #line2
+            s3.reverse('#line2').timeScale(2); //------------ starts in reverse at #line2 at 2x speed
         }
 
     });
 
     var s4 = new TimelineMax({paused:true});
-        s4.progress(0).clear();//get rid of tween in previous version of timeline
+        s4.progress(0).clear();  // --------get rid of tween in previous version of timeline
         s4
         .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
         .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
@@ -593,13 +600,16 @@ $(document).ready(function() {
     $('.skills6').click(function(){
     $('.skills6').toggleClass('active');
         if($('.skills6').hasClass('active')){
-        s6.play();
+        s6.play().timeScale(1);
         skillRunning = s6;
         }
         else{
         s6.reverse().timeScale(2);
         }
     });
+
+
+
 
 
 
@@ -618,22 +628,62 @@ $(document).ready(function() {
 
 
     // about button and bottom section 
-    var ta = new TimelineMax({paused:true})
+    var ta = new TimelineMax({
+                paused:true,
+                // onComplete: aboutText, 
+                // onCompleteParams:[false], 
+                // onReverseComplete: aboutText,
+                // onReverseCompleteParams:[true]
+            })
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.aboutTransitionHelper', 1.5,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
-        .to('div.aboutContainer', 1, {top:0, bottom:''})
-        .fromTo('div#bottomSectionContainer', 1.5, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
-        .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25");
+        .fromTo('.aboutTransitionHelper', 1,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .to('div.aboutContainer', 0.5, {top:0, bottom:''})
+        .fromTo('div#bottomSectionContainer', 1, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25")
+        .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})
+        .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200'}, {yPercent:'0', ease: Power1.easeOut} , -0.5)
+        .fromTo('.aboutContent >p, .flip-side-button', 1, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeOut})
 
     $('div.aboutContainer').click(function(){
         $("div#bottomSectionContainer").toggleClass("goup");
         if($("div#bottomSectionContainer").hasClass("goup")){
-            ta.play();
+            ta.play().timeScale(1);
         }
         else{
-            ta.reverse();
+            ta.reverse().timeScale(3);
         }
     });
+
+    var tap = new TimelineMax({paused:true})
+        // .fromTo('.aboutImg-container',        0.50, {autoAlpha:0, yPercent:'10'}, {autoAlpha:1, yPercent:'0'})
+        // .staggerFromTo('.about-img-text > p', 0.50, {autoAlpha:0, yPercent:'10'}, {autoAlpha:1, yPercent:'0'})
+        // .fromTo('.aboutContent',              0.50, {autoAlpha:0, yPercent:'10'}, {autoAlpha:1, yPercent:'0'})
+        // .fromTo('.flip-side-button',          0.50, {autoAlpha:0, xPercent:'-100', scale: 0}, {autoAlpha:1, xPercent:'0', scale: 1});
+
+
+    //     function aboutText (isreversed) {
+    //             /// if any of the skills have class active meaning they are running so value will be true
+    //             //  isSkillRunning = ($('.allskills').hasClass('active')) ? true : false; 
+    //      if(isreversed){
+    //        tap.reverse(0).timeScale(2);
+
+    //             // checking if any skills globes are open or not , if open reverse them as well
+    //             //    if(isSkillRunning){ 
+    //             //      skillRunning.reverse(0.9);
+
+    //             //      // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
+    //             //      $('.allskills').removeClass('active'); 
+    //             //    }
+    //      }
+    //      else{
+    //        tap.play();
+    //      }
+    // }
+
+
+
+
+
 
 });
 

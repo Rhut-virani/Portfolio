@@ -441,7 +441,7 @@ body{
   z-index: 201;
 }
 
-.projectPageContainer, .aboutPageContainer, .skillsPageContainer{
+.projectPageContainer, .skillsPageContainer{
   width: calc(100vw - 20vh);
   height: 80vh;
   background-color: #0F1214;
@@ -459,7 +459,9 @@ body{
 
 }
 
-  /*<---------------- Left section Contents---------------> */
+  /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
+  /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
+  /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
   .p-t-Left, .p-t-Right{
     width: 100%;
     position: absolute;
@@ -529,6 +531,22 @@ body{
   object-fit: cover;
   position: absolute;
   z-index: 100;
+  }
+
+ span.heading{
+    font-size: 10rem;
+    letter-spacing: 0.5rem;
+    font-family: 'lato';
+    text-align: center;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #ffd000;
+    color: transparent;
+    z-index: 199;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
   }
   .projectImg{
     width: 100% ;
@@ -712,9 +730,9 @@ text-align: center
 
 
 
-/* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
-/* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
-/* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
+/* <----------------------------------------------------------------------right-----------------------------------------------------------------------------------> */
+/* <----------------------------------------------------------------------right-----------------------------------------------------------------------------------> */
+/* <----------------------------------------------------------------------right-----------------------------------------------------------------------------------> */
 
 .contactPageContainer{
   width: calc(100vw - 10vh);
@@ -784,13 +802,92 @@ text-align: center
 }
 
 
+/* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
+/* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
+/* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
 
 
 
 
+.aboutPageContainer{
+  height: 90vh;
+  width: 100vw;
+  position: relative;
+  top: 10vh;
+  left: 0vh ;
+}
+.aboutWrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+.aboutphoto, .aboutContent{
+  flex: 1;
+  max-width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+}
 
+.aboutphoto{
+  padding:5%;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+}
+.aboutContent{
+  padding: 0 3%;
+  overflow: scroll;
+  height: 95%;
+}
+.aboutContent > p{
+  text-align: justify;
+  font-size: 2rem;
+  color: #ffd000;
+  padding: 0; 
+  /* overflow: scroll; */
+}
+.about-img-text{
+  flex: 1;
+  color: #ffd000;
+  font-size: 1.2rem;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  overflow: hidden;
+  min-height: fit-content;
+}
+.about-img-text > p{
+  margin: auto;
+  letter-spacing: 1rem;
+}
+.aboutImg-container{
+  flex: 1;
+  min-height: fit-content;
+  overflow: hidden;
+}
+.aboutImg{
+  width: 100%;
+  object-fit: contain;
+  box-shadow: 0 0 21px 11px rgb(13, 13, 13);
+}
 
+.flip-side-button{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
+.flip-helper{
+  position: relative;
+  width: 25%;
+  height: 25%;
+  background-color: #EFF2F3;
+}
+.flip-img{
+  width: 7vw;
+  margin: -5%;
+}
 
 
 
