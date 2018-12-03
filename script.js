@@ -125,6 +125,7 @@
         else{
             tp.reverse(0).timeScale(2);
         }
+        
     })
 
     // scroll function that handles the scrolling animation between projects
