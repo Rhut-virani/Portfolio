@@ -10,12 +10,14 @@
     $ptLeft = $('.p-t-Left'),
     $ptRight = $('.p-t-Right');
     $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper, .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer');
-    better = (screen.width>screen.height) ? screen.width : screen.height;
+    $allcontainer= $('.projectContainer, .contactContainer, .skillsContainer, .aboutContainer')
+    // better = (screen.width>screen.height) ? screen.width : screen.height;
+    better = 600;
 
 
     // lets do the preparation before the any page animation starts 
     function first(){ 
-        TweenLite.set($allContent, {autoAlpha:0});
+        TweenLite.set($allcontainer, {pointerEvents:'none'});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
@@ -29,13 +31,39 @@
 
     $(document).ready(function() {
 
-
-
-
-
     for (var i = 1; i <= better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
     } 
+
+    swing = () =>{
+        var st = new TimelineMax({
+            onComplete: removeClass,
+        })
+            .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
+            .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
+            .to('.gotoLeft', 0.5, {xPercent:'-4000'}, 1.75)
+            .to('.gotoRight',0.5, {xPercent: '4000'}, 2.00)
+            .to('.gotoup',   0.5, {yPercent:'-4000'}, 2.25)
+            .to('.gotodown', 0.5, {yPercent: '4000'}, 2.50)
+            .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1,)
+            .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
+            .staggerFrom('.skills > span'  ,0.5, {yPercent: '-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
+            .staggerFrom('.about > span'   ,0.5,   {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
+            .set($allcontainer, {pointerEvents:'all'});
+        }
+
+    
+    function removeClass() {
+        $( ".swing" ).remove();
+        $(".projectContainer > div > span ").attr('class','widerText');
+        $(".contactContainer > div > span ").attr('class','widerText');
+        $(".skillsContainer > div > span ").attr('class','widerText2');
+        $(".aboutContainer > div > span ").attr('class','widerText2');
+        $('.project, .contact, .skills, .about').attr('class', ' ');
+        $( ".floatingmainText" ).remove();
+    };
+
+
 
     // website launch button and aniimation function 
     // selecting text with specific letter and giving it a specific class so they can be animated afterwards
@@ -43,53 +71,56 @@
     $(".buttonContainer").on('click', function() {
         $(this).attr('class', 'correctWebsite2 swing')
         $('a.floatingText').attr('class', 'floatingText swing');
-        $( "a:contains('P')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('r')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('o')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('j')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('e')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('c')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('t')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('s')" ).first().attr('class', 'floatingmainText gotoLeft');
-        $( "a:contains('C')" ).eq(1).attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('o')" ).eq(1).attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('n')" ).first().attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('t')" ).eq(1).attr('class', 'floatingmainText gotoRight');
-        $( "a:contains('a')" ).first().attr('class',  'floatingmainText gotoRight');
-        $( "a:contains('c')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
-        $( "a:contains('t')" ).eq(2).attr('class', 'floatingmainText gotoRight ');
-        $( "a:contains('a')" ).eq(1).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('b')" ).eq(1).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('o')" ).eq(2).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('u')" ).first().attr('class',  'floatingmainText gotodown');
-        $( "a:contains('t')" ).eq(3).attr('class',  'floatingmainText gotodown');
-        $( "a:contains('s')" ).eq(1).attr('class',  'floatingmainText gotoup');
-        $( "a:contains('k')" ).first().attr('class',  'floatingmainText gotoup');
-        $( "a:contains('i')" ).first().attr('class',  'floatingmainText gotoup');
-        $( "a:contains('l')" ).first().attr('class',  'floatingmainText gotoup');
-        $( "a:contains('l')" ).eq(1).attr('class',  'floatingmainText gotoup');
-        $( "a:contains('s')" ).eq(2).attr('class',  'floatingmainText gotoup');
-
+        $( "a:contains('P')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('r')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('o')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('j')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('e')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('c')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('t')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('s')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a:contains('C')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a:contains('o')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a:contains('n')" ).first().attr('class', 'floatingText floatingmainText gotoRight');
+        $( "a:contains('t')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a:contains('a')" ).first().attr('class', 'floatingText floatingmainText gotoRight');
+        $( "a:contains('c')" ).eq(2).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a:contains('t')" ).eq(2).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a:contains('a')" ).eq(1).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a:contains('b')" ).eq(1).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a:contains('o')" ).eq(2).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a:contains('u')" ).first().attr('class', 'floatingText floatingmainText gotodown');
+        $( "a:contains('t')" ).eq(3).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a:contains('s')" ).eq(1).attr('class',   'floatingText floatingmainText gotoup');
+        $( "a:contains('k')" ).first().attr('class', 'floatingText floatingmainText gotoup');
+        $( "a:contains('i')" ).first().attr('class', 'floatingText floatingmainText gotoup');
+        $( "a:contains('l')" ).first().attr('class', 'floatingText floatingmainText gotoup');
+        $( "a:contains('l')" ).eq(1).attr('class',   'floatingText floatingmainText gotoup');
+        $( "a:contains('s')" ).eq(2).attr('class',   'floatingText floatingmainText gotoup');
         $(".waitForClass").attr('class','project');
         $(".waitForClass2").attr('class','contact');
         $(".waitForClass3").attr('class','about');
         $(".waitForClass4").attr('class','skills');
-
-        setTimeout(
-            function() {
-                $( ".swing" ).remove();
-                $(".projectContainer > div > span ").attr('class','widerText');
-                $(".contactContainer > div > span ").attr('class','widerText');
-                $(".skillsContainer > div > span ").attr('class','widerText2');
-                $(".aboutContainer > div > span ").attr('class','widerText2');
-                $('.project, .contact, .skills, .about').attr('class', ' ');
-            }, 7000);
-
-        setTimeout(
-            function() {
-                $( ".floatingmainText" ).remove();
-            }, 7000);
+        
+        swing();
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     
@@ -125,7 +156,7 @@
         else{
             tp.reverse(0).timeScale(2);
         }
-        
+
     })
 
     // scroll function that handles the scrolling animation between projects

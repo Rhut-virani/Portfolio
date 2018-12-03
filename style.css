@@ -54,27 +54,29 @@ body{
 /* entire background text */
   .floatingText{
       display: inline-block;
-      margin: 0.2%;
+      padding: 0.5%;
+      width: 2vw;
       font-size: 2.5rem;
       transition: all 250ms ease-in;
       transform: scale(1);
       cursor: pointer;
       font-weight: 200;
       color: #EFF2F3;
+      text-align: center;
   }
   .floatingmainText{
       display: inline-block;
-      margin: 0.2%;
+      padding: 0.5%;
       font-size: 2.5rem;
-      transition: transform 1000ms ease-in 4000ms;
+      /* transition: transform 1000ms ease-in 4000ms; */
   }
   .floatingText:hover{
-    transform: scale(3);
+    transform: scale(1.5);
   } 
 
 
 /* Main text exit animation  */
-  .floatingmainText.gotoLeft{
+  /* .floatingmainText.gotoLeft{
       transform: translate(-5000px, 0);
   }
   .floatingmainText.gotoRight{
@@ -85,14 +87,14 @@ body{
   }
   .floatingmainText.gotoup{
     transform: translate(0, -5000px);
-  }
+  } */
 
-  .swing
+  /* .swing
   {
   animation: shake-crazy 100ms ease-in-out 20 , fall 2000ms ease-in 2000ms 1 forwards;
-  }
+  } */
 
-  @keyframes fall{
+  /* @keyframes fall{
       from {
           transform: translate3d(0, 0, 0);
         }
@@ -101,8 +103,8 @@ body{
           visibility: none;
           transform: translate3d(0, 10000%, 0);
         }
-  }
-  @keyframes shake-crazy{
+  } */
+  /* @keyframes shake-crazy{
     2% {
       transform: translate(-8px, 0) rotate(0); }
     4% {
@@ -204,7 +206,7 @@ body{
     0%, 100% {
       transform: translate(0, 0) rotate(0); 
     }
-  }
+  } */
 
 
 
@@ -269,30 +271,30 @@ body{
       display:none;
   }
 
-  .project span:nth-of-type(2), .contact span:nth-of-type(2), .skills span:nth-of-type(2), .about span:nth-of-type(2){
-    animation-delay: 5.05s;
+  /* .project span:nth-of-type(2), .contact span:nth-of-type(2), .skills span:nth-of-type(2), .about span:nth-of-type(2){
+    animation-delay: 10.05s;
   }
   .project span:nth-of-type(3), .contact span:nth-of-type(3), .skills span:nth-of-type(3), .about span:nth-of-type(3) {
-    animation-delay: 5.1s;
+    animation-delay: 10.1s;
   }
   .project span:nth-of-type(4), .contact span:nth-of-type(4), .skills span:nth-of-type(4), .about span:nth-of-type(4) {
-    animation-delay: 5.15s;
+    animation-delay: 10.15s;
   }
   .project span:nth-of-type(5), .contact span:nth-of-type(5), .skills span:nth-of-type(5), .about span:nth-of-type(5) {
-    animation-delay: 5.2s;
+    animation-delay: 10.2s;
   }
   .project span:nth-of-type(6), .contact span:nth-of-type(6), .skills span:nth-of-type(6), .about span:nth-of-type(6) {
-    animation-delay: 5.25s;
+    animation-delay: 10.25s;
   }
   .project span:nth-of-type(7), .contact span:nth-of-type(7), .skills span:nth-of-type(7), .about span:nth-of-type(7) {
-    animation-delay: 5.3s;
+    animation-delay: 10.3s;
   }
   .project span:nth-of-type(8), .contact span:nth-of-type(7), .skills span:nth-of-type(7), .about span:nth-of-type(7) {
-    animation-delay: 5.35s;
+    animation-delay: 10.35s;
   }
   .project span:nth-of-type(9), .contact span:nth-of-type(7), .skills span:nth-of-type(7), .about span:nth-of-type(7) {
-    animation-delay: 5.4s;
-  }
+    animation-delay: 10.4s;
+  } */
   .projectContainer, .contactContainer, .skillsContainer, .aboutContainer{
     text-align: center;
     color: #EFF2F3;
@@ -340,7 +342,7 @@ body{
   }
 
   .project span, .contact span, .skills span, .about span{
-    opacity: 0;
+    opacity: 1;
     display: inline-block;
     font-weight: 900;
   }
@@ -350,12 +352,16 @@ body{
   .project span, .contact span{
     width: 10%;
   }
+ 
   /* individual header animations */
-  .project span{
-    animation: leftentry 0.5s ease-out forwards 5s;
-    transform: translate(-50rem, 50rem) rotate(270deg);
-  }
-  @keyframes leftentry {
+
+  /* .project span{ */
+    /* animation: leftentry 0.5s ease-out forwards 5s; */
+    /* transform: rotate(90deg); */
+    /* transform: translate(-50rem, 50rem) rotate(270deg); */
+  /* } */
+
+  /* @keyframes leftentry { 
     60% {
           transform: translate(5rem, 0) rotate(180deg) scale(0.5);
       }
@@ -403,7 +409,10 @@ body{
       transform: translate(0, 0) rotate(0) scale(1);
       opacity: 1;
     }
-  }
+  } */
+
+
+
   /* navtext animation */
 
   .widerText, .widerText2{
@@ -960,6 +969,7 @@ text-align: center
     }
     .floatingText{
         font-size: 2rem;
+        padding: 1%;
     }
     .firstname,.lastname{
         font-size: 2rem;
@@ -998,6 +1008,7 @@ text-align: center
   }
   .floatingText{
       font-size: 2rem;
+      padding: 3%
   }
   .firstname,.lastname{
       font-size: 2rem;
@@ -1046,6 +1057,7 @@ text-align: center
   }
   .floatingText{
       font-size: 1.5rem;
+      padding: 3%;
   }
   .firstname,.lastname{
       font-size: 2rem;
