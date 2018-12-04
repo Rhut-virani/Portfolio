@@ -39,17 +39,20 @@
         var st = new TimelineMax({
             onComplete: removeClass,
         })
+            .to('.buttonContainer', 0.5, {class:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
-            .to('.gotoLeft', 0.5, {xPercent:'-4000'}, 1.75)
-            .to('.gotoRight',0.5, {xPercent: '4000'}, 2.00)
-            .to('.gotoup',   0.5, {yPercent:'-4000'}, 2.25)
-            .to('.gotodown', 0.5, {yPercent: '4000'}, 2.50)
+            .to('.gotoLeft', 0.75, {xPercent:'-500', autoAlpha:0}, 1.75)
+            .to('.gotoRight',0.75, {xPercent: '500', autoAlpha:0}, 2.25)
+            .to('.gotoup',   0.75, {yPercent:'-500', autoAlpha:0}, 2.75)
+            .to('.gotodown', 0.75, {yPercent: '500', autoAlpha:0}, 3.25)
             .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1,)
             .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
             .staggerFrom('.skills > span'  ,0.5, {yPercent: '-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
             .staggerFrom('.about > span'   ,0.5,   {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
             .set($allcontainer, {pointerEvents:'all'});
+
+            st.play().timeScale(5);
         }
 
     
@@ -67,9 +70,19 @@
 
     // website launch button and aniimation function 
     // selecting text with specific letter and giving it a specific class so they can be animated afterwards
+    var btn = new TimelineMax({paused:true})
+        .fromTo('.buttonAnimationHelper', 0.5, {y:'-110%', autoAlpha:1},{yPercent:0,  autoAlpha:1, ease: Power4.easeOut})
+
+    $(".buttonContainer").mouseenter( function() {
+        btn.play();
+    })
+    $(".buttonContainer").mouseleave( function() {
+        btn.reverse(0);
+    })
 
     $(".buttonContainer").on('click', function() {
-        $(this).attr('class', 'correctWebsite2 swing')
+
+        // $(this).attr('class', 'correctWebsite2 swing')
         $('a.floatingText').attr('class', 'floatingText swing');
         $( "a:contains('P')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
         $( "a:contains('r')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
@@ -307,9 +320,9 @@
         onReverseCompleteParams:[true]
     })
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.contactTransitionHelper', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
-        .to('div.contactContainer', 1, {left:0, right:''})
-        .fromTo('div#rightSectionContainer', 1.5, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
+        .fromTo('.contactTransitionHelper', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
+        .to('div.contactContainer', 0.55, {left:0, right:''})
+        .fromTo('div#rightSectionContainer', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .from('.contactPageContainer', 1 , {borderRadius:'50%', width:'2vw', height:'2vw', top:'50vh', left:'50vw'})
         .from('.contactPageContainer', 1 , {autoAlpha:0})
@@ -419,9 +432,9 @@
             onReverseComplete: skillsText,
             onReverseCompleteParams:[true]})
         .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.skillsTransitionHelper', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
-        .to('div.skillsContainer', 1, {bottom:0, top:''})
-        .fromTo('div#topSectionContainer', 1.5, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
+        .fromTo('.skillsTransitionHelper', 0.75, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
+        .to('div.skillsContainer', 0.55, {bottom:0, top:''})
+        .fromTo('div#topSectionContainer', 0.75, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .from('.skillsContent', 0.5, {y:'10%', autoAlpha:0})
         .staggerFromTo('.allskills', 0.5,{sclae:0, autoAlpha:0, y:'-50%'}, {scale: 1, autoAlpha:1,y:"0%", ease: Back.easeOut.config(2)}, 0.1, '-=0.5')
@@ -467,7 +480,7 @@
             ts.play();
         }
         else{
-            ts.reverse();
+            ts.reverse().timeScale(2);
         }
     })
 
@@ -679,10 +692,10 @@
                 // onReverseCompleteParams:[true]
             })
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.aboutTransitionHelper', 1,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
-        .to('div.aboutContainer', 0.5, {top:0, bottom:''})
-        .fromTo('div#bottomSectionContainer', 1, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
-        .to('div.aboutContainer', 0.1, {color:'white'},"-=0.25")
+        .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .to('div.aboutContainer', 0.55, {top:0, bottom:''})
+        .fromTo('div#bottomSectionContainer', 0.75, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .to('div.aboutContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})
         .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200'}, {yPercent:'0', ease: Power1.easeOut} , -0.5)
         .fromTo('.aboutContent >p, .flip-side-button', 1, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeOut})
@@ -693,7 +706,7 @@
             ta.play().timeScale(1);
         }
         else{
-            ta.reverse().timeScale(3);
+            ta.reverse().timeScale(2);
         }
     });
 
