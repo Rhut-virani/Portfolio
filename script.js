@@ -26,7 +26,8 @@
         TweenLite.set('.projectPageContainer', {autoAlpha:0, yPercent: -2});
 
         var svgContainer = $("#logo-svg");
-        svgContainer.load("Logo-bw.svg");
+        var svgUrl = "./assets/logo/logo-bw.svg";
+        var svg = svgContainer.load(svgUrl);
     }
     //running the first function to set all specific variable to their desired state.
     first();
@@ -57,7 +58,7 @@
             st.play().timeScale(1);
         }
     
-    var thisEl = document.getElementById("back-R");
+    // var thisEl = document.getElementById("back-R");
 
     
     function removeClass() {
@@ -69,11 +70,40 @@
         $('.project, .contact, .skills, .about').attr('class', ' ');
         $( ".floatingmainText" ).remove();
 
-        var lt12 = new TimelineMax({paused:true})
-        .fromTo(thisEl, 1 , {strokeDashoffset: 1000},{strokeDashoffset: 0});
-        lt12.play()
-    };
+        var lt12 = new TimelineMax({paused:true, onComplete:bannerAnimation})
+        .to('#back-R',  7 , {strokeDashoffset: 0, ease: Power2.easeOut})
+        .to('#front-R', 7 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
+        .to('#front-D', 2 , {strokeDashoffset: 0}, '-=2')
+        .to('.logo-png', 2 , {opacity:1})
+        .to('path', 0.25, {scale:0.99}, '-=1')
+        .to('.main-logo-pr', 1,{opacity:1}, '-=1')
 
+
+        lt12.play().timeScale(1);
+    }
+
+    function bannerAnimation (){
+        var bt = new TimelineMax({onComplete:bannerInfinite})
+        .to('.mainpage-text1', 3, {text: {value:'Hey,'}})
+        .fromTo('.mainpage-text1', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:5,                              ease:  SteppedEase.config(37)}, '-=3')
+        .set('.mainpage-text1', {borderRight: 'none'}) 
+        .to('.mainpage-text2', 5, {text: {value:'I am Rhut Virani,'}})          
+        .fromTo('.mainpage-text2', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:10,                              ease:  SteppedEase.config(37)}, '-=5')
+        .set('.mainpage-text2', {borderRight: 'none'});
+    }
+
+    function bannerInfinite(){
+        var btInfinite = new TimelineMax({repeat:-1})
+        .to('.mainpage-text3', 5, {text: {value:'Full Stack Web Developer'}})
+        .to('.mainpage-text3', 1, {text: {value:' '}})
+        .to('.mainpage-text3', 5, {text: {value:'Based In Toronto'}})
+        .to('.mainpage-text3', 1, {text: {value:' '}})
+        .to('.mainpage-text3', 5, {text: {value:'Former Public Health Dentist'}})
+        .to('.mainpage-text3', 1, {text: {value:' '}})
+        .to('.mainpage-text3', 5, {text: {value:'Always a Coder'}})
+        .to('.mainpage-text3', 1, {text: {value:' '}})
+        .fromTo('.mainpage-text3', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:50,                              ease:  SteppedEase.config(37)}, 0);
+    }
 
 
     // website launch button and aniimation function 
@@ -160,10 +190,12 @@
 
     var tp = new TimelineMax({paused:true})
         .set('div.projectContainer', {color:'black', zIndex:203})
+        .to('.main-logo-pr',0.25, {opacity:0})
         .fromTo('.projectTransitionHelper', 0.75, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.75, {left:"", right:0}, '-=0.25')
         .fromTo('div#leftSectionContainer', 0.55, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.1, {color:'#ffd000'})
+        .to('.main-logo-pr',0.25, {opacity:1})
         .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
         .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0});
 
@@ -332,6 +364,7 @@
         .to('div.contactContainer', 0.55, {left:0, right:''})
         .fromTo('div#rightSectionContainer', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
+        .to('.main-logo-co',0.25, {opacity:1})
         .from('.contactPageContainer', 1 , {borderRadius:'50%', width:'2vw', height:'2vw', top:'50vh', left:'50vw'})
         .from('.contactPageContainer', 1 , {autoAlpha:0})
 
@@ -444,6 +477,7 @@
         .to('div.skillsContainer', 0.55, {bottom:0, top:''})
         .fromTo('div#topSectionContainer', 0.75, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 0.1, {color:'#ffd000'},"-=0.25")
+        .to('.main-logo-sk',0.25, {opacity:1})
         .from('.skillsContent', 0.5, {y:'10%', autoAlpha:0})
         .staggerFromTo('.allskills', 0.5,{sclae:0, autoAlpha:0, y:'-50%'}, {scale: 1, autoAlpha:1,y:"0%", ease: Back.easeOut.config(2)}, 0.1, '-=0.5')
         .fromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 5px 14px #1f1f1f, 0 2px 9px #eaeaea', ease: Power2.easeOut});
@@ -704,6 +738,7 @@
         .to('div.aboutContainer', 0.55, {top:0, bottom:''})
         .fromTo('div#bottomSectionContainer', 0.75, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.1, {color:'#ffd000'},"-=0.25")
+        .to('.main-logo-ab',0.25, {opacity:1})
         .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})
         .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200'}, {yPercent:'0', ease: Power1.easeOut} , -0.5)
         .fromTo('.aboutContent >p, .flip-side-button', 1, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeOut})
