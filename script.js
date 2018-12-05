@@ -25,6 +25,8 @@
         TweenLite.set('.pageIndicator > div', {autoAlpha:0, xPercent: -10});
         TweenLite.set('.projectPageContainer', {autoAlpha:0, yPercent: -2});
 
+        var svgContainer = $("#logo-svg");
+        svgContainer.load("Logo-bw.svg");
     }
     //running the first function to set all specific variable to their desired state.
     first();
@@ -39,7 +41,7 @@
         var st = new TimelineMax({
             onComplete: removeClass,
         })
-            .to('.buttonContainer', 0.5, {class:'+=swing',autoAlpha:0})
+            .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
             .to('.gotoLeft', 0.75, {xPercent:'-500', autoAlpha:0}, 1.75)
@@ -54,6 +56,8 @@
 
             st.play().timeScale(1);
         }
+    
+    var thisEl = document.getElementById("back-R");
 
     
     function removeClass() {
@@ -64,6 +68,10 @@
         $(".aboutContainer > div > span ").attr('class','widerText2');
         $('.project, .contact, .skills, .about').attr('class', ' ');
         $( ".floatingmainText" ).remove();
+
+        var lt12 = new TimelineMax({paused:true})
+        .fromTo(thisEl, 1 , {strokeDashoffset: 1000},{strokeDashoffset: 0});
+        lt12.play()
     };
 
 
