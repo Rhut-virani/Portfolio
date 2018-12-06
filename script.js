@@ -32,34 +32,30 @@
     //running the first function to set all specific variable to their desired state.
     first();
 
-    $(document).ready(function() {
+
+$(document).ready(function() {
 
     for (var i = 1; i <= better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
     } 
 
     swing = () =>{
-        var st = new TimelineMax({
-            onComplete: removeClass,
-        })
+        var st = new TimelineMax({ onComplete: removeClass})
             .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
-            .to('.gotoLeft', 0.75, {xPercent:'-500', autoAlpha:0}, 1.75)
-            .to('.gotoRight',0.75, {xPercent: '500', autoAlpha:0}, 2.25)
-            .to('.gotoup',   0.75, {yPercent:'-500', autoAlpha:0}, 2.75)
-            .to('.gotodown', 0.75, {yPercent: '500', autoAlpha:0}, 3.25)
-            .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1,)
-            .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
-            .staggerFrom('.skills > span'  ,0.5, {yPercent: '-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
-            .staggerFrom('.about > span'   ,0.5,   {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'90deg'} ,0.1, '-=0.5')
+            .to('.gotoLeft', 0.5, {xPercent:'-500', autoAlpha:0}, 1.5)
+            .to('.gotoRight',0.5, {xPercent: '500', autoAlpha:0}, 2.0)
+            .to('.gotoup',   0.5, {yPercent:'-500', autoAlpha:0}, 2.5)
+            .to('.gotodown', 0.5, {yPercent: '500', autoAlpha:0}, 3.0)
+            .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1)
+            .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
+            .staggerFrom('.skills > span'  ,0.5, {yPercent:'-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
+            .staggerFrom('.about > span'   ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .set($allcontainer, {pointerEvents:'all'});
 
-            st.play().timeScale(1);
+        st.play().timeScale(1);
         }
-    
-    // var thisEl = document.getElementById("back-R");
-
     
     function removeClass() {
         $( ".swing" ).remove();
@@ -71,8 +67,8 @@
         $( ".floatingmainText" ).remove();
 
         var lt12 = new TimelineMax({paused:true, onComplete:bannerAnimation})
-        .to('#back-R',  7 , {strokeDashoffset: 0, ease: Power2.easeOut})
-        .to('#front-R', 7 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
+        .to('#back-R',  5 , {strokeDashoffset: 0, ease: Power2.easeOut})
+        .to('#front-R', 5 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
         .to('#front-D', 2 , {strokeDashoffset: 0}, '-=2')
         .to('.logo-png', 2 , {opacity:1})
         .to('path', 0.25, {scale:0.99}, '-=1')
@@ -100,7 +96,7 @@
         .to('.mainpage-text3', 1, {text: {value:' '}})
         .to('.mainpage-text3', 5, {text: {value:'Former Public Health Dentist'}})
         .to('.mainpage-text3', 1, {text: {value:' '}})
-        .to('.mainpage-text3', 5, {text: {value:'Always a Coder'}})
+        .to('.mainpage-text3', 3, {text: {value:'Always a Coder'}})
         .to('.mainpage-text3', 1, {text: {value:' '}})
         .fromTo('.mainpage-text3', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:50,                              ease:  SteppedEase.config(37)}, 0);
     }

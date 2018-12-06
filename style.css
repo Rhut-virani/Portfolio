@@ -31,7 +31,7 @@ body{
 
 .main-logo-pr, .main-logo-co, .main-logo-sk, .main-logo-ab {
   position: absolute;
-  width: 5vw;
+  width: 4vw;
   height: auto;
   opacity: 0;
   transform: rotate(-10deg);
@@ -80,44 +80,45 @@ path{
 
 
 /* Name section */
-  .nameContainer{
-    position: absolute;
-    width: 45vw;
-    height: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 15%;
-    z-index: 100;
-    overflow: hidden;
-  }
+.nameContainer{
+  position: absolute;
+  width: 45vw;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15%;
+  z-index: 100;
+  overflow: hidden;
+}
 
-  .mainpage-text1, .mainpage-text2, .mainpage-text3, .mainpage-text4{
-    font-size: 2.5rem;
-    font-weight: 900;
-    border-right: 2px solid transparent;
-  }
-  .firstname{
-    z-index: 101;
-    float: left;
-  }
-  .firstname, .lastname{
-    display: inline-block;
-    font-size: 3rem;
-    margin : -0.5% 5%;
-    font-family: 'Lato', sans-serif;
-    background: #0F1214;
-    font-weight: 700;
-    background: #0F1214;
-    padding: 2% 9%;
-  }
-  .lastname{
-    z-index: 102;
-    left: 15%;
-    position: relative;
-  }
+.mainpage-text1, .mainpage-text2, .mainpage-text3, .mainpage-text4{
+  font-size: 2.5rem;
+  font-weight: 900;
+  border-right: 2px solid transparent;
+}
+.firstname{
+  z-index: 101;
+  float: left;
+}
+.firstname, .lastname{
+  display: inline-block;
+  font-size: 3rem;
+  margin : -0.5% 5%;
+  font-family: 'Lato', sans-serif;
+  background: #0F1214;
+  font-weight: 700;
+  background: #0F1214;
+  padding: 2% 9%;
+}
+.lastname{
+  z-index: 102;
+  left: 15%;
+  position: relative;
+}
 
 
 /* entire background text */
+
   .floatingText{
       display: inline-block;
       padding: 0.5%;
@@ -179,9 +180,7 @@ path{
     width: 100%;
     height: 100%;
     position: absolute;
-    /* top: -100%; */
     background-color: white;
-    /* transition: all 500ms cubic-bezier(0.25, 0.1, 0.35, 2.35); */
   }
 
   .buttonAnimationHelper> p{
@@ -192,10 +191,8 @@ path{
     margin: 0;
     color: #0f1214
   }
-  /* .buttonContainer:hover > div{
-    top: 0%;
-    color: black;
-  } */
+
+  
   .correctWebsite2{
     display: none;
   }
@@ -280,13 +277,14 @@ path{
     display: inline-block;
     font-weight: 900;
     transition: all 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
+    width: .5vw;
   }
-  .widerText{
+  /* .widerText{
     width: 2.5%;
   }
   .widerText2{
     width: 1.5%;
-  }
+  } */
   .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
     width:10%;
     /* color: #ffd000 */
@@ -910,34 +908,42 @@ text-align: center
   }
 }
 
+
+
+
+
+
 /* <#########################################------media Query < 480px--------################################################################>
    <#########################################------media Query < 480px--------################################################################>
    <#########################################------media Query < 480px--------################################################################> */
 
 
 @media (min-width: 320px) and (max-width: 480px) {
-  body{
-    font-size: 12px;
-  }
-  h2{
-    font-size: 1.5rem;
+  html{
+    font-size: 10px;
   }
   .floatingText{
-      font-size: 1.5rem;
       padding: 3%;
   }
-  .firstname,.lastname{
-      font-size: 2rem;
-      margin : -1.5% 5%;
-  }
+
   .nameContainer{
-      top: 50%;
-      right: 5%;
+    width: 50vw;
+    top: 65%;
+    transform: translateX(-50%);
+    left: 51%;
+    padding: 5%;
   }
+  .logo-wrapper {
+    top: 15%;
+    left: 50%;
+    height: 25vh;
+    width: 25vh;
+    transform: translateX(-50%) rotate(-10deg);
+  }
+
   .buttonContainer{
-      width: 40%;
-      height: 10%;
-      position: absolute;
+      width: 40vw;
+      height: 10vh;
       bottom: 10%;
       left: 50%;
   }
@@ -946,39 +952,37 @@ text-align: center
       background-color: #EFF2F3;
       width: 100%;
       height: 100%;      
-      font-size: 1.5rem;
-      font-weight: 900;
+      font-weight: 700;
   }
   .buttonAnimationHelper{
     display: none;
   }
   .widerText, .widerText2{
     font-weight: 900;
-    transition: width 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
   }
-  .project span, .contact span{
-    width: 3.5%;
+  .project span, .contact span, .widerText, .widerText2, .skills span, .about span{
+    width: 2vh;
   }
-  .widerText{
-    width: 3.5%;
+  .projectContainer, .contactContainer{
+    width: 10vw
   }
-  .skills span, .about span{
-    width: 4.5%;
+  .skillsContainer, .aboutContainer{
+    height: 10vw
   }
-  .widerText2{
-    width: 4.5%;
-  }
-  .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText{
-    width: 3.5%;
-  }
-  .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
-    width: 4.5%;
-  }
+  
+
   .allskills{
     min-width: 48vw;
     min-height: 48vw;
   }
-  .skillsPageContainer{
-    overflow: scroll;
+
+  span.heading{
+  font-size: 4rem;
+  -webkit-text-stroke-width: 1px;
+  z-index: 199;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 75%;
   }
 }
