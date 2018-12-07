@@ -285,7 +285,7 @@ button:focus {
   display: inline-block;
   font-weight: 900;
   transition: all 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);
-  width: 0.5vw;
+  width: 1.5vw;
 }
 
 .projectContainer:hover > div > .widerText, .contactContainer:hover > div > .widerText, .skillsContainer:hover > div > .widerText2, .aboutContainer:hover > div > .widerText2 {
@@ -319,16 +319,6 @@ button:focus {
   position: relative;
   top: 0vh;
   left: 0vh;
-  overflow: hidden;
-}
-
-.skillsPageContainer {
-  width: calc(100vw - 20vh);
-  height: 80vh;
-  background-color: #0F1214;
-  position: relative;
-  top: 10vh;
-  left: 10vh;
   overflow: hidden;
 }
 
@@ -527,13 +517,18 @@ span.heading {
   left: 0%;
   width: 100vw;
   height: 90vh;
+  overflow: hidden;
 }
 
 .skillsGrid1 {
   flex: 1;
-  width: 50%;
   height: 100%;
   background-color: #ffd000;
+  box-sizing: border-box;
+  padding: 2%;
+}
+.skillsGrid1 .leftarrow, .skillsGrid1 .rightarrow {
+  display: none;
 }
 
 .allSkillsContainer {
@@ -546,11 +541,11 @@ span.heading {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2% 0%;
+  box-sizing: border-box;
 }
 
 .skillsGrid2 {
   flex: 2;
-  width: 50%;
   height: 100%;
 }
 
@@ -915,12 +910,6 @@ span.heading {
     width: 8vw;
   }
 
-  .allskills {
-    min-width: 20vw;
-    min-height: 20vw;
-    margin: 10%;
-  }
-
   .imgContainer {
     flex: 4;
     width: 100%;
@@ -948,6 +937,54 @@ span.heading {
 
   .projectDetailContainer {
     flex-direction: column;
+  }
+
+  .skillsPageContainer {
+    flex-direction: column;
+  }
+  .skillsPageContainer .skillsGrid1 {
+    width: 100%;
+    height: 30%;
+    flex-direction: row;
+    display: flex;
+  }
+  .skillsPageContainer .skillsGrid1 .leftarrow, .skillsPageContainer .skillsGrid1 .rightarrow {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: fit-content;
+    flex: 1;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #0f1214;
+  }
+  .skillsPageContainer .skillsGrid1 .allSkillsContainer {
+    flex: 10;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-self: center;
+    overflow: scroll;
+    padding: 2%;
+  }
+  .skillsPageContainer .skillsGrid1 .allSkillsContainer .allskills {
+    min-width: calc(100vw/8);
+    min-height: calc(100vw/8);
+    margin: 5%;
+  }
+  .skillsPageContainer .skillsGrid1 .allSkillsContainer .skills8:after {
+    content: " ";
+    clear: both;
+    position: absolute;
+    right: 0;
+    width: 2px;
+    height: 100%;
+  }
+  .skillsPageContainer .skillsGrid2 {
+    flex: 1;
+    width: 100%;
+    height: 70%;
   }
 }
 /* <#########################################------media Query > 480px < 767px------PHONES--------########################################################>

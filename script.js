@@ -54,7 +54,7 @@ $(document).ready(function() {
             .staggerFrom('.about > span'   ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .set($allcontainer, {pointerEvents:'all'});
 
-        st.play().timeScale(1);
+        st.play().timeScale(10);
         }
     
     function removeClass() {
@@ -191,9 +191,10 @@ $(document).ready(function() {
         .to('div.projectContainer', 0.75, {left:"", right:0}, '-=0.25')
         .fromTo('div#leftSectionContainer', 0.55, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.1, {color:'#ffd000'})
-        .to('.main-logo-pr',0.25, {opacity:1, left:'2vw'})
+        .to('.main-logo-pr',0.25, {opacity:1})
         .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
-        .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0});
+        .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0})
+        .to('div.projectContainer',0.50, {boxShadow: '-5px 0px 25px -15px #ffd000'}) ;
 
 
     $('div.projectContainer').click(function(){
@@ -287,7 +288,7 @@ $(document).ready(function() {
             .fromTo(detailsH1, 0.5,   {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
             .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
             .staggerFromTo(exlinks, 0.30, {autoAlpha:0},{autoAlpha:1}, 0.1)
-            .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0});            
+            .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0});           
         return dl
         };
         
@@ -521,11 +522,23 @@ $(document).ready(function() {
             ts.reverse().timeScale(2);
         }
     })
+    var scrollDiv =  $('.allSkillsContainer');
+    //  var horizontalScroll = scrollDiv.outerWidth() + ;
+     var scrollWidth = scrollDiv.get(0).scrollWidth;
+    var clientWidth = scrollDiv.get(0).clientWidth;
+    // var leftPos;
 
+    $('.leftarrow').click(function(){
+        leftPos = scrollDiv.scrollLeft();
+        $('.allSkillsContainer').animate( { scrollLeft:  -(scrollWidth - clientWidth)}, 2000);
+        console.log('left arrow clicked');
+    })
 
-
-
-
+    $('.rightarrow').click(function(){
+        leftPos = scrollDiv.scrollLeft();
+        $('.allSkillsContainer').animate( { scrollLeft: scrollWidth - clientWidth}, 1000);
+        console.log('right arrow clicked');
+    })
 
     // Skills names animation 
 
