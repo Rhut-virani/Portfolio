@@ -37,14 +37,12 @@ body{
   transform: rotate(-10deg);
   left: 0.3vw;
 }
-
 .main-logo-pr, .main-logo-ab, .main-logo-co{
   top: 0.5vw;
 }
 .main-logo-sk{
   bottom: 0.75vw;
 }
-
 path{
   position: absolute;
   top: 0%;
@@ -969,7 +967,7 @@ text-align: center
   .skillsContainer, .aboutContainer{
     height: 10vw
   }
-  
+
 
   .allskills{
     min-width: 48vw;

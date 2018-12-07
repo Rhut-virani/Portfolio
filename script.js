@@ -191,7 +191,7 @@ $(document).ready(function() {
         .to('div.projectContainer', 0.75, {left:"", right:0}, '-=0.25')
         .fromTo('div#leftSectionContainer', 0.55, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.1, {color:'#ffd000'})
-        .to('.main-logo-pr',0.25, {opacity:1})
+        .to('.main-logo-pr',0.25, {opacity:1, left:'2vw'})
         .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
         .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0});
 
@@ -280,7 +280,7 @@ $(document).ready(function() {
     detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks) => {
         dl.progress(0).clear();//get rid of tween in previous version of t
 
-        dl
+        dl  .to($indi, 0.25, {xPercent:'-100%', autoAlpha:0})
             .to(heading, 0.25, {autoAlpha:0, yPercent:'-10'})
             .fromTo(thumbImg, 0.25,   { autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
             .fromTo(projectImg, 0.5,  {autoAlpha:0}, {ease: Back.easeIn.config(1.7), autoAlpha:1})
