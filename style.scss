@@ -969,13 +969,8 @@ text-align: center
                     min-height: calc(100vw/8);
                     margin: 5%;
                 }
-                .skills8:after{
-                    content: ' ';
-                    clear: both;
-                    position: absolute;
-                    right: 0;
-                    width: 2px;
-                    height: 100%;
+                &:after{
+                    content: '.';
                 }
             }
         }

@@ -973,13 +973,8 @@ span.heading {
     min-height: calc(100vw/8);
     margin: 5%;
   }
-  .skillsPageContainer .skillsGrid1 .allSkillsContainer .skills8:after {
-    content: " ";
-    clear: both;
-    position: absolute;
-    right: 0;
-    width: 2px;
-    height: 100%;
+  .skillsPageContainer .skillsGrid1 .allSkillsContainer:after {
+    content: ".";
   }
   .skillsPageContainer .skillsGrid2 {
     flex: 1;
