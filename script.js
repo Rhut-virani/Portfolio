@@ -81,10 +81,10 @@ $(document).ready(function() {
     function bannerAnimation (){
         var bt = new TimelineMax({onComplete:bannerInfinite})
         .to('.mainpage-text1', 3, {text: {value:'Hey,'}})
-        .fromTo('.mainpage-text1', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:5,                              ease:  SteppedEase.config(37)}, '-=3')
+        .fromTo('.mainpage-text1', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:5,ease:  SteppedEase.config(37)}, '-=3')
         .set('.mainpage-text1', {borderRight: 'none'}) 
         .to('.mainpage-text2', 5, {text: {value:'I am Rhut Virani,'}})          
-        .fromTo('.mainpage-text2', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:10,                              ease:  SteppedEase.config(37)}, '-=5')
+        .fromTo('.mainpage-text2', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:10,ease:  SteppedEase.config(37)}, '-=5')
         .set('.mainpage-text2', {borderRight: 'none'});
     }
 
@@ -523,20 +523,20 @@ $(document).ready(function() {
         }
     })
     var scrollDiv =  $('.allSkillsContainer');
-    //  var horizontalScroll = scrollDiv.outerWidth() + ;
+     var clientWidth = scrollDiv.outerWidth();
      var scrollWidth = scrollDiv.get(0).scrollWidth;
-    var clientWidth = scrollDiv.get(0).clientWidth;
+    // var clientWidth = scrollDiv.get(0).clientWidth;
     // var leftPos;
 
     $('.leftarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft:  -(scrollWidth - clientWidth)}, 2000);
+        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 2000);
         console.log('left arrow clicked');
     })
 
     $('.rightarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft: scrollWidth - clientWidth}, 1000);
+        $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 1000);
         console.log('right arrow clicked');
     })
 
