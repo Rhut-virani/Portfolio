@@ -18,7 +18,6 @@
     // lets do the preparation before the any page animation starts 
     function first(){ 
         TweenLite.set($allcontainer, {pointerEvents:'none'});
-        // TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
@@ -602,7 +601,7 @@ $(document).ready(function() {
         .to(wishanimation, 0.1, {autoAlpha:1}, '-=0.5')
         .to(wishanimation, 1.5, {yPercent: 0}, '-=0.5')
         .to(wishanimation, 1.5, {autoAlpha:0}, '+=1')
-        .to('.css4js', 1.5, {text: {value : "  The Time is  " + currentTime + " " , newClass:'jsbig'}, ease: Power1.easeOut}, '#line3')
+        .to('.css4js', 1.5, {text: {value : "  The Time is  " + currentTime + " " ,oldClass:'css4j', newClass:'jsbig'}, ease: Power1.easeOut}, '#line3')
         .to('.css4js', 1.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line4')
         .to('.css4js', 1.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
         .to('.css4js', 1.5, {text: {value : " of " + currentMonth + "  " , newClass:'jsbig'}, ease: Power1.easeIn})
@@ -735,12 +734,13 @@ $(document).ready(function() {
 
 
     // about button and bottom section 
+     var scroll_about_p = $('.aboutContent > p'); 
     var ta = new TimelineMax({
                 paused:true,
-                // onComplete: aboutText, 
-                // onCompleteParams:[false], 
-                // onReverseComplete: aboutText,
-                // onReverseCompleteParams:[true]
+                onComplete: aboutText, 
+                onCompleteParams:[false], 
+                onReverseComplete: aboutText,
+                onReverseCompleteParams:[true]
             })
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
@@ -749,8 +749,8 @@ $(document).ready(function() {
         .to('div.aboutContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-ab',0.25, {opacity:1})
         .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})
-        .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200'}, {yPercent:'0', ease: Power1.easeOut} , -0.5)
-        .fromTo('.aboutContent >p, .flip-side-button', 1, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeOut})
+        .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200', autoAlpha:0}, {yPercent:'0', autoAlpha:1, ease: Power1.easeOut} , -0.5)
+
 
     $('div.aboutContainer').click(function(){
         $("div#bottomSectionContainer").toggleClass("goup");
@@ -762,31 +762,27 @@ $(document).ready(function() {
         }
     });
 
-    var tap = new TimelineMax({paused:true})
-        // .fromTo('.aboutImg-container',        0.50, {autoAlpha:0, yPercent:'10'}, {autoAlpha:1, yPercent:'0'})
-        // .staggerFromTo('.about-img-text > p', 0.50, {autoAlpha:0, yPercent:'10'}, {autoAlpha:1, yPercent:'0'})
-        // .fromTo('.aboutContent',              0.50, {autoAlpha:0, yPercent:'10'}, {autoAlpha:1, yPercent:'0'})
-        // .fromTo('.flip-side-button',          0.50, {autoAlpha:0, xPercent:'-100', scale: 0}, {autoAlpha:1, xPercent:'0', scale: 1});
+    var tap = new TimelineMax({paused:true, repeat:-1})
+        .to(scroll_about_p, 20, {scrollTo:{x: 'max'}, ease: Power0.easeNone})
+        // .to(scroll_about_p, 10, {paddingLeft: 0});
+        
+        function aboutText (isreversed) {
+                /// if any of the skills have class active meaning they are running so value will be true
+         if(isreversed){
+           tap.reverse(0.9).timeScale(2);
 
+                // checking if any skills globes are open or not , if open reverse them as well
+                //    if(isSkillRunning){ 
+                //      skillRunning.reverse(0.9);
 
-    //     function aboutText (isreversed) {
-    //             /// if any of the skills have class active meaning they are running so value will be true
-    //             //  isSkillRunning = ($('.allskills').hasClass('active')) ? true : false; 
-    //      if(isreversed){
-    //        tap.reverse(0).timeScale(2);
-
-    //             // checking if any skills globes are open or not , if open reverse them as well
-    //             //    if(isSkillRunning){ 
-    //             //      skillRunning.reverse(0.9);
-
-    //             //      // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
-    //             //      $('.allskills').removeClass('active'); 
-    //             //    }
-    //      }
-    //      else{
-    //        tap.play();
-    //      }
-    // }
+                //      // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
+                //      $('.allskills').removeClass('active'); 
+                //    }
+         }
+         else{
+           tap.play();
+         }
+    }
 
 
 

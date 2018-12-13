@@ -663,7 +663,7 @@ span.heading {
 }
 
 .css4n {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #ffd000;
 }
 
@@ -694,6 +694,7 @@ span.heading {
   overflow: hidden;
   text-align: center;
   display: flex;
+  width: 100%;
 }
 
 .email, .greetings {
@@ -720,6 +721,7 @@ span.heading {
   text-align: center;
   justify-content: center;
   display: flex;
+  width: 100%;
 }
 
 .links > div > a {
@@ -753,43 +755,35 @@ span.heading {
 }
 
 .aboutWrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   height: 100%;
+  background: url(./assets/about.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .aboutphoto, .aboutContent {
-  flex: 1;
-  max-width: 50%;
-  height: 100%;
   box-sizing: border-box;
 }
 
-.aboutphoto {
-  padding: 5%;
-  display: flex;
-  /* align-items: center; */
-  flex-direction: column;
-}
-
 .aboutContent {
-  padding: 0 3%;
   overflow: scroll;
-  height: 95%;
 }
-
-.aboutContent > p {
+.aboutContent p {
   text-align: justify;
-  font-size: 2rem;
+  font-size: 6rem;
   color: #EFF2F3;
   padding: 0;
-  /* overflow: scroll; */
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-text-stroke: 4px #111111;
+  color: transparent;
+  white-space: nowrap;
+  font-family: "Lato";
+  padding-left: 100%;
 }
 
 .about-img-text {
-  flex: 1;
   color: #ffd000;
   font-size: 1.2rem;
   font-family: "Dancing Script", cursive;
@@ -868,7 +862,7 @@ span.heading {
   }
 
   .main-logo-pr, .main-logo-co, .main-logo-sk, .main-logo-ab {
-    width: 8vw;
+    width: 5vw;
     height: auto;
     opacity: 0;
     transform: rotate(-10deg);
@@ -947,6 +941,7 @@ span.heading {
     height: 30%;
     flex-direction: row;
     display: flex;
+    padding: 0%;
   }
   .skillsPageContainer .skillsGrid1 .leftarrow, .skillsPageContainer .skillsGrid1 .rightarrow {
     display: inline-block;
@@ -973,6 +968,9 @@ span.heading {
     min-height: calc(100vw/8);
     margin: 5%;
   }
+  .skillsPageContainer .skillsGrid1 .allSkillsContainer .allskills div {
+    font-size: 1.3rem;
+  }
   .skillsPageContainer .skillsGrid1 .allSkillsContainer:after {
     content: ".";
   }
@@ -980,6 +978,18 @@ span.heading {
     flex: 1;
     width: 100%;
     height: 70%;
+  }
+  .skillsPageContainer .skillsGrid2 p {
+    font-size: 1.3rem;
+  }
+
+  .email {
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+  }
+
+  .greetings {
+    font-size: 5rem;
   }
 }
 /* <#########################################------media Query > 480px < 767px------PHONES--------########################################################>

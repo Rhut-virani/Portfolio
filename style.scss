@@ -659,7 +659,7 @@ text-align: center
 }
 
 .css4n{
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: $acntcolor;
 
 }
@@ -700,6 +700,7 @@ text-align: center
   overflow: hidden;
   text-align: center;
   display: flex;
+  width: 100%;
 }
 
 .email, .greetings{
@@ -724,6 +725,8 @@ text-align: center
   text-align: center;
   justify-content: center;
   display: flex;
+  width: 100%;
+
 }
 .links > div > a{
   text-decoration: none;
@@ -760,39 +763,38 @@ text-align: center
   left: 0vh ;
 }
 .aboutWrapper{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   height: 100%;
+  background: url(./assets/about.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .aboutphoto, .aboutContent{
-  flex: 1;
-  max-width: 50%;
-  height: 100%;
   box-sizing: border-box;
 }
 
-.aboutphoto{
-  padding:5%;
-  display: flex;
-  /* align-items: center; */
-  flex-direction: column;
-}
+// .aboutphoto{
+//   padding:5%;
+//   display: flex;
+//   flex-direction: column;
+// }
 .aboutContent{
-  padding: 0 3%;
   overflow: scroll;
-  height: 95%;
-}
-.aboutContent > p{
-  text-align: justify;
-  font-size: 2rem;
-  color: $txtcolor2  ;
-  padding: 0; 
-  /* overflow: scroll; */
+  p{
+    text-align: justify;
+    font-size: 6rem;
+    color: $txtcolor2  ;
+    padding: 0; 
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-text-stroke: 4px #111111;
+    color: transparent;
+    white-space: nowrap;
+    font-family: "Lato";
+    padding-left: 100%;
+  }
 }
 .about-img-text{
-  flex: 1;
   color: $acntcolor;
   font-size: 1.2rem;
   font-family: 'Dancing Script', cursive;
@@ -872,7 +874,7 @@ text-align: center
         transform: translateX(50%)rotate(-10deg);
     }
     .main-logo-pr, .main-logo-co, .main-logo-sk, .main-logo-ab {
-        width: 8vw;
+        width: 5vw;
         height: auto;
         opacity: 0;
         transform: rotate(-10deg);
@@ -905,7 +907,7 @@ text-align: center
     }
     .pageIndicator{
         width: 8vw;
-        
+
     }
 
     .imgContainer{
@@ -944,6 +946,7 @@ text-align: center
             height: 30%;
             flex-direction: row;
             display: flex;
+            padding: 0%;
             .leftarrow, .rightarrow{
                 display: inline-block;
                 position: relative;
@@ -969,19 +972,64 @@ text-align: center
                     min-width: calc(100vw/8);
                     min-height: calc(100vw/8);
                     margin: 5%;
+                    div{
+                      font-size: 1.3rem;
+                    }
                 }
                 &:after{ // to add proper space after the last bubble
                     content: '.';
                 }
+
             }
         }
         .skillsGrid2{
             flex: 1;
             width: 100%;
             height: 70%;
+            p{
+              font-size: 1.3rem;
+            }
         }
     }
 
+    .email{
+      font-size: 3rem;
+      letter-spacing: 0.5rem;
+    }
+    .greetings{
+      font-size: 5rem;
+    }
+
+    // about section
+
+    // .aboutWrapper{
+    //   .aboutphoto, .aboutContent{
+    //     min-width: 100%;
+    //   }
+    //   .aboutphoto{
+    //     height: 60%;
+    //     padding:3%;
+    //     display: flex;
+    //     flex-direction: column;
+    //     .about-img-text{
+    //         p{
+    //           margin: 0;
+    //           letter-spacing: 0.5rem;
+    //           font-size: 1.3rem;
+    //         }
+    //     }
+    //     .aboutImg-container{
+    //       .aboutImg{
+    //         width: 100%;
+    //       }
+    //     }
+    //   }
+    //   .aboutContent{
+    //     overflow: scroll;
+    //   }
+      
+    // }
+    
 
 
 }
