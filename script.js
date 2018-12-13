@@ -18,6 +18,7 @@
     // lets do the preparation before the any page animation starts 
     function first(){ 
         TweenLite.set($allcontainer, {pointerEvents:'none'});
+        // TweenLite.set($allContent, {autoAlpha:0});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
