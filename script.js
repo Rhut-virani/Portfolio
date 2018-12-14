@@ -742,6 +742,7 @@ $(document).ready(function() {
                 onReverseComplete: aboutText,
                 onReverseCompleteParams:[true]
             })
+        .set(".backgroundWrapper", {backgroundColor:'#0f1214'})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.55, {top:0, bottom:''})
@@ -750,6 +751,9 @@ $(document).ready(function() {
         .to('.main-logo-ab',0.25, {opacity:1})
         .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})
         .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200', autoAlpha:0}, {yPercent:'0', autoAlpha:1, ease: Power1.easeOut} , -0.5)
+        .to(".backgroundWrapper", 1,{autoAlpha:0})
+        .set(".backgroundWrapper", {backgroundColor:'none'});        
+
 
 
     $('div.aboutContainer').click(function(){
@@ -763,38 +767,39 @@ $(document).ready(function() {
     });
 
     var tap = new TimelineMax({paused:true, repeat:-1})
+        
         .staggerFromTo(scroll_about_span1, 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'}, 3,"#span1")
-        .staggerTo(scroll_about_span1, 0.2,  {autoAlpha:0, yPercent:'-10'}, 3, "#span1+=3")
+        .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, yPercent:'-20'}, 3, "#span1+=2.8")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'})
         .fromTo('.aboutContent > p > span.span2', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=2')
-        .to('.aboutContent > p > span.span2', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=2')
+        .to('.aboutContent > p > span.span2', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'})
         .fromTo('.aboutContent > p > span.span3', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=2')
-        .to('.aboutContent > p > span.span3', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=2')
+        .to('.aboutContent > p > span.span3', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
         .fromTo('.aboutContent > p > span.span4', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=2')        
-        .to('.aboutContent > p > span.span4', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=2')        
+        .to('.aboutContent > p > span.span4', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})
         .fromTo('.aboutContent > p > span.span5', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=2')
-        .to('.aboutContent > p > span.span5', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=2')
+        .to('.aboutContent > p > span.span5', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/6.jpg)'})
         .fromTo('.aboutContent > p > span.span6', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=2')
-        .to('.aboutContent > p > span.span6', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=2')
+        .to('.aboutContent > p > span.span6', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/7.jpg)'})        
         .fromTo('.aboutContent > p > span.span7', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=2')
-        .to('.aboutContent > p > span.span7', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=2')
+        .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
         
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:0})
@@ -805,15 +810,8 @@ $(document).ready(function() {
         function aboutText (isreversed) {
                 /// if any of the skills have class active meaning they are running so value will be true
          if(isreversed){
-           tap.reverse(0.9).timeScale(2);
+           tap.reverse(1).timeScale(2);
 
-                // checking if any skills globes are open or not , if open reverse them as well
-                //    if(isSkillRunning){ 
-                //      skillRunning.reverse(0.9);
-
-                //      // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
-                //      $('.allskills').removeClass('active'); 
-                //    }
          }
          else{
            tap.play();

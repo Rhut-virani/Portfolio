@@ -2,6 +2,7 @@ $bkcolor  : #0F1214;
 $txtcolor1: #f4f4f4;
 $txtcolor2: #EFF2F3;
 $acntcolor: #ffd000;
+$pureblack: #111111;
 
 
 
@@ -773,16 +774,12 @@ text-align: center
   box-sizing: border-box;
 }
 
-// .aboutphoto{
-//   padding:5%;
-//   display: flex;
-//   flex-direction: column;
-// }
 .backgroundWrapper{
   background-position: center;
   background-size: cover;
   width: 100%;
   height: 100%;
+
 }
 .aboutContent{
   overflow: scroll;
@@ -798,7 +795,7 @@ text-align: center
     padding: 0; 
     overflow-x: scroll;
     overflow-y: hidden;
-    -webkit-text-stroke: 4px #111111;
+    -webkit-text-stroke: 4px $pureblack;
     color: #f4f4f4;
     font-family: "Lato";
     margin: 0;
@@ -1029,7 +1026,9 @@ text-align: center
 
       .aboutContent{
         p{
-          font-size: 5rem
+          font-size: 4rem;
+          -webkit-text-stroke: 3px $pureblack;
+
         }
       }
       
@@ -1086,6 +1085,18 @@ text-align: center
   .skillsPageContainer{
     overflow: scroll;
   }
+
+  // about section
+
+
+    .aboutContent{
+      p{
+        font-size: 3.5rem;
+        -webkit-text-stroke: 3px $pureblack;
+
+      }
+    }
+  
 }
 
 
@@ -1163,4 +1174,13 @@ text-align: center
   transform: translate(-50%, -50%);
   width: 75%;
   }
+
+    // about section
+
+
+    .aboutContent{
+      p{
+        // font-size: 3.5rem;
+      }
+    }
 }

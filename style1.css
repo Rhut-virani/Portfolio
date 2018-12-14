@@ -1018,7 +1018,8 @@ span.heading {
   }
 
   .aboutContent p {
-    font-size: 5rem;
+    font-size: 4rem;
+    -webkit-text-stroke: 3px #111111;
   }
 }
 /* <#########################################------media Query > 480px < 767px------PHONES--------########################################################>
@@ -1076,6 +1077,11 @@ span.heading {
 
   .skillsPageContainer {
     overflow: scroll;
+  }
+
+  .aboutContent p {
+    font-size: 3.5rem;
+    -webkit-text-stroke: 3px #111111;
   }
 }
 /* <#########################################------media Query < 480px--------################################################################>
