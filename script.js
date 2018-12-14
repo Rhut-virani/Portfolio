@@ -734,7 +734,7 @@ $(document).ready(function() {
 
 
     // about button and bottom section 
-     var scroll_about_p = $('.aboutContent > p'); 
+     var scroll_about_span1 = $('.aboutContent > p > span.span1'); 
     var ta = new TimelineMax({
                 paused:true,
                 onComplete: aboutText, 
@@ -763,8 +763,44 @@ $(document).ready(function() {
     });
 
     var tap = new TimelineMax({paused:true, repeat:-1})
-        .to(scroll_about_p, 20, {scrollTo:{x: 'max'}, ease: Power0.easeNone})
-        // .to(scroll_about_p, 10, {paddingLeft: 0});
+        .staggerFromTo(scroll_about_span1, 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'}, 3,"#span1")
+        .staggerTo(scroll_about_span1, 1,  {autoAlpha:0, yPercent:'-40'}, 3, "#span1+=3")
+
+        .set(".aboutContent", {backgroundImage:'url(./assets/aboutImages/2.jpg)'})
+        .to(".aboutContent", 0.5, {autoAlpha:1})
+        .fromTo('.aboutContent > p > span.span2', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to('.aboutContent > p > span.span2', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'})
+        .to(".aboutContent", 0.5, {backgroundImage:'none'})
+        .fromTo('.aboutContent > p > span.span3', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to('.aboutContent > p > span.span3', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+
+        .set(".aboutContent", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
+        .to(".aboutContent", 0.5, {autoAlpha:1})        
+        .fromTo('.aboutContent > p > span.span4', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to('.aboutContent > p > span.span4', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})
+        .to(".aboutContent", 0.5, {backgroundImage:'none'})
+        .fromTo('.aboutContent > p > span.span5', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to('.aboutContent > p > span.span5', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+
+        .set(".aboutContent", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
+        .to(".aboutContent", 0.5, {autoAlpha:1})
+        .fromTo('.aboutContent > p > span.span6', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to('.aboutContent > p > span.span6', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})        
+        .to(".aboutContent", 0.5, {backgroundImage:'none'})
+        .fromTo('.aboutContent > p > span.span7', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to('.aboutContent > p > span.span7', 1,  {autoAlpha:0, yPercent:'-40'}, "+=1")
+        
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'})
+        .to(".aboutContent", 0.5, {backgroundImage:'none'})
+
+
+
         
         function aboutText (isreversed) {
                 /// if any of the skills have class active meaning they are running so value will be true
