@@ -425,14 +425,19 @@ path{
         width: 70vw;
         height: 60%;
         padding-top: 1%;
+        position: relative;
         overflow: hidden;
         align-self: center;
-        .pi{
-          align-self: center;
-          height: 60%;
-          object-fit: cover;
+        cursor: e-resize;
+        .pi-div{
           position: absolute;
-          width: 70vw;
+          height: 100%;
+          width: 100%;
+          .pi{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
         }
     }
     .external-links{
@@ -470,6 +475,7 @@ path{
         p{
             padding: 1%;
             margin: 0%;
+            text-align: center;
         }
   }
   .back{

@@ -1,6 +1,8 @@
     // declaring variables
-    var $home = $('.home'),
-    $heading = $('.heading')
+    var 
+    $home = $('.home'),
+    $heading = $('.heading'),
+    $slide = $('.pi-div')
     $activeSection = $('.active'),
     $container = $('.container'),
     $indi = $('.indication'),
@@ -19,6 +21,7 @@
     function first(){ 
         TweenLite.set($allcontainer, {pointerEvents:'none'});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
+        TweenLite.set($slide.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
         TweenLite.set('.sun', {autoAlpha:0, yPercent: 200});
@@ -153,7 +156,12 @@ $(document).ready(function() {
     });
 
 
+    $('.logo-wrapper').mousemove(function(e){
+        var posX = -((e.clientX/$(window).width())-0.5);
+        var posY = -((e.clientY/$(window).height())-0.5);
 
+        TweenMax.to($('.logo-wrapper'),0.7, {xPercent:20*posX, yPercent:20*posY, ease:Power1.easeOut})        
+    })
 
 
 
@@ -288,20 +296,20 @@ $(document).ready(function() {
             .fromTo(detailsH1, 0.5,   {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
             .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
             .staggerFromTo(exlinks, 0.30, {autoAlpha:0},{autoAlpha:1}, 0.1)
-            .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0});           
+            .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0})
         return dl
         };
         
     var clickImg = function(j){
         return function(){
             var thumbImg = $('.thumbimg' + j);
-                projectImg = $('.pi' + j);
+                projectImg = $('.projectImg' + j);
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') :$('.heading' + j);
                 detailsH1 = $('.detail' + j +'> .imgContainer > h1');
                 textContent =  $('.detail' + j +' > .textContent');
                 exlinks= $('.ex-links' + j + '> a');
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
-            
+
             
             detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks).play();
             detailsPage = true;
@@ -311,7 +319,7 @@ $(document).ready(function() {
     var backclick = function(j){
         return function(){
             var thumbImg = $('.thumbimg' + j);
-                projectImg = $('.pi' + j);
+                projectImg = $('.projectImg' + j);
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') : $('.heading' + j);
                 detailsH1 = $('.detail' + j +'> .imgContainer > h1')
                 textContent =  $('.detail' + j +' > .textContent')
@@ -329,6 +337,33 @@ $(document).ready(function() {
         $('.backbutton'+ j).click(backclick(j));
     }
 
+    function slideshow (nextslide, prevslide){
+        var tni = new TimelineMax({paused:true})
+        .fromTo(prevslide, 0.5, {xPercent:0},{xPercent:'-100', zIndex:0, ease: Power3.easeInOut})
+        .fromTo(nextslide, 0.5, {xPercent:100,zIndex:1, autoAlpha:1},{xPercent:0, className:'+=active', ease: Power3.easeInOut},0)
+        .set(prevslide,{autoAlpha:0, className:'-=active', scale:1} );
+
+        tni.play();
+    }
+    function slideshowbutton(j){
+        console.log('pi image clicked');
+        let nextslide = $('.pi'+ j + '-div.active').next('.pi'+ j + '-div').length === 0 ? $('.pi'+ j + '-div.active').prevAll('.pi'+ j + '-div').last() :  $('.pi'+ j + '-div.active').next('.pi'+ j + '-div')  ;
+        let prevslide = $('.pi'+ j + '-div.active');
+        slideshow(nextslide, prevslide);
+    }
+
+    for(let j=1; j<5;j+=1){    
+    $('.pi' + j + '-div').click(function(){
+        slideshowbutton(j)
+    });
+    };
+
+    $('.projectImg').mousemove(function(e){
+        var posX = (e.clientX/$(window).width())-0.5;
+        var posY = (e.clientY/$(window).height())-0.5;
+
+        TweenMax.to($('.projectImg'),0.5, {rotationY:2*posX, rotationX:2*posY, ease:Power1.easeOut, transformPerspective: 900, transformOrigin:'center'})        
+    })
 
 
 
