@@ -403,9 +403,20 @@ path{
     height: 100%;
     flex-direction: column;
     align-items: stretch;
+    .pitext{
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      transform: translate(-50%, -15%);
+      font-size: 2rem;
+      z-index: 5;
+      div{
+      overflow: hidden;
+      }
+    }
   }
   .imgContainer{
-    flex: 4;
+    flex: 6;
     width: 100%;
     padding: 2%;
     box-sizing: border-box;
@@ -420,10 +431,10 @@ path{
         align-self: center;
         margin: 0
       }
+    
     .projectImg{
         flex: 6;
-        width: 70vw;
-        height: 60%;
+        width: 58vw;
         padding-top: 1%;
         position: relative;
         overflow: hidden;
@@ -434,7 +445,7 @@ path{
           height: 100%;
           width: 100%;
           .pi{
-            object-fit: cover;
+            object-fit: contain;
             height: 100%;
             width: 100%;
           }

@@ -400,9 +400,20 @@ button:focus {
   flex-direction: column;
   align-items: stretch;
 }
+.projectDetailContainer .pitext {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -15%);
+  font-size: 2rem;
+  z-index: 5;
+}
+.projectDetailContainer .pitext div {
+  overflow: hidden;
+}
 
 .imgContainer {
-  flex: 4;
+  flex: 6;
   width: 100%;
   padding: 2%;
   box-sizing: border-box;
@@ -420,8 +431,7 @@ button:focus {
 }
 .imgContainer .projectImg {
   flex: 6;
-  width: 70vw;
-  height: 60%;
+  width: 58vw;
   padding-top: 1%;
   position: relative;
   overflow: hidden;
@@ -434,7 +444,7 @@ button:focus {
   width: 100%;
 }
 .imgContainer .projectImg .pi-div .pi {
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
   width: 100%;
 }

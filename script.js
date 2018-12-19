@@ -286,7 +286,7 @@ $(document).ready(function() {
     // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
     var dl = new TimelineMax({paused:true});
 
-    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks) => {
+    detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2) => {
         dl.progress(0).clear();//get rid of tween in previous version of t
 
         dl  .to($indi, 0.25, {xPercent:'-100%', autoAlpha:0})
@@ -297,6 +297,8 @@ $(document).ready(function() {
             .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
             .staggerFromTo(exlinks, 0.30, {autoAlpha:0},{autoAlpha:1}, 0.1)
             .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0})
+            .fromTo(imgtext1, 0.5, {yPercent:'100'},{yPercent:0})
+            .fromTo(imgtext2, 0.5, {yPercent:'100'},{yPercent:0}, '-=0.5');
         return dl
         };
         
@@ -304,6 +306,8 @@ $(document).ready(function() {
         return function(){
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
+                imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
+                imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') :$('.heading' + j);
                 detailsH1 = $('.detail' + j +'> .imgContainer > h1');
                 textContent =  $('.detail' + j +' > .textContent');
@@ -311,7 +315,7 @@ $(document).ready(function() {
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
             
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks).play();
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).play();
             detailsPage = true;
         }
     };
@@ -321,12 +325,14 @@ $(document).ready(function() {
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') : $('.heading' + j);
+                imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
+                imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
                 detailsH1 = $('.detail' + j +'> .imgContainer > h1')
                 textContent =  $('.detail' + j +' > .textContent')
                 exlinks= $('.ex-links' + j + '> a');
                 backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
 
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks).reverse(0);
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).reverse(0);
             detailsPage = false;
 
         }
@@ -337,19 +343,41 @@ $(document).ready(function() {
         $('.backbutton'+ j).click(backclick(j));
     }
 
-    function slideshow (nextslide, prevslide){
+    var project1text = [[],
+                        [['Immersive', 'Environment'],['Time-based', 'Scoring'],['visual', 'clues'],['Multiple', 'Hints']],
+                        [[],[],[],[]],
+                        [[],[],[],[]],
+                        [[],[],[],[]]];
+    // var project2text = ;
+    // var project3text = [[],[],[],[]];
+    // var project4text = [[],[],[],[]];
+
+    function slideshow (nextslide, prevslide, length, j, imgtext1, imgtext2){
+        
+        let text1 = project1text[j][length][0];
+        let text2 = project1text[j][length][1];
+        console.log(text1, text2, project1text);
         var tni = new TimelineMax({paused:true})
+        .to(imgtext1, 0.5,{yPercent:'-100'})
+        .to(imgtext2, 0.5,{yPercent:'-100'}, 0)
+        .set(imgtext1, {text: text1})
+        .set(imgtext2, {text: text2})
         .fromTo(prevslide, 0.5, {xPercent:0},{xPercent:'-100', zIndex:0, ease: Power3.easeInOut})
-        .fromTo(nextslide, 0.5, {xPercent:100,zIndex:1, autoAlpha:1},{xPercent:0, className:'+=active', ease: Power3.easeInOut},0)
-        .set(prevslide,{autoAlpha:0, className:'-=active', scale:1} );
+        .fromTo(nextslide, 0.5, {xPercent:100,zIndex:1, autoAlpha:1},{xPercent:0, className:'+=active', ease: Power3.easeInOut})
+        .set(prevslide,{autoAlpha:0, className:'-=active', scale:1} )
+        .to(imgtext1, 0.5,{yPercent:0})
+        .to(imgtext2, 0.5,{yPercent:0}, '-=0.5');
 
         tni.play();
     }
     function slideshowbutton(j){
-        console.log('pi image clicked');
         let nextslide = $('.pi'+ j + '-div.active').next('.pi'+ j + '-div').length === 0 ? $('.pi'+ j + '-div.active').prevAll('.pi'+ j + '-div').last() :  $('.pi'+ j + '-div.active').next('.pi'+ j + '-div')  ;
         let prevslide = $('.pi'+ j + '-div.active');
-        slideshow(nextslide, prevslide);
+        let length = $('.pi'+ j + '-div.active').nextAll('.pi'+ j + '-div').length;
+        imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
+        imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
+        console.log(length);
+        slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2);
     }
 
     for(let j=1; j<5;j+=1){    
@@ -362,7 +390,7 @@ $(document).ready(function() {
         var posX = (e.clientX/$(window).width())-0.5;
         var posY = (e.clientY/$(window).height())-0.5;
 
-        TweenMax.to($('.projectImg'),0.5, {rotationY:2*posX, rotationX:2*posY, ease:Power1.easeOut, transformPerspective: 900, transformOrigin:'center'})        
+        TweenMax.to($('.projectImg'),0.5, {rotationY:5*posX, rotationX:5*posY, ease:Power1.easeOut, transformPerspective: 900, transformOrigin:'center'})        
     })
 
 
