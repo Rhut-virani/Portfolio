@@ -297,8 +297,8 @@ $(document).ready(function() {
             .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
             .staggerFromTo(exlinks, 0.30, {autoAlpha:0},{autoAlpha:1}, 0.1)
             .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0})
-            .fromTo(imgtext1, 0.5, {yPercent:'100'},{yPercent:0})
-            .fromTo(imgtext2, 0.5, {yPercent:'100'},{yPercent:0}, '-=0.5');
+            .fromTo(imgtext1, 0.5, {yPercent:'-100'},{yPercent:0})
+            .fromTo(imgtext2, 0.5, {yPercent:'-100'},{yPercent:0}, '-=0.5');
         return dl
         };
         
@@ -344,16 +344,14 @@ $(document).ready(function() {
     }
 
     var project1text = [[],
-                        [['Immersive', 'Environment'],['Time-based', 'Scoring'],['visual', 'clues'],['Multiple', 'Hints']],
-                        [[],[],[],[]],
-                        [[],[],[],[]],
-                        [[],[],[],[]]];
-    // var project2text = ;
-    // var project3text = [[],[],[],[]];
-    // var project4text = [[],[],[],[]];
+                        [['Immersive', 'Environment'],['Vr', 'Experiance'],['Visual', 'Clues'],['Fun ', 'Trivia']],
+                        [['2 Player ','Game '],[' ',' '],['Vibrant','Colors'],['Engaging &','Fun'],['Scores &','Timers'],['Simple &','Easy']],
+                        [[' ',' '],[' ',' '],[' ',' '],[' ',' ']],
+                        [[' ',' '],[' ',' '],[' ',' '],[' ',' ']]];
+
 
     function slideshow (nextslide, prevslide, length, j, imgtext1, imgtext2){
-        
+        console.log(j , length);
         let text1 = project1text[j][length][0];
         let text2 = project1text[j][length][1];
         console.log(text1, text2, project1text);
@@ -362,8 +360,8 @@ $(document).ready(function() {
         .to(imgtext2, 0.5,{yPercent:'-100'}, 0)
         .set(imgtext1, {text: text1})
         .set(imgtext2, {text: text2})
-        .fromTo(prevslide, 0.5, {xPercent:0},{xPercent:'-100', zIndex:0, ease: Power3.easeInOut})
-        .fromTo(nextslide, 0.5, {xPercent:100,zIndex:1, autoAlpha:1},{xPercent:0, className:'+=active', ease: Power3.easeInOut})
+        .fromTo(prevslide, 0.5, {xPercent:0},{xPercent:'-120', zIndex:0, ease: Power3.easeInOut})
+        .fromTo(nextslide, 0.5, {xPercent:120,zIndex:1, autoAlpha:1},{xPercent:0, className:'+=active', ease: Power3.easeInOut})
         .set(prevslide,{autoAlpha:0, className:'-=active', scale:1} )
         .to(imgtext1, 0.5,{yPercent:0})
         .to(imgtext2, 0.5,{yPercent:0}, '-=0.5');
@@ -376,7 +374,6 @@ $(document).ready(function() {
         let length = $('.pi'+ j + '-div.active').nextAll('.pi'+ j + '-div').length;
         imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
         imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
-        console.log(length);
         slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2);
     }
 
