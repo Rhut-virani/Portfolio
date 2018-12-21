@@ -4,7 +4,9 @@ $txtcolor2: #EFF2F3;
 $acntcolor: #ffd000;
 $pureblack: #111111;
 
-
+/* <#########################################------Laptop Desktop--------########################################################>
+   <#########################################------Laptop Desktop--------########################################################>
+   <#########################################------Laptop Desktop--------########################################################>*/
 
 body{
     font-family: 'Work Sans', sans-serif;
@@ -212,6 +214,7 @@ path{
 /* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
 /* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
 /* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
+  
   .waitForClass, .waitForClass2, .waitForClass3, .waitForClass4{
       display:none;
   }
@@ -405,35 +408,28 @@ path{
     height: 100%;
     flex-direction: column;
     align-items: stretch;
-    .pitext{
-      font-family: 'Work Sans';
-      position: absolute;
-      width: 20vw;
-      top: 50%;
-      left: 10%;
-      transform: translate(-10%, -50%);
-      font-size: 2.5rem;
-      letter-spacing: 0.2rem;
-      z-index: 5;
-      text-shadow: 2px 2px 2px #444;
-      font-weight: 500;
-      div{
-        overflow: hidden;
-        text-align: center;
-      }
-    }
   }
   .titleContainer{
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    .title{
+      font-size: 2.5rem;
+    }
   }
   .imgContainer{
-    flex: 5;
+    flex: 6;
     width: 100%;
-    padding: 1% 2%;
+    padding: 1% 1%;
     box-sizing: border-box;
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
     overflow: hidden;
+    justify-content: center;
+    align-items: center;
     .title{
         text-align: center;
         flex: 1;
@@ -442,11 +438,10 @@ path{
         align-self: center;
         margin: 0;
         font-weight: 200;
-      }
-    
+    }
     .projectImg{
         flex: 6;
-        width: 58vw;
+        height: 100%;
         padding-top: 1%;
         position: relative;
         overflow: hidden;
@@ -464,13 +459,13 @@ path{
         }
     }
     .external-links{
-        flex: 1;
-        text-align: center;
-        font-size: 3rem;
-        align-self: center;
-        width: 100%;
-        display: flex;
-        position: absolute;
+      width: 20vw;
+      text-align: center;
+      font-size: 3rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin: 1%;
         a{
             flex: 1;
             cursor: pointer;
@@ -481,6 +476,23 @@ path{
           }
         }
     }
+    .pitext{
+      font-family: "Work Sans";
+      font-size: 2vw;
+      z-index: 5;
+      text-shadow: 2px 2px 2px #000;
+      font-weight: 500;
+      flex: 1;
+      margin: 1%;
+      box-sizing: border-box;
+      padding: 1%;
+      min-width: 16vw;
+      div{
+        overflow: hidden;
+        text-align: center;
+      }
+    }
+
   }
   .textContent{
     flex : 1;
@@ -495,21 +507,21 @@ path{
             margin: 0%;
             text-align: center;
             font-weight: 200;
-          font-size: 2rem;
+            font-size: 2rem;
         }
   }
   .back{
     position: absolute;
     padding: 1%;
-    top: 5%;
-    left: 5%;
+    top: 1vw;
+    left: 1vw;
     font-size: 1.8rem;
     color: $acntcolor;
     cursor: pointer;
     z-index: 1;
   }
   .thumbImg{
-  width: calc(100vw - 10vh);
+  width: 100%;
   height: 100vh;
   object-fit: cover;
   position: absolute;
@@ -905,11 +917,12 @@ text-align: center
 
 
 
+
 /* <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
    <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
    <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>*/
 
-@media (min-width: 768px) and (max-width: 1024px){
+   @media (min-width: 768px) and (max-width: 1024px) and (max-resolution: 300dpi){
     html{
         -webkit-tap-highlight-color: transparent;
     }
@@ -964,37 +977,28 @@ text-align: center
     }
     .pageIndicator{
         width: 8vw;
-
     }
-
     .imgContainer{
-        flex: 4;
-        width: 100%;
-        height: 50%;
-
-        h1{
-            margin: 0%;
-            padding: 3%;
-        }
-
+      flex-direction: column;
+      .external-links{
+        flex-direction: row;
+        font-size: 2rem;
+      }
+      .projectImg{
+        width: 95%;
+      }
     }
     .textContent{
-        flex: 3;
+        flex: 2;
         width: 100%;
-        font-size: 2rem;
         p{
             padding: 0 5% 5% 5%;
             margin: 0%;
+            font-size: 1.5rem;
         }
     }
 
-    .back{
-        top: 3%;
-        left: 3%;
-    }
-    .projectDetailContainer{
-        flex-direction: column;
-    }
+    // Skills starts
 
     .skillsPageContainer {
         flex-direction: column;
@@ -1074,149 +1078,208 @@ text-align: center
 
 }
 
-
 /* <#########################################------media Query > 480px < 767px------PHONES--------########################################################>
    <#########################################------media Query > 480px < 767px------PHONES--------########################################################>
    <#########################################------media Query > 480px < 767px------PHONES--------########################################################> */
 
-@media (min-width: 481px) and (max-width: 767px) {
-  body{
-    font-size: 12px;
-  }
-  h2{
-    font-size: 1.5rem;
-  }
-  .floatingText{
+   @media (min-width: 481px) and (max-width: 767px) and (min-resolution: 100dpi){
+    body{
+      font-size: 12px;
+    }
+    h2{
+      font-size: 1.5rem;
+    }
+    .floatingText{
+        font-size: 2rem;
+        padding: 3%
+    }
+    .firstname,.lastname{
+        font-size: 2rem;
+        margin : -1.5% 5%;
+    }
+    .nameContainer{
+        top: 43%;
+    }
+    .correctWebsite{
       font-size: 2rem;
-      padding: 3%
-  }
-  .firstname,.lastname{
-      font-size: 2rem;
-      margin : -1.5% 5%;
-  }
-  .nameContainer{
-      top: 43%;
-  }
-  .correctWebsite{
-    font-size: 2rem;
-  }
-  .widerText, .widerText2{
-    font-weight: 300;
-    transition: width 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
-  }
-  .widerText{
-    width: 3.5%;
-  }
-  .widerText2{
-    width: 3.5%;
-  }
-  .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
-    width: 3.5%;
-  }
-  .allskills{
-    min-width: 20vw;
-    min-height: 20vw;
-    margin: 20%;
-  }
-  .skillsPageContainer{
-    overflow: scroll;
-  }
-
-  // about section
-
-
-    .aboutContent{
-      p{
-        font-size: 3.5rem;
-        -webkit-text-stroke: 3px $pureblack;
-
-      }
+    }
+    .widerText, .widerText2{
+      font-weight: 300;
+      transition: width 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
+    }
+    .widerText{
+      width: 3.5%;
+    }
+    .widerText2{
+      width: 3.5%;
+    }
+    .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
+      width: 3.5%;
+    }
+    .allskills{
+      min-width: 20vw;
+      min-height: 20vw;
+      margin: 20%;
+    }
+    .skillsPageContainer{
+      overflow: scroll;
     }
   
-}
-
-
-
-
-
-
-/* <#########################################------media Query < 480px--------################################################################>
-   <#########################################------media Query < 480px--------################################################################>
-   <#########################################------media Query < 480px--------################################################################> */
-
-
-@media (min-width: 320px) and (max-width: 480px) {
-  html{
-    font-size: 10px;
-  }
-  .floatingText{
-      padding: 3%;
-  }
-
-  .nameContainer{
-    width: 50vw;
-    top: 65%;
-    transform: translateX(-50%);
-    left: 51%;
-    padding: 5%;
-  }
-  .logo-wrapper {
-    top: 15%;
-    left: 50%;
-    height: 25vh;
-    width: 25vh;
-    transform: translateX(-50%) rotate(-10deg);
-  }
-
-  .buttonContainer{
-      width: 40vw;
-      height: 10vh;
-      bottom: 10%;
-      left: 50%;
-  }
-  .correctWebsite{
-      color: $bkcolor;
-      background-color: $txtcolor2;
-      width: 100%;
-      height: 100%;      
-      font-weight: 300;
-  }
-  .buttonAnimationHelper{
-    display: none;
-  }
-  .widerText, .widerText2{
-    font-weight: 300;
-  }
-  .project span, .contact span, .widerText, .widerText2, .skills span, .about span{
-    width: 2vh;
-  }
-  .projectContainer, .contactContainer{
-    width: 10vw
-  }
-  .skillsContainer, .aboutContainer{
-    height: 10vw
-  }
-  .allskills{
-    min-width: 48vw;
-    min-height: 48vw;
-  }
-
-  span.heading{
-  font-size: 4rem;
-  -webkit-text-stroke-width: 2px;
-  z-index: 199;
-  top: 50%;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  width: 75%;
-  }
-
     // about section
-
-
-    .aboutContent{
-      p{
-        // font-size: 3.5rem;
+  
+  
+      .aboutContent{
+        p{
+          font-size: 3.5rem;
+          -webkit-text-stroke: 3px $pureblack;
+  
+        }
+      }
+    
+  }
+  
+    
+  
+  
+  /* <#########################################------media Query < 480px--------################################################################>
+     <#########################################------media Query < 480px--------################################################################>
+     <#########################################------media Query < 480px--------################################################################> */
+    
+    //  phones in landscape mode 
+    //  so targetting by dpi and not only by width
+    //  so phones in landscape dont affect tablets
+    @media screen 
+    and (min-width: 320px) 
+    and (max-width: 850px) 
+    and (min-resolution: 192dpi) {
+    
+    .floatingText{
+      font-size: 2rem;
+      width: 2rem;
+    }
+    .buttonContainer {
+      bottom: 10%;
+      font-size: 2rem;
+    }
+    .nameContainer{
+      width: 50vw;
+      top: 65%;
+      transform: translateX(-50%);
+      left: 51%;
+      padding: 5%;
+    }
+    .logo-wrapper {
+      top: 15%;
+      left: 50%;
+      height: 25vh;
+      width: 25vh;
+      transform: translateX(-50%) rotate(-10deg);
+    }
+    .mainpage-text1, .mainpage-text2, .mainpage-text3, .mainpage-text4 {
+      font-size: 1.5rem;
+    }
+    .widerText, .widerText2 {
+      width: 2.5vw;
+    }
+    .projectDetailContainer{
+      span.heading {
+        font-size: 5rem;
+      }
+      .fa-vr-cardboard {
+        font-size: 2rem;
+      }
+      .titleContainer{
+        .title{
+          font-size: 1.5rem;
+        }
       }
     }
-}
+
+    }
+  
+     
+  
+  @media screen 
+      and (min-width: 320px) 
+      and (max-width: 480px) 
+      and (min-resolution: 100dpi)
+      and (max-resolution: 192dpi) {
+  
+    html{
+      font-size: 10px;
+    }
+    .floatingText{
+        padding: 3%;
+    }
+  
+    .nameContainer{
+      width: 50vw;
+      top: 65%;
+      transform: translateX(-50%);
+      left: 51%;
+      padding: 5%;
+    }
+    .logo-wrapper {
+      top: 15%;
+      left: 50%;
+      height: 25vh;
+      width: 25vh;
+      transform: translateX(-50%) rotate(-10deg);
+    }
+  
+    .buttonContainer{
+        width: 40vw;
+        height: 10vh;
+        bottom: 10%;
+        left: 50%;
+    }
+    .correctWebsite{
+        color: $bkcolor;
+        background-color: $txtcolor2;
+        width: 100%;
+        height: 100%;      
+        font-weight: 300;
+    }
+    .buttonAnimationHelper{
+      display: none;
+    }
+    .widerText, .widerText2{
+      font-weight: 300;
+    }
+    .project span, .contact span, .widerText, .widerText2, .skills span, .about span{
+      width: 2vh;
+    }
+    .projectContainer, .contactContainer{
+      width: 10vw
+    }
+    .projectPageContainer {
+      width: 90vw;
+    }
+  
+    .skillsContainer, .aboutContainer{
+      height: 10vw
+    }
+    .allskills{
+      min-width: 48vw;
+      min-height: 48vw;
+    }
+  
+    span.heading{
+      font-size: 4rem;
+      -webkit-text-stroke-width: 2px;
+      z-index: 199;
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      width: 75%;
+    }
+  
+      // about section
+  
+  
+      // .aboutContent{
+      //   p{
+      //     // font-size: 3.5rem;
+      //   }
+      // }
+  }

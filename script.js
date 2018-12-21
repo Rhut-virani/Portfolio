@@ -291,14 +291,16 @@ $(document).ready(function() {
 
         dl  .to($indi, 0.25, {xPercent:'-100%', autoAlpha:0})
             .to(heading, 0.25, {autoAlpha:0, yPercent:'-10'})
-            .fromTo(thumbImg, 0.25,   { autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
+            .fromTo(thumbImg, 0.1,   { autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
+            .fromTo(detailsH1, 0.2,   {yPercent:'-10%', autoAlpha:0},{yPercent:'0', autoAlpha:1})
             .fromTo(projectImg, 0.5,  {autoAlpha:0}, {ease: Back.easeIn.config(1.7), autoAlpha:1})
-            .fromTo(detailsH1, 0.5,   {xPercent:'-100%', opacity:0},{xPercent:'0', opacity:1})
-            .fromTo(textContent, 0.5, {xPercent:'100%', opacity:0}, {xPercent:'0', opacity:1})
-            .staggerFromTo(exlinks, 0.30, {autoAlpha:0},{autoAlpha:1}, 0.1)
-            .fromTo(backbutton, 0.25, {x:'-300%', rotation:180}, {x:'10%', rotation:0})
-            .fromTo(imgtext1, 0.5, {yPercent:'-100'},{yPercent:0})
-            .fromTo(imgtext2, 0.5, {yPercent:'-100'},{yPercent:0}, '-=0.5');
+            .fromTo(exlinks, 0.5, {autoAlpha:0},{autoAlpha:1})
+            .fromTo(imgtext1, 0.5, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.5')
+            .fromTo(imgtext2, 0.5, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.5')
+            .fromTo(textContent, 0.1, {autoAlpha:0}, {autoAlpha:1})
+            .fromTo(backbutton, 0.3, {autoAlpha:0, rotation:90}, {autoAlpha:1, rotation:0})
+
+
         return dl
         };
         
@@ -306,13 +308,13 @@ $(document).ready(function() {
         return function(){
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
-                imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
-                imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
+                imgtext1 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-1 > ');
+                imgtext2 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-2 > ');
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') :$('.heading' + j);
-                detailsH1 = $('.detail' + j +'> .imgContainer > h1');
+                detailsH1 = $('.detail' + j +'> .titleContainer > .title');
                 textContent =  $('.detail' + j +' > .textContent');
                 exlinks= $('.ex-links' + j + '> a');
-                backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
+                backbutton =  $('.backbutton' + j);
 
             
             detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).play();
@@ -325,12 +327,12 @@ $(document).ready(function() {
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') : $('.heading' + j);
-                imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
-                imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
-                detailsH1 = $('.detail' + j +'> .imgContainer > h1')
+                imgtext1 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-1 > div');
+                imgtext2 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-2 > div');
+                detailsH1 = $('.detail' + j +'> .titleContainer > .title')
                 textContent =  $('.detail' + j +' > .textContent')
                 exlinks= $('.ex-links' + j + '> a');
-                backbutton =  $('.detail' + j +' > .imgContainer > .backbutton' + j);
+                backbutton =  $('.backbutton' + j);
 
             detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).reverse(0);
             detailsPage = false;
@@ -372,8 +374,8 @@ $(document).ready(function() {
         let nextslide = $('.pi'+ j + '-div.active').next('.pi'+ j + '-div').length === 0 ? $('.pi'+ j + '-div.active').prevAll('.pi'+ j + '-div').last() :  $('.pi'+ j + '-div.active').next('.pi'+ j + '-div')  ;
         let prevslide = $('.pi'+ j + '-div.active');
         let length = $('.pi'+ j + '-div.active').nextAll('.pi'+ j + '-div').length;
-        imgtext1 = $('.detail' + j + '> .pitext > .project-i-text-1 > div');
-        imgtext2 = $('.detail' + j + '> .pitext > .project-i-text-2 > div');
+        imgtext1 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-1 > div');
+        imgtext2 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-2 > div');
         slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2);
     }
 
