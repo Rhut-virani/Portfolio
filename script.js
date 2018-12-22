@@ -57,7 +57,7 @@ $(document).ready(function() {
             .staggerFrom('.about > span'   ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .set($allcontainer, {pointerEvents:'all'});
 
-        st.play().timeScale(10);
+        st.play().timeScale(1);
         }
     
     function removeClass() {

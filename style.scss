@@ -304,64 +304,75 @@ path{
       display:none;
   }
 
-  .projectContainer, .contactContainer, .skillsContainer, .aboutContainer{
+  %allsection-name-Container{
     text-align: center;
     color: $txtcolor2;
     position: absolute;
+    z-index: 100;
+  }
+
+  %allsection-name-Container-div{
+    top: 50%;
+    position: relative;
+    cursor: pointer;
+    font-size: 1.5rem;
   }
   
-  .projectContainer, .contactContainer{
-    width: 10vh;
-    z-index: 100;
-    height: 100vh;
-  }
-  .contactContainer{
-    right: 0%;
-  }
-  .projectContainer div, .contactContainer div{
-    top: 50%;
-    position: relative;
-    width: 100vh;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  .projectContainer div{
-    transform: translate(-50%,-50%) rotate(90deg);
-    left: 50%;
-  }
-  .contactContainer div{
-    transform: translate(-50%,-50%) rotate(270deg);
-    right: -50%;
-  }
-  .skillsContainer, .aboutContainer{
-    width: 100vw;
-    height: 10vh;
-    z-index: 100;
-  }
-
-  .aboutContainer{
-    bottom: 0%;
-  }
-  .skillsContainer div , .aboutContainer div{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    position: relative;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-
-  .project span, .contact span, .skills span, .about span{
+  %project-span{
     opacity: 1;
     display: inline-block;
     font-weight: 300;
     color: $acntcolor;
   }
-  .skills span, .about span{
-    width: 10%;
+  
+  .projectContainer{
+    @extend %allsection-name-Container;
+    width: 10vh;
+    height: 100vh;
+      div{
+        @extend %allsection-name-Container-div;
+        transform: translate(-50%,-50%) rotate(90deg);
+        left: 50%;
+        width: 100vh;
+      }
   }
-  .project span, .contact span{
-    width: 10%;
+  .contactContainer{
+    @extend %allsection-name-Container;
+    width: 10vh;
+    height: 100vh;
+    right: 0%;
+      div{
+        @extend %allsection-name-Container-div;
+        transform: translate(-50%,-50%) rotate(270deg);
+        right: -50%;
+        width: 100vh;
+      }
+  }
+  .skillsContainer{
+    @extend %allsection-name-Container;
+    width: 100vw;
+    height: 10vh;
+      div{
+        @extend %allsection-name-Container-div;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+  }
+
+  .aboutContainer{
+    @extend %allsection-name-Container;
+    width: 100vw;
+    height: 10vh;
+    bottom: 0%;
+      div{
+        @extend %allsection-name-Container-div;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+  }
+
+  .project span, .contact span, .skills span, .about span{
+    @extend %project-span;
   }
  
 

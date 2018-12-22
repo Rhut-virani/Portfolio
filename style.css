@@ -298,57 +298,18 @@ path {
   display: none;
 }
 
-.projectContainer, .contactContainer, .skillsContainer, .aboutContainer {
+.aboutContainer, .skillsContainer, .contactContainer, .projectContainer {
   text-align: center;
   color: #EFF2F3;
   position: absolute;
-}
-
-.projectContainer, .contactContainer {
-  width: 10vh;
-  z-index: 100;
-  height: 100vh;
-}
-
-.contactContainer {
-  right: 0%;
-}
-
-.projectContainer div, .contactContainer div {
-  top: 50%;
-  position: relative;
-  width: 100vh;
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-.projectContainer div {
-  transform: translate(-50%, -50%) rotate(90deg);
-  left: 50%;
-}
-
-.contactContainer div {
-  transform: translate(-50%, -50%) rotate(270deg);
-  right: -50%;
-}
-
-.skillsContainer, .aboutContainer {
-  width: 100vw;
-  height: 10vh;
   z-index: 100;
 }
 
-.aboutContainer {
-  bottom: 0%;
-}
-
-.skillsContainer div, .aboutContainer div {
+.aboutContainer div, .skillsContainer div, .contactContainer div, .projectContainer div {
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   position: relative;
-  font-size: 1.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 .project span, .contact span, .skills span, .about span {
@@ -358,12 +319,44 @@ path {
   color: #ffd000;
 }
 
-.skills span, .about span {
-  width: 10%;
+.projectContainer {
+  width: 10vh;
+  height: 100vh;
+}
+.projectContainer div {
+  transform: translate(-50%, -50%) rotate(90deg);
+  left: 50%;
+  width: 100vh;
 }
 
-.project span, .contact span {
-  width: 10%;
+.contactContainer {
+  width: 10vh;
+  height: 100vh;
+  right: 0%;
+}
+.contactContainer div {
+  transform: translate(-50%, -50%) rotate(270deg);
+  right: -50%;
+  width: 100vh;
+}
+
+.skillsContainer {
+  width: 100vw;
+  height: 10vh;
+}
+.skillsContainer div {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.aboutContainer {
+  width: 100vw;
+  height: 10vh;
+  bottom: 0%;
+}
+.aboutContainer div {
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* navtext animation */
