@@ -806,7 +806,7 @@ $(document).ready(function() {
             })
         .set(".backgroundWrapper", {backgroundColor:'#0f1214'})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'101%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.55, {top:0, bottom:''})
         .fromTo('div#bottomSectionContainer', 0.75, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.1, {color:'#ffd000'},"-=0.25")
