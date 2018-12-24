@@ -1,5 +1,6 @@
     // declaring variables
     var 
+    $contentActive;
     $home = $('.home'),
     $heading = $('.heading'),
     $slide = $('.pi-div')
@@ -20,6 +21,7 @@
     // lets do the preparation before the any page animation starts 
     function first(){ 
         TweenLite.set($allcontainer, {pointerEvents:'none'});
+        TweenLite.set('.brand-container', {autoAlpha:0});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
         TweenLite.set($slide.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
@@ -47,14 +49,15 @@ $(document).ready(function() {
             .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
-            .to('.gotoLeft', 0.5, {xPercent:'-500', autoAlpha:0}, 1.5)
-            .to('.gotoRight',0.5, {xPercent: '500', autoAlpha:0}, 2.0)
-            .to('.gotoup',   0.5, {yPercent:'-500', autoAlpha:0}, 2.5)
-            .to('.gotodown', 0.5, {yPercent: '500', autoAlpha:0}, 3.0)
+            .to('.gotoLeft', 1, {x:'-500', autoAlpha:0})
+            .to('.gotoRight',1, {x: '500', autoAlpha:0}, '-=1')
+            .to('.gotoup',   1, {y:'-500', autoAlpha:0}, '-=1')
+            .to('.gotodown', 1, {y: '500', autoAlpha:0}, '-=1')
             .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1)
             .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.skills > span'  ,0.5, {yPercent:'-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.about > span'   ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
+            .set('.brand-container', {autoAlpha:1})
             .set($allcontainer, {pointerEvents:'all'});
 
         st.play().timeScale(1);
@@ -419,7 +422,7 @@ $(document).ready(function() {
         onReverseCompleteParams:[true]
     })
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.contactTransitionHelper', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
+        .fromTo('.contactTransitionHelper', 0.75, {xPercent:'101', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.55, {left:0, right:''})
         .fromTo('div#rightSectionContainer', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
@@ -806,9 +809,9 @@ $(document).ready(function() {
             })
         .set(".backgroundWrapper", {backgroundColor:'#0f1214'})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
-        .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'101%', autoAlpha:1}, {yPercent:'0'})
+        .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'101', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.55, {top:0, bottom:''})
-        .fromTo('div#bottomSectionContainer', 0.75, {yPercent:'100%', autoAlpha:1}, {yPercent:'0'})
+        .fromTo('div#bottomSectionContainer', 0.75, {yPercent:'100', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-ab',0.25, {opacity:1})
         .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})

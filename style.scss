@@ -8,11 +8,6 @@ $pureblack: #111111;
 @mixin phone-only {
   @media (max-width: 599px) { @content; }
 }
-// @mixin phone-landscape {
-//   @media (max-height: 599px) and (oriantation: landscape) {
-    
-//   }
-// }
 @mixin tablet-portrait-up {
   @media (min-width: 600px) { @content; }
 }
@@ -158,7 +153,7 @@ path{
     .logo-png{
       object-fit: contain;
       height: 72%;
-      width: 100%;
+      width: 101%;
       position: absolute;
       top: 40%;
       left: 50%;
@@ -213,8 +208,16 @@ path{
 
 .floatingmainText{
     display: inline-block;
-    padding: 0.5%;
-    font-size: 2.5rem;
+    padding: 2%;
+    font-size: 2rem;
+    @include tablet-portrait-up{
+      padding: 1%;
+    }
+    @include desktop-up{
+      padding: 0.5%;
+      font-size: 2.5rem;
+      width: 1.5rem;
+    }
 }
 
 
@@ -316,6 +319,7 @@ path{
     position: relative;
     cursor: pointer;
     font-size: 1.5rem;
+
   }
   
   %project-span{
@@ -323,7 +327,18 @@ path{
     display: inline-block;
     font-weight: 300;
     color: $acntcolor;
-    width: 1.5vw;
+    width: 3vw;
+    font-size: 1.2rem;
+      @include tablet-portrait-up{
+        width: 3vw;
+      }
+      @include tablet-landscape-up{
+        width: 2vw;
+        font-size: 1.5rem;
+      }
+      @include desktop-up{
+        width: 1.5vw;
+      }
   }
   
   .projectContainer{
@@ -400,7 +415,7 @@ path{
   }
 
   .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
-    width:10%;
+      width:10%;
   }
 
 
@@ -432,18 +447,7 @@ path{
   z-index: 201;
 }
 
-.projectPageContainer{
-  width: calc(100vw - 10vh);
-  height: 100vh;
-  background-color: $bkcolor;
-  position: relative;
-  top: 0vh;
-  left: 0vh ;
-  overflow: hidden;
-}
-// .skillsPageContainer{
-//   position: relative;
-// }
+
 .projectPageContainer > p , .contactPageContainer> p, .aboutPageContainer > p, .skillsPageContainer > p{
   color: $bkcolor;
   font-size: 2rem;
@@ -456,214 +460,270 @@ path{
   /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
   /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
   /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
-  .p-t-Left, .p-t-Right{
+  .pageIndicator{
+    position: absolute;
+    left: 1%;
+    top: 50%;
+    height: 50vh;
+    transform: translateY(-50%);
+    width: 5vh;
+    background-color: transparent;
+    z-index: 201;
+    .indication{
+      height: 24%;
+      cursor: pointer; 
+      flex-direction: column;
+      display: flex;
+       p{
+        flex: 1;
+        top: 0%;
+        left: 0;
+        position: relative;
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 300;
+        margin: 0%;
+        }
+    }
+  }
+
+  %p-t-content {
     width: 100%;
     position: absolute;
     height: 100%;
     background-color: $bkcolor;
     z-index: 200;
   }
-  .p-t-Left{
-    left: -100%;
-  }
-  .p-t-Right{
-    right: -100%
-  }
-  .pageIndicator{
-    position: absolute;
-    left: 0%;
-    top: 50%;
-    height: 50vh;
-    transform: translateY(-50%);
-    width: 10vh;
-    background-color: transparent;
-    z-index: 201;
-  }
-  .indication{
-    height: 24%;
-    cursor: pointer; 
-    flex-direction: column;
-    display: flex;
-  }
-
-  .indication p{
-    flex: 1;
-    top: 0%;
-    left: 0;
-    position: relative;
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 300;
-    margin: 0%;
-  }
-
-  .container{
-    min-width: 100%;
-    min-height: 100%;
-    margin:0;
-    padding: 0;
-  }
-  .home{
+  .projectPageContainer{
+    width: calc(100vw - 10vh);
     height: 100vh;
-    width: 100%;
-    margin:0;
-    padding: 0;
-    position: absolute;
-  }
-  .projectDetailContainer{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .titleContainer{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: 300;
-    .title{
-      font-size: 2.5rem;
-    }
-  }
-  .imgContainer{
-    flex: 6;
-    width: 100%;
-    padding: 1% 1%;
-    box-sizing: border-box;
-    flex-direction: row;
-    display: flex;
+    background-color: $bkcolor;
+    position: relative;
+    top: 0vh;
+    left: 0vh ;
     overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    .title{
-        text-align: center;
-        flex: 1;
-        font-size: 2.5rem;
-        color: $txtcolor1;
-        align-self: center;
-        margin: 0;
-        font-weight: 200;
+    .p-t-Left{
+      @extend %p-t-content;
+      left: -100%;
     }
-    .projectImg{
-        flex: 6;
-        height: 100%;
-        padding-top: 1%;
-        position: relative;
-        overflow: hidden;
-        align-self: center;
-        cursor: e-resize;
-        .pi-div{
-          position: absolute;
-          height: 100%;
+    .p-t-Right{
+      @extend %p-t-content;
+      right: -100%
+    }
+    .container{
+      min-width: 100%;
+      min-height: 100%;
+      margin:0;
+      padding: 0;
+
+        .home{
+          height: 100vh;
           width: 100%;
-          .pi{
-            object-fit: contain;
-            height: 100%;
+          margin:0;
+          padding: 0;
+          position: absolute;
+          .projectDetailContainer{
+            display: flex;
             width: 100%;
-          }
-        }
-    }
-    .external-links{
-      width: 20vw;
-      text-align: center;
-      font-size: 3rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      margin: 1%;
-        a{
-            flex: 1;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            i:hover{
+            height: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            span.heading{
+              font-size: 4rem;
+              letter-spacing: 0.5rem;
+              font-family: 'lato';
+              text-align: center;
+              -webkit-text-stroke-width: 2px;
+              -webkit-text-stroke-color: $acntcolor;
+              color: transparent;
+              z-index: 199;
+              position: absolute;
+              top: 50%;
+              left: 55%;
+              transform: translate(-50%, -50%);
+              width: 75%;
+              pointer-events: none;
+                @include tablet-portrait-up{
+                  font-size: 5rem;
+                  -webkit-text-stroke-width: 2px;
+                  left: 50%;
+                  width: 80%;
+                }
+                @include tablet-landscape-up{
+                  font-size: 7rem;
+                }
+                @include desktop-up{
+                  font-size: 9rem;
+                  width: 90%;
+                  -webkit-text-stroke-width: 3px;
+                }
+            }
+            .thumbImg{
+              width: 100%;
+              height: 100vh;
+              object-fit: cover;
+              position: absolute;
+              z-index: 100;
+            }
+              .thumbimg3{
+                filter: invert(1);
+            }
+            .fa-vr-cardboard{
+              z-index: 199;
+              font-size: 2rem;
+              position: absolute;
+              bottom: 5%;
+              right: 5%;
               color: $acntcolor;
+                @include desktop-up{
+                  font-size: 4rem;
+                }
+            }
+            .titleContainer{
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              font-weight: 300;
+              .title{
+                font-size: 1.5rem;
+                  @include desktop-up{
+                    font-size: 2.5rem;
+                  }
+              }
+            }
+            .back{
+              position: absolute;
+              padding: 1%;
+              top: 1vw;
+              left: 1vw;
+              font-size: 1.8rem;
+              color: $acntcolor;
+              cursor: pointer;
+              z-index: 1;
+            }
+            .imgContainer{
+              flex: 6;
+              width: 100%;
+              padding: 1% 1%;
+              box-sizing: border-box;
+              flex-direction: column;
+              display: flex;
+              overflow: hidden;
+              justify-content: center;
+              align-items: center;
+                @include desktop-up{
+                flex-direction: row;
+                }
+              .title{
+                  text-align: center;
+                  flex: 1;
+                  font-size: 2.5rem;
+                  color: $txtcolor1;
+                  align-self: center;
+                  margin: 0;
+                  font-weight: 200;
+              }
+              .projectImg{
+                  flex: 6;
+                  height: 100%;
+                  width: 95%;
+                  padding-top: 1%;
+                  position: relative;
+                  overflow: hidden;
+                  align-self: center;
+                  cursor: e-resize;
+                    @include desktop-up{
+                      width: 100%;
+                    }
+                  .pi-div{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    .pi{
+                      object-fit: contain;
+                      height: 100%;
+                      width: 100%;
+                    }
+                  }
+              }
+              .external-links{
+                width: 20vw;
+                text-align: center;
+                font-size: 2rem;
+                display: flex;
+                flex-direction: row;
+                flex: 1;
+                margin: 1%;
+                  @include desktop-up{
+                  flex-direction: column;
+                  font-size: 3rem;
+                  }
+                  a{
+                      flex: 1;
+                      cursor: pointer;
+                      text-decoration: none;
+                      color: inherit;
+                      i:hover{
+                        color: $acntcolor;
+                    }
+                  }
+              }
+              .pitext{
+                font-family: "Work Sans";
+                font-size: 2vw;
+                z-index: 5;
+                text-shadow: 2px 2px 2px #000;
+                font-weight: 500;
+                flex: 1;
+                margin: 1%;
+                box-sizing: border-box;
+                padding: 1%;
+                min-width: 16vw;
+                div{
+                  overflow: hidden;
+                  text-align: center;
+                }
+              }
+          
+            }
+            .textContent{
+              flex : 2;
+              width: 100%;
+              padding: 1%;
+              color: $txtcolor1;
+              text-align: justify;
+              overflow: hidden;
+              box-sizing: border-box;
+                @include desktop-up{
+                  flex : 1;
+                }
+                  p{
+                      padding: 0 5% 5% 5%;
+                      margin: 0%;
+                      font-size: 1.5rem;
+                      text-align: center;
+                      font-weight: 200;
+                      @include desktop-up{
+                        padding: 0% 1%;
+                        font-size: 2rem;
+                      }
+                  }
+            }
           }
         }
     }
-    .pitext{
-      font-family: "Work Sans";
-      font-size: 2vw;
-      z-index: 5;
-      text-shadow: 2px 2px 2px #000;
-      font-weight: 500;
-      flex: 1;
-      margin: 1%;
-      box-sizing: border-box;
-      padding: 1%;
-      min-width: 16vw;
-      div{
-        overflow: hidden;
-        text-align: center;
-      }
-    }
-
-  }
-  .textContent{
-    flex : 1;
-    width: 100%;
-    padding: 1%;
-    color: $txtcolor1;
-    text-align: justify;
-    overflow: hidden;
-    box-sizing: border-box;
-        p{
-            padding: 0% 1%;
-            margin: 0%;
-            text-align: center;
-            font-weight: 200;
-            font-size: 2rem;
-        }
-  }
-  .back{
-    position: absolute;
-    padding: 1%;
-    top: 1vw;
-    left: 1vw;
-    font-size: 1.8rem;
-    color: $acntcolor;
-    cursor: pointer;
-    z-index: 1;
-  }
-  .thumbImg{
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  position: absolute;
-  z-index: 100;
   }
 
-  .thumbimg3{
-    filter: invert(1);
-  }
 
-  .fa-vr-cardboard{
-    z-index: 199;
-    font-size: 4rem;
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    color: $acntcolor;
-  }
- span.heading{
-    font-size: 9rem;
-    letter-spacing: 0.5rem;
-    font-family: 'lato';
-    text-align: center;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: $acntcolor;
-    color: transparent;
-    z-index: 199;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    pointer-events: none;
-  }
+  
+
+
+
+
+
+
 
   
 
@@ -1022,40 +1082,7 @@ text-align: center
 
    @media (min-width: 768px) and (max-width: 1024px) and (max-resolution: 300dpi){
 
-    // .widerText{
-    //     width: 2.5%;
-    // }
-    // .widerText2{
-    //     width: 2%;
-    // }
 
-    span.heading{
-        font-size: 7rem;
-        width: 80%;
-        -webkit-text-stroke-width: 2px;
-    }
-    .pageIndicator{
-        width: 8vw;
-    }
-    .imgContainer{
-      flex-direction: column;
-      .external-links{
-        flex-direction: row;
-        font-size: 2rem;
-      }
-      .projectImg{
-        width: 95%;
-      }
-    }
-    .textContent{
-        flex: 2;
-        width: 100%;
-        p{
-            padding: 0 5% 5% 5%;
-            margin: 0%;
-            font-size: 1.5rem;
-        }
-    }
 
     // Skills starts
 
@@ -1143,20 +1170,6 @@ text-align: center
 
    @media (min-width: 481px) and (max-width: 767px) and (max-resolution: 191dpi){
 
-
-    // .widerText, .widerText2{
-    //   font-weight: 300;
-    //   transition: width 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
-    // }
-    // .widerText{
-    //   width: 3.5%;
-    // }
-    // .widerText2{
-    //   width: 3.5%;
-    // }
-    // .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
-    //   width: 3.5%;
-    // }
     .allskills{
       min-width: 20vw;
       min-height: 20vw;
@@ -1186,30 +1199,14 @@ text-align: center
     //  phones in landscape mode 
     //  so targetting by dpi and not only by width
     //  so phones in landscape dont affect tablets
-    @media screen 
-    and (min-width: 320px) 
-    and (max-width: 850px) 
-    and (min-resolution: 192dpi) {
+    // @media screen 
+    // and (min-width: 320px) 
+    // and (max-width: 850px) 
+    // and (min-resolution: 192dpi) {
     
 
-    // .widerText, .widerText2 {
-    //   width: 2.5vw;
-    // }
-    .projectDetailContainer{
-      span.heading {
-        font-size: 5rem;
-      }
-      .fa-vr-cardboard {
-        font-size: 2rem;
-      }
-      .titleContainer{
-        .title{
-          font-size: 1.5rem;
-        }
-      }
-    }
 
-    }
+    // }
   
      
   
@@ -1218,39 +1215,11 @@ text-align: center
       and (max-width: 480px) 
       and (max-resolution: 192dpi) {
   
-  
 
-    // .widerText, .widerText2{
-    //   font-weight: 300;
-    // }
-    // .project span, .contact span, .widerText, .widerText2, .skills span, .about span{
-    //   width: 2vh;
-    // }
-    .projectContainer, .contactContainer{
-      width: 10vw
-    }
-    .projectPageContainer {
-      width: 90vw;
-    }
-  
-    .skillsContainer, .aboutContainer{
-      height: 10vw
-    }
     .allskills{
       min-width: 48vw;
       min-height: 48vw;
     }
-  
-    span.heading{
-      font-size: 4rem;
-      -webkit-text-stroke-width: 2px;
-      z-index: 199;
-      top: 50%;
-      left: 55%;
-      transform: translate(-50%, -50%);
-      width: 75%;
-    }
-  
       // about section
   
   

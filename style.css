@@ -157,7 +157,7 @@ path {
 .brand-container .logo-wrapper .logo-png {
   object-fit: contain;
   height: 72%;
-  width: 100%;
+  width: 101%;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -211,8 +211,20 @@ path {
 
 .floatingmainText {
   display: inline-block;
-  padding: 0.5%;
-  font-size: 2.5rem;
+  padding: 2%;
+  font-size: 2rem;
+}
+@media (min-width: 600px) {
+  .floatingmainText {
+    padding: 1%;
+  }
+}
+@media (min-width: 1200px) {
+  .floatingmainText {
+    padding: 0.5%;
+    font-size: 2.5rem;
+    width: 1.5rem;
+  }
 }
 
 /*< ---------------------------------------------------------------------- website launch button ----------------------------------------------------------------------*/
@@ -317,7 +329,24 @@ path {
   display: inline-block;
   font-weight: 300;
   color: #ffd000;
-  width: 1.5vw;
+  width: 3vw;
+  font-size: 1.2rem;
+}
+@media (min-width: 600px) {
+  .project span, .contact span, .skills span, .about span {
+    width: 3vw;
+  }
+}
+@media (min-width: 800px) {
+  .project span, .contact span, .skills span, .about span {
+    width: 2vw;
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .project span, .contact span, .skills span, .about span {
+    width: 1.5vw;
+  }
 }
 
 .projectContainer {
@@ -410,16 +439,6 @@ path {
   z-index: 201;
 }
 
-.projectPageContainer {
-  width: calc(100vw - 10vh);
-  height: 100vh;
-  background-color: #0F1214;
-  position: relative;
-  top: 0vh;
-  left: 0vh;
-  overflow: hidden;
-}
-
 .projectPageContainer > p, .contactPageContainer > p, .aboutPageContainer > p, .skillsPageContainer > p {
   color: #0F1214;
   font-size: 2rem;
@@ -431,41 +450,23 @@ path {
 /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
 /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
 /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
-.p-t-Left, .p-t-Right {
-  width: 100%;
-  position: absolute;
-  height: 100%;
-  background-color: #0F1214;
-  z-index: 200;
-}
-
-.p-t-Left {
-  left: -100%;
-}
-
-.p-t-Right {
-  right: -100%;
-}
-
 .pageIndicator {
   position: absolute;
-  left: 0%;
+  left: 1%;
   top: 50%;
   height: 50vh;
   transform: translateY(-50%);
-  width: 10vh;
+  width: 5vh;
   background-color: transparent;
   z-index: 201;
 }
-
-.indication {
+.pageIndicator .indication {
   height: 24%;
   cursor: pointer;
   flex-direction: column;
   display: flex;
 }
-
-.indication p {
+.pageIndicator .indication p {
   flex: 1;
   top: 0%;
   left: 0;
@@ -476,30 +477,109 @@ path {
   margin: 0%;
 }
 
-.container {
+.projectPageContainer .p-t-Right, .projectPageContainer .p-t-Left {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  background-color: #0F1214;
+  z-index: 200;
+}
+
+.projectPageContainer {
+  width: calc(100vw - 10vh);
+  height: 100vh;
+  background-color: #0F1214;
+  position: relative;
+  top: 0vh;
+  left: 0vh;
+  overflow: hidden;
+}
+.projectPageContainer .p-t-Left {
+  left: -100%;
+}
+.projectPageContainer .p-t-Right {
+  right: -100%;
+}
+.projectPageContainer .container {
   min-width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
 }
-
-.home {
+.projectPageContainer .container .home {
   height: 100vh;
   width: 100%;
   margin: 0;
   padding: 0;
   position: absolute;
 }
-
-.projectDetailContainer {
+.projectPageContainer .container .home .projectDetailContainer {
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
   align-items: stretch;
 }
-
-.titleContainer {
+.projectPageContainer .container .home .projectDetailContainer span.heading {
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  font-family: "lato";
+  text-align: center;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #ffd000;
+  color: transparent;
+  z-index: 199;
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  pointer-events: none;
+}
+@media (min-width: 600px) {
+  .projectPageContainer .container .home .projectDetailContainer span.heading {
+    font-size: 5rem;
+    -webkit-text-stroke-width: 2px;
+    left: 50%;
+    width: 80%;
+  }
+}
+@media (min-width: 800px) {
+  .projectPageContainer .container .home .projectDetailContainer span.heading {
+    font-size: 7rem;
+  }
+}
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer span.heading {
+    font-size: 9rem;
+    width: 90%;
+    -webkit-text-stroke-width: 3px;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .thumbImg {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  z-index: 100;
+}
+.projectPageContainer .container .home .projectDetailContainer .thumbimg3 {
+  filter: invert(1);
+}
+.projectPageContainer .container .home .projectDetailContainer .fa-vr-cardboard {
+  z-index: 199;
+  font-size: 2rem;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  color: #ffd000;
+}
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .fa-vr-cardboard {
+    font-size: 4rem;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .titleContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -507,22 +587,41 @@ path {
   align-items: center;
   font-weight: 300;
 }
-.titleContainer .title {
-  font-size: 2.5rem;
+.projectPageContainer .container .home .projectDetailContainer .titleContainer .title {
+  font-size: 1.5rem;
 }
-
-.imgContainer {
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .titleContainer .title {
+    font-size: 2.5rem;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .back {
+  position: absolute;
+  padding: 1%;
+  top: 1vw;
+  left: 1vw;
+  font-size: 1.8rem;
+  color: #ffd000;
+  cursor: pointer;
+  z-index: 1;
+}
+.projectPageContainer .container .home .projectDetailContainer .imgContainer {
   flex: 6;
   width: 100%;
   padding: 1% 1%;
   box-sizing: border-box;
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   overflow: hidden;
   justify-content: center;
   align-items: center;
 }
-.imgContainer .title {
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer {
+    flex-direction: row;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .title {
   text-align: center;
   flex: 1;
   font-size: 2.5rem;
@@ -531,44 +630,56 @@ path {
   margin: 0;
   font-weight: 200;
 }
-.imgContainer .projectImg {
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .projectImg {
   flex: 6;
   height: 100%;
+  width: 95%;
   padding-top: 1%;
   position: relative;
   overflow: hidden;
   align-self: center;
   cursor: e-resize;
 }
-.imgContainer .projectImg .pi-div {
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .projectImg {
+    width: 100%;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .projectImg .pi-div {
   position: absolute;
   height: 100%;
   width: 100%;
 }
-.imgContainer .projectImg .pi-div .pi {
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .projectImg .pi-div .pi {
   object-fit: contain;
   height: 100%;
   width: 100%;
 }
-.imgContainer .external-links {
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links {
   width: 20vw;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
   margin: 1%;
 }
-.imgContainer .external-links a {
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links {
+    flex-direction: column;
+    font-size: 3rem;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links a {
   flex: 1;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
 }
-.imgContainer .external-links a i:hover {
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links a i:hover {
   color: #ffd000;
 }
-.imgContainer .pitext {
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
   font-family: "Work Sans";
   font-size: 2vw;
   z-index: 5;
@@ -580,13 +691,12 @@ path {
   padding: 1%;
   min-width: 16vw;
 }
-.imgContainer .pitext div {
+.projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext div {
   overflow: hidden;
   text-align: center;
 }
-
-.textContent {
-  flex: 1;
+.projectPageContainer .container .home .projectDetailContainer .textContent {
+  flex: 2;
   width: 100%;
   padding: 1%;
   color: #f4f4f4;
@@ -594,61 +704,23 @@ path {
   overflow: hidden;
   box-sizing: border-box;
 }
-.textContent p {
-  padding: 0% 1%;
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .textContent {
+    flex: 1;
+  }
+}
+.projectPageContainer .container .home .projectDetailContainer .textContent p {
+  padding: 0 5% 5% 5%;
   margin: 0%;
+  font-size: 1.5rem;
   text-align: center;
   font-weight: 200;
-  font-size: 2rem;
 }
-
-.back {
-  position: absolute;
-  padding: 1%;
-  top: 1vw;
-  left: 1vw;
-  font-size: 1.8rem;
-  color: #ffd000;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.thumbImg {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  position: absolute;
-  z-index: 100;
-}
-
-.thumbimg3 {
-  filter: invert(1);
-}
-
-.fa-vr-cardboard {
-  z-index: 199;
-  font-size: 4rem;
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  color: #ffd000;
-}
-
-span.heading {
-  font-size: 9rem;
-  letter-spacing: 0.5rem;
-  font-family: "lato";
-  text-align: center;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: #ffd000;
-  color: transparent;
-  z-index: 199;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  pointer-events: none;
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .textContent p {
+    padding: 0% 1%;
+    font-size: 2rem;
+  }
 }
 
 /* <------------------------------------------------------------------------------------ top section --------------------------------------------------------------> */
@@ -1003,37 +1075,6 @@ span.heading {
    <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
    <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>*/
 @media (min-width: 768px) and (max-width: 1024px) and (max-resolution: 300dpi) {
-  span.heading {
-    font-size: 7rem;
-    width: 80%;
-    -webkit-text-stroke-width: 2px;
-  }
-
-  .pageIndicator {
-    width: 8vw;
-  }
-
-  .imgContainer {
-    flex-direction: column;
-  }
-  .imgContainer .external-links {
-    flex-direction: row;
-    font-size: 2rem;
-  }
-  .imgContainer .projectImg {
-    width: 95%;
-  }
-
-  .textContent {
-    flex: 2;
-    width: 100%;
-  }
-  .textContent p {
-    padding: 0 5% 5% 5%;
-    margin: 0%;
-    font-size: 1.5rem;
-  }
-
   .skillsPageContainer {
     flex-direction: column;
   }
@@ -1120,43 +1161,10 @@ span.heading {
 /* <#########################################------media Query < 480px--------################################################################>
    <#########################################------media Query < 480px--------################################################################>
    <#########################################------media Query < 480px--------################################################################> */
-@media screen and (min-width: 320px) and (max-width: 850px) and (min-resolution: 192dpi) {
-  .projectDetailContainer span.heading {
-    font-size: 5rem;
-  }
-  .projectDetailContainer .fa-vr-cardboard {
-    font-size: 2rem;
-  }
-  .projectDetailContainer .titleContainer .title {
-    font-size: 1.5rem;
-  }
-}
 @media screen and (min-width: 320px) and (max-width: 480px) and (max-resolution: 192dpi) {
-  .projectContainer, .contactContainer {
-    width: 10vw;
-  }
-
-  .projectPageContainer {
-    width: 90vw;
-  }
-
-  .skillsContainer, .aboutContainer {
-    height: 10vw;
-  }
-
   .allskills {
     min-width: 48vw;
     min-height: 48vw;
-  }
-
-  span.heading {
-    font-size: 4rem;
-    -webkit-text-stroke-width: 2px;
-    z-index: 199;
-    top: 50%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    width: 75%;
   }
 }
 
