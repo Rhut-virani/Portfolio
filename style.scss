@@ -8,11 +8,14 @@ $pureblack: #111111;
 @mixin phone-only {
   @media (max-width: 599px) { @content; }
 }
-@mixin tablet-portrait-up {
-  @media (min-width: 600px) { @content; }
+@mixin phone-landscape-only {
+  @media (min-width: 600px) and (orientation: landscape) { @content; }
+}
+@mixin tablet-portrait-up{
+  @media (min-width: 600px) and (orientation: portrait) { @content; }
 }
 @mixin tablet-landscape-up {
-  @media (min-width: 800px) { @content; }
+  @media (min-width: 800px) and (orientation: landscape) { @content; }
 }
 @mixin desktop-up {
   @media (min-width: 1200px) { @content; }
@@ -112,6 +115,9 @@ path{
   left: 10vh;
   width: calc(100vw - 20vh);
   height: 80vh;
+    @include phone-landscape-only{
+      flex-direction: row;
+    }
     @include tablet-landscape-up{
       flex-direction: row;
     }
@@ -127,6 +133,11 @@ path{
     display: flex;
     flex-direction: column;
     justify-content: center;
+      @include phone-landscape-only{
+        text-align: left; 
+        order: 1;
+        padding-left: 5%; 
+      }
       @include tablet-landscape-up{
         text-align: left; 
         order: 1;
@@ -189,13 +200,16 @@ path{
       &:hover{
         /* disable hover animation on mobile devices */
         transform: initial; 
-
           @include desktop-up{
             transform: scale(1.8);
             color: $acntcolor;
           }
     
       } 
+      @include phone-landscape-only{
+        padding: 1%;
+        width: 1rem;
+      }
       @include tablet-portrait-up{
         padding: 1%;
       }
@@ -210,6 +224,10 @@ path{
     display: inline-block;
     padding: 2%;
     font-size: 2rem;
+    @include phone-landscape-only{
+      padding: 1%;
+      width: 1rem;
+    }
     @include tablet-portrait-up{
       padding: 1%;
     }
@@ -613,8 +631,11 @@ path{
               overflow: hidden;
               justify-content: center;
               align-items: center;
+                @include phone-landscape-only{
+                  flex-direction: row;
+                }
                 @include desktop-up{
-                flex-direction: row;
+                  flex-direction: row;
                 }
               .title{
                   text-align: center;
@@ -649,16 +670,23 @@ path{
                   }
               }
               .external-links{
-                width: 20vw;
+                width: 30vw;
                 text-align: center;
                 font-size: 2rem;
                 display: flex;
                 flex-direction: row;
                 flex: 1;
                 margin: 1%;
+                align-items: center;
+                  @include phone-landscape-only{
+                    flex-direction: column;
+                    font-size: 1.5rem;
+                    width: 20vw;
+                  }
                   @include desktop-up{
                   flex-direction: column;
                   font-size: 3rem;
+                  width: 20vw;
                   }
                   a{
                       flex: 1;
@@ -672,15 +700,30 @@ path{
               }
               .pitext{
                 font-family: "Work Sans";
-                font-size: 2vw;
+                font-size: 3.5vw;
                 z-index: 5;
                 text-shadow: 2px 2px 2px #000;
                 font-weight: 500;
-                flex: 1;
+                flex: 2;
                 margin: 1%;
                 box-sizing: border-box;
                 padding: 1%;
-                min-width: 16vw;
+                min-width: 30vw;
+                  @include phone-landscape-only{
+                    font-size: 2vw;
+                    min-width: 16vw;
+                  }
+                  @include tablet-portrait-up{
+                    font-size: 3vw;
+                    flex: 1;
+                  }
+                  @include tablet-landscape-up{
+                    font-size: 2.5vw;
+                  }
+                  @include desktop-up{
+                    font-size: 2vw;
+                    min-width: 16vw;
+                  }
                 div{
                   overflow: hidden;
                   text-align: center;
@@ -691,13 +734,17 @@ path{
             .textContent{
               flex : 2;
               width: 100%;
-              padding: 1%;
+              padding: 3%;
               color: $txtcolor1;
               text-align: justify;
               overflow: hidden;
               box-sizing: border-box;
+                @include tablet-portrait-up{
+                  padding: 1.5%;
+                }
                 @include desktop-up{
-                  flex : 1;
+                  flex : 1.5;
+                  padding: 1%;
                 }
                   p{
                       padding: 0 5% 5% 5%;
@@ -705,9 +752,12 @@ path{
                       font-size: 1.5rem;
                       text-align: center;
                       font-weight: 200;
+                      @include phone-landscape-only{
+                          font-size: 1.2rem
+                      }
                       @include desktop-up{
                         padding: 0% 1%;
-                        font-size: 2rem;
+                        font-size: 2vw;
                       }
                   }
             }
@@ -902,15 +952,23 @@ text-align: center
   top: 0vh;
   left: 10vh ;
   overflow: hidden;
+    .container{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: space-around;
+      height: 100%;
+      width: 100%;
+    }
 }
 
-.contactPageContainer > .container{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-around;
-  height: 100%;
-  width: 100%;
+%email-greetings {
+  font-weight: 300;
+  color: $bkcolor;
+  font-family: 'Nunito', sans-serif;
+  margin: 3%;
+  flex: 1;
+  align-self: center;
 }
 .emailContainer, .greetingsContainer{
   flex: 1;
@@ -920,20 +978,17 @@ text-align: center
   width: 100%;
 }
 
-.email, .greetings{
-  font-weight: 300;
-  color: $bkcolor;
-  font-family: 'Nunito', sans-serif;
-  margin: 3%;
-  flex: 1;
-  align-self: center;
-}
 .email{
-  font-size: 4rem;
-  letter-spacing: 1rem;
+  @extend %email-greetings;
+  font-size: 4vw;
+  letter-spacing: 1vw;
+  @include desktop-up{
+    // letter-spacing: 1rem;
+  }
 }
 .greetings{
-  font-size: 7rem;
+  @extend %email-greetings;
+  font-size: 7vw;
 }
 
 .links{
@@ -943,26 +998,34 @@ text-align: center
   justify-content: center;
   display: flex;
   width: 100%;
+  .linkedin, .phone{
+    display: inline-block;
+    flex: 1;
+    height: 10vh;
+    max-width: 10vh;
+    font-size: 10vw;
+    color: $bkcolor;
+    padding: 1%;
+    border-radius: 50%;
+    background: aliceblue;
+    margin: 4%;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        @include phone-landscape-only{
+          font-size: 4vw;
+        }
+        @include desktop-up{
+          font-size: 4vw
+        }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+  }
+}
 
-}
-.links > div > a{
-  text-decoration: none;
-  color: inherit;
-}
-.linkedin, .phone{
-  display: inline-block;
-  flex: 1;
-  height: 10vh;
-  max-width: 10vh;
-  font-size: 3.5rem;
-  color: $bkcolor;
-  padding: 1%;
-  border-radius: 50%;
-  background: aliceblue;
-  margin: 4%;
-  align-self: center;
-
-}
 
 
 /* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
@@ -1139,13 +1202,13 @@ text-align: center
         }
     }
 
-    .email{
-      font-size: 3rem;
-      letter-spacing: 0.5rem;
-    }
-    .greetings{
-      font-size: 5rem;
-    }
+    // .email{
+    //   font-size: 3rem;
+    //   letter-spacing: 0.5rem;
+    // }
+    // .greetings{
+    //   font-size: 5rem;
+    // }
 
     // about section
 
@@ -1182,13 +1245,13 @@ text-align: center
     // about section
   
   
-      .aboutContent{
-        p{
-          font-size: 3.5rem;
-          -webkit-text-stroke: 3px $pureblack;
-  
-        }
+    .aboutContent{
+      p{
+        font-size: 3.5rem;
+        -webkit-text-stroke: 3px $pureblack;
+
       }
+    }
     
   }
   

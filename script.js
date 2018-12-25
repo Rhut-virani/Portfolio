@@ -60,7 +60,7 @@ $(document).ready(function() {
             .set('.brand-container', {autoAlpha:1})
             .set($allcontainer, {pointerEvents:'all'});
 
-        st.play().timeScale(1);
+        st.play().timeScale(10);
         }
     
     function removeClass() {

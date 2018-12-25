@@ -9,7 +9,7 @@ html {
     font-size: 16px;
   }
 }
-@media (min-width: 600px) {
+@media (min-width: 600px) and (orientation: portrait) {
   html {
     font-size: 14px;
   }
@@ -109,7 +109,12 @@ path {
   height: 80vh;
   /* Name section */
 }
-@media (min-width: 800px) {
+@media (min-width: 600px) and (orientation: landscape) {
+  .brand-container {
+    flex-direction: row;
+  }
+}
+@media (min-width: 800px) and (orientation: landscape) {
   .brand-container {
     flex-direction: row;
   }
@@ -125,7 +130,14 @@ path {
   flex-direction: column;
   justify-content: center;
 }
-@media (min-width: 800px) {
+@media (min-width: 600px) and (orientation: landscape) {
+  .brand-container .nameContainer {
+    text-align: left;
+    order: 1;
+    padding-left: 5%;
+  }
+}
+@media (min-width: 800px) and (orientation: landscape) {
   .brand-container .nameContainer {
     text-align: left;
     order: 1;
@@ -149,7 +161,7 @@ path {
   order: 1;
   overflow: hidden;
 }
-@media (min-width: 800px) {
+@media (min-width: 800px) and (orientation: landscape) {
   .brand-container .logo-wrapper {
     order: 2;
   }
@@ -196,7 +208,13 @@ path {
     color: #ffd000;
   }
 }
-@media (min-width: 600px) {
+@media (min-width: 600px) and (orientation: landscape) {
+  .floatingText {
+    padding: 1%;
+    width: 1rem;
+  }
+}
+@media (min-width: 600px) and (orientation: portrait) {
   .floatingText {
     padding: 1%;
   }
@@ -214,7 +232,13 @@ path {
   padding: 2%;
   font-size: 2rem;
 }
-@media (min-width: 600px) {
+@media (min-width: 600px) and (orientation: landscape) {
+  .floatingmainText {
+    padding: 1%;
+    width: 1rem;
+  }
+}
+@media (min-width: 600px) and (orientation: portrait) {
   .floatingmainText {
     padding: 1%;
   }
@@ -332,12 +356,12 @@ path {
   width: 3vw;
   font-size: 1.2rem;
 }
-@media (min-width: 600px) {
+@media (min-width: 600px) and (orientation: portrait) {
   .project span, .contact span, .skills span, .about span {
     width: 3vw;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 800px) and (orientation: landscape) {
   .project span, .contact span, .skills span, .about span {
     width: 2vw;
     font-size: 1.5rem;
@@ -397,12 +421,12 @@ path {
   width: 3vw;
   font-size: 1.2rem;
 }
-@media (min-width: 600px) {
+@media (min-width: 600px) and (orientation: portrait) {
   .widerText, .widerText2 {
     width: 3vw;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 800px) and (orientation: landscape) {
   .widerText, .widerText2 {
     width: 2vw;
     font-size: 1.5rem;
@@ -536,7 +560,7 @@ path {
   width: 75%;
   pointer-events: none;
 }
-@media (min-width: 600px) {
+@media (min-width: 600px) and (orientation: portrait) {
   .projectPageContainer .container .home .projectDetailContainer span.heading {
     font-size: 5rem;
     -webkit-text-stroke-width: 2px;
@@ -544,7 +568,7 @@ path {
     width: 80%;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 800px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer span.heading {
     font-size: 7rem;
   }
@@ -616,6 +640,11 @@ path {
   justify-content: center;
   align-items: center;
 }
+@media (min-width: 600px) and (orientation: landscape) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer {
+    flex-direction: row;
+  }
+}
 @media (min-width: 1200px) {
   .projectPageContainer .container .home .projectDetailContainer .imgContainer {
     flex-direction: row;
@@ -656,18 +685,27 @@ path {
   width: 100%;
 }
 .projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links {
-  width: 20vw;
+  width: 30vw;
   text-align: center;
   font-size: 2rem;
   display: flex;
   flex-direction: row;
   flex: 1;
   margin: 1%;
+  align-items: center;
+}
+@media (min-width: 600px) and (orientation: landscape) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links {
+    flex-direction: column;
+    font-size: 1.5rem;
+    width: 20vw;
+  }
 }
 @media (min-width: 1200px) {
   .projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links {
     flex-direction: column;
     font-size: 3rem;
+    width: 20vw;
   }
 }
 .projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links a {
@@ -681,15 +719,38 @@ path {
 }
 .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
   font-family: "Work Sans";
-  font-size: 2vw;
+  font-size: 3.5vw;
   z-index: 5;
   text-shadow: 2px 2px 2px #000;
   font-weight: 500;
-  flex: 1;
+  flex: 2;
   margin: 1%;
   box-sizing: border-box;
   padding: 1%;
-  min-width: 16vw;
+  min-width: 30vw;
+}
+@media (min-width: 600px) and (orientation: landscape) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
+    font-size: 2vw;
+    min-width: 16vw;
+  }
+}
+@media (min-width: 600px) and (orientation: portrait) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
+    font-size: 3vw;
+    flex: 1;
+  }
+}
+@media (min-width: 800px) and (orientation: landscape) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
+    font-size: 2.5vw;
+  }
+}
+@media (min-width: 1200px) {
+  .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
+    font-size: 2vw;
+    min-width: 16vw;
+  }
 }
 .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext div {
   overflow: hidden;
@@ -698,15 +759,21 @@ path {
 .projectPageContainer .container .home .projectDetailContainer .textContent {
   flex: 2;
   width: 100%;
-  padding: 1%;
+  padding: 3%;
   color: #f4f4f4;
   text-align: justify;
   overflow: hidden;
   box-sizing: border-box;
 }
+@media (min-width: 600px) and (orientation: portrait) {
+  .projectPageContainer .container .home .projectDetailContainer .textContent {
+    padding: 1.5%;
+  }
+}
 @media (min-width: 1200px) {
   .projectPageContainer .container .home .projectDetailContainer .textContent {
-    flex: 1;
+    flex: 1.5;
+    padding: 1%;
   }
 }
 .projectPageContainer .container .home .projectDetailContainer .textContent p {
@@ -716,10 +783,15 @@ path {
   text-align: center;
   font-weight: 200;
 }
+@media (min-width: 600px) and (orientation: landscape) {
+  .projectPageContainer .container .home .projectDetailContainer .textContent p {
+    font-size: 1.2rem;
+  }
+}
 @media (min-width: 1200px) {
   .projectPageContainer .container .home .projectDetailContainer .textContent p {
     padding: 0% 1%;
-    font-size: 2rem;
+    font-size: 2vw;
   }
 }
 
@@ -898,14 +970,22 @@ path {
   left: 10vh;
   overflow: hidden;
 }
-
-.contactPageContainer > .container {
+.contactPageContainer .container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
   height: 100%;
   width: 100%;
+}
+
+.greetings, .email {
+  font-weight: 300;
+  color: #0F1214;
+  font-family: "Nunito", sans-serif;
+  margin: 3%;
+  flex: 1;
+  align-self: center;
 }
 
 .emailContainer, .greetingsContainer {
@@ -916,22 +996,12 @@ path {
   width: 100%;
 }
 
-.email, .greetings {
-  font-weight: 300;
-  color: #0F1214;
-  font-family: "Nunito", sans-serif;
-  margin: 3%;
-  flex: 1;
-  align-self: center;
-}
-
 .email {
-  font-size: 4rem;
-  letter-spacing: 1rem;
+  font-size: 4vw;
+  letter-spacing: 1vw;
 }
-
 .greetings {
-  font-size: 7rem;
+  font-size: 7vw;
 }
 
 .links {
@@ -942,24 +1012,35 @@ path {
   display: flex;
   width: 100%;
 }
-
-.links > div > a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.linkedin, .phone {
+.links .linkedin, .links .phone {
   display: inline-block;
   flex: 1;
   height: 10vh;
   max-width: 10vh;
-  font-size: 3.5rem;
+  font-size: 10vw;
   color: #0F1214;
   padding: 1%;
   border-radius: 50%;
   background: aliceblue;
   margin: 4%;
   align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 600px) and (orientation: landscape) {
+  .links .linkedin, .links .phone {
+    font-size: 4vw;
+  }
+}
+@media (min-width: 1200px) {
+  .links .linkedin, .links .phone {
+    font-size: 4vw;
+  }
+}
+.links .linkedin a, .links .phone a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* <----------------------------------------------------------------------bottom-----------------------------------------------------------------------------------> */
@@ -1123,15 +1204,6 @@ path {
   }
   .skillsPageContainer .skillsGrid2 p {
     font-size: 1.3rem;
-  }
-
-  .email {
-    font-size: 3rem;
-    letter-spacing: 0.5rem;
-  }
-
-  .greetings {
-    font-size: 5rem;
   }
 
   .aboutContent p {
