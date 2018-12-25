@@ -109,12 +109,12 @@ path {
   height: 80vh;
   /* Name section */
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .brand-container {
     flex-direction: row;
   }
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .brand-container {
     flex-direction: row;
   }
@@ -130,14 +130,14 @@ path {
   flex-direction: column;
   justify-content: center;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .brand-container .nameContainer {
     text-align: left;
     order: 1;
     padding-left: 5%;
   }
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .brand-container .nameContainer {
     text-align: left;
     order: 1;
@@ -161,7 +161,7 @@ path {
   order: 1;
   overflow: hidden;
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .brand-container .logo-wrapper {
     order: 2;
   }
@@ -208,7 +208,7 @@ path {
     color: #ffd000;
   }
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .floatingText {
     padding: 1%;
     width: 1rem;
@@ -232,7 +232,7 @@ path {
   padding: 2%;
   font-size: 2rem;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .floatingmainText {
     padding: 1%;
     width: 1rem;
@@ -361,7 +361,7 @@ path {
     width: 3vw;
   }
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .project span, .contact span, .skills span, .about span {
     width: 2vw;
     font-size: 1.5rem;
@@ -426,7 +426,7 @@ path {
     width: 3vw;
   }
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .widerText, .widerText2 {
     width: 2vw;
     font-size: 1.5rem;
@@ -568,7 +568,7 @@ path {
     width: 80%;
   }
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer span.heading {
     font-size: 7rem;
   }
@@ -640,7 +640,7 @@ path {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer .imgContainer {
     flex-direction: row;
   }
@@ -694,7 +694,7 @@ path {
   margin: 1%;
   align-items: center;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer .imgContainer .external-links {
     flex-direction: column;
     font-size: 1.5rem;
@@ -729,7 +729,7 @@ path {
   padding: 1%;
   min-width: 30vw;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
     font-size: 2vw;
     min-width: 16vw;
@@ -741,7 +741,7 @@ path {
     flex: 1;
   }
 }
-@media (min-width: 800px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer .imgContainer .pitext {
     font-size: 2.5vw;
   }
@@ -783,7 +783,7 @@ path {
   text-align: center;
   font-weight: 200;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .projectPageContainer .container .home .projectDetailContainer .textContent p {
     font-size: 1.2rem;
   }
@@ -800,7 +800,7 @@ path {
 /* <------------------------------------------------------------------------------------ top section --------------------------------------------------------------> */
 .skillsPageContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -810,55 +810,127 @@ path {
   height: 90vh;
   overflow: hidden;
 }
+@media (min-width: 1200px) {
+  .skillsPageContainer {
+    flex-direction: row;
+  }
+}
 
 .skillsGrid1 {
   flex: 1;
-  height: 100%;
-  background-color: #ffd000;
   box-sizing: border-box;
-  padding: 2%;
+  width: 100%;
+  height: 30%;
+  flex-direction: row;
+  display: flex;
+  padding: 0%;
+  background-color: #ffd000;
+}
+@media (min-width: 1200px) {
+  .skillsGrid1 {
+    height: 100%;
+    padding: 2%;
+    display: block;
+  }
 }
 .skillsGrid1 .leftarrow, .skillsGrid1 .rightarrow {
-  display: none;
-}
-
-.allSkillsContainer {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  height: fit-content;
   flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #0f1214;
+}
+@media (min-width: 1200px) {
+  .skillsGrid1 .leftarrow, .skillsGrid1 .rightarrow {
+    display: none;
+  }
+}
+.skillsGrid1 .allSkillsContainer {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 2% 0%;
   box-sizing: border-box;
+  flex: 10;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-self: center;
+  overflow: scroll;
+  padding: 2%;
+  flex: 10;
 }
-
-.skillsGrid2 {
-  flex: 2;
-  height: 100%;
+@media (min-width: 1200px) {
+  .skillsGrid1 .allSkillsContainer {
+    align-items: stretch;
+    flex: 1;
+    padding: 2% 0%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
-
-.skillsGrid2 > div {
-  margin: 2% 5%;
+.skillsGrid1 .allSkillsContainer:after {
+  content: ".";
+  opacity: 0;
 }
-
-.allskills {
-  width: 8vw;
-  height: 8vw;
+@media (min-width: 1200px) {
+  .skillsGrid1 .allSkillsContainer:after {
+    content: none;
+  }
+}
+.skillsGrid1 .allSkillsContainer .allskills {
   background-color: #EFF2F3;
-  margin: 0% 10%;
   border-radius: 50%;
   box-shadow: 3px 4px #1f1f1f;
   position: relative;
   cursor: pointer;
   box-sizing: border-box;
+  width: calc(100vw/8);
+  height: calc(100vw/8);
+  margin: 0% 5%;
 }
-
-.allskills > div {
+@media (max-width: 599px) {
+  .skillsGrid1 .allSkillsContainer .allskills {
+    min-width: 40vw;
+    height: 40vw;
+    margin: 0% 20vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+  .skillsGrid1 .allSkillsContainer .allskills {
+    min-width: 20vh;
+    height: 20vh;
+    margin: 7%;
+  }
+}
+@media (min-width: 600px) and (orientation: portrait) {
+  .skillsGrid1 .allSkillsContainer .allskills {
+    min-width: calc(100vw/8);
+    height: calc(100vw/8);
+    margin: 0% 5%;
+  }
+}
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  .skillsGrid1 .allSkillsContainer .allskills {
+    min-width: calc(100vw/8);
+    height: calc(100vw/8);
+    margin: 0% 5%;
+  }
+}
+@media (min-width: 1200px) {
+  .skillsGrid1 .allSkillsContainer .allskills {
+    margin: 0% 5%;
+    width: 8vw;
+    height: 8vw;
+  }
+}
+.skillsGrid1 .allSkillsContainer .allskills div {
   color: #0F1214;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -869,34 +941,51 @@ path {
   justify-content: center;
   align-items: center;
 }
-
-.allskills > div > p {
+@media (min-width: 1200px) {
+  .skillsGrid1 .allSkillsContainer .allskills div {
+    font-size: 1.5rem;
+  }
+}
+.skillsGrid1 .allSkillsContainer .allskills div p {
   flex: 1;
   position: absolute;
   justify-content: center;
   align-items: center;
   margin: 0%;
 }
-
-.allskills > div > p.skillName4 {
-  font-size: 4rem;
+.skillsGrid1 .allSkillsContainer .allskills div .skillName4 {
+  font-size: 3rem;
 }
-
-.allskills > div > img.skillName4 {
+@media (min-width: 1200px) {
+  .skillsGrid1 .allSkillsContainer .allskills div .skillName4 {
+    font-size: 4rem;
+  }
+}
+.skillsGrid1 .allSkillsContainer .allskills div img.skillName4 {
   padding: 20%;
   height: 60%;
 }
-
-.skills6 > div > img.skillName4 {
+.skillsGrid1 .allSkillsContainer .skills6 div img.skillName4 {
   padding: 20%;
   height: 50%;
 }
 
-.skillsContent {
-  height: 90vh;
+.skillsGrid2 {
+  flex: 1;
+  width: 100%;
+  height: 70%;
 }
-
-.skillsContent > p {
+@media (min-width: 1200px) {
+  .skillsGrid2 {
+    flex: 2;
+    height: 100%;
+  }
+}
+.skillsGrid2 .skillsContent {
+  height: 90vh;
+  margin: 2% 5%;
+}
+.skillsGrid2 .skillsContent p {
   font-size: 1.5rem;
   text-align: justify;
   font-weight: 300;
@@ -905,18 +994,15 @@ path {
 .bs4 {
   padding: 1%;
 }
-
-.js1 {
+.bs4 .css4js {
+  line-height: 0;
+}
+.bs4 .js1 {
   color: #ffd000;
   font-style: italic;
   line-height: 1rem;
 }
-
-.css4js {
-  line-height: 0;
-}
-
-.jsbig, .css4js {
+.bs4 .jsbig, .bs4 .css4js {
   font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
@@ -1038,7 +1124,7 @@ path {
   align-items: center;
   justify-content: center;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .links .linkedin, .links .phone {
     font-size: 4vw;
   }
@@ -1097,7 +1183,7 @@ path {
   font-family: "Lato";
   margin: 0;
 }
-@media (min-width: 600px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .aboutPageContainer .aboutWrapper .aboutContent p {
     font-size: 7vw;
     -webkit-text-stroke-width: 3px;
@@ -1139,84 +1225,11 @@ path {
 /* <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
    <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
    <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>*/
-@media (min-width: 768px) and (max-width: 1024px) and (max-resolution: 300dpi) {
-  .skillsPageContainer {
-    flex-direction: column;
-  }
-  .skillsPageContainer .skillsGrid1 {
-    width: 100%;
-    height: 30%;
-    flex-direction: row;
-    display: flex;
-    padding: 0%;
-  }
-  .skillsPageContainer .skillsGrid1 .leftarrow, .skillsPageContainer .skillsGrid1 .rightarrow {
-    display: inline-block;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    height: fit-content;
-    flex: 1;
-    text-align: center;
-    font-size: 1.5rem;
-    color: #0f1214;
-  }
-  .skillsPageContainer .skillsGrid1 .allSkillsContainer {
-    flex: 10;
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-self: center;
-    overflow: scroll;
-    padding: 2%;
-  }
-  .skillsPageContainer .skillsGrid1 .allSkillsContainer .allskills {
-    min-width: calc(100vw/8);
-    min-height: calc(100vw/8);
-    margin: 5%;
-  }
-  .skillsPageContainer .skillsGrid1 .allSkillsContainer .allskills div {
-    font-size: 1.3rem;
-  }
-  .skillsPageContainer .skillsGrid1 .allSkillsContainer:after {
-    content: ".";
-  }
-  .skillsPageContainer .skillsGrid2 {
-    flex: 1;
-    width: 100%;
-    height: 70%;
-  }
-  .skillsPageContainer .skillsGrid2 p {
-    font-size: 1.3rem;
-  }
-}
 /* <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>
    <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>
    <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################> */
-@media (min-width: 481px) and (max-width: 767px) and (max-resolution: 191dpi) {
-  .allskills {
-    min-width: 20vw;
-    min-height: 20vw;
-    margin: 20%;
-  }
-
-  .skillsPageContainer {
-    overflow: scroll;
-  }
-
-  .aboutContent p {
-    font-size: 3.5rem;
-    -webkit-text-stroke: 3px #111111;
-  }
-}
 /* <#########################################------media Query < 480px--------################################################################>
    <#########################################------media Query < 480px--------################################################################>
    <#########################################------media Query < 480px--------################################################################> */
-@media screen and (min-width: 320px) and (max-width: 480px) and (max-resolution: 192dpi) {
-  .allskills {
-    min-width: 48vw;
-    min-height: 48vw;
-  }
-}
 
 /*# sourceMappingURL=style.css.map */
