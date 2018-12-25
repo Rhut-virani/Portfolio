@@ -913,9 +913,15 @@ path{
                 justify-content: center;
                 align-items: center;
                 margin: 0%;
+                @include phone-only{
+                  font-size: 2rem;
+                }
               }
               .skillName4{
                 font-size: 3rem;
+                  @include phone-only{
+                    font-size: 6rem;
+                  }
                   @include desktop-up{
                     font-size: 4rem;
                   }
@@ -953,6 +959,10 @@ path{
         font-size: 1.5rem;
         text-align: justify;
         font-weight: 300;
+
+        @include phone-landscape-only{
+          font-size: 1rem;
+        }
       }
   }
 
@@ -975,6 +985,12 @@ path{
     font-size: 2.5rem;
     font-weight: 400;
     letter-spacing: 0.1rem;
+    @include phone-only{
+      font-size: 2rem;
+    }
+    @include phone-landscape-only{
+      font-size: 1.5rem;
+    }
   }
 }
 

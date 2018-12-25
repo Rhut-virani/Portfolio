@@ -953,8 +953,18 @@ path {
   align-items: center;
   margin: 0%;
 }
+@media (max-width: 599px) {
+  .skillsGrid1 .allSkillsContainer .allskills div p {
+    font-size: 2rem;
+  }
+}
 .skillsGrid1 .allSkillsContainer .allskills div .skillName4 {
   font-size: 3rem;
+}
+@media (max-width: 599px) {
+  .skillsGrid1 .allSkillsContainer .allskills div .skillName4 {
+    font-size: 6rem;
+  }
 }
 @media (min-width: 1200px) {
   .skillsGrid1 .allSkillsContainer .allskills div .skillName4 {
@@ -990,6 +1000,11 @@ path {
   text-align: justify;
   font-weight: 300;
 }
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+  .skillsGrid2 .skillsContent p {
+    font-size: 1rem;
+  }
+}
 
 .bs4 {
   padding: 1%;
@@ -1006,6 +1021,16 @@ path {
   font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
+}
+@media (max-width: 599px) {
+  .bs4 .jsbig, .bs4 .css4js {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+  .bs4 .jsbig, .bs4 .css4js {
+    font-size: 1.5rem;
+  }
 }
 
 .sun {

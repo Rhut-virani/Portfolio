@@ -26,7 +26,7 @@
         TweenLite.set($slide.not($activeSection), {autoAlpha:0});
         TweenLite.set($('.indication.active'), {color:'#ffd000'});
         TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', {autoAlpha:0, color:'#ffd000', margin: '0.5%'});
-        TweenLite.set('.sun', {autoAlpha:0, yPercent: 200});
+        TweenLite.set('.sun', {autoAlpha:0});
         TweenLite.set('.pageIndicator > div', {autoAlpha:0, xPercent: -10});
         TweenLite.set('.projectPageContainer', {autoAlpha:0, yPercent: -2});
 
@@ -587,20 +587,20 @@ $(document).ready(function() {
         }
     })
     var scrollDiv =  $('.allSkillsContainer');
-     var clientWidth = scrollDiv.outerWidth();
+     var clientWidth = scrollDiv.innerWidth();
      var scrollWidth = scrollDiv.get(0).scrollWidth;
     // var clientWidth = scrollDiv.get(0).clientWidth;
     // var leftPos;
 
     $('.leftarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 2000);
+        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 500);
         console.log('left arrow clicked');
     })
 
     $('.rightarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 1000);
+        $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 500);
         console.log('right arrow clicked');
     })
 
@@ -663,9 +663,8 @@ $(document).ready(function() {
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
         .to('.css4js', 1.5, {text: {value : ' ' + wishes + ' ', newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
         .to('.css4js', 0.5, {text: '', ease: Power1.easeOut})
-        .to(wishanimation, 0.1, {autoAlpha:1}, '-=0.5')
-        .to(wishanimation, 1.5, {yPercent: 0}, '-=0.5')
-        .to(wishanimation, 1.5, {autoAlpha:0}, '+=1')
+        .to(wishanimation, 1.5, {autoAlpha:1}, '-=0.5')
+        .to(wishanimation, 1.5, {autoAlpha:0})
         .to('.css4js', 1.5, {text: {value : "  The Time is  " + currentTime + " " ,oldClass:'css4j', newClass:'jsbig'}, ease: Power1.easeOut}, '#line3')
         .to('.css4js', 1.5, {text: {value : "  Its   " + currentDay + "  " , newClass:'jsbig'}, ease: Power1.easeIn}, '#line4')
         .to('.css4js', 1.5, {text: {value : "  The   " + currentDate + " " , newClass:'jsbig'}, ease: Power1.easeIn})
