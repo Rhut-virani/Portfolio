@@ -833,37 +833,37 @@ $(document).ready(function() {
 
     var tap = new TimelineMax({paused:true, repeat:-1})
         
-        .staggerFromTo(scroll_about_span1, 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'}, 3,"#span1")
+        .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'}, 3,"#span1")
         .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, yPercent:'-20'}, 3, "#span1+=2.8")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'})
-        .fromTo('.aboutContent > p > span.span2', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=2')
+        .fromTo('.aboutContent > p > span.span2', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span2', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'})
-        .fromTo('.aboutContent > p > span.span3', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=2')
+        .fromTo('.aboutContent > p > span.span3', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span3', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
-        .fromTo('.aboutContent > p > span.span4', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=2')        
+        .fromTo('.aboutContent > p > span.span4', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')        
         .to('.aboutContent > p > span.span4', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})
-        .fromTo('.aboutContent > p > span.span5', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=2')
+        .fromTo('.aboutContent > p > span.span5', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span5', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/6.jpg)'})
-        .fromTo('.aboutContent > p > span.span6', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=2')
+        .fromTo('.aboutContent > p > span.span6', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span6', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/7.jpg)'})        
-        .fromTo('.aboutContent > p > span.span7', 2 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=2')
+        .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
         
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'})

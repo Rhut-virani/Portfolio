@@ -994,6 +994,11 @@ path {
   text-align: center;
   display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.emailContainer a, .greetingsContainer a {
+  text-decoration: none;
 }
 
 .email {
@@ -1001,7 +1006,12 @@ path {
   letter-spacing: 1vw;
 }
 .greetings {
-  font-size: 7vw;
+  font-size: 10vw;
+}
+@media (min-width: 1200px) {
+  .greetings {
+    font-size: 7vw;
+  }
 }
 
 .links {
@@ -1053,27 +1063,20 @@ path {
   top: 10vh;
   left: 0vh;
 }
-
-.aboutWrapper {
+.aboutPageContainer .aboutWrapper {
   width: 100%;
   height: 100%;
   background: url(./assets/aboutImages/1.jpg) no-repeat;
   background-position: center;
   background-size: cover;
 }
-
-.aboutphoto, .aboutContent {
-  box-sizing: border-box;
-}
-
-.backgroundWrapper {
+.aboutPageContainer .aboutWrapper .backgroundWrapper {
   background-position: center;
   background-size: cover;
   width: 100%;
   height: 100%;
 }
-
-.aboutContent {
+.aboutPageContainer .aboutWrapper .aboutContent {
   overflow: scroll;
   height: 100%;
   width: 100%;
@@ -1082,18 +1085,31 @@ path {
   background-position: center;
   background-size: cover;
   z-index: 100;
+  box-sizing: border-box;
 }
-.aboutContent p {
-  font-size: 6rem;
+.aboutPageContainer .aboutWrapper .aboutContent p {
+  font-size: 10vw;
   padding: 0;
   overflow-x: scroll;
   overflow-y: hidden;
-  -webkit-text-stroke: 4px #111111;
+  -webkit-text-stroke: 2px #111111;
   color: #f4f4f4;
   font-family: "Lato";
   margin: 0;
 }
-.aboutContent p span {
+@media (min-width: 600px) and (orientation: landscape) {
+  .aboutPageContainer .aboutWrapper .aboutContent p {
+    font-size: 7vw;
+    -webkit-text-stroke-width: 3px;
+  }
+}
+@media (min-width: 1200px) {
+  .aboutPageContainer .aboutWrapper .aboutContent p {
+    font-size: 7vw;
+    -webkit-text-stroke-width: 4px;
+  }
+}
+.aboutPageContainer .aboutWrapper .aboutContent p span {
   opacity: 0;
   position: absolute;
   left: 50%;
@@ -1103,8 +1119,7 @@ path {
   padding: 5% 10%;
   z-index: 350;
 }
-
-.about-img-text {
+.aboutPageContainer .aboutWrapper .about-img-text {
   color: #ffd000;
   font-size: 1.2rem;
   font-family: "Dancing Script", cursive;
@@ -1116,40 +1131,9 @@ path {
   left: 50%;
   transform: translateX(-50%);
 }
-
-.about-img-text > p {
+.aboutPageContainer .aboutWrapper .about-img-text p {
   margin: auto;
   letter-spacing: 1rem;
-}
-
-.aboutImg-container {
-  flex: 1;
-  min-height: fit-content;
-  overflow: hidden;
-}
-
-.aboutImg {
-  width: 100%;
-  object-fit: contain;
-  box-shadow: 0 0 21px 11px #0d0d0d;
-}
-
-.flip-side-button {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.flip-helper {
-  position: relative;
-  width: 25%;
-  height: 25%;
-  background-color: #EFF2F3;
-}
-
-.flip-img {
-  width: 7vw;
-  margin: -5%;
 }
 
 /* <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
@@ -1204,11 +1188,6 @@ path {
   }
   .skillsPageContainer .skillsGrid2 p {
     font-size: 1.3rem;
-  }
-
-  .aboutContent p {
-    font-size: 4rem;
-    -webkit-text-stroke: 3px #111111;
   }
 }
 /* <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>

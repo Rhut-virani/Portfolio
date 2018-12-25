@@ -976,6 +976,11 @@ text-align: center
   text-align: center;
   display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+    a{
+      text-decoration: none;
+    }
 }
 
 .email{
@@ -988,7 +993,10 @@ text-align: center
 }
 .greetings{
   @extend %email-greetings;
-  font-size: 7vw;
+  font-size: 10vw;
+    @include desktop-up{
+      font-size: 7vw;
+    }
 }
 
 .links{
@@ -1041,98 +1049,108 @@ text-align: center
   position: relative;
   top: 10vh;
   left: 0vh ;
-}
-.aboutWrapper{
-  width: 100%;
-  height: 100%;
-  background: url(./assets/aboutImages/1.jpg) no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.aboutphoto, .aboutContent{
-  box-sizing: border-box;
-}
-
-.backgroundWrapper{
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-
-}
-.aboutContent{
-  overflow: scroll;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0%;
-  background-position: center;
-  background-size: cover;
-  z-index: 100;
-  p{
-    font-size: 6rem;
-    padding: 0; 
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -webkit-text-stroke: 4px $pureblack;
-    color: #f4f4f4;
-    font-family: "Lato";
-    margin: 0;
-    span{
-      opacity: 0;
+  .aboutWrapper{
+    width: 100%;
+    height: 100%;
+    background: url(./assets/aboutImages/1.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    .backgroundWrapper{
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .aboutContent{
+      overflow: scroll;
+      height: 100%;
+      width: 100%;
       position: absolute;
+      top: 0%;
+      background-position: center;
+      background-size: cover;
+      z-index: 100;
+      box-sizing: border-box;
+      p{
+        font-size: 10vw;
+        padding: 0; 
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-text-stroke: 2px $pureblack;
+        color: #f4f4f4;
+        font-family: "Lato";
+        margin: 0;
+        @include phone-landscape-only{
+          font-size: 7vw;
+          -webkit-text-stroke-width: 3px;
+        }
+        @include desktop-up{
+          font-size: 7vw;
+          -webkit-text-stroke-width: 4px;
+        }
+        span{
+          opacity: 0;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          text-align: center;
+          padding: 5% 10%;
+          z-index: 350;
+        }
+      }
+    }
+    .about-img-text{
+      color: $acntcolor;
+      font-size: 1.2rem;
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+      overflow: hidden;
+      min-height: fit-content;
+      position: absolute;
+      bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
-      width: 80%;
-      text-align: center;
-      padding: 5% 10%;
-      z-index: 350;
+        p{
+          margin: auto;
+          letter-spacing: 1rem;
+        }
     }
   }
 }
-.about-img-text{
-  color: $acntcolor;
-  font-size: 1.2rem;
-  font-family: 'Dancing Script', cursive;
-  text-align: center;
-  overflow: hidden;
-  min-height: fit-content;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%)
-}
-.about-img-text > p{
-  margin: auto;
-  letter-spacing: 1rem;
-}
-.aboutImg-container{
-  flex: 1;
-  min-height: fit-content;
-  overflow: hidden;
-}
-.aboutImg{
-  width: 100%;
-  object-fit: contain;
-  box-shadow: 0 0 21px 11px rgb(13, 13, 13);
-}
 
-.flip-side-button{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
 
-.flip-helper{
-  position: relative;
-  width: 25%;
-  height: 25%;
-  background-color: $txtcolor2;
-}
-.flip-img{
-  width: 7vw;
-  margin: -5%;
-}
+
+
+
+
+// .aboutImg-container{
+//   flex: 1;
+//   min-height: fit-content;
+//   overflow: hidden;
+// }
+// .aboutImg{
+//   width: 100%;
+//   object-fit: contain;
+//   box-shadow: 0 0 21px 11px rgb(13, 13, 13);
+// }
+
+// .flip-side-button{
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+// }
+
+// .flip-helper{
+//   position: relative;
+//   width: 25%;
+//   height: 25%;
+//   background-color: $txtcolor2;
+// }
+// .flip-img{
+//   width: 7vw;
+//   margin: -5%;
+// }
 
 
 
@@ -1202,26 +1220,6 @@ text-align: center
         }
     }
 
-    // .email{
-    //   font-size: 3rem;
-    //   letter-spacing: 0.5rem;
-    // }
-    // .greetings{
-    //   font-size: 5rem;
-    // }
-
-    // about section
-
-
-      .aboutContent{
-        p{
-          font-size: 4rem;
-          -webkit-text-stroke: 3px $pureblack;
-
-        }
-      }
-      
-    // }
     
 
 
