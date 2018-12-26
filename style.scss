@@ -63,7 +63,35 @@ body{
   background: transparent; 
 }
 
+.phoneLandscapeOnly{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0F1214;
+    z-index: 2000;
+      p{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      font-size: 5vw;
+      }
+      .landscapeHelper{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+  
+}
+
 .mainpage{
+  visibility: unset;
+  opacity: unset;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -147,6 +175,9 @@ path{
           font-weight: 300;
           font-size: 1.5rem;
           border-right: 2px solid transparent;
+            @include tablet-portrait-up{
+              font-size: 2rem;
+            }
             @include desktop-up{
               font-size: 2.5rem;
             }

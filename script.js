@@ -1,5 +1,5 @@
     // declaring variables
-    var 
+    var lt12,
     $contentActive;
     $home = $('.home'),
     $heading = $('.heading'),
@@ -33,10 +33,21 @@
         var svgContainer = $("#logo-svg");
         var svgUrl = "./assets/logo/logo-bw.svg";
         var svg = svgContainer.load(svgUrl);
+        var svg2 = $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
+
+        
     }
     //running the first function to set all specific variable to their desired state.
     first();
-
+    var lsvg = new TimelineMax({paused:true})
+    .to('#l-back-R',  5 , {strokeDashoffset: 0, ease: Power2.easeOut})
+    .to('#l-front-R', 5 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
+    .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2')
+    if(window.orientation === 90 && $(window).width() < 900){
+        lsvg.play();
+    }
+    else{
+    }
 
 $(document).ready(function() {
 
@@ -83,6 +94,7 @@ $(document).ready(function() {
 
         lt12.play().timeScale(1);
     }
+
 
     function bannerAnimation (){
         var bt = new TimelineMax({onComplete:bannerInfinite})
@@ -587,20 +599,30 @@ $(document).ready(function() {
         }
     })
     var scrollDiv =  $('.allSkillsContainer');
-     var clientWidth = scrollDiv.innerWidth();
-     var scrollWidth = scrollDiv.get(0).scrollWidth;
-    // var clientWidth = scrollDiv.get(0).clientWidth;
-    // var leftPos;
-
+    var clientWidth;
+    var clientWidth1 = $(window).width();
+    var nophone = scrollDiv.innerWidth();
+    var phone = scrollDiv.width();
+    var scrollWidth = scrollDiv.get(0).scrollWidth;
+    if(window.orientation === 0 && $(window).width() < 600){
+        clientWidth = phone
+    }
+    else{
+        clientWidth = nophone;
+    }
+    console.log(clientWidth);
+    console.log(clientWidth1);
     $('.leftarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 500);
+        // $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 500);
+        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 400);
         console.log('left arrow clicked');
     })
 
     $('.rightarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 500);
+        // $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 500);
+        $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 400);
         console.log('right arrow clicked');
     })
 
