@@ -35,21 +35,27 @@
         var svg = svgContainer.load(svgUrl);
         var svg2 = $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
 
-        
-    }
-    //running the first function to set all specific variable to their desired state.
-    first();
-    var lsvg = new TimelineMax({paused:true})
-    .to('#l-back-R',  5 , {strokeDashoffset: 0, ease: Power2.easeOut})
-    .to('#l-front-R', 5 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
-    .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2')
-    if(window.orientation === 90 && $(window).width() < 900){
-        lsvg.play();
-    }
-    else{
     }
 
+
+    //running the first function to set all specific variable to their desired state.
+    first();
+
+
+
 $(document).ready(function() {
+        
+    var lsvg = new TimelineMax({paused:true})
+        .to('#l-back-R',  5 , {strokeDashoffset: 0, ease: Power2.easeOut})
+        .to('#l-front-R', 5 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
+        .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
+
+    if(window.orientation === 90 && $(window).width() < 900){
+        lsvg.repeat(-1).yoyo(true).play();
+    }
+    else{
+        lsvg.reverse(0);
+    }
 
     for (var i = 1; i <= better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
