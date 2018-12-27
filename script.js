@@ -44,22 +44,29 @@
 
 
 $(document).ready(function() {
-        
-    var lsvg = new TimelineMax({paused:true})
+    function resize (){
+        var lsvg = new TimelineMax({paused:true, yoyo:true, repeat:-1})
         .to('#l-back-R',  5 , {strokeDashoffset: 0, ease: Power2.easeOut})
         .to('#l-front-R', 5 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
         .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
 
-    if(window.orientation === 90 && $(window).width() < 900){
-        TweenLite.set('.mainpage', {autoAlpha:0});
-        TweenLite.set('.phoneLandscapeOnly', {autoAlpha:1});
-        lsvg.repeat(-1).yoyo(true).play();
+        if(window.orientation === 90 && $(window).width() < 900){
+            TweenLite.set('.mainpage', {autoAlpha:0});
+            TweenLite.set('.phoneLandscapeOnly', {autoAlpha:1});
+            lsvg.play();
+        }
+        else{
+            TweenLite.set('.phoneLandscapeOnly', {autoAlpha:0});
+            TweenLite.set('.mainpage', {autoAlpha:1});
+            lsvg.pause().yoyo(false);
+            console.log(lsvg.progress());
+        }
     }
-    else{
-        TweenLite.set('.phoneLandscapeOnly', {autoAlpha:0});
-        TweenLite.set('.mainpage', {autoAlpha:1});
-        lsvg.reverse(0);
-    }
+    resize();
+
+    $( window ).resize(function() {
+        resize();
+    });   
 
     for (var i = 1; i <= better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
