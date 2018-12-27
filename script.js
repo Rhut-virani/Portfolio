@@ -51,9 +51,13 @@ $(document).ready(function() {
         .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
 
     if(window.orientation === 90 && $(window).width() < 900){
+        TweenLite.set('.mainpage', {autoAlpha:0});
+        TweenLite.set('.phoneLandscapeOnly', {autoAlpha:1});
         lsvg.repeat(-1).yoyo(true).play();
     }
     else{
+        TweenLite.set('.phoneLandscapeOnly', {autoAlpha:0});
+        TweenLite.set('.mainpage', {autoAlpha:1});
         lsvg.reverse(0);
     }
 
