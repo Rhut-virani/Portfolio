@@ -44,22 +44,20 @@
 
 
 $(document).ready(function() {
+    var lsvg = new TimelineMax({paused:true, repeat: -1, yoyo:true})
+    .to('#l-back-R',  4 , {strokeDashoffset: 0, ease: Power2.easeOut})
+    .to('#l-front-R', 4 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
+    .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
     function resize (){
-        var lsvg = new TimelineMax({paused:true, yoyo:true, repeat:-1})
-        .to('#l-back-R',  5 , {strokeDashoffset: 0, ease: Power2.easeOut})
-        .to('#l-front-R', 5 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
-        .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
-
         if(window.orientation === 90 && $(window).width() < 900){
             TweenLite.set('.mainpage', {autoAlpha:0});
             TweenLite.set('.phoneLandscapeOnly', {autoAlpha:1});
             lsvg.play();
         }
-        else{
+        else {
             TweenLite.set('.phoneLandscapeOnly', {autoAlpha:0});
             TweenLite.set('.mainpage', {autoAlpha:1});
-            lsvg.pause().yoyo(false);
-            console.log(lsvg.progress());
+            lsvg.pause();
         }
     }
     resize();
@@ -133,7 +131,7 @@ $(document).ready(function() {
         .to('.mainpage-text3', 1, {text: {value:' '}})
         .to('.mainpage-text3', 3, {text: {value:'Always a Coder'}})
         .to('.mainpage-text3', 1, {text: {value:' '}})
-        .fromTo('.mainpage-text3', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:50,                              ease:  SteppedEase.config(37)}, 0);
+        .fromTo('.mainpage-text3', 0.5, {borderRightColor: "#ffd00020"}, {borderRightColor: "#ffd000",repeat:50, ease:  SteppedEase.config(37)}, 0);
     }
 
 
