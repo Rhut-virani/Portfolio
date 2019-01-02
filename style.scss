@@ -98,32 +98,39 @@ body{
   overflow: hidden;
 }
 
-.main-logo-pr, .main-logo-co, .main-logo-sk, .main-logo-ab {
-  width: 5vw;
+%logo-pr-1{
+  width: 70%;
   height: auto;
   opacity: 0;
   transform: rotate(-10deg);
-  left: 1vw;
+  left: 15%;
   position: absolute;
-
-    @include desktop-up{
-      width: 4vw;
-      left: 0.5vw;
-    }
+}
+%logo-pr-2{
+  height: 70%;
+  width: auto;
+  opacity: 0;
+  transform: rotate(-10deg);
+  position: absolute;  
+  left: 0.5vw;
+}
+.main-logo-pr{
+  @extend %logo-pr-1;
+  top: 1%; 
+}
+.main-logo-co{
+  @extend %logo-pr-1;
+  top: 1%; 
+}
+.main-logo-sk {
+  @extend %logo-pr-2;
+  bottom: 15%;
+}
+.main-logo-ab {
+  @extend %logo-pr-2;
+  top: 15%; 
 }
 
-.main-logo-pr, .main-logo-ab, .main-logo-co{
-  top: 1.5vw;  
-  @include desktop-up{
-    top: 0.5vw;
-  } 
-}
-.main-logo-sk{
-  bottom: 1.5vw;
-    @include desktop-up{
-      bottom: 0.75vw;
-    }
-}
 
 path{
   position: absolute;
@@ -150,6 +157,9 @@ path{
     @include tablet-landscape-up{
       flex-direction: row;
     }
+    @include desktop-up{
+      flex-direction: row;
+    }
   
   /* Name section */
   .nameContainer{
@@ -172,11 +182,19 @@ path{
         order: 1;
         padding-left: 5%;
       }
+      @include desktop-up{
+        text-align: left; 
+        order: 1;
+        padding-left: 5%;
+      }
         .mainpage-text1, .mainpage-text2, .mainpage-text3, .mainpage-text4{
           font-weight: 300;
           font-size: 1.5rem;
           border-right: 2px solid transparent;
             @include tablet-portrait-up{
+              font-size: 2rem;
+            }
+            @include tablet-landscape-up{
               font-size: 2rem;
             }
             @include desktop-up{
@@ -369,7 +387,6 @@ path{
     position: relative;
     cursor: pointer;
     font-size: 1.5rem;
-
   }
   
   %project-span{
@@ -395,6 +412,9 @@ path{
     @extend %allsection-name-Container;
     width: 10vh;
     height: 100vh;
+      @include phone-only{
+        width: 10vw;
+      }
       div{
         @extend %allsection-name-Container-div;
         transform: translate(-50%,-50%) rotate(90deg);
@@ -407,6 +427,9 @@ path{
     width: 10vh;
     height: 100vh;
     right: 0%;
+    @include phone-only{
+      width: 10vw;
+    }
       div{
         @extend %allsection-name-Container-div;
         transform: translate(-50%,-50%) rotate(270deg);
@@ -418,6 +441,9 @@ path{
     @extend %allsection-name-Container;
     width: 100vw;
     height: 10vh;
+    @include phone-only{
+      height: 10vw;
+    }
       div{
         @extend %allsection-name-Container-div;
         left: 50%;
@@ -430,6 +456,9 @@ path{
     width: 100vw;
     height: 10vh;
     bottom: 0%;
+    @include phone-only{
+      height: 10vw;
+    }
       div{
         @extend %allsection-name-Container-div;
         left: 50%;
@@ -533,6 +562,9 @@ path{
         font-size: 3rem;
         font-weight: 300;
         margin: 0%;
+          @include phone-only{
+            font-size: 2rem;
+          }
         }
     }
   }
@@ -552,6 +584,9 @@ path{
     top: 0vh;
     left: 0vh ;
     overflow: hidden;
+      @include phone-only{
+        width: calc(100vw - 10vw);
+      }
     .p-t-Left{
       @extend %p-t-content;
       left: -100%;
@@ -632,27 +667,30 @@ path{
             .titleContainer{
               flex: 1;
               display: flex;
-              flex-direction: column;
+              flex-direction: row;
               justify-content: center;
               align-items: center;
               font-weight: 300;
               .title{
                 font-size: 1.5rem;
+                  @include tablet-landscape-up{
+                  font-size: 2rem;
+                  }
                   @include desktop-up{
                     font-size: 2.5rem;
                   }
               }
+              .back{
+                position: absolute;
+                padding-left: 3%;
+                left: 1vw;
+                font-size: 1.8rem;
+                color: $acntcolor;
+                cursor: pointer;
+                z-index: 1;
+              }
             }
-            .back{
-              position: absolute;
-              padding: 1%;
-              top: 1vw;
-              left: 1vw;
-              font-size: 1.8rem;
-              color: $acntcolor;
-              cursor: pointer;
-              z-index: 1;
-            }
+
             .imgContainer{
               flex: 6;
               width: 100%;
@@ -771,6 +809,9 @@ path{
               text-align: justify;
               overflow: hidden;
               box-sizing: border-box;
+                @include phone-only{
+                  flex: 3;
+                }
                 @include tablet-portrait-up{
                   padding: 1.5%;
                 }
@@ -784,7 +825,7 @@ path{
                       font-size: 1.5rem;
                       text-align: center;
                       font-weight: 200;
-                      @include phone-landscape-only{
+                      @include phone-only{
                           font-size: 1.2rem
                       }
                       @include desktop-up{
@@ -826,6 +867,9 @@ path{
   width: 100vw;
   height: 90vh;
   overflow: hidden;
+    @include phone-only{
+      height: calc(100vh - 10vw);
+    }
     @include desktop-up{
       flex-direction: row;
     }
@@ -1081,6 +1125,10 @@ text-align: center
   top: 0vh;
   left: 10vh ;
   overflow: hidden;
+    @include phone-only{
+      width: calc(100vw - 10vw);
+      left: 10vw;
+    }
     .container{
       display: flex;
       flex-direction: column;
@@ -1178,6 +1226,10 @@ text-align: center
   position: relative;
   top: 10vh;
   left: 0vh ;
+    @include phone-only{
+      height: calc(100vh - 10vw);
+      top: 10vw;
+    }
   .aboutWrapper{
     width: 100%;
     height: 100%;

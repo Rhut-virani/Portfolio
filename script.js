@@ -52,7 +52,7 @@ $(document).ready(function() {
         if(window.orientation === 90 && $(window).width() < 900){
             TweenLite.set('.mainpage', {autoAlpha:0});
             TweenLite.set('.phoneLandscapeOnly', {autoAlpha:1});
-            lsvg.play();
+            lsvg.play(0);
         }
         else {
             TweenLite.set('.phoneLandscapeOnly', {autoAlpha:0});
@@ -430,7 +430,7 @@ $(document).ready(function() {
 
 
 
-
+    
 
 // <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>
 // <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>

@@ -83,37 +83,38 @@ body {
   overflow: hidden;
 }
 
-.main-logo-pr, .main-logo-co, .main-logo-sk, .main-logo-ab {
-  width: 5vw;
+.main-logo-co, .main-logo-pr {
+  width: 70%;
   height: auto;
   opacity: 0;
   transform: rotate(-10deg);
-  left: 1vw;
+  left: 15%;
   position: absolute;
 }
-@media (min-width: 1200px) {
-  .main-logo-pr, .main-logo-co, .main-logo-sk, .main-logo-ab {
-    width: 4vw;
-    left: 0.5vw;
-  }
+
+.main-logo-ab, .main-logo-sk {
+  height: 70%;
+  width: auto;
+  opacity: 0;
+  transform: rotate(-10deg);
+  position: absolute;
+  left: 0.5vw;
 }
 
-.main-logo-pr, .main-logo-ab, .main-logo-co {
-  top: 1.5vw;
+.main-logo-pr {
+  top: 1%;
 }
-@media (min-width: 1200px) {
-  .main-logo-pr, .main-logo-ab, .main-logo-co {
-    top: 0.5vw;
-  }
+
+.main-logo-co {
+  top: 1%;
 }
 
 .main-logo-sk {
-  bottom: 1.5vw;
+  bottom: 15%;
 }
-@media (min-width: 1200px) {
-  .main-logo-sk {
-    bottom: 0.75vw;
-  }
+
+.main-logo-ab {
+  top: 15%;
 }
 
 path {
@@ -147,6 +148,11 @@ path {
     flex-direction: row;
   }
 }
+@media (min-width: 1200px) {
+  .brand-container {
+    flex-direction: row;
+  }
+}
 .brand-container .nameContainer {
   flex: 1;
   order: 2;
@@ -172,12 +178,24 @@ path {
     padding-left: 5%;
   }
 }
+@media (min-width: 1200px) {
+  .brand-container .nameContainer {
+    text-align: left;
+    order: 1;
+    padding-left: 5%;
+  }
+}
 .brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
   font-weight: 300;
   font-size: 1.5rem;
   border-right: 2px solid transparent;
 }
 @media (min-width: 600px) and (orientation: portrait) {
+  .brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
     font-size: 2rem;
   }
@@ -410,6 +428,11 @@ path {
   width: 10vh;
   height: 100vh;
 }
+@media (max-width: 599px) {
+  .projectContainer {
+    width: 10vw;
+  }
+}
 .projectContainer div {
   transform: translate(-50%, -50%) rotate(90deg);
   left: 50%;
@@ -421,6 +444,11 @@ path {
   height: 100vh;
   right: 0%;
 }
+@media (max-width: 599px) {
+  .contactContainer {
+    width: 10vw;
+  }
+}
 .contactContainer div {
   transform: translate(-50%, -50%) rotate(270deg);
   right: -50%;
@@ -431,6 +459,11 @@ path {
   width: 100vw;
   height: 10vh;
 }
+@media (max-width: 599px) {
+  .skillsContainer {
+    height: 10vw;
+  }
+}
 .skillsContainer div {
   left: 50%;
   transform: translate(-50%, -50%);
@@ -440,6 +473,11 @@ path {
   width: 100vw;
   height: 10vh;
   bottom: 0%;
+}
+@media (max-width: 599px) {
+  .aboutContainer {
+    height: 10vw;
+  }
 }
 .aboutContainer div {
   left: 50%;
@@ -533,6 +571,11 @@ path {
   font-weight: 300;
   margin: 0%;
 }
+@media (max-width: 599px) {
+  .pageIndicator .indication p {
+    font-size: 2rem;
+  }
+}
 
 .projectPageContainer .p-t-Right, .projectPageContainer .p-t-Left {
   width: 100%;
@@ -550,6 +593,11 @@ path {
   top: 0vh;
   left: 0vh;
   overflow: hidden;
+}
+@media (max-width: 599px) {
+  .projectPageContainer {
+    width: calc(100vw - 10vw);
+  }
 }
 .projectPageContainer .p-t-Left {
   left: -100%;
@@ -639,7 +687,7 @@ path {
 .projectPageContainer .container .home .projectDetailContainer .titleContainer {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-weight: 300;
@@ -647,15 +695,19 @@ path {
 .projectPageContainer .container .home .projectDetailContainer .titleContainer .title {
   font-size: 1.5rem;
 }
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  .projectPageContainer .container .home .projectDetailContainer .titleContainer .title {
+    font-size: 2rem;
+  }
+}
 @media (min-width: 1200px) {
   .projectPageContainer .container .home .projectDetailContainer .titleContainer .title {
     font-size: 2.5rem;
   }
 }
-.projectPageContainer .container .home .projectDetailContainer .back {
+.projectPageContainer .container .home .projectDetailContainer .titleContainer .back {
   position: absolute;
-  padding: 1%;
-  top: 1vw;
+  padding-left: 3%;
   left: 1vw;
   font-size: 1.8rem;
   color: #ffd000;
@@ -798,6 +850,11 @@ path {
   overflow: hidden;
   box-sizing: border-box;
 }
+@media (max-width: 599px) {
+  .projectPageContainer .container .home .projectDetailContainer .textContent {
+    flex: 3;
+  }
+}
 @media (min-width: 600px) and (orientation: portrait) {
   .projectPageContainer .container .home .projectDetailContainer .textContent {
     padding: 1.5%;
@@ -816,7 +873,7 @@ path {
   text-align: center;
   font-weight: 200;
 }
-@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 599px) {
   .projectPageContainer .container .home .projectDetailContainer .textContent p {
     font-size: 1.2rem;
   }
@@ -842,6 +899,11 @@ path {
   width: 100vw;
   height: 90vh;
   overflow: hidden;
+}
+@media (max-width: 599px) {
+  .skillsPageContainer {
+    height: calc(100vh - 10vw);
+  }
 }
 @media (min-width: 1200px) {
   .skillsPageContainer {
@@ -1114,6 +1176,12 @@ path {
   left: 10vh;
   overflow: hidden;
 }
+@media (max-width: 599px) {
+  .contactPageContainer {
+    width: calc(100vw - 10vw);
+    left: 10vw;
+  }
+}
 .contactPageContainer .container {
   display: flex;
   flex-direction: column;
@@ -1206,6 +1274,12 @@ path {
   position: relative;
   top: 10vh;
   left: 0vh;
+}
+@media (max-width: 599px) {
+  .aboutPageContainer {
+    height: calc(100vh - 10vw);
+    top: 10vw;
+  }
 }
 .aboutPageContainer .aboutWrapper {
   width: 100%;
