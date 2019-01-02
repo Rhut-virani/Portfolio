@@ -1239,7 +1239,7 @@ path {
   flex: 1;
   height: 10vh;
   max-width: 10vh;
-  font-size: 10vw;
+  font-size: 6vw;
   color: #0F1214;
   padding: 1%;
   border-radius: 50%;
@@ -1250,9 +1250,9 @@ path {
   align-items: center;
   justify-content: center;
 }
-@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 599px) {
   .links .linkedin, .links .phone {
-    font-size: 4vw;
+    font-size: 10vw;
   }
 }
 @media (min-width: 1200px) {

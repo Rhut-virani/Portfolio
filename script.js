@@ -232,7 +232,7 @@ $(document).ready(function() {
         .to('.main-logo-pr',0.25, {opacity:1})
         .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
         .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0})
-        .to('div.projectContainer',0.50, {boxShadow: '-5px 0px 25px -15px #ffd000'}) ;
+        .to('div.projectContainer',0.50, {boxShadow: '-5px 0px 25px -15px #ffd000'});
 
 
     $('div.projectContainer').click(function(){
@@ -430,7 +430,7 @@ $(document).ready(function() {
 
 
 
-    
+
 
 // <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>
 // <#####################################################------CONTACT - RIGHT SECTION--------##################################################################>

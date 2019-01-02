@@ -501,6 +501,7 @@ path{
 
   
 
+
 /* <-------------------------  individual sections ------------------------------->  */
 /* <-------------------------  individual sections ------------------------------->  */
 /* <-------------------------  individual sections ------------------------------->  */
@@ -1188,7 +1189,7 @@ text-align: center
     flex: 1;
     height: 10vh;
     max-width: 10vh;
-    font-size: 10vw;
+    font-size: 6vw;
     color: $bkcolor;
     padding: 1%;
     border-radius: 50%;
@@ -1198,9 +1199,10 @@ text-align: center
     display: flex;
     align-items: center;
     justify-content: center;
-        @include phone-landscape-only{
-          font-size: 4vw;
+        @include phone-only{
+          font-size: 10vw;
         }
+        
         @include desktop-up{
           font-size: 4vw
         }
