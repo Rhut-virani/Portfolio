@@ -981,9 +981,6 @@ path{
             flex-direction: column;
             justify-content: center;
             align-items: center;
-              @include desktop-up{
-                font-size: 1.5rem;
-              }
               p{
                 flex: 1;
                 position: absolute;
@@ -1003,6 +1000,7 @@ path{
                     font-size: 4rem;
                   }
               }
+
               img.skillName4{
                 padding: 20%;
                 height: 60%;

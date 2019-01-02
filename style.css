@@ -1036,11 +1036,6 @@ path {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 1200px) {
-  .skillsGrid1 .allSkillsContainer .allskills div {
-    font-size: 1.5rem;
-  }
-}
 .skillsGrid1 .allSkillsContainer .allskills div p {
   flex: 1;
   position: absolute;

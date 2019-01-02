@@ -863,6 +863,7 @@ $(document).ready(function() {
             ta.play().timeScale(1);
         }
         else{
+            tap.reverse(0.99).timeScale(10);
             ta.reverse().timeScale(2);
         }
     });
