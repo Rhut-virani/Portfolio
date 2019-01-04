@@ -509,7 +509,6 @@ path{
 
 
 
-/* <-----------left////right------------------> */
 #leftSectionContainer, #rightSectionContainer, #topSectionContainer, #bottomSectionContainer{
   position: absolute;
   background-color: $bkcolor;
@@ -1034,10 +1033,12 @@ path{
         font-size: 1.5rem;
         text-align: justify;
         font-weight: 300;
+        // @include tablet-portrait-up{
 
-        @include tablet-landscape-up{
-          font-size: 1.2rem;
-        }
+        // }
+        // @include tablet-landscape-up{
+        //   font-size: 1.5rem;
+        // }
       }
   }
 
@@ -1072,9 +1073,22 @@ path{
 .sun{
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
+  top: 25%;
+  transform: translate(-50%, -25%);
+  width: auto;
+  height: 50vh;    
+    @include phone-only(){
+          width: 50vw;
+          height: auto;
+    }
+    @include tablet-portrait-up{
+          width: 50vw;
+          height: auto;
+    }
+    @include desktop-up{
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 }
 
 .react1{
@@ -1305,164 +1319,3 @@ text-align: center
     }
   }
 }
-
-
-
-
-
-
-// .aboutImg-container{
-//   flex: 1;
-//   min-height: fit-content;
-//   overflow: hidden;
-// }
-// .aboutImg{
-//   width: 100%;
-//   object-fit: contain;
-//   box-shadow: 0 0 21px 11px rgb(13, 13, 13);
-// }
-
-// .flip-side-button{
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-// }
-
-// .flip-helper{
-//   position: relative;
-//   width: 25%;
-//   height: 25%;
-//   background-color: $txtcolor2;
-// }
-// .flip-img{
-//   width: 7vw;
-//   margin: -5%;
-// }
-
-
-
-
-
-
-/* <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
-   <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
-   <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>*/
-
-//    @media (min-width: 768px) and (max-width: 1024px) and (max-resolution: 300dpi){
-
-
-
-//     // Skills starts
-
-//     // .skillsPageContainer {
-//     //     // .skillsGrid1 {
-//     //     //     // width: 100%;
-//     //     //     // height: 30%;
-//     //     //     // flex-direction: row;
-//     //     //     // display: flex;
-//     //     //     // padding: 0%;
-//     //     //     // .leftarrow, .rightarrow{
-//     //     //     //     // display: inline-block;
-//     //     //     //     // position: relative;
-//     //     //     //     // top: 50%;
-//     //     //     //     // transform: translateY(-50%);
-//     //     //     //     // height: fit-content;
-//     //     //     //     // flex: 1;
-//     //     //     //     // text-align: center;
-//     //     //     //     // font-size: 1.5rem;
-//     //     //     //     // color: #0f1214;
-//     //     //     // }
-
-//     //     //     .allSkillsContainer {
-//     //     //         // flex: 10;
-//     //     //         // align-items: center;
-//     //     //         // flex-wrap: nowrap;
-//     //     //         // justify-content: flex-start;
-//     //     //         // align-self: center;
-//     //     //         // overflow: scroll;
-//     //     //         // padding: 2%;
-
-//     //     //         .allskills{
-//     //     //             // min-width: calc(100vw/8);
-//     //     //             // min-height: calc(100vw/8);
-//     //     //             // margin: 5%;
-//     //     //             div{
-//     //     //               // font-size: 1.3rem;
-//     //     //             }
-//     //     //         }
-//     //     //         // &:after{ // to add proper space after the last bubble
-//     //     //         //     content: '.';
-//     //     //         // }
-
-//     //     //     }
-//     //     // }
-//     //     .skillsGrid2{
-//     //         p{
-//     //           font-size: 1.3rem;
-//     //         }
-//     //     }
-//     // }
-
-    
-
-
-// }
-
-/* <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>
-   <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>
-   <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################> */
-
-  //  @media (min-width: 481px) and (max-width: 767px) and (max-resolution: 191dpi){
-
-  //   .allskills{
-  //     min-width: 20vw;
-  //     min-height: 20vw;
-  //     margin: 20%;
-  //   }
-  //   .skillsPageContainer{
-  //     overflow: scroll;
-  //   }
-  
-  //   about section
-  
-
-    
-  // }
-  
-  /* <#########################################------media Query < 480px--------################################################################>
-     <#########################################------media Query < 480px--------################################################################>
-     <#########################################------media Query < 480px--------################################################################> */
-    
-    //  phones in landscape mode 
-    //  so targetting by dpi and not only by width
-    //  so phones in landscape dont affect tablets
-    // @media screen 
-    // and (min-width: 320px) 
-    // and (max-width: 850px) 
-    // and (min-resolution: 192dpi) {
-    
-
-
-    // }
-  
-     
-  
-  // @media screen 
-  //     and (min-width: 320px) 
-  //     and (max-width: 480px) 
-  //     and (max-resolution: 192dpi) {
-  
-
-  //   .allskills{
-  //     min-width: 48vw;
-  //     min-height: 48vw;
-  //   }
-  //     // about section
-  
-  
-  //     // .aboutContent{
-  //     //   p{
-  //     //     // font-size: 3.5rem;
-  //     //   }
-  //     // }
-  // }

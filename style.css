@@ -516,7 +516,6 @@ path {
 /* <-------------------------  individual sections ------------------------------->  */
 /* <-------------------------  individual sections ------------------------------->  */
 /* <-------------------------  individual sections ------------------------------->  */
-/* <-----------left////right------------------> */
 #leftSectionContainer, #rightSectionContainer, #topSectionContainer, #bottomSectionContainer {
   position: absolute;
   background-color: #0F1214;
@@ -1090,11 +1089,6 @@ path {
   text-align: justify;
   font-weight: 300;
 }
-@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
-  .skillsGrid2 .skillsContent p {
-    font-size: 1.2rem;
-  }
-}
 
 .bs4 {
   padding: 1%;
@@ -1126,9 +1120,28 @@ path {
 .sun {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
+  top: 25%;
+  transform: translate(-50%, -25%);
+  width: auto;
+  height: 50vh;
+}
+@media (max-width: 599px) {
+  .sun {
+    width: 50vw;
+    height: auto;
+  }
+}
+@media (min-width: 600px) and (orientation: portrait) {
+  .sun {
+    width: 50vw;
+    height: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .sun {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .react1 {
@@ -1358,15 +1371,5 @@ path {
     letter-spacing: 0.8rem;
   }
 }
-
-/* <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
-   <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>
-   <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>*/
-/* <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>
-   <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################>
-   <#########################################------media Query > 480px < 767px------ Low End PHONES--------########################################################> */
-/* <#########################################------media Query < 480px--------################################################################>
-   <#########################################------media Query < 480px--------################################################################>
-   <#########################################------media Query < 480px--------################################################################> */
 
 /*# sourceMappingURL=style.css.map */

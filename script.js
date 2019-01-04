@@ -527,9 +527,16 @@ $(document).ready(function() {
 
     // Skills button and top section transition which also calls the oncomplete skillstext function 
     
-    var randomText = " ";
-        r = 0;
-        while(r< 20){
+    var randomText = " ",
+        r = 0,
+        numberofR;
+        if($(window).width() < 600 ){
+            numberofR = 10
+        }
+        else{
+            numberofR = 20
+        }
+        while(r< numberofR){
             randomText += "X O X O X O X O X O";
             r++;
         }
