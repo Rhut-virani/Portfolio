@@ -1,5 +1,7 @@
     // declaring variables
-    var allActiveTimelines = [],
+    var 
+    devicenumber = $(window).width() * $(window).height(),    
+    allActiveTimelines = [],
     lt12,
     $contentActive;
     $home = $('.home'),
@@ -34,7 +36,7 @@
         var svgContainer = $("#logo-svg");
         var svgUrl = "./assets/logo/logo-bw.svg";
         var svg = svgContainer.load(svgUrl);
-        var svg2 = $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
+        // var svg2 = $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
 
     }
 
@@ -49,36 +51,42 @@ $(document).ready(function() {
     .to('#l-back-R',  4 , {strokeDashoffset: 0, ease: Power2.easeOut})
     .to('#l-front-R', 4 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
     .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
+
+    var resizepage = new TimelineMax({paused:true})
+        .set('.resizing', {autoAlpha:1})
+        .fromTo('.resizing > p', 1, {scale:1},{scale:1.1, yoyo:true, repeat:-1});
+
     function resize (){
-        if(window.orientation === 90 && $(window).width() < 900){
-            TweenLite.set('.mainpage', {autoAlpha:0});
-            TweenLite.set('.phoneLandscapeOnly', {autoAlpha:1});
-            lsvg.play(0);
-        }
-        else {
-            TweenLite.set('.phoneLandscapeOnly', {autoAlpha:0});
-            TweenLite.set('.mainpage', {autoAlpha:1});
-            lsvg.pause();
-        }
+            if(window.orientation === 90 && $(window).width() < 900){
+                TweenLite.to('.mainpage',0.25,{autoAlpha:0});
+                TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:1});
+                lsvg.play(0);
+            }
+            else{
+                // $('.landscapeHelper').children().remove();
+                TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:0});
+                TweenLite.to('.mainpage',0.25, {autoAlpha:1});
+                lsvg.pause();
+            }
+
+
     }
     resize();
-
     $( window ).resize(function() {
-        resize();
-        // function restart () {
-
-        // }
-        // allActiveTimelines.forEach(element => {
-        //     element.kill();
-        //     element.invalidate();
-        //     element.restart();
-        // });
-        // var resizetimeline = new TimelineMax({paused: true})
-        // .add(allActiveTimelines);
-        // resizetimeline.restart();
-        // setTimeout(() => {
-        //     restart();
-        // }, 1000);
+        $('.resizingHelper').load("./assets/logo/logo-bw-l.svg");
+        resizepage.play();
+        lsvg.play();
+        setTimeout(() => {
+            // $('.resizingHelper').children().remove();
+            // $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
+            resizepage.reverse();
+            if(($(window).width() * $(window).height()) !== devicenumber){
+                window.location.reload()
+            }
+            else if(($(window).width() * $(window).height()) === devicenumber){
+                resize();
+            }
+        }, 50000);
 
     });   
 

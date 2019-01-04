@@ -71,6 +71,8 @@ body{
     height: 100vh;
     background-color: #0F1214;
     z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
       p{
       position: absolute;
       top: 50%;
@@ -88,6 +90,35 @@ body{
         height: 100vh;
       }
   
+}
+
+.resizing{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0F1214;
+  z-index: 1999;
+  visibility: hidden;
+  opacity: 0;
+    p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 5vw;
+    margin: 0;
+    }
+    .resizingHelper{
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
 }
 
 .mainpage{
@@ -1029,16 +1060,25 @@ path{
   .skillsContent{
     height: 90vh;
     margin: 2% 5%;
+      .cssh2{
+        font-size: 1.5rem;
+        @include tablet-portrait-up{
+          font-size: 2rem;
+        }
+        @include tablet-landscape-up{
+          font-size: 2rem;
+        }
+      }
       p{
         font-size: 1.5rem;
         text-align: justify;
         font-weight: 300;
-        // @include tablet-portrait-up{
-
-        // }
-        // @include tablet-landscape-up{
-        //   font-size: 1.5rem;
-        // }
+        @include tablet-portrait-up{
+          font-size: 2rem;
+        }
+        @include tablet-landscape-up{
+          font-size: 2rem;
+        }
       }
   }
 
@@ -1078,16 +1118,16 @@ path{
   width: auto;
   height: 50vh;    
     @include phone-only(){
-          width: 50vw;
-          height: auto;
+        width: 50vw;
+        height: auto;
     }
     @include tablet-portrait-up{
-          width: 50vw;
-          height: auto;
+        width: 50vw;
+        height: auto;
     }
     @include desktop-up{
-      top: 50%;
-      transform: translate(-50%, -50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -1110,11 +1150,9 @@ text-align: center
 .react3{
   margin: 0 0 0 10%;
 }
-
 .css4n{
   font-size: 2.5rem;
   color: $acntcolor;
-
 }
 
 
@@ -1214,7 +1252,6 @@ text-align: center
         @include phone-only{
           font-size: 10vw;
         }
-        
         @include desktop-up{
           font-size: 4vw
         }
