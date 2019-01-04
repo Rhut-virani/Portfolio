@@ -1,6 +1,7 @@
+    
     // declaring variables
     var 
-    devicenumber = $(window).width() * $(window).height(),    
+    devicenumber = $(window).innerWidth() + $(window).innerHeight(),    
     allActiveTimelines = [],
     lt12,
     $contentActive;
@@ -23,7 +24,8 @@
 
     // lets do the preparation before the any page animation starts 
     function first(){
-
+        $('body').hide();
+        TweenLite.set('.resizing', {autoAlpha:1})
         TweenLite.set($allcontainer, {pointerEvents:'none'});
         TweenLite.set('.brand-container', {autoAlpha:0});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
@@ -37,88 +39,87 @@
         var svgContainer = $("#logo-svg");
         var svgUrl = "./assets/logo/logo-bw.svg";
         var svg = svgContainer.load(svgUrl);
-        // var svg2 = $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
-
     }
-
-
 
     //running the first function to set all specific variable to their desired state.
     first();
 
 
-
-
-    var lsvg = new TimelineMax({paused:true, repeat: -1, yoyo:true})
-    .to('#l-back-R',  4 , {strokeDashoffset: 0, ease: Power2.easeOut})
-    .to('#l-front-R', 4 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
-    .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
-
-
-
-    function resize (){
-        var resizepage = new TimelineMax()
-        var svg3 = $('.resizingHelper').load("./assets/logo/logo-bw-l.svg");
-        resizepage
-        .set('.resizing', {autoAlpha:1})
-        .to('#l-back-R',  4 , {strokeDashoffset: 0, ease: Power2.easeOut})
-        .to('#l-front-R', 4 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
-        .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
-
-        resizepage.play();
-
-
-        setTimeout(() => {
-
-            // $('.resizingHelper').children().remove();
-            // resizepage.reverse(0.99);
-                if(window.orientation === 90 && $(window).width() < 900){
-                    // $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
-                    TweenLite.to('.mainpage',0.25,{autoAlpha:0});
-                    TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:1});
-                    lsvg.play(0);
-                }
-                else{
-                    // $('.landscapeHelper').children().remove();
-                    TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:0});
-                    TweenLite.to('.mainpage',0.25, {autoAlpha:1});
-                    lsvg.pause();
-                }
-        }, 3000);
-
-    }
-
-    resize();
-
-    $( window ).resize(function() {
-
-            if(($(window).width() * $(window).height()) !== devicenumber){
-                resize();
-                window.location.reload()
-            }
-            else if(($(window).width() * $(window).height()) === devicenumber){
-                resize();
-            }
-    });   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 $(document).ready(function() {
 
+
+
+        var svg2 = $('.resizingHelper').load("./assets/logo/logo-bw-l.svg");
+        var resizepage = new TimelineMax({paused:true});
+
+        function loading(){
+            var whattoshow,
+                whatnottoshow,
+                isyoyo,
+                rtimes,
+                tweentoadd;
+
+            if(window.orientation === 90 && $(window).width() < 900){
+                whattoshow = '.landscapeOnly';
+                whatnottoshow = '.allrest';
+                rtimes = 10;
+                isyoyo = true;
+                tweentoadd = TweenLite.to('.resizing',0.25, {autoAlpha:1});
+            }
+            else{
+                whattoshow = '.allrest';
+                whatnottoshow = '.landscapeOnly';
+                rtimes = 0;
+                isyoyo = false;
+                tweentoadd = TweenLite.to('.resizing',0.25, {autoAlpha:0});
+            }
+            // resizepage.pause(0);
+            resizepage.progress(0).invalidate();
+            resizepage.clear();
+            resizepage.kill();
+            console.log(resizepage);
+            resizepage = new TimelineMax({paused:true})
+                .repeat(rtimes)
+                .yoyo(isyoyo)
+                .set(whatnottoshow, {autoAlpha:0})
+                .to(whattoshow, 0.25,{autoAlpha:1})
+                .fromTo('#l-back-R',  4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut})
+                .fromTo('#l-front-R', 4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut}, "-=4")
+                .fromTo('#l-front-D', 2 , {strokeDashoffset: -1000}, {strokeDashoffset: 0}, '-=2')
+                .add(tweentoadd);
+
+
+            resizepage.play();
+        }
+
+        setTimeout(() => {
+            $('body').show();
+            loading();            
+        }, 1);
     
+        $( window ).resize(function() {
+                loading();
+                setTimeout(() => {
+                    if(($(window).width() + $(window).height()) !== devicenumber){
+                        window.location.reload()
+                    }
+                }, 1);
+        });   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     for (var i = 1; i <= better; i++) {

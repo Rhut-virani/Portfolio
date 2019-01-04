@@ -49,7 +49,7 @@ body {
   background: transparent;
 }
 
-.phoneLandscapeOnly {
+.resizing {
   position: absolute;
   top: 0;
   left: 0;
@@ -60,41 +60,14 @@ body {
   visibility: hidden;
   opacity: 0;
 }
-.phoneLandscapeOnly p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 2vw;
-  margin: 0;
-}
-.phoneLandscapeOnly .landscapeHelper {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-.resizing {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #0F1214;
-  z-index: 1999;
-  visibility: hidden;
-  opacity: 0;
-}
 .resizing p {
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 5vw;
   margin: 0;
 }
 .resizing .resizingHelper {
@@ -103,6 +76,12 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+}
+.resizing .landscapeOnly {
+  font-size: 2vw;
+}
+.resizing .allrest {
+  font-size: 5vw;
 }
 
 .mainpage {

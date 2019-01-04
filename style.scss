@@ -63,34 +63,34 @@ body{
   background: transparent; 
 }
 
-.phoneLandscapeOnly{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #0F1214;
-    z-index: 2000;
-    visibility: hidden;
-    opacity: 0;
-      p{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      text-align: center;
-      font-size: 2vw;
-      margin: 0;
-      }
-      .landscapeHelper{
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-      }
+// .phoneLandscapeOnly{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: #0F1214;
+//     z-index: 1999;
+//     visibility: hidden;
+//     opacity: 0;
+//       p{
+//       position: absolute;
+//       top: 50%;
+//       left: 50%;
+//       transform: translate(-50%,-50%);
+//       text-align: center;
+//       font-size: 2vw;
+//       margin: 0;
+//       }
+//       .landscapeHelper{
+//         position: relative;
+//         top: 0;
+//         left: 0;
+//         width: 100vw;
+//         height: 100vh;
+//       }
   
-}
+// }
 
 .resizing{
   position: absolute;
@@ -99,16 +99,17 @@ body{
   width: 100vw;
   height: 100vh;
   background-color: #0F1214;
-  z-index: 1999;
+  z-index: 2000;
   visibility: hidden;
   opacity: 0;
     p{
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
-    font-size: 5vw;
     margin: 0;
     }
     .resizingHelper{
@@ -117,6 +118,12 @@ body{
       left: 0;
       width: 100vw;
       height: 100vh;
+    }
+    .landscapeOnly{
+      font-size: 2vw;
+    }
+    .allrest{
+      font-size: 5vw;      
     }
 
 }
