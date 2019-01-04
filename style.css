@@ -1090,9 +1090,9 @@ path {
   text-align: justify;
   font-weight: 300;
 }
-@media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .skillsGrid2 .skillsContent p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -1128,7 +1128,7 @@ path {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
+  width: 50vw;
 }
 
 .react1 {
@@ -1347,6 +1347,16 @@ path {
 .aboutPageContainer .aboutWrapper .about-img-text p {
   margin: auto;
   letter-spacing: 1rem;
+}
+@media (max-width: 599px) {
+  .aboutPageContainer .aboutWrapper .about-img-text p {
+    letter-spacing: 0.5rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  .aboutPageContainer .aboutWrapper .about-img-text p {
+    letter-spacing: 0.8rem;
+  }
 }
 
 /* <#########################################------media Query > 768px & < 1024px ------TABLET--------########################################################>

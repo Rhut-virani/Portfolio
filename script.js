@@ -1,5 +1,6 @@
     // declaring variables
-    var lt12,
+    var allActiveTimelines = [],
+    lt12,
     $contentActive;
     $home = $('.home'),
     $heading = $('.heading'),
@@ -64,7 +65,23 @@ $(document).ready(function() {
 
     $( window ).resize(function() {
         resize();
+        // function restart () {
+
+        // }
+        // allActiveTimelines.forEach(element => {
+        //     element.kill();
+        //     element.invalidate();
+        //     element.restart();
+        // });
+        // var resizetimeline = new TimelineMax({paused: true})
+        // .add(allActiveTimelines);
+        // resizetimeline.restart();
+        // setTimeout(() => {
+        //     restart();
+        // }, 1000);
+
     });   
+
 
     for (var i = 1; i <= better; i++) {
         $('.mainpage').append('<a class="floatingText">' + String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33) + '</a>');
@@ -317,11 +334,12 @@ $(document).ready(function() {
     var dl = new TimelineMax({paused:true});
 
     detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2) => {
-        dl.progress(0).clear();//get rid of tween in previous version of t
-
+        dl.progress(0).clear();//get rid of tween in previous version of timeline
+        dl.invalidate();
+        dl.kill();
         dl  .to($indi, 0.25, {xPercent:'-100%', autoAlpha:0})
-            .to(heading, 0.25, {autoAlpha:0, yPercent:'-10'})
-            .fromTo(thumbImg, 0.1,   { autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
+            .to(heading, 0.25, {autoAlpha:0})
+            .fromTo(thumbImg, 0.1,   {autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
             .fromTo(detailsH1, 0.2,   {yPercent:'-10%', autoAlpha:0},{yPercent:'0', autoAlpha:1})
             .fromTo(projectImg, 0.5,  {autoAlpha:0}, {ease: Back.easeIn.config(1.7), autoAlpha:1})
             .fromTo(exlinks, 0.5, {autoAlpha:0},{autoAlpha:1})
@@ -448,14 +466,15 @@ $(document).ready(function() {
         onReverseComplete: contactText,
         onReverseCompleteParams:[true]
     })
+        // .set()
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.contactTransitionHelper', 0.75, {xPercent:'101', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.55, {left:0, right:''})
         .fromTo('div#rightSectionContainer', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-co',0.25, {opacity:1})
-        .from('.contactPageContainer', 1 , {borderRadius:'50%', width:'2vw', height:'2vw', top:'50vh', left:'50vw'})
-        .from('.contactPageContainer', 1 , {autoAlpha:0})
+        // .fromto('.contactPageContainer', 1 , {borderRadius:'50%', width:'2vw', height:'2vw', top:'50vh', left:'50vw'})
+        .fromTo('.contactPageContainer', 1 , {autoAlpha:0}, {autoAlpha:1});
 
 
     $('div.contactContainer').click(function(){
@@ -476,18 +495,9 @@ $(document).ready(function() {
 
         function contactText (isreversed) {
          /// if any of the skills have class active meaning they are running so value will be true
-        //  isSkillRunning = ($('.allskills').hasClass('active')) ? true : false; 
         
          if(isreversed){
            tcp.reverse(0).timeScale(2);
- 
-             // checking if any skills globes are open or not , if open reverse them as well
-        //    if(isSkillRunning){ 
-        //      skillRunning.reverse(0.9);
- 
-        //      // removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily, as revere is dependant                                        //  on the presence of active 
-        //      $('.allskills').removeClass('active'); 
-        //    }
          }
          else{
            tcp.play();
@@ -566,7 +576,7 @@ $(document).ready(function() {
         .fromTo('div#topSectionContainer', 0.75, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-sk',0.25, {opacity:1})
-        .from('.skillsContent', 0.5, {y:'10%', autoAlpha:0})
+        .fromTo('.skillsContent', 0.5, {y:'10%', autoAlpha:0}, {y:'0%', autoAlpha:1})
         .staggerFromTo('.allskills', 0.5,{sclae:0, autoAlpha:0, y:'-50%'}, {scale: 1, autoAlpha:1,y:"0%", ease: Back.easeOut.config(2)}, 0.1, '-=0.5')
         .fromTo('.allskills', 0.2,{boxShadow:'none'}, {boxShadow: '0 5px 14px #1f1f1f, 0 2px 9px #eaeaea', ease: Power2.easeOut});
 
@@ -645,7 +655,7 @@ $(document).ready(function() {
 
     // HTML5 skill
     var s1 = new TimelineMax({paused:true})
-        .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
         .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
         .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25')
@@ -664,7 +674,7 @@ $(document).ready(function() {
 
     // CSS3 skills
     var s2 = new TimelineMax({paused:true})
-        .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .fromTo($('.allskills').not('.skills2'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
         .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900',                       color:'EF476F'})
         .to('.cssh2', 0.25, {color:'#7DDF64'})
@@ -695,7 +705,7 @@ $(document).ready(function() {
         s3.progress(0).clear();//get rid of tween in previous version of timeline
     
         s3
-        .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .fromTo($('.allskills').not('.skills3'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
         .to('.css4js', 1.5, {text: {value : ' ' + wishes + ' ', newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
@@ -726,7 +736,7 @@ $(document).ready(function() {
     var s4 = new TimelineMax({paused:true});
         s4.progress(0).clear();  // --------get rid of tween in previous version of timeline
         s4
-        .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+        .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
         .to('.cssh2', 3, {text:{value: ' import  <span class="reacth1">  React, { Component }  </span>  from  <span class="reacth1">  "react" </span>; </br>  import  <span                                      class="reacth1">  SkillsContent  </span> from <span class="reacth1">"  ./SkillsContent  " </span>; '}, 
                                         ease: Power1.easeOut})
@@ -757,7 +767,7 @@ $(document).ready(function() {
     var s5 = new TimelineMax({paused:true});
     s5.progress(0).clear();//get rid of tween in previous version of timeline
     s5
-    .fromTo('.skills5', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+    .fromTo('.skills5', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
     .fromTo($('.allskills').not('.skills5'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
     .to('.cssh2', 1, {text: 'nodeExample.js', ease: Power1.easeOut})
     .to('.css1, .css2, .css3, .css4', 0.25, {autoAlpha:0, ease: Power1.easeIn})
@@ -789,7 +799,7 @@ $(document).ready(function() {
 
     // BootStrap skill
     var s6 = new TimelineMax({paused:true})
-    .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.2, zIndex: 100,})
+    .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
     .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
     .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
     .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
@@ -870,36 +880,36 @@ $(document).ready(function() {
 
     var tap = new TimelineMax({paused:true, repeat:-1})
         
-        .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'}, 3,"#span1")
-        .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, yPercent:'-20'}, 3, "#span1+=2.8")
+        .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, x:'-50%', y:'40%'},  {autoAlpha:1, y:'0%'}, 3,"#span1")
+        .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, y:'-20%'}, 3, "#span1+=2.8")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'})
-        .fromTo('.aboutContent > p > span.span2', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .fromTo('.aboutContent > p > span.span2', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span2', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'})
-        .fromTo('.aboutContent > p > span.span3', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .fromTo('.aboutContent > p > span.span3', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span3', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
-        .fromTo('.aboutContent > p > span.span4', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .fromTo('.aboutContent > p > span.span4', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')        
         .to('.aboutContent > p > span.span4', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})
-        .fromTo('.aboutContent > p > span.span5', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .fromTo('.aboutContent > p > span.span5', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span5', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/6.jpg)'})
-        .fromTo('.aboutContent > p > span.span6', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .fromTo('.aboutContent > p > span.span6', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span6', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/7.jpg)'})        
-        .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
+        .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
         
@@ -916,15 +926,10 @@ $(document).ready(function() {
 
          }
          else{
-           tap.play();
+           allActiveTimelines.push(tap);
+           tap.play().timeScale(1);
          }
     }
-
-
-
-
-
-
 });
 
 

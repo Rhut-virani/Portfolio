@@ -1035,8 +1035,8 @@ path{
         text-align: justify;
         font-weight: 300;
 
-        @include phone-landscape-only{
-          font-size: 1rem;
+        @include tablet-landscape-up{
+          font-size: 1.2rem;
         }
       }
   }
@@ -1074,7 +1074,7 @@ path{
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
+  width: 50vw;
 }
 
 .react1{
@@ -1295,6 +1295,12 @@ text-align: center
         p{
           margin: auto;
           letter-spacing: 1rem;
+          @include phone-only{
+            letter-spacing: 0.5rem;
+          }
+          @include tablet-landscape-up{
+            letter-spacing: 0.8rem;
+          }
         }
     }
   }
