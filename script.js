@@ -22,7 +22,8 @@
 
 
     // lets do the preparation before the any page animation starts 
-    function first(){ 
+    function first(){
+
         TweenLite.set($allcontainer, {pointerEvents:'none'});
         TweenLite.set('.brand-container', {autoAlpha:0});
         TweenLite.set($home.not($activeSection), {autoAlpha:0});
@@ -41,54 +42,83 @@
     }
 
 
+
     //running the first function to set all specific variable to their desired state.
     first();
 
 
 
-$(document).ready(function() {
+
     var lsvg = new TimelineMax({paused:true, repeat: -1, yoyo:true})
     .to('#l-back-R',  4 , {strokeDashoffset: 0, ease: Power2.easeOut})
     .to('#l-front-R', 4 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
     .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
 
-    var resizepage = new TimelineMax({paused:true})
-        .set('.resizing', {autoAlpha:1})
-        .fromTo('.resizing > p', 1, {scale:1},{scale:1.1, yoyo:true, repeat:-1});
+
 
     function resize (){
-            if(window.orientation === 90 && $(window).width() < 900){
-                TweenLite.to('.mainpage',0.25,{autoAlpha:0});
-                TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:1});
-                lsvg.play(0);
-            }
-            else{
-                // $('.landscapeHelper').children().remove();
-                TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:0});
-                TweenLite.to('.mainpage',0.25, {autoAlpha:1});
-                lsvg.pause();
-            }
+        var resizepage = new TimelineMax()
+        var svg3 = $('.resizingHelper').load("./assets/logo/logo-bw-l.svg");
+        resizepage
+        .set('.resizing', {autoAlpha:1})
+        .to('#l-back-R',  4 , {strokeDashoffset: 0, ease: Power2.easeOut})
+        .to('#l-front-R', 4 , {strokeDashoffset: 0, ease: Power2.easeOut}, 0)
+        .to('#l-front-D', 2 , {strokeDashoffset: 0}, '-=2');
 
+        resizepage.play();
+
+
+        setTimeout(() => {
+
+            // $('.resizingHelper').children().remove();
+            // resizepage.reverse(0.99);
+                if(window.orientation === 90 && $(window).width() < 900){
+                    // $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
+                    TweenLite.to('.mainpage',0.25,{autoAlpha:0});
+                    TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:1});
+                    lsvg.play(0);
+                }
+                else{
+                    // $('.landscapeHelper').children().remove();
+                    TweenLite.to('.phoneLandscapeOnly',0.25, {autoAlpha:0});
+                    TweenLite.to('.mainpage',0.25, {autoAlpha:1});
+                    lsvg.pause();
+                }
+        }, 3000);
 
     }
+
     resize();
+
     $( window ).resize(function() {
-        $('.resizingHelper').load("./assets/logo/logo-bw-l.svg");
-        resizepage.play();
-        lsvg.play();
-        setTimeout(() => {
-            // $('.resizingHelper').children().remove();
-            // $('.landscapeHelper').load("./assets/logo/logo-bw-l.svg");
-            resizepage.reverse();
+
             if(($(window).width() * $(window).height()) !== devicenumber){
+                resize();
                 window.location.reload()
             }
             else if(($(window).width() * $(window).height()) === devicenumber){
                 resize();
             }
-        }, 50000);
-
     });   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+
+    
 
 
     for (var i = 1; i <= better; i++) {
