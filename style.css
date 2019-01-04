@@ -72,16 +72,22 @@ body {
 }
 .resizing .resizingHelper {
   position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
 }
 .resizing .landscapeOnly {
-  font-size: 2vw;
+  font-size: 1rem;
 }
 .resizing .allrest {
-  font-size: 5vw;
+  font-size: 2rem;
+}
+@media (max-width: 599px) {
+  .resizing .allrest {
+    font-size: 2.5rem;
+  }
 }
 
 .mainpage {
@@ -1376,6 +1382,11 @@ path {
   text-align: center;
   padding: 5% 10%;
   z-index: 350;
+}
+@media (max-width: 599px) {
+  .aboutPageContainer .aboutWrapper .aboutContent p span {
+    padding: 30% 10%;
+  }
 }
 .aboutPageContainer .aboutWrapper .about-img-text {
   color: #ffd000;

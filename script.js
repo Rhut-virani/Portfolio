@@ -72,7 +72,7 @@ $(document).ready(function() {
                 whatnottoshow = '.landscapeOnly';
                 rtimes = 0;
                 isyoyo = false;
-                tweentoadd = TweenLite.to('.resizing',0.25, {autoAlpha:0});
+                tweentoadd = TweenLite.to('.resizing',0.25, {autoAlpha:0}, "-=4");
             }
             // resizepage.pause(0);
             resizepage.progress(0).invalidate();
@@ -86,11 +86,11 @@ $(document).ready(function() {
                 .to(whattoshow, 0.25,{autoAlpha:1})
                 .fromTo('#l-back-R',  4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut})
                 .fromTo('#l-front-R', 4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut}, "-=4")
-                .fromTo('#l-front-D', 2 , {strokeDashoffset: -1000}, {strokeDashoffset: 0}, '-=2')
+                .fromTo('#l-front-D', 2 , {strokeDashoffset: -1000}, {strokeDashoffset: 0}, '-=4')
                 .add(tweentoadd);
 
 
-            resizepage.play();
+            resizepage.play().timeScale(10);
         }
 
         setTimeout(() => {
@@ -508,7 +508,7 @@ $(document).ready(function() {
         // .set()
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.contactTransitionHelper', 0.75, {xPercent:'101', autoAlpha:1}, {xPercent:'0'})
-        .to('div.contactContainer', 0.55, {left:0, right:''})
+        .fromTo('div.contactContainer', 0.55,{left:function(){return ''}, right:0}, {left:function(){return 0}, right:''})
         .fromTo('div#rightSectionContainer', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-co',0.25, {opacity:1})
@@ -902,7 +902,7 @@ $(document).ready(function() {
         .set(".backgroundWrapper", {backgroundColor:'#0f1214'})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'101', autoAlpha:1}, {yPercent:'0'})
-        .to('div.aboutContainer', 0.55, {top:0, bottom:''})
+        .fromTo('div.aboutContainer', 0.55, {top: function(){return ''}, bottom: 0},{top:function(){return 0}, bottom:''})
         .fromTo('div#bottomSectionContainer', 0.75, {yPercent:'100', autoAlpha:1}, {yPercent:'0'})
         .to('div.aboutContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-ab',0.25, {opacity:1})

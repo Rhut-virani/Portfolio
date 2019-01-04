@@ -63,34 +63,6 @@ body{
   background: transparent; 
 }
 
-// .phoneLandscapeOnly{
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100vw;
-//     height: 100vh;
-//     background-color: #0F1214;
-//     z-index: 1999;
-//     visibility: hidden;
-//     opacity: 0;
-//       p{
-//       position: absolute;
-//       top: 50%;
-//       left: 50%;
-//       transform: translate(-50%,-50%);
-//       text-align: center;
-//       font-size: 2vw;
-//       margin: 0;
-//       }
-//       .landscapeHelper{
-//         position: relative;
-//         top: 0;
-//         left: 0;
-//         width: 100vw;
-//         height: 100vh;
-//       }
-  
-// }
 
 .resizing{
   position: absolute;
@@ -114,16 +86,21 @@ body{
     }
     .resizingHelper{
       position: relative;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 50%;
+      left: 50%;
+      width: 50vw;
+      height: 50vh;
+      transform: translate(-50%,-50%);
     }
     .landscapeOnly{
-      font-size: 2vw;
+      font-size: 1rem;
+
     }
     .allrest{
-      font-size: 5vw;      
+      font-size: 2rem;
+      @include phone-only{
+        font-size: 2.5rem;
+      }      
     }
 
 }
@@ -1336,6 +1313,9 @@ text-align: center
           text-align: center;
           padding: 5% 10%;
           z-index: 350;
+          @include phone-only{
+            padding: 30% 10%;
+          }
         }
       }
     }
