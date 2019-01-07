@@ -129,13 +129,13 @@ $(document).ready(function() {
     swing = () =>{
         var st = new TimelineMax({ onComplete: removeClass})
             .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
-            .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
+            .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005, 0)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
-            .to('.gotoLeft', 0.5, {x:'-500', autoAlpha:0})
-            .to('.gotoRight',0.5, {x: '500', autoAlpha:0}, '-=0.5')
-            .to('.gotoup',   0.5, {y:'-500', autoAlpha:0}, '-=0.5')
-            .to('.gotodown', 0.5, {y: '500', autoAlpha:0}, '-=0.5')
-            .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1)
+            .to('.gotoLeft', 0.5, {x:'-500', autoAlpha:0}, '-=1.5')
+            .to('.gotoRight',0.5, {x: '500', autoAlpha:0}, '-=1.5')
+            .to('.gotoup',   0.5, {y:'-500', autoAlpha:0}, '-=1.5')
+            .to('.gotodown', 0.5, {y: '500', autoAlpha:0}, '-=1.5')
+            .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.skills > span'  ,0.5, {yPercent:'-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.about > span'   ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
@@ -160,7 +160,7 @@ $(document).ready(function() {
         .to('#front-D', 2 , {strokeDashoffset: 0}, '-=2')
         .to('.logo-png', 2 , {opacity:1})
         .to('path', 0.25, {scale:0.99}, '-=1')
-        .to('.main-logo-pr', 1,{opacity:1}, '-=1')
+        .to('.main-logo-pr', 1, {opacity:1}, '-=1')
 
 
         lt12.play().timeScale(1);
@@ -277,6 +277,7 @@ $(document).ready(function() {
 // project button and left section transition timeline
 
     var detailsPage = false;
+    var currentJ;
 
     var tp = new TimelineMax({paused:true})
         .set('div.projectContainer', {color:'black', zIndex:203})
@@ -286,7 +287,7 @@ $(document).ready(function() {
         .fromTo('div#leftSectionContainer', 0.55, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
         .to('div.projectContainer', 0.1, {color:'#ffd000'})
         .to('.main-logo-pr',0.25, {opacity:1})
-        .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.25 )
+        .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.1 )
         .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0})
         .to('div.projectContainer',0.50, {boxShadow: '-5px 0px 25px -15px #ffd000'});
 
@@ -299,6 +300,7 @@ $(document).ready(function() {
         }
         else{
             tp.reverse(0).timeScale(2);
+            backclick(currentJ);
         }
 
     })
@@ -379,14 +381,19 @@ $(document).ready(function() {
         dl  .to($indi, 0.25, {xPercent:'-100%', autoAlpha:0})
             .to(heading, 0.25, {autoAlpha:0})
             .fromTo(thumbImg, 0.1,   {autoAlpha:1}, {ease: Back.easeOut.config(1.7), autoAlpha:0})
-            .fromTo(detailsH1, 0.2,   {yPercent:'-10%', autoAlpha:0},{yPercent:'0', autoAlpha:1})
-            .fromTo(projectImg, 0.5,  {autoAlpha:0}, {ease: Back.easeIn.config(1.7), autoAlpha:1})
-            .fromTo(exlinks, 0.5, {autoAlpha:0},{autoAlpha:1})
-            .fromTo(imgtext1, 0.5, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.5')
-            .fromTo(imgtext2, 0.5, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.5')
-            .fromTo(textContent, 0.1, {autoAlpha:0}, {autoAlpha:1})
-            .fromTo(backbutton, 0.3, {autoAlpha:0, rotation:90}, {autoAlpha:1, rotation:0})
-            
+            .fromTo(detailsH1, 0.25,   {yPercent:'-10%', autoAlpha:0},{yPercent:'0', autoAlpha:1})
+            .fromTo(projectImg, 0.25,  {autoAlpha:0}, {ease: Back.easeIn.config(1.7), autoAlpha:1}, '-=0.25')
+            .fromTo(exlinks, 0.25, {autoAlpha:0},{autoAlpha:1}, '-=0.25')
+            .fromTo(imgtext1, 0.25, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.25')
+            .fromTo(imgtext2, 0.25, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.25')
+            .fromTo(textContent, 0.25, {autoAlpha:0}, {autoAlpha:1}, '-=0.25')
+            .fromTo(backbutton, 0.25, {autoAlpha:0, rotation:90}, {autoAlpha:1, rotation:0}, "#rev")
+            .fromTo(projectImg, 0.5,  {xPercent:"1"},{xPercent:'0', ease: Power1.easeOut})
+            .fromTo(projectImg, 1,  {xPercent:"1"},  {xPercent:'0', ease: Power1.easeOut})
+            .fromTo(projectImg, 1,  {xPercent:"1"},  {xPercent:'0', ease: Power1.easeOut})
+            .fromTo(projectImg, 1,  {xPercent:"1"}, {xPercent: '0' , ease: Power1.easeOut})
+
+
 
 
         return dl
@@ -394,6 +401,7 @@ $(document).ready(function() {
         
     var clickImg = function(j){
         return function(){
+            currentJ = j;
             var thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
                 imgtext1 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-1 > ');
@@ -422,7 +430,7 @@ $(document).ready(function() {
                 exlinks= $('.ex-links' + j + '> a');
                 backbutton =  $('.backbutton' + j);
 
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).reverse(0);
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).reverse("#rev");
             detailsPage = false;
 
         }

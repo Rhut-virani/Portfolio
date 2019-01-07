@@ -255,14 +255,14 @@ path {
 .floatingText {
   font-size: 2rem;
   width: 2rem;
-  padding: 2%;
+  padding: 2% 0 2% 2%;
   display: inline-block;
   transition: all 250ms ease-out;
   transform: scale(1);
   cursor: pointer;
   font-weight: 200;
   color: #EFF2F3;
-  text-align: center;
+  text-align: right;
 }
 .floatingText:hover {
   /* disable hover animation on mobile devices */
@@ -276,18 +276,18 @@ path {
 }
 @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .floatingText {
-    padding: 1%;
+    padding: 1% 0 1% 1%;
     width: 1rem;
   }
 }
 @media (min-width: 600px) and (orientation: portrait) {
   .floatingText {
-    padding: 1%;
+    padding: 1% 0 1% 1%;
   }
 }
 @media (min-width: 1200px) {
   .floatingText {
-    padding: 0.5%;
+    padding: 0.5% 0 0.5% 0.5%;
     font-size: 2.5rem;
     width: 1.5rem;
   }
@@ -295,23 +295,23 @@ path {
 
 .floatingmainText {
   display: inline-block;
-  padding: 2%;
+  padding: 2% 0 2% 2%;
   font-size: 2rem;
 }
 @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .floatingmainText {
-    padding: 1%;
+    padding: 1% 0 1% 1%;
     width: 1rem;
   }
 }
 @media (min-width: 600px) and (orientation: portrait) {
   .floatingmainText {
-    padding: 1%;
+    padding: 1% 0 1% 1%;
   }
 }
 @media (min-width: 1200px) {
   .floatingmainText {
-    padding: 0.5%;
+    padding: 0.5% 0 0.5% 0.5%;
     font-size: 2.5rem;
     width: 1.5rem;
   }
