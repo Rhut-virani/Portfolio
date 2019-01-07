@@ -63,7 +63,7 @@ $(document).ready(function() {
             if(window.orientation === 90 && $(window).width() < 900){
                 whattoshow = '.landscapeOnly';
                 whatnottoshow = '.allrest';
-                rtimes = 10;
+                rtimes = -1;
                 isyoyo = true;
                 tweentoadd = TweenLite.to('.resizing',0.25, {autoAlpha:1});
             }
@@ -86,11 +86,11 @@ $(document).ready(function() {
                 .to(whattoshow, 0.25,{autoAlpha:1})
                 .fromTo('#l-back-R',  4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut})
                 .fromTo('#l-front-R', 4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut}, "-=4")
-                .fromTo('#l-front-D', 2 , {strokeDashoffset: -1000}, {strokeDashoffset: 0}, '-=4')
+                .fromTo('#l-front-D', 2 , {strokeDashoffset: -1000}, {strokeDashoffset: 0}, '-=2')
                 .add(tweentoadd);
 
 
-            resizepage.play().timeScale(10);
+            resizepage.play().timeScale(1);
         }
 
         setTimeout(() => {
@@ -131,10 +131,10 @@ $(document).ready(function() {
             .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
-            .to('.gotoLeft', 1, {x:'-500', autoAlpha:0})
-            .to('.gotoRight',1, {x: '500', autoAlpha:0}, '-=1')
-            .to('.gotoup',   1, {y:'-500', autoAlpha:0}, '-=1')
-            .to('.gotodown', 1, {y: '500', autoAlpha:0}, '-=1')
+            .to('.gotoLeft', 0.5, {x:'-500', autoAlpha:0})
+            .to('.gotoRight',0.5, {x: '500', autoAlpha:0}, '-=0.5')
+            .to('.gotoup',   0.5, {y:'-500', autoAlpha:0}, '-=0.5')
+            .to('.gotodown', 0.5, {y: '500', autoAlpha:0}, '-=0.5')
             .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1)
             .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.skills > span'  ,0.5, {yPercent:'-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
@@ -142,7 +142,7 @@ $(document).ready(function() {
             .set('.brand-container', {autoAlpha:1})
             .set($allcontainer, {pointerEvents:'all'});
 
-        st.play().timeScale(10);
+        st.play().timeScale(1);
         }
     
     function removeClass() {
