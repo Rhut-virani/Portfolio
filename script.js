@@ -386,6 +386,7 @@ $(document).ready(function() {
             .fromTo(imgtext2, 0.5, {yPercent:'-10', autoAlpha:0},{yPercent:0, autoAlpha:1}, '-=0.5')
             .fromTo(textContent, 0.1, {autoAlpha:0}, {autoAlpha:1})
             .fromTo(backbutton, 0.3, {autoAlpha:0, rotation:90}, {autoAlpha:1, rotation:0})
+            
 
 
         return dl
