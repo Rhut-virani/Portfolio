@@ -300,7 +300,7 @@ $(document).ready(function() {
         }
         else{
             tp.reverse(0).timeScale(2);
-            backclick(currentJ);
+            // backclick(currentJ);
         }
 
     })
