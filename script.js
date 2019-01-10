@@ -980,7 +980,7 @@ $(document).ready(function() {
         .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span6', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
-        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/7.jpg)'})        
+        .set(".aboutWrapper", {backgroundColor:'#0f1214'})        
         .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
         .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
