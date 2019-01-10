@@ -1,7 +1,8 @@
     
     // declaring variables
     var 
-    devicenumber = $(window).innerWidth() + $(window).innerHeight(),    
+    devicenumber = $(window).innerWidth() + $(window).innerHeight(), 
+    devicewidth = $(window).innerWidth(),   
     allActiveTimelines = [],
     lt12,
     $contentActive;
@@ -24,7 +25,7 @@
 
     // lets do the preparation before the any page animation starts 
     function first(){
-        $('body').hide();
+        // $('body').hide();
         TweenLite.set('.resizing', {autoAlpha:1})
         TweenLite.set($allcontainer, {pointerEvents:'none'});
         TweenLite.set('.brand-container', {autoAlpha:0});
@@ -60,7 +61,7 @@ $(document).ready(function() {
                 rtimes,
                 tweentoadd;
 
-            if(window.orientation === 90 && $(window).width() < 900){
+            if((window.orientation === 90 || window.orientation === -90) && $(window).width() < 900){
                 whattoshow = '.landscapeOnly';
                 whatnottoshow = '.allrest';
                 rtimes = -1;
@@ -90,7 +91,7 @@ $(document).ready(function() {
                 .add(tweentoadd);
 
 
-            resizepage.play().timeScale(1);
+            resizepage.play().timeScale(2);
         }
 
         setTimeout(() => {
@@ -101,7 +102,7 @@ $(document).ready(function() {
         $( window ).resize(function() {
                 loading();
                 setTimeout(() => {
-                    if(($(window).width() + $(window).height()) !== devicenumber){
+                    if(($(window).width() + $(window).height()) !== devicenumber && devicewidth !== $(window).width()){
                         window.location.reload()
                     }
                 }, 1);
@@ -131,10 +132,10 @@ $(document).ready(function() {
             .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005, 0)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
-            .to('.gotoLeft', 0.5, {x:'-500', autoAlpha:0}, '-=1.5')
-            .to('.gotoRight',0.5, {x: '500', autoAlpha:0}, '-=1.5')
-            .to('.gotoup',   0.5, {y:'-500', autoAlpha:0}, '-=1.5')
-            .to('.gotodown', 0.5, {y: '500', autoAlpha:0}, '-=1.5')
+            .to('.gotoLeft', 0.5, {x:'-500', autoAlpha:0}, '-=1')
+            .to('.gotoRight',0.5, {x: '500', autoAlpha:0}, '-=1')
+            .to('.gotoup',   0.5, {y:'-500', autoAlpha:0}, '-=1')
+            .to('.gotodown', 0.5, {y: '500', autoAlpha:0}, '-=1')
             .staggerFrom('.project > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.contact > span' ,0.5, {yPercent: '100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
             .staggerFrom('.skills > span'  ,0.5, {yPercent:'-100', ease: Back.easeOut.config(1.7), opacity:0, rotation:'270deg'} ,0.1, '-=0.5')
@@ -277,9 +278,10 @@ $(document).ready(function() {
 // project button and left section transition timeline
 
     var detailsPage = false;
-    var currentJ;
+    var currentJ = 1;
 
     var tp = new TimelineMax({paused:true})
+        .set('div#leftSectionContainer , .projectTransitionHelper',{display:'block'})
         .set('div.projectContainer', {color:'black', zIndex:203})
         .to('.main-logo-pr',0.25, {opacity:0})
         .fromTo('.projectTransitionHelper', 0.75, {xPercent:'-100%', autoAlpha:1}, {xPercent:'0'})
@@ -300,7 +302,22 @@ $(document).ready(function() {
         }
         else{
             tp.reverse(0).timeScale(2);
-            // backclick(currentJ);
+            function run (){
+                    let thumbImg = $('.thumbimg' + currentJ);
+                    projectImg = $('.projectImg' + currentJ);
+                    heading= (currentJ === 1)? $('.heading' + currentJ + ', .fa-vr-cardboard') : $('.heading' + currentJ);
+                    imgtext1 = $('.detail' + currentJ + '> .imgContainer > .pitext > .project-i-text-1 > div');
+                    imgtext2 = $('.detail' + currentJ + '> .imgContainer > .pitext > .project-i-text-2 > div');
+                    detailsH1 = $('.detail' + currentJ +'> .titleContainer > .title')
+                    textContent =  $('.detail' + currentJ +' > .textContent')
+                    exlinks= $('.ex-links' + currentJ + '> a');
+                    backbutton =  $('.backbutton' + currentJ);
+    
+                detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).reverse("#rev");
+                detailsPage = false;
+                };
+            run();
+
         }
 
     })
@@ -334,7 +351,7 @@ $(document).ready(function() {
 
     // scroll up if the deltaY value is poistive
         if(e.originalEvent.deltaY > 0){
-            var sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
+            let sectionIn = $('.home.active').next($home).length === 0 ? $('.home.active').prevAll($home).last() : $('.home.active').next($home),
                 sectionfade =$('.home.active'),
                 headingIn = $(sectionIn).children().children('.heading'),
                 headingfade = $('.heading.active'),
@@ -345,7 +362,7 @@ $(document).ready(function() {
 
     // scroll up if the deltaY value is negative
         else if(e.originalEvent.deltaY < 0 ){
-            var sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
+            let sectionIn = $('.home.active').prev($home).length === 0 ? $('.home.active').nextAll($home).last() : $('.home.active').prev($home),
                 sectionfade =$('.home.active'),
                 headingIn = $(sectionIn).children().children('.heading'),
                 headingfade = $('.heading.active'),
@@ -357,7 +374,7 @@ $(document).ready(function() {
 
     var clickIndi = function (i){ 
         return function(){
-        var sectionIn = $('.home.section' + i),
+        let sectionIn = $('.home.section' + i),
             sectionfade =$('.home.active'),
             headingIn = $(sectionIn).children().children('.heading'),
             headingfade = $('.heading.active'),
@@ -402,7 +419,7 @@ $(document).ready(function() {
     var clickImg = function(j){
         return function(){
             currentJ = j;
-            var thumbImg = $('.thumbimg' + j);
+            let thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
                 imgtext1 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-1 > ');
                 imgtext2 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-2 > ');
@@ -420,7 +437,7 @@ $(document).ready(function() {
 
     var backclick = function(j){
         return function(){
-            var thumbImg = $('.thumbimg' + j);
+            let thumbImg = $('.thumbimg' + j);
                 projectImg = $('.projectImg' + j);
                 heading= (j === 1)? $('.heading' + j + ', .fa-vr-cardboard') : $('.heading' + j);
                 imgtext1 = $('.detail' + j + '> .imgContainer > .pitext > .project-i-text-1 > div');
@@ -514,7 +531,7 @@ $(document).ready(function() {
         onReverseComplete: contactText,
         onReverseCompleteParams:[true]
     })
-        // .set()
+        .set('div#rightSectionContainer , .contactTransitionHelper',{display:'block'})
         .to('div.contactContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.contactTransitionHelper', 0.75, {xPercent:'101', autoAlpha:1}, {xPercent:'0'})
         .fromTo('div.contactContainer', 0.55,{left:function(){return ''}, right:0}, {left:function(){return 0}, right:''})
@@ -625,6 +642,7 @@ $(document).ready(function() {
             onCompleteParams:[false], 
             onReverseComplete: skillsText,
             onReverseCompleteParams:[true]})
+        .set('div#topSectionContainer , .skillsTransitionHelper',{display:'block'})
         .to('div.skillsContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.skillsTransitionHelper', 0.75, {yPercent:'-100', autoAlpha:1}, {yPercent:'0'})
         .to('div.skillsContainer', 0.55, {bottom:0, top:''})
@@ -691,17 +709,15 @@ $(document).ready(function() {
         clientWidth = nophone;
     }
     console.log(clientWidth);
-    console.log(clientWidth1);
+    console.log($(window).height(), clientWidth1);
     $('.leftarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        // $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 500);
         $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 400);
         console.log('left arrow clicked');
     })
 
     $('.rightarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        // $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 500);
         $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 400);
         console.log('right arrow clicked');
     })
@@ -908,6 +924,7 @@ $(document).ready(function() {
                 onReverseComplete: aboutText,
                 onReverseCompleteParams:[true]
             })
+        .set('div#bottomSectionContainer , .aboutTransitionHelper',{display:'block'})
         .set(".backgroundWrapper", {backgroundColor:'#0f1214'})
         .to('div.aboutContainer', 0.1, {color:'black', zIndex:203})
         .fromTo('.aboutTransitionHelper', 0.75,  {yPercent:'101', autoAlpha:1}, {yPercent:'0'})
@@ -940,36 +957,36 @@ $(document).ready(function() {
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'})
         .fromTo('.aboutContent > p > span.span2', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')
+        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span2', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'})
         .fromTo('.aboutContent > p > span.span3', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
+        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span3', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
         .fromTo('.aboutContent > p > span.span4', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')        
+        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')        
         .to('.aboutContent > p > span.span4', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})
         .fromTo('.aboutContent > p > span.span5', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
+        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span5', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/6.jpg)'})
         .fromTo('.aboutContent > p > span.span6', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=1')
+        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span6', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/7.jpg)'})        
         .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0}, '-=1')
+        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
         
         .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'})
-        .to(".backgroundWrapper", 0.5, {autoAlpha:0})
+        .to(".backgroundWrapper", 1, {autoAlpha:0})
 
 
 
