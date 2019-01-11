@@ -460,9 +460,9 @@ $(document).ready(function() {
 
     var project1text = [[],
                         [['Immersive', 'Environment'],['Vr', 'Experiance'],['Visual', 'Clues'],['Fun ', 'Trivia']],
-                        [['2 Player ','Game '],[' ',' '],['Vibrant','Colors'],['Engaging &','Fun'],['Scores &','Timers'],['Simple &','Easy']],
-                        [[' ',' '],[' ',' '],[' ',' '],[' ',' ']],
-                        [[' ',' '],[' ',' '],[' ',' '],[' ',' ']]];
+                        [['2 Player ','Game '],['Vibrant','Colors'],['Engaging &','Fun'],['Scores &','Timers'],['Simple &','Easy']],
+                        [['Choose','Device'],['Song','Info'],['Play','Music']],
+                        [['Search','Movies'],['Additional','Info'],['View','Cast'],['Get','Details']]];
 
 
     function slideshow (nextslide, prevslide, length, j, imgtext1, imgtext2){
@@ -955,38 +955,40 @@ $(document).ready(function() {
         .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, x:'-50%', y:'40%'},  {autoAlpha:1, y:'0%'}, 3,"#span1")
         .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, y:'-20%'}, 3, "#span1+=2.8")
 
-        .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'})
+        .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'}, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1})
         .fromTo('.aboutContent > p > span.span2', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span2', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
-        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'})
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/3.jpg)'}, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0})
         .fromTo('.aboutContent > p > span.span3', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span3', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
-        .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/4.jpg)'})
+        .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/4.jpg)'}, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1})        
         .fromTo('.aboutContent > p > span.span4', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')        
         .to('.aboutContent > p > span.span4', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
-        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'})
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/5.jpg)'}, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0})
         .fromTo('.aboutContent > p > span.span5', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
         .to('.aboutContent > p > span.span5', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
-        .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/6.jpg)'})
+        .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/6.jpg)'}, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1})
         .fromTo('.aboutContent > p > span.span6', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:1}, '-=1')
         .to('.aboutContent > p > span.span6', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
 
-        .set(".aboutWrapper", {backgroundColor:'#0f1214'})        
+        .set(".aboutWrapper", {backgroundImage: "none" }, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0})
+        .set(".backgroundWrapper", {backgroundImage: "none" , backgroundColor: '#0f1214'})
+        .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=0.5')
         .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0}, '-=1')
-        .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
+        .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'})
         
-        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'})
-        .to(".backgroundWrapper", 1, {autoAlpha:0})
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'}, '-=1')
+        .to(".backgroundWrapper", 0.5, {autoAlpha:0})
 
 
 

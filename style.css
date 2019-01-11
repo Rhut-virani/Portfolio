@@ -1366,14 +1366,14 @@ path {
 }
 @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .aboutPageContainer .aboutWrapper .aboutContent p {
-    font-size: 7vw;
+    font-size: 5vw;
     -webkit-text-stroke-width: 3px;
   }
 }
 @media (min-width: 1200px) {
   .aboutPageContainer .aboutWrapper .aboutContent p {
-    font-size: 7vw;
-    -webkit-text-stroke-width: 4px;
+    font-size: 5vw;
+    -webkit-text-stroke-width: 3px;
   }
 }
 .aboutPageContainer .aboutWrapper .aboutContent p span {
