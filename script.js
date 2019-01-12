@@ -131,6 +131,7 @@ $(document).ready(function() {
         var st = new TimelineMax({ onComplete: removeClass})
             .to('.buttonContainer', 0.5, {className:'+=swing',autoAlpha:0})
             .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005, 0)
+            // .staggerTo('.swing', 0.005, {autoAlpha:0, ease: Power2.easeOut,}, 0.005, 0)
             .staggerTo('.floatingmainText', 0.01, {color:'#ffd000'}, 0.01 ,0)
             .to('.gotoLeft', 0.5, {x:'-500', autoAlpha:0}, '-=1')
             .to('.gotoRight',0.5, {x: '500', autoAlpha:0}, '-=1')
