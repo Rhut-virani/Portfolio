@@ -734,21 +734,27 @@ $(document).ready(function() {
         .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
 
     $('.skills1').click(function(){
-    $('.skills1').toggleClass('active');
+        var isittrue = $('.allskills.active').length > 0;
+    if(isittrue){
+        return;
+    }
+    else{
+        $('.skills1').toggleClass('active');
         if($('.skills1').hasClass('active')){
-        s1.play();
-        skillRunning = s1;
+            s1.play();
+            skillRunning = s1;
         }
         else{
-        s1.reverse().timeScale(2);
+            s1.reverse().timeScale(2);
         }
+    }
     });
 
     // CSS3 skills
     var s2 = new TimelineMax({paused:true})
         .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .fromTo($('.allskills').not('.skills2'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900',                       color:'EF476F'})
+        .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900', color:'EF476F'})
         .to('.cssh2', 0.25, {color:'#7DDF64'})
         .to('.cssh2', 0.25, {color:'#FF7733'})
         .to('.cssh2', 0.25, {color:'#FFED66'})
