@@ -593,7 +593,9 @@ $(document).ready(function() {
 
     // Skills button and top section transition which also calls the oncomplete skillstext function 
     
-    var randomText = " ",
+    var con1,
+        con2,
+        randomText = " ",
         r = 0,
         numberofR;
         if($(window).width() < 600 ){
@@ -727,32 +729,37 @@ $(document).ready(function() {
 
     // HTML5 skill
     var s1 = new TimelineMax({paused:true})
+    function gets1Timeline(){
+        s1.progress(0).clear();//get rid of tween in previous version of timeline
+        s1
         .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+        .set($('.allskills').not('.skills1'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
         .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
         .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25')
         .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
 
+        return s1;
+    }
     $('.skills1').click(function(){
-        var isittrue = $('.allskills.active').length > 0;
-    if(isittrue){
-        return;
-    }
-    else{
-        $('.skills1').toggleClass('active');
-        if($('.skills1').hasClass('active')){
-            s1.play();
-            skillRunning = s1;
-        }
-        else{
-            s1.reverse().timeScale(2);
-        }
-    }
+
+            $('.skills1').toggleClass('active');
+            if($('.skills1').hasClass('active')){
+                s1= gets1Timeline().play().timeScale(1);
+                skillRunning = s1;
+            }
+            else{
+                s1.reverse().timeScale(2);
+            }
     });
 
     // CSS3 skills
     var s2 = new TimelineMax({paused:true})
+    function gets2Timeline(){
+        s2.progress(0).clear();//get rid of tween in previous version of timeline
+        s2
         .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+        .set($('.allskills').not('.skills2'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills2'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
         .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900', color:'EF476F'})
         .to('.cssh2', 0.25, {color:'#7DDF64'})
@@ -764,26 +771,28 @@ $(document).ready(function() {
         .fromTo('.css3', 0.25, {fontWeight:'200'}, {textDecorationLine: 'line-through', color:'#5D2E8C'})
         .fromTo('.css4', 0.25, {fontWeight:'200'}, {fontFamily: 'Dancing Script', textDecorationLine: 'underline', fontSize:'2rem', color:'#436436'});
 
+        return s2;
+    }
     $('.skills2').click(function(){
-        $('.skills2').toggleClass('active');
-        if($('.skills2').hasClass('active')){
-            s2.play();
-            skillRunning = s2;
-        }
-        else{
-            s2.reverse().timeScale(2);
-        }
+            $('.skills2').toggleClass('active');
+            if($('.skills2').hasClass('active')){
+                s2 = gets2Timeline().play().timeScale(1);
+                skillRunning = s2;
+            }
+            else{
+                s2.reverse().timeScale(2);
+            }
     });
     
 
     // --------------------JS Skill--------------------------------
     //-------------------------------------------------------------
     var s3 = new TimelineMax({paused:true});
-    function getNewTimeline(){
+    function gets3Timeline(){
         s3.progress(0).clear();//get rid of tween in previous version of timeline
-    
         s3
         .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+        .set($('.allskills').not('.skills3'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills3'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
         .to('.css4js', 1.5, {text: {value : ' ' + wishes + ' ', newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
@@ -800,21 +809,22 @@ $(document).ready(function() {
       }
         
     $('.skills3').click(function(){
-        $('.skills3').toggleClass('active');
-        if($('.skills3').hasClass('active')){
-            s3 = getNewTimeline().play().timeScale(1);
-            skillRunning = s3;
-        }
-        else{
-            s3.reverse('#line2').timeScale(2); //------------ starts in reverse at #line2 at 2x speed
-        }
-
+            $('.skills3').toggleClass('active');
+            if($('.skills3').hasClass('active')){
+                s3 = gets3Timeline().play().timeScale(1);
+                skillRunning = s3;
+            }
+            else{
+                s3.reverse('#line2').timeScale(2); //------------ starts in reverse at #line2 at 2x speed
+            }
     });
 
     var s4 = new TimelineMax({paused:true});
+    function gets4Timeline(){
         s4.progress(0).clear();  // --------get rid of tween in previous version of timeline
         s4
         .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+        .set($('.allskills').not('.skills4'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
         .to('.cssh2', 3, {text:{value: ' import  <span class="reacth1">  React, { Component }  </span>  from  <span class="reacth1">  "react" </span>; </br>  import  <span                                      class="reacth1">  SkillsContent  </span> from <span class="reacth1">"  ./SkillsContent  " </span>; '}, 
                                         ease: Power1.easeOut})
@@ -828,41 +838,44 @@ $(document).ready(function() {
         .to('.css2', 0.5, {text:{value: ' <span class="react2"> </br> < / div > </span> </br>'}, ease: Power1.easeIn})
         .to('.css3', 0.5, {text:{value: ' <span class="react2"> )  </span> </br>'}, ease: Power1.easeIn})
         .to('.css4', 0.5, {text:{value: ' } </br>'}, ease: Power1.easeIn})
-
+        return s4;
+    }
         
     $('.skills4').click(function(){
-        $('.skills4').toggleClass('active');
-        if($('.skills4').hasClass('active')){
-            s4.play().timeScale(1);
-            skillRunning = s4;
-        }
-        else{
-            s4.reverse(0).timeScale(1.5); // starts in reverse at 1.5x speed
-        }
-
+            $('.skills4').toggleClass('active');
+            if($('.skills4').hasClass('active')){
+                s4 = gets4Timeline().play().timeScale(1);
+                skillRunning = s4;
+            }
+            else{
+                s4.reverse(0).timeScale(1.5); // starts in reverse at 1.5x speed
+            }
     });
 
     var s5 = new TimelineMax({paused:true});
-    s5.progress(0).clear();//get rid of tween in previous version of timeline
-    s5
-    .fromTo('.skills5', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
-    .fromTo($('.allskills').not('.skills5'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
-    .to('.cssh2', 1, {text: 'nodeExample.js', ease: Power1.easeOut})
-    .to('.css1, .css2, .css3, .css4', 0.25, {autoAlpha:0, ease: Power1.easeIn})
-    .to('.css1, .css2, .css3, .css4', 0.1, {text:{value: ' '}, ease: Power1.easeIn}, "#line1")
-    .to('.css4n', 2, {text:{value: ' npm init'}, ease: Power1.easeIn})
-    .to('.css4n', 2, {text:{value: ' npm install lodash --save'}, ease: Power1.easeIn})
-    .to('.css4n', 2, {text:{value: ' npm install moment --save '}, ease: Power1.easeIn})
-    .to('.css4n', 2, {text:{value: ' console.log(moment().format("hh:mm:ss"))'}, ease: Power1.easeIn})
-    .to('.css4n', 2, {text:{value: ' console.log(_.camelCase("why-so-serious")'}, ease: Power1.easeIn})
-    .to('.css4n', 2, {text:{value: ' $ node nodeExample.js'}, ease: Power1.easeIn});
-
+    function gets5Timeline(){
+        s5.progress(0).clear();//get rid of tween in previous version of timeline
+        s5
+        .fromTo('.skills5', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+        .set($('.allskills').not('.skills5'),{pointerEvents:'none'} )
+        .fromTo($('.allskills').not('.skills5'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
+        .to('.cssh2', 1, {text: 'nodeExample.js', ease: Power1.easeOut})
+        .to('.css1, .css2, .css3, .css4', 0.25, {autoAlpha:0, ease: Power1.easeIn})
+        .to('.css1, .css2, .css3, .css4', 0.1, {text:{value: ' '}, ease: Power1.easeIn}, "#line1")
+        .to('.css4n', 2, {text:{value: ' npm init'}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' npm install lodash --save'}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' npm install moment --save '}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' console.log(moment().format("hh:mm:ss"))'}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' console.log(_.camelCase("why-so-serious")'}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' $ node nodeExample.js'}, ease: Power1.easeIn});
+        
+        return s5;
+    }
     
     $('.skills5').click(function(){
         $('.skills5').toggleClass('active');
         if($('.skills5').hasClass('active')){
-            console.log('react is active')
-            s5.play().timeScale(1);
+            s5 = gets5Timeline().play().timeScale(1);
             skillRunning = s5;
             setTimeout(() => {
                 console.log(currentTime);
@@ -872,39 +885,75 @@ $(document).ready(function() {
         else{
             s5.reverse('#line1'); // starts in reverse at 1.5x speed
         }
-
     });
 
     // BootStrap skill
     var s6 = new TimelineMax({paused:true})
-    .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
-    .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-    .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
-    .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
-    .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
-    .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
-    .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
-    .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
-    .to('.cssh2', 0.5, {autoAlpha: 0})
-    .to('.cssh2', 0.1, {textAlign:'center', fontWeight: '900'})
-    .to('.cssh2', 0.5, {autoAlpha:1})
-    .to('.bs4', 0.5 , {border: '1px solid #ffd000'});
+    function gets6Timeline(){
+        s6.progress(0).clear();//get rid of tween in previous version of timeline
+        s6
+        .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+        .set($('.allskills').not('.skills6'), {pointerEvents:'none'} )
+        .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+        .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
+        .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
+        .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
+        .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
+        .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
+        .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
+        .to('.cssh2', 0.5, {autoAlpha: 0})
+        .to('.cssh2', 0.1, {textAlign:'center', fontWeight: '900'})
+        .to('.cssh2', 0.5, {autoAlpha:1})
+        .to('.bs4', 0.5 , {border: '1px solid #ffd000'});
 
+        return s6
+    }
 
 
     $('.skills6').click(function(){
-    $('.skills6').toggleClass('active');
+        $('.skills6').toggleClass('active');
         if($('.skills6').hasClass('active')){
-        s6.play().timeScale(1);
-        skillRunning = s6;
+            s6 = gets6Timeline().play().timeScale(1);
+            skillRunning = s6;
         }
         else{
-        s6.reverse().timeScale(2);
+            s6.reverse().timeScale(2);
         }
     });
 
 
+        // Express skill
+        var s8 = new TimelineMax({paused:true})
+        function gets8Timeline(){
+            s8.progress(0).clear();//get rid of tween in previous version of timeline
+            s8
+            // .fromTo('.skills8', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+            // .fromTo($('.allskills').not('.skills8'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+            // .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
+            // .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
+            // .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
+            // .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
+            // .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
+            // .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
+            // .to('.cssh2', 0.5, {autoAlpha: 0})
+            // .to('.cssh2', 0.1, {textAlign:'center', fontWeight: '900'})
+            // .to('.cssh2', 0.5, {autoAlpha:1})
+            // .to('.bs4', 0.5 , {border: '1px solid #ffd000'});
 
+            return s8
+        
+        }
+    
+        $('.skills8').click(function(){
+            $('.skills8').toggleClass('active');
+            if($('.skills8').hasClass('active')){
+                s8.gets8Timeline().play().timeScale(1);
+                skillRunning = s8;
+            }
+            else{
+                s8.reverse().timeScale(2);
+            }
+        });
 
 
 

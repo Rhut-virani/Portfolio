@@ -1049,6 +1049,8 @@ path{
     margin: 2% 5%;
       .cssh2{
         font-size: 1.5rem;
+        margin: -5% 0% 0% 0%;
+        font-weight: normal;
         @include tablet-portrait-up{
           font-size: 2rem;
         }
@@ -1076,6 +1078,7 @@ path{
 
 .bs4{
   padding: 1%;
+  margin: -5% 0% 0% 0%;
   .css4js{
     line-height: 0;
   }

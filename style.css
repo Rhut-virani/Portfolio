@@ -1104,6 +1104,8 @@ path {
 }
 .skillsGrid2 .skillsContent .cssh2 {
   font-size: 1.5rem;
+  margin: -5% 0% 0% 0%;
+  font-weight: normal;
 }
 @media (min-width: 600px) and (orientation: portrait) {
   .skillsGrid2 .skillsContent .cssh2 {
@@ -1133,6 +1135,7 @@ path {
 
 .bs4 {
   padding: 1%;
+  margin: -5% 0% 0% 0%;
 }
 .bs4 .css4js {
   line-height: 0;
