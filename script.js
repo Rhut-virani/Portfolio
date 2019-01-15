@@ -48,8 +48,10 @@
 
     
 $(document).ready(function() {
-
-
+        var url = ['./assets/aboutImages/1.jpg','./assets/aboutImages/2.jpg','./assets/aboutImages/3.jpg','./assets/aboutImages/4.jpg','./assets/aboutImages/5.jpg','./assets/aboutImages/6.jpg']
+        for (var k in url){
+                new Image(500,500).src = url[k];
+        }
 
         var svg2 = $('.resizingHelper').load("./assets/logo/logo-bw-l.svg");
         var resizepage = new TimelineMax({paused:true});
@@ -79,7 +81,7 @@ $(document).ready(function() {
             resizepage.progress(0).invalidate();
             resizepage.clear();
             resizepage.kill();
-            console.log(resizepage);
+            // console.log(resizepage);
             resizepage = new TimelineMax({paused:true})
                 .repeat(rtimes)
                 .yoyo(isyoyo)
@@ -91,7 +93,7 @@ $(document).ready(function() {
                 .add(tweentoadd);
 
 
-            resizepage.play().timeScale(2);
+            resizepage.play().timeScale(3);
         }
 
         setTimeout(() => {
@@ -165,7 +167,7 @@ $(document).ready(function() {
         .to('.main-logo-pr', 1, {opacity:1}, '-=1')
 
 
-        lt12.play().timeScale(1);
+        lt12.play().timeScale(1.5);
     }
 
 
@@ -593,8 +595,7 @@ $(document).ready(function() {
 
     // Skills button and top section transition which also calls the oncomplete skillstext function 
     
-    var con1,
-        con2,
+    var locals,
         randomText = " ",
         r = 0,
         numberofR;
@@ -693,7 +694,7 @@ $(document).ready(function() {
         $("div#topSectionContainer").toggleClass("godown");
 
         if($("div#topSectionContainer").hasClass("godown")){
-            ts.play();
+            ts.play().timeScale(1);
         }
         else{
             ts.reverse().timeScale(2);
@@ -711,8 +712,8 @@ $(document).ready(function() {
     else{
         clientWidth = nophone;
     }
-    console.log(clientWidth);
-    console.log($(window).height(), clientWidth1);
+    // console.log(clientWidth);
+    // console.log($(window).height(), clientWidth1);
     $('.leftarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
         $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 400);
@@ -920,26 +921,54 @@ $(document).ready(function() {
             s6.reverse().timeScale(2);
         }
     });
-
+        // Mongo skill
+        var s7 = new TimelineMax({paused:true})
+        function gets7Timeline(){
+            s7.progress(0).clear();//get rid of tween in previous version of timeline
+            s7
+            .fromTo('.skills7', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+            .set($('.allskills').not('.skills7'), {pointerEvents:'none'} )
+            .fromTo($('.allskills').not('.skills7'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+            .to('.css1, .css2, .css3, .css4', 0.25, {autoAlpha:0, ease: Power1.easeIn})
+            .to('.css1, .css2, .css3, .css4', 0.1, {text:{value: ' '}, ease: Power1.easeIn}, "#line1")
+            .to('.css4n', 2, {text:{value: 'Just for Fun'}, ease: Power1.easeIn})
+            .to('.css4n', 2, {text:{value: 'Storing your Time of Visit on database'}, ease: Power1.easeIn}, '+=2')
+            .to('.css4n', 2, {text:{value: 'Look at console for details'}, ease: Power1.easeIn}, '+=2')            
+            return s7
+        
+        }
+    
+        $('.skills7').click(function(){
+            $('.skills7').toggleClass('active');
+            if($('.skills7').hasClass('active')){
+                s8 = gets7Timeline().play().timeScale(1);
+                skillRunning = s7;
+                locals = JSON.parse(localStorage.getItem('times')) || [' '] ;
+                locals.push(moment().format("h:mm:ss a, Do MMMM YYYY"));
+                localStorage.setItem('times', JSON.stringify(locals));
+                console.log('Not a database its just localStorage, you have clicked Mongo ' + locals.length + ' times on')
+                for (var i in locals){
+                    console.log(locals[i]);
+                }
+            }
+            else{
+                s7.reverse().timeScale(2);
+            }
+        });
 
         // Express skill
         var s8 = new TimelineMax({paused:true})
         function gets8Timeline(){
             s8.progress(0).clear();//get rid of tween in previous version of timeline
             s8
-            // .fromTo('.skills8', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
-            // .fromTo($('.allskills').not('.skills8'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-            // .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
-            // .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
-            // .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
-            // .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
-            // .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
-            // .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
-            // .to('.cssh2', 0.5, {autoAlpha: 0})
-            // .to('.cssh2', 0.1, {textAlign:'center', fontWeight: '900'})
-            // .to('.cssh2', 0.5, {autoAlpha:1})
-            // .to('.bs4', 0.5 , {border: '1px solid #ffd000'});
-
+            .fromTo('.skills8', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
+            .set($('.allskills').not('.skills8'), {pointerEvents:'none'} )
+            .fromTo($('.allskills').not('.skills8'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
+            .to('.css1, .css2, .css3, .css4', 0.25, {autoAlpha:0, ease: Power1.easeIn})
+            .to('.css1, .css2, .css3, .css4', 0.1, {text:{value: ' '}, ease: Power1.easeIn}, "#line1")
+            .to('.css4n', 2, {text:{value: 'Server is Running'}, ease: Power1.easeIn})
+            .to('.css4n', 2, {text:{value: 'Someone is Listening on Port 8080'}, ease: Power1.easeIn}, '+=2')
+            .to('.css4n', 2, {text:{value: 'Lets hope they are friendly ;)'}, ease: Power1.easeIn}, '+=2')            
             return s8
         
         }
@@ -947,11 +976,11 @@ $(document).ready(function() {
         $('.skills8').click(function(){
             $('.skills8').toggleClass('active');
             if($('.skills8').hasClass('active')){
-                s8.gets8Timeline().play().timeScale(1);
+                s8 = gets8Timeline().play().timeScale(1);
                 skillRunning = s8;
             }
             else{
-                s8.reverse().timeScale(2);
+                s8.reverse().timeScale(5);
             }
         });
 
@@ -1008,8 +1037,8 @@ $(document).ready(function() {
 
     var tap = new TimelineMax({paused:true, repeat:-1})
         
-        .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, x:'-50%', y:'40%'},  {autoAlpha:1, y:'0%'}, 3,"#span1")
-        .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, y:'-20%'}, 3, "#span1+=2.8")
+        // .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, x:'-50%', y:'40%'},  {autoAlpha:1, y:'0%'}, 3,"#span1")
+        // .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, y:'-20%'}, 3, "#span1+=2.8")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'}, '-=1')
         .to(".backgroundWrapper", 0.5, {autoAlpha:1})
