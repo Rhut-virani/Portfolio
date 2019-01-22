@@ -34,6 +34,9 @@ html{
       @include tablet-portrait-up{
         font-size: 14px;
       }
+      @include tablet-landscape-up{
+        font-size: 14px;
+      }
       @include phone-only{
         font-size: 12px
       }
@@ -573,16 +576,16 @@ path{
       display: flex;
        p{
         flex: 1;
-        top: 0%;
+        top: 25%;
         left: 0;
         position: relative;
         text-align: center;
         font-size: 3rem;
         font-weight: 300;
         margin: 0%;
-          @include phone-only{
-            font-size: 2rem;
-          }
+          // @include phone-only{
+          //   font-size: 3rem;
+          // }
         }
     }
   }
@@ -878,8 +881,8 @@ path{
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   top: 0%;
   left: 0%;
   width: 100vw;
@@ -910,7 +913,7 @@ path{
       display: inline-block;
       position: relative;
       top: 50%;
-      transform: translateY(-50%);
+      // transform: translateY(-50%);
       height: fit-content;
       flex: 1;
       text-align: center;
@@ -931,8 +934,8 @@ path{
       flex-wrap: nowrap;
       justify-content: flex-start;
       align-self: center;
-      overflow: scroll;
-      padding: 2%;
+      overflow: hidden;
+      padding: 2vw;
       flex:10;
     
         @include desktop-up{
@@ -1284,7 +1287,7 @@ text-align: center
       height: 100%;
     }
     .aboutContent{
-      overflow: scroll;
+      overflow: hidden;
       height: 100%;
       width: 100%;
       position: absolute;
@@ -1296,7 +1299,7 @@ text-align: center
       p{
         font-size: 10vw;
         padding: 0; 
-        overflow-x: scroll;
+        overflow-x: hidden;
         overflow-y: hidden;
         -webkit-text-stroke: 2px $pureblack;
         color: #f4f4f4;
@@ -1304,8 +1307,9 @@ text-align: center
         margin: 0;
         @include phone-landscape-only{
           font-size: 5vw;
-          -webkit-text-stroke-width: 3px;
+          -webkit-text-stroke-width: 2px;
         }
+        
         @include desktop-up{
           font-size: 5vw;
           -webkit-text-stroke-width: 3px;

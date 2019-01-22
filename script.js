@@ -63,7 +63,8 @@ $(document).ready(function() {
                 rtimes,
                 tweentoadd;
 
-            if((window.orientation === 90 || window.orientation === -90) && $(window).width() < 900){
+            // if((window.orientation === 90 || window.orientation === -90) && $(window).width() < 900){
+            if(($(window).width() > $(window).height()) && $(window).width() < 900){
                 whattoshow = '.landscapeOnly';
                 whatnottoshow = '.allrest';
                 rtimes = -1;
@@ -344,6 +345,8 @@ $(document).ready(function() {
 
     //function that listens on mousewheel triggers and bounces extra scrolls within 200ms
     $(".container").on('wheel', _.debounce(scrolling, 200, {"leading":true,"trailing":false}));
+    $(".container").on('swipedown',function(e){console.log(e)} );
+
 
     function scrolling(e) {
 
@@ -706,23 +709,24 @@ $(document).ready(function() {
     var nophone = scrollDiv.innerWidth();
     var phone = scrollDiv.width();
     var scrollWidth = scrollDiv.get(0).scrollWidth;
-    if(window.orientation === 0 && $(window).width() < 600){
-        clientWidth = phone
+    getclientwidth =() =>{
+        if(window.orientation === 0 && $(window).width() < 600){
+           return clientWidth = scrollDiv.innerWidth()
+        }
+        else{
+           return clientWidth = scrollDiv.width();
+        }
     }
-    else{
-        clientWidth = nophone;
-    }
-    // console.log(clientWidth);
-    // console.log($(window).height(), clientWidth1);
+
     $('.leftarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + clientWidth)}, 400);
+        $('.allSkillsContainer').animate( { scrollLeft:  ('-=' + getclientwidth())}, 400);
         console.log('left arrow clicked');
     })
 
     $('.rightarrow').click(function(){
         leftPos = scrollDiv.scrollLeft();
-        $('.allSkillsContainer').animate( { scrollLeft: '+=' + clientWidth}, 400);
+        $('.allSkillsContainer').animate( { scrollLeft: '+=' + getclientwidth()}, 400);
         console.log('right arrow clicked');
     })
 
@@ -1037,8 +1041,8 @@ $(document).ready(function() {
 
     var tap = new TimelineMax({paused:true, repeat:-1})
         
-        // .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, x:'-50%', y:'40%'},  {autoAlpha:1, y:'0%'}, 3,"#span1")
-        // .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, y:'-20%'}, 3, "#span1+=2.8")
+        .staggerFromTo(scroll_about_span1, 1 , {autoAlpha:0, x:'-50%', y:'40%'},  {autoAlpha:1, y:'0%'}, 3,"#span1")
+        .staggerTo(scroll_about_span1, 0.5,  {autoAlpha:0, y:'-20%'}, 3, "#span1+=2.8")
 
         .set(".backgroundWrapper", {backgroundImage:'url(./assets/aboutImages/2.jpg)'}, '-=1')
         .to(".backgroundWrapper", 0.5, {autoAlpha:1})
@@ -1070,9 +1074,9 @@ $(document).ready(function() {
         .set(".backgroundWrapper", {backgroundImage: "none" , backgroundColor: '#0f1214'})
         .to(".backgroundWrapper", 0.5, {autoAlpha:1}, '-=0.5')
         .fromTo('.aboutContent > p > span.span7', 1 , {autoAlpha:0, xPercent:'-50%', yPercent:'40'},  {autoAlpha:1, yPercent:'0'})
-        .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'})
+        .to('.aboutContent > p > span.span7', 0.5,  {autoAlpha:0, yPercent:'-20'}, "+=1")
         
-        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'}, '-=1')
+        .set(".aboutWrapper", {backgroundImage:'url(./assets/aboutImages/1.jpg)'}, '+=1')
         .to(".backgroundWrapper", 0.5, {autoAlpha:0})
 
 

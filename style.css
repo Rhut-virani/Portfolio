@@ -14,6 +14,11 @@ html {
     font-size: 14px;
   }
 }
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  html {
+    font-size: 14px;
+  }
+}
 @media (max-width: 599px) {
   html {
     font-size: 12px;
@@ -580,18 +585,13 @@ path {
 }
 .pageIndicator .indication p {
   flex: 1;
-  top: 0%;
+  top: 25%;
   left: 0;
   position: relative;
   text-align: center;
   font-size: 3rem;
   font-weight: 300;
   margin: 0%;
-}
-@media (max-width: 599px) {
-  .pageIndicator .indication p {
-    font-size: 2rem;
-  }
 }
 
 .projectPageContainer .p-t-Right, .projectPageContainer .p-t-Left {
@@ -909,8 +909,8 @@ path {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   top: 0%;
   left: 0%;
   width: 100vw;
@@ -949,7 +949,6 @@ path {
   display: inline-block;
   position: relative;
   top: 50%;
-  transform: translateY(-50%);
   height: fit-content;
   flex: 1;
   text-align: center;
@@ -972,8 +971,8 @@ path {
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-self: center;
-  overflow: scroll;
-  padding: 2%;
+  overflow: hidden;
+  padding: 2vw;
   flex: 10;
 }
 @media (min-width: 1200px) {
@@ -1347,7 +1346,7 @@ path {
   height: 100%;
 }
 .aboutPageContainer .aboutWrapper .aboutContent {
-  overflow: scroll;
+  overflow: hidden;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -1360,7 +1359,7 @@ path {
 .aboutPageContainer .aboutWrapper .aboutContent p {
   font-size: 10vw;
   padding: 0;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
   -webkit-text-stroke: 2px #111111;
   color: #f4f4f4;
@@ -1370,7 +1369,7 @@ path {
 @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
   .aboutPageContainer .aboutWrapper .aboutContent p {
     font-size: 5vw;
-    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-width: 2px;
   }
 }
 @media (min-width: 1200px) {
