@@ -48,7 +48,7 @@
 
     
 $(document).ready(function() {
-        var url = ['./assets/aboutImages/1.jpg','./assets/aboutImages/2.jpg','./assets/aboutImages/3.jpg','./assets/aboutImages/4.jpg','./assets/aboutImages/5.jpg','./assets/aboutImages/6.jpg']
+        var url = ['./assets/aboutImages/1.jpg','./assets/aboutImages/2.jpg','./assets/aboutImages/3.jpg','./assets/aboutImages/4.jpg','./assets/aboutImages/5.jpg','./assets/aboutImages/6.jpg', './assets/p1.jpg', './assets/p2.jpg', './assets/p3.jpg' ,'./assets/p4.jpg']
         for (var k in url){
                 new Image(500,500).src = url[k];
         }
@@ -87,14 +87,14 @@ $(document).ready(function() {
                 .repeat(rtimes)
                 .yoyo(isyoyo)
                 .set(whatnottoshow, {autoAlpha:0})
-                .to(whattoshow, 0.25,{autoAlpha:1})
+                .set(whattoshow,{autoAlpha:1})
                 .fromTo('#l-back-R',  4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut})
                 .fromTo('#l-front-R', 4 , {strokeDashoffset: -1000}, {strokeDashoffset: 0, ease: Power2.easeOut}, "-=4")
                 .fromTo('#l-front-D', 2 , {strokeDashoffset: -1000}, {strokeDashoffset: 0}, '-=2')
                 .add(tweentoadd);
 
 
-            resizepage.play().timeScale(3);
+            resizepage.play(0.2).timeScale(3);
         }
 
         setTimeout(() => {
@@ -305,7 +305,7 @@ $(document).ready(function() {
             tp.play().timeScale(1);
         }
         else{
-            tp.reverse(0).timeScale(2);
+            tp.reverse(0).timeScale(3);
             function run (){
                     let thumbImg = $('.thumbimg' + currentJ);
                     projectImg = $('.projectImg' + currentJ);
@@ -320,7 +320,9 @@ $(document).ready(function() {
                 detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2).reverse("#rev");
                 detailsPage = false;
                 };
-            run();
+            setTimeout(() => {
+                run();
+            }, 1000);
 
         }
 
@@ -711,10 +713,10 @@ $(document).ready(function() {
     var scrollWidth = scrollDiv.get(0).scrollWidth;
     getclientwidth =() =>{
         if(window.orientation === 0 && $(window).width() < 600){
-           return clientWidth = scrollDiv.innerWidth()
+           return clientWidth = scrollDiv.width()
         }
         else{
-           return clientWidth = scrollDiv.width();
+           return clientWidth = scrollDiv.innerWidth();
         }
     }
 
@@ -737,12 +739,16 @@ $(document).ready(function() {
     function gets1Timeline(){
         s1.progress(0).clear();//get rid of tween in previous version of timeline
         s1
+        .set('.html5body', {xPercent:-100})
+        .set('.html5', {xPercent:-100})
+        .set('.bs1', {text: {value:'<i>< h2 ></i>'}})
+        .set('.bs3', {text: {value:'<i>< p ></i>'}})
         .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .set($('.allskills').not('.skills1'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
-        .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0}, '-=0.25')
-        .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
+        .fromTo('.nonhtml5', 0.5, {margin:'0% 0% 0% 0%'}, {margin:'0 0 0 10%'})
+        .to('.html5body', 0.5,{autoAlpha:1, xPercent:0}, '-=0.25')
+        .to('.html5', 0.5,{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
 
         return s1;
     }
@@ -831,10 +837,9 @@ $(document).ready(function() {
         .fromTo('.skills4', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .set($('.allskills').not('.skills4'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills4'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
-        .to('.cssh2', 3, {text:{value: ' import  <span class="reacth1">  React, { Component }  </span>  from  <span class="reacth1">  "react" </span>; </br>  import  <span                                      class="reacth1">  SkillsContent  </span> from <span class="reacth1">"  ./SkillsContent  " </span>; '}, 
-                                        ease: Power1.easeOut})
+        .to('.cssh2', 3, {text:{value: ' import  <span class="reacth1">  React, { Component }  </span>  from  <span class="reacth1">  "react" </span>; </br>  import  <span class="reacth1">  SkillsContent </span> from <span class="reacth1">" ./SkillsContent " </span>; '},ease: Power1.easeOut})
         .to('.css1, .css2, .css3, .css4', 1, {text: '   </br>', ease: Power1.easeIn}, '-=1')
-        .to('.css1', 1, {text:{value: ' render() { </br> </br>  return ( </br> <span class="react2"> < div className = "skillsContentGrid" > </span> </br> '},  
+        .to('.css1', 1, {text:{value: ' render() { </br>  return ( </br> <span class="react2"> < div className = "skillsContentGrid" > </span> </br> '},  
                                 ease: Power1.easeIn})
         .to('.css4js', 1.5, {text:{value: '<span class="react3"> < <b>SkillsContent</b> content = { this.state.currentContent } /> </span>', 
                                              oldClass:"css4js",
@@ -897,13 +902,16 @@ $(document).ready(function() {
     function gets6Timeline(){
         s6.progress(0).clear();//get rid of tween in previous version of timeline
         s6
+        .set('.html5body', {xPercent:-100})
+        .set('.html5', {xPercent:-100})
         .fromTo('.skills6', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .set($('.allskills').not('.skills6'), {pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.nonhtml5', 0.5, {margin:'-5% 0% 0% 0%'}, {margin:'0 0 0 10%'})
-        .to('.bs1', 0.1, {text: '<i>< h2 class = "text-center font-weight-bold" ></i>'})
-        .to('.bs2', 0.1, {text: '<i>< / h2 ></i>'})
-        .to('.bs3', 0.1,{text: '<i>< p class = "border border-warning" ></i>'} )
+        // .fromTo('.nonhtml5', 0.5, {margin:'0% 0% 0% 0%'}, {margin:'0 0 0 10%'})
+        .to('.nonhtml5', 0.5, {margin:'0 0 0 10%'})
+        .to('.bs1', 0.01, {text: {value:'<i>< h2 class = "text-center font-weight-bold" ></i>'}})
+        // .to('.bs2', 0.01, {text: {value:'<i>< / h2 ></i>'}})
+        .to('.bs3', 0.01, {text: {value:'<i>< p class = "border border-warning" ></i>'} })
         .fromTo('.html5body', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0})
         .fromTo('.html5', 0.5, {xPercent:-100},{autoAlpha:1, xPercent:0, marginLeft: '5%'})
         .to('.cssh2', 0.5, {autoAlpha: 0})
@@ -1024,7 +1032,7 @@ $(document).ready(function() {
         .fromTo('.aboutImg-container > img',  1, {yPercent:'-150'},{yPercent:'0', ease: Power1.easeOut})
         .staggerFromTo('.about-img-text > p', 1, {yPercent:'-200', autoAlpha:0}, {yPercent:'0', autoAlpha:1, ease: Power1.easeOut} , -0.5)
         .to(".backgroundWrapper", 1,{autoAlpha:0})
-        .set(".backgroundWrapper", {backgroundColor:'none'});        
+        .set(".backgroundWrapper", {backgroundColor: 'none'});        
 
 
 

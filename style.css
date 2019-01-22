@@ -1103,7 +1103,7 @@ path {
 }
 .skillsGrid2 .skillsContent .cssh2 {
   font-size: 1.5rem;
-  margin: -5% 0% 0% 0%;
+  margin: 0% 0% 0% 0%;
   font-weight: normal;
 }
 @media (min-width: 600px) and (orientation: portrait) {
@@ -1134,7 +1134,7 @@ path {
 
 .bs4 {
   padding: 1%;
-  margin: -5% 0% 0% 0%;
+  margin: 0% 0% 0% 0%;
 }
 .bs4 .css4js {
   line-height: 0;
@@ -1202,12 +1202,12 @@ path {
 }
 
 .react2 {
-  margin: 0 0 0 5%;
+  margin: 0 0 0 3%;
   text-align: center;
 }
 
 .react3 {
-  margin: 0 0 0 10%;
+  margin: 0 0 0 6%;
 }
 
 .css4n {
@@ -1335,7 +1335,7 @@ path {
 .aboutPageContainer .aboutWrapper {
   width: 100%;
   height: 100%;
-  background: url(./assets/aboutImages/1.jpg) no-repeat;
+  background: url("../assets/aboutImages/1.jpg") no-repeat;
   background-position: center;
   background-size: cover;
 }
