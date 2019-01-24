@@ -62,9 +62,10 @@ $(document).ready(function() {
                 isyoyo,
                 rtimes,
                 tweentoadd;
-
+            // console.log(window.devicePixelRatio)
+            // console.log(window.orientation);
             // if((window.orientation === 90 || window.orientation === -90) && $(window).width() < 900){
-            if(($(window).width() > $(window).height()) && $(window).width() < 900){
+            if(!!(window.orientation) && ($(window).width() > $(window).height()) && $(window).width() < 900){
                 whattoshow = '.landscapeOnly';
                 whatnottoshow = '.allrest';
                 rtimes = -1;
@@ -212,32 +213,32 @@ $(document).ready(function() {
 
         // $(this).attr('class', 'correctWebsite2 swing')
         $('a.floatingText').attr('class', 'floatingText swing');
-        $( "a:contains('P')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('r')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('o')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('j')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('e')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('c')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('t')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('s')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
-        $( "a:contains('C')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
-        $( "a:contains('o')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
-        $( "a:contains('n')" ).first().attr('class', 'floatingText floatingmainText gotoRight');
-        $( "a:contains('t')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
-        $( "a:contains('a')" ).first().attr('class', 'floatingText floatingmainText gotoRight');
-        $( "a:contains('c')" ).eq(2).attr('class',   'floatingText floatingmainText gotoRight');
-        $( "a:contains('t')" ).eq(2).attr('class',   'floatingText floatingmainText gotoRight');
-        $( "a:contains('a')" ).eq(1).attr('class',   'floatingText floatingmainText gotodown');
-        $( "a:contains('b')" ).eq(1).attr('class',   'floatingText floatingmainText gotodown');
-        $( "a:contains('o')" ).eq(2).attr('class',   'floatingText floatingmainText gotodown');
-        $( "a:contains('u')" ).first().attr('class', 'floatingText floatingmainText gotodown');
-        $( "a:contains('t')" ).eq(3).attr('class',   'floatingText floatingmainText gotodown');
-        $( "a:contains('s')" ).eq(1).attr('class',   'floatingText floatingmainText gotoup');
-        $( "a:contains('k')" ).first().attr('class', 'floatingText floatingmainText gotoup');
-        $( "a:contains('i')" ).first().attr('class', 'floatingText floatingmainText gotoup');
-        $( "a:contains('l')" ).first().attr('class', 'floatingText floatingmainText gotoup');
-        $( "a:contains('l')" ).eq(1).attr('class',   'floatingText floatingmainText gotoup');
-        $( "a:contains('s')" ).eq(2).attr('class',   'floatingText floatingmainText gotoup');
+        $( "a.floatingText:contains('P')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('r')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('o')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('j')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('e')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('c')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('t')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('s')" ).first().attr('class', 'floatingText floatingmainText gotoLeft');
+        $( "a.floatingText:contains('C')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('o')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('n')" ).first().attr('class', 'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('t')" ).eq(1).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('a')" ).first().attr('class', 'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('c')" ).eq(2).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('t')" ).eq(2).attr('class',   'floatingText floatingmainText gotoRight');
+        $( "a.floatingText:contains('a')" ).eq(1).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a.floatingText:contains('b')" ).eq(1).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a.floatingText:contains('o')" ).eq(2).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a.floatingText:contains('u')" ).first().attr('class', 'floatingText floatingmainText gotodown');
+        $( "a.floatingText:contains('t')" ).eq(3).attr('class',   'floatingText floatingmainText gotodown');
+        $( "a.floatingText:contains('s')" ).eq(1).attr('class',   'floatingText floatingmainText gotoup');
+        $( "a.floatingText:contains('k')" ).first().attr('class', 'floatingText floatingmainText gotoup');
+        $( "a.floatingText:contains('i')" ).first().attr('class', 'floatingText floatingmainText gotoup');
+        $( "a.floatingText:contains('l')" ).first().attr('class', 'floatingText floatingmainText gotoup');
+        $( "a.floatingText:contains('l')" ).eq(1).attr('class',   'floatingText floatingmainText gotoup');
+        $( "a.floatingText:contains('s')" ).eq(2).attr('class',   'floatingText floatingmainText gotoup');
         $(".waitForClass").attr('class','project');
         $(".waitForClass2").attr('class','contact');
         $(".waitForClass3").attr('class','about');
@@ -294,8 +295,8 @@ $(document).ready(function() {
         .to('div.projectContainer', 0.1, {color:'#ffd000'})
         .to('.main-logo-pr',0.25, {opacity:1})
         .staggerTo('.pageIndicator > div', 0.25 , {autoAlpha:1, xPercent: 0}, 0.1 )
-        .to('.projectPageContainer', 1, {autoAlpha:1, yPercent:0})
-        .to('div.projectContainer',0.50, {boxShadow: '-5px 0px 25px -15px #ffd000'});
+        .to('.projectPageContainer', 0.2, {autoAlpha:1, yPercent:0})
+        .to('div.projectContainer',0.50, {boxShadow: '-5px 0px 25px -15px #ffd000'}, "#pause");
 
 
     $('div.projectContainer').click(function(){
@@ -546,7 +547,6 @@ $(document).ready(function() {
         .fromTo('div#rightSectionContainer', 0.75, {xPercent:'100', autoAlpha:1}, {xPercent:'0'})
         .to('div.contactContainer', 0.1, {color:'#ffd000'},"-=0.25")
         .to('.main-logo-co',0.25, {opacity:1})
-        // .fromto('.contactPageContainer', 1 , {borderRadius:'50%', width:'2vw', height:'2vw', top:'50vh', left:'50vw'})
         .fromTo('.contactPageContainer', 1 , {autoAlpha:0}, {autoAlpha:1});
 
 
@@ -739,14 +739,14 @@ $(document).ready(function() {
     function gets1Timeline(){
         s1.progress(0).clear();//get rid of tween in previous version of timeline
         s1
-        .set('.html5body', {xPercent:-100})
-        .set('.html5', {xPercent:-100})
-        .set('.bs1', {text: {value:'<i>< h2 ></i>'}})
-        .set('.bs3', {text: {value:'<i>< p ></i>'}})
+        .set('.html5body', {xPercent:-50})
+        .set('.html5', {xPercent:-50})
+        .fromTo('.bs1',0.1, {text: {value:'<i>< h2 ></i>'}}, {text: {value:'<i>< h2 ></i>'}})
+        .fromTo('.bs3',0.1, {text: {value:'<i>< p ></i>'}}, {text: {value:'<i>< p ></i>'}})
         .fromTo('.skills1', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .set($('.allskills').not('.skills1'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills1'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.nonhtml5', 0.5, {margin:'0% 0% 0% 0%'}, {margin:'0 0 0 10%'})
+        .fromTo('.nonhtml5', 0.5, {margin:'0% 0% 0% 0%'}, {margin:'0% 0 0 10%'})
         .to('.html5body', 0.5,{autoAlpha:1, xPercent:0}, '-=0.25')
         .to('.html5', 0.5,{autoAlpha:1, xPercent:0, marginLeft: '5%'}, '-=0.25')
 
@@ -772,7 +772,7 @@ $(document).ready(function() {
         .fromTo('.skills2', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .set($('.allskills').not('.skills2'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills2'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
-        .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', fontWeight:'200', color:'#f4f4f4',}, {letterSpacing: '1rem', fontWeight:'900', color:'EF476F'})
+        .fromTo('.cssh2', 0.25, {letterSpacing: 'auto', color:'#f4f4f4',}, {letterSpacing: '0.5rem', fontWeight:'900', color:'EF476F'})
         .to('.cssh2', 0.25, {color:'#7DDF64'})
         .to('.cssh2', 0.25, {color:'#FF7733'})
         .to('.cssh2', 0.25, {color:'#FFED66'})
@@ -805,6 +805,7 @@ $(document).ready(function() {
         .fromTo('.skills3', 0.5, {scale:1}, {ease: Power4.easeIn, scale:1.1, zIndex: 100,})
         .set($('.allskills').not('.skills3'),{pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills3'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25')
+        .to('.nonhtml5', 0.25, {margin: '-5% 0 0 0'})
         .to('.css1, .css2, .css3, .css4', 3, {text:{value: randomText, oldClass:"css1", newClass:"js1"}, ease: Power1.easeIn},'#line1')
         .to('.css4js', 1.5, {text: {value : ' ' + wishes + ' ', newClass:'jsbig'}, ease: Power1.easeOut}, '#line2')
         .to('.css4js', 0.5, {text: '', ease: Power1.easeOut})
@@ -875,8 +876,8 @@ $(document).ready(function() {
         .to('.css4n', 2, {text:{value: ' npm init'}, ease: Power1.easeIn})
         .to('.css4n', 2, {text:{value: ' npm install lodash --save'}, ease: Power1.easeIn})
         .to('.css4n', 2, {text:{value: ' npm install moment --save '}, ease: Power1.easeIn})
-        .to('.css4n', 2, {text:{value: ' console.log(moment().format("hh:mm:ss"))'}, ease: Power1.easeIn})
-        .to('.css4n', 2, {text:{value: ' console.log(_.camelCase("why-so-serious")'}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' console.log (moment().format("hh:mm:ss"))'}, ease: Power1.easeIn})
+        .to('.css4n', 2, {text:{value: ' console.log (_.camelCase("why-so-serious")'}, ease: Power1.easeIn})
         .to('.css4n', 2, {text:{value: ' $ node nodeExample.js'}, ease: Power1.easeIn});
         
         return s5;
@@ -908,7 +909,7 @@ $(document).ready(function() {
         .set($('.allskills').not('.skills6'), {pointerEvents:'none'} )
         .fromTo($('.allskills').not('.skills6'), 0.1,{filter:'blur(0rem)'}, {filter:'blur(0.3rem)'}, '-=0.25' )
         // .fromTo('.nonhtml5', 0.5, {margin:'0% 0% 0% 0%'}, {margin:'0 0 0 10%'})
-        .to('.nonhtml5', 0.5, {margin:'0 0 0 10%'})
+        .to('.nonhtml5', 0.5, {margin:'2% 0 0 10%'})
         .to('.bs1', 0.01, {text: {value:'<i>< h2 class = "text-center font-weight-bold" ></i>'}})
         // .to('.bs2', 0.01, {text: {value:'<i>< / h2 ></i>'}})
         .to('.bs3', 0.01, {text: {value:'<i>< p class = "border border-warning" ></i>'} })

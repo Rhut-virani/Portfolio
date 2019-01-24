@@ -1,19 +1,27 @@
 module.exports = function (grunt) {
     grunt.initConfig({
-        autoprefixer: {
-            dist: {
-                files: {
-                    'build/style.css': 'style.css'
-                }
-            }
-        },
-        watch: {
-            styles: {
-                files: ['style.css'],
-                tasks: ['autoprefixer']
-            }
+        postcss: {
+          options: {
+            map: true, // inline sourcemaps
+      
+            // or
+            map: {
+                inline: false, // save all sourcemaps as separate files...
+                annotation: 'dist/css/maps/' // ...to the specified directory
+            },
+      
+            processors: [
+              require('pixrem')(), // add fallbacks for rem units
+              require('autoprefixer')({browsers: 'last 3 versions'}), // add vendor prefixes
+              // require('cssnano')() // minify the result
+            ]
+          },
+          dist: {
+            src: 'style.css',
+            dest: 'build/style.css'
+          }
         }
-    });
-    grunt.loadNpmTasks('grunt-autoprefixer');
+      });
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
 };

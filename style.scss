@@ -376,7 +376,7 @@ path{
           transform: translateY(-50%);
           cursor: pointer;
           margin: 0;
-          color: $bkcolor
+          color: $bkcolor 
         }
     }
 }
@@ -401,12 +401,12 @@ path{
     z-index: 100;
   }
 
-  %allsection-name-Container-div{
+  %allsectionnameContainerdiv{
     top: 50%;
     position: relative;
     cursor: pointer;
     font-size: 1.5rem;
-  }
+  } 
   
   %project-span{
     opacity: 1;
@@ -435,7 +435,7 @@ path{
         width: 10vw;
       }
       div{
-        @extend %allsection-name-Container-div;
+        @extend %allsectionnameContainerdiv;
         transform: translate(-50%,-50%) rotate(90deg);
         left: 50%;
         width: 100vh;
@@ -450,7 +450,7 @@ path{
       width: 10vw;
     }
       div{
-        @extend %allsection-name-Container-div;
+        @extend %allsectionnameContainerdiv;
         transform: translate(-50%,-50%) rotate(270deg);
         right: -50%;
         width: 100vh;
@@ -464,7 +464,7 @@ path{
       height: 10vw;
     }
       div{
-        @extend %allsection-name-Container-div;
+        @extend %allsectionnameContainerdiv;
         left: 50%;
         transform: translate(-50%,-50%);
       }
@@ -479,7 +479,7 @@ path{
       height: 10vw;
     }
       div{
-        @extend %allsection-name-Container-div;
+        @extend %allsectionnameContainerdiv;
         left: 50%;
         transform: translate(-50%,-50%);
       }
@@ -853,6 +853,10 @@ path{
                         padding: 0% 1%;
                         font-size: 2vw;
                       }
+                    a{
+                      text-decoration: underline;
+                      color: inherit;
+                    }
                   }
             }
           }
@@ -911,14 +915,20 @@ path{
     }
     .leftarrow, .rightarrow{
       display: inline-block;
-      position: relative;
-      top: 50%;
-      // transform: translateY(-50%);
-      height: fit-content;
-      flex: 1;
+      // position: relative;
+      // top: 50%;
+      // transform: translate(0, -50%);
+      display: flex;
+      align-items: center;
+      height: 100%;
+      flex: 0.5;
       text-align: center;
       font-size: 1.5rem;
       color: #0f1214;
+      padding: 2%;
+      align-self: center;
+      justify-content: center;
+      box-sizing: border-box;
       @include desktop-up{
         display: none;
       }
@@ -1131,16 +1141,25 @@ path{
   font-style: italic;
   line-height: 1rem;
   font-size: 1.5rem;
+  @include phone-only{
+    font-size: 0.75rem;
+  }
 }
 .reacth1{
   color: $acntcolor;
   font-style: italic;
   font-size: 2rem;
   margin-right: 1%;
+  @include tablet-portrait-up{
+  font-size: 1.5rem;
+  }
+  @include phone-only{
+    font-size: 1rem;
+  }
 }
 .react2{
   margin: 0 0 0 3%;
-text-align: center
+  text-align: center
 }
 .react3{
   margin: 0 0 0 6%;
