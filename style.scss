@@ -409,7 +409,7 @@ path{
   } 
   
   %project-span{
-    opacity: 1;
+    opacity: 1; 
     display: inline-block;
     font-weight: 300;
     color: $acntcolor;
@@ -497,7 +497,7 @@ path{
   .widerText, .widerText2{
     display: inline-block;
     font-weight: 300;
-    transition: all 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
+    transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
     width: 3vw;
     font-size: 1.2rem;
       @include tablet-portrait-up{
@@ -635,7 +635,7 @@ path{
             flex-direction: column;
             align-items: stretch;
             span.heading{
-              font-size: 4rem;
+              font-size: 3.5rem;
               letter-spacing: 0.5rem;
               font-family: 'lato';
               text-align: center;
@@ -903,7 +903,7 @@ path{
   flex: 1;
   box-sizing: border-box;
   width: 100%;
-  height: 30%;
+  // height: 30%;
   flex-direction: row;
   display: flex;
   padding: 0%;
@@ -1034,6 +1034,12 @@ path{
               img.skillName4{
                 padding: 20%;
                 height: 60%;
+                @include tablet-landscape-up{
+                  height: 40%;
+                }
+                @include phone-only{
+                  height: 50%;
+                }
               }
           }
       }
@@ -1043,6 +1049,12 @@ path{
           img.skillName4{
             padding: 20%;
             height: 50%;
+            @include tablet-landscape-up{
+              height: 30%;
+            }
+            @include phone-only{
+              height: 40%;
+            }
           }
         }
       }
@@ -1050,15 +1062,16 @@ path{
 }
 
 .skillsGrid2{
-  flex: 1;
+  flex: 2.5;
   width: 100%;
-  height: 70%;
+  // height: 70%;
+  overflow: hidden;
     @include desktop-up{
       flex: 2;
       height: 100%;
     }
   .skillsContent{
-    height: 90vh;
+    height: 100%;
     margin: 2% 5%;
       .cssh2{
         font-size: 1.5rem;
@@ -1069,7 +1082,7 @@ path{
           font-size: 2rem;
         }
         @include tablet-landscape-up{
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
       }
       p{
@@ -1077,11 +1090,10 @@ path{
         text-align: justify;
         font-weight: 300;
         @include tablet-portrait-up{
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
         @include tablet-landscape-up{
-          font-size: 2rem;
-        }
+          font-size: 1.5rem;         }
       }
   }
 
@@ -1142,20 +1154,14 @@ path{
   line-height: 1rem;
   font-size: 1.5rem;
   @include phone-only{
-    font-size: 0.75rem;
+    font-size: 1.5rem; 
   }
 }
 .reacth1{
   color: $acntcolor;
   font-style: italic;
-  font-size: 2rem;
-  margin-right: 1%;
-  @include tablet-portrait-up{
   font-size: 1.5rem;
-  }
-  @include phone-only{
-    font-size: 1rem;
-  }
+  margin-right: 1%;
 }
 .react2{
   margin: 0 0 0 3%;
@@ -1192,7 +1198,7 @@ path{
   overflow: hidden;
     @include phone-only{
       width: calc(100vw - 10vw);
-      left: 10vw;
+      left: 10vw; 
     }
     .container{
       display: flex;

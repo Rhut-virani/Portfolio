@@ -594,9 +594,9 @@ path {
 .widerText, .widerText2 {
   display: inline-block;
   font-weight: 300;
-  -webkit-transition: all 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);
-  -o-transition: all 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);
-  transition: all 1s cubic-bezier(0.49, -0.19, 0.32, 0.88);
+  -webkit-transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);
+  -o-transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);
+  transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);
   width: 3vw;
   font-size: 19.2px;
   font-size: 1.2rem;
@@ -749,8 +749,8 @@ path {
           align-items: stretch;
 }
 .projectPageContainer .container .home .projectDetailContainer span.heading {
-  font-size: 64px;
-  font-size: 4rem;
+  font-size: 56px;
+  font-size: 3.5rem;
   letter-spacing: 8px;
   letter-spacing: 0.5rem;
   font-family: "lato";
@@ -1135,7 +1135,6 @@ path {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  height: 30%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -1343,17 +1342,37 @@ path {
   padding: 20%;
   height: 60%;
 }
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  .skillsGrid1 .allSkillsContainer .allskills div img.skillName4 {
+    height: 40%;
+  }
+}
+@media (max-width: 599px) {
+  .skillsGrid1 .allSkillsContainer .allskills div img.skillName4 {
+    height: 50%;
+  }
+}
 .skillsGrid1 .allSkillsContainer .skills6 div img.skillName4 {
   padding: 20%;
   height: 50%;
 }
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  .skillsGrid1 .allSkillsContainer .skills6 div img.skillName4 {
+    height: 30%;
+  }
+}
+@media (max-width: 599px) {
+  .skillsGrid1 .allSkillsContainer .skills6 div img.skillName4 {
+    height: 40%;
+  }
+}
 
 .skillsGrid2 {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 2.5;
+      -ms-flex: 2.5;
+          flex: 2.5;
   width: 100%;
-  height: 70%;
+  overflow: hidden;
 }
 @media (min-width: 1200px) {
   .skillsGrid2 {
@@ -1364,7 +1383,7 @@ path {
   }
 }
 .skillsGrid2 .skillsContent {
-  height: 90vh;
+  height: 100%;
   margin: 2% 5%;
 }
 .skillsGrid2 .skillsContent .cssh2 {
@@ -1380,7 +1399,7 @@ path {
 }
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .skillsGrid2 .skillsContent .cssh2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 .skillsGrid2 .skillsContent p {
@@ -1391,12 +1410,12 @@ path {
 }
 @media (min-width: 600px) and (orientation: portrait) {
   .skillsGrid2 .skillsContent p {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .skillsGrid2 .skillsContent p {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1472,26 +1491,16 @@ path {
 }
 @media (max-width: 599px) {
   .react1 {
-    font-size: 0.75rem;
+    font-size: 1.5rem;
   }
 }
 
 .reacth1 {
   color: #ffd000;
   font-style: italic;
-  font-size: 32px;
-  font-size: 2rem;
+  font-size: 24px;
+  font-size: 1.5rem;
   margin-right: 1%;
-}
-@media (min-width: 600px) and (orientation: portrait) {
-  .reacth1 {
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 599px) {
-  .reacth1 {
-    font-size: 1rem;
-  }
 }
 
 .react2 {
