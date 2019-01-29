@@ -1162,6 +1162,12 @@ path{
   font-style: italic;
   font-size: 1.5rem;
   margin-right: 1%;
+  @include tablet-portrait-up{
+  font-size: 1.5rem;
+  }
+  @include phone-only{
+    font-size: 1rem;
+  }
 }
 .react2{
   margin: 0 0 0 3%;

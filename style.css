@@ -1222,7 +1222,11 @@ path {
 }
 @media (max-width: 599px) {
   .react1 {
+<<<<<<< HEAD
     font-size: 1.5rem;
+=======
+    font-size: 0.75rem;
+>>>>>>> 9a43ddd54be514fea6cc000b130d9c01131fb701
   }
 }
 
@@ -1231,6 +1235,16 @@ path {
   font-style: italic;
   font-size: 1.5rem;
   margin-right: 1%;
+}
+@media (min-width: 600px) and (orientation: portrait) {
+  .reacth1 {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 599px) {
+  .reacth1 {
+    font-size: 1rem;
+  }
 }
 
 .react2 {
