@@ -152,10 +152,9 @@ $(document).ready(
                     ease: Back.easeOut.config(1.7),
                     opacity: 0,
                     rotation: '270deg',
-                }, 0.1, '-=0.5')
-                .set($allcontainer, { pointerEvents: 'all' });
+                }, 0.1, '-=0.5');
 
-            st.play().timeScale(1);
+            st.play().timeScale(1.5);
         };
 
         function removeClass() {
@@ -167,9 +166,10 @@ $(document).ready(
                 .call(bannerAnimation)
                 .to('.logo-png', 1, { opacity: 1 })
                 .to('.main-logo-pr', 1, { opacity: 1 }, '-=1')
-                .to('path', 0.25, { scale: 0.99 }, '-=1');
+                .to('path', 0.25, { scale: 0.99 }, '-=1')
+                .set($allcontainer, { pointerEvents: 'all' });
 
-            lt12.play().timeScale(1);
+            lt12.play().timeScale(1.5);
 
             setTimeout(() => {
                 $('.swing').remove();
@@ -196,7 +196,7 @@ $(document).ready(
 
         function bannerInfinite() {
             // eslint-disable-next-line no-unused-vars
-            var btInfinite = new TimelineMax({ repeat: -1 })
+            var btInfinite = new TimelineMax({ repeat: -1, repeatDelay: 0 })
                 .to('.mainpage-text3', 3, { text: { value: 'Full Stack Web Developer' } })
                 .to('.mainpage-text3', 0.5, { text: { value: ' ' } }, '+=0.5')
                 .to('.mainpage-text3', 3, { text: { value: 'Based In Toronto' } })
@@ -205,7 +205,7 @@ $(document).ready(
                 .to('.mainpage-text3', 0.5, { text: { value: ' ' } }, '+=0.5')
                 .to('.mainpage-text3', 3, { text: { value: 'Always a Coder' } })
                 .to('.mainpage-text3', 0.5, { text: { value: ' ' } }, '+=0.5')
-                .fromTo('.mainpage-text3', 0.5, { borderRightColor: '#ffd00020' }, { borderRightColor: '#ffd000', repeat: 50, ease: SteppedEase.config(37) }, 0);
+                .fromTo('.mainpage-text3', 0.5, { borderRightColor: '#ffd00020' }, { borderRightColor: '#ffd000', repeat: 34, ease: SteppedEase.config(37) }, 0);
         }
 
 
@@ -308,12 +308,12 @@ $(document).ready(
                             heading = (currentJ === 1) ? $(`.heading${currentJ}, .fa-vr-cardboard`) : $(`.heading${currentJ}`),
                             imgtext1 = $(`.detail${currentJ}> .imgContainer > .pitext > .project-i-text-1 > div`),
                             imgtext2 = $(`.detail${currentJ}> .imgContainer > .pitext > .project-i-text-2 > div`),
-                            detailsH1 = $(`.detail ${currentJ} > .titleContainer > .title`),
-                            textContent = $(`.detail ${currentJ} > .textContent`),
-                            exlinks = $(`ex-links ${currentJ} > a`),
-                            backbutton = $(`.backbutton ${currentJ}`);
-                        imgcontainer = $(`.detail ${currentJ} > .imgContainer`);
-                        titlecontainer = $(`.detail ${currentJ} > .titleContainer`);
+                            detailsH1 = $(`.detail${currentJ} > .titleContainer > .title`),
+                            textContent = $(`.detail${currentJ} > .textContent`),
+                            exlinks = $(`ex-links${currentJ} > a`),
+                            backbutton = $(`.backbutton${currentJ}`);
+                        imgcontainer = $(`.detail${currentJ} > .imgContainer`);
+                        titlecontainer = $(`.detail${currentJ} > .titleContainer`);
 
                         detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).reverse('#rev');
                         detailsPage = false;
@@ -378,25 +378,25 @@ $(document).ready(
 
         // eslint-disable-next-line arrow-body-style
         var clickIndi = (l) => {
-            return () => {
-                const sectionIn = $(`.home.section  ${l}`),
+            return (e) => {
+                const sectionIn = $(`.home.section${l}`),
                     sectionfade = $('.home.active'),
                     headingIn = $(sectionIn).children().children('.heading'),
                     headingfade = $('.heading.active'),
-                    indicatorIn = $(this),
+                    indicatorIn = $(e.currentTarget),
                     indicatorfade = $('.indication.active');
                 scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn);
             };
         };
         for (let l = 1; l < 5; l += 1) {
-            $(`.indicator ${l}`).click(clickIndi(l));
+            $(`.indicator${l}`).click(clickIndi(l));
         }
 
 
         // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
         var dl = new TimelineMax({ paused: true });
 
-        detail = (thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton) => {
+        detail = (thumbImg, projectImg, detailsH1, textContent, _detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton) => {
             dl.progress(0).clear(); // get rid of tween in previous version of timeline
             dl.invalidate();
             dl.kill();
@@ -419,40 +419,42 @@ $(document).ready(
             return dl;
         };
 
-        var clickImg = j => () => {
-            currentJ = j;
-            const
-                thumbImg = $(`.thumbimg ${j}`),
-                projectImg = $(`.projectImg ${j}`),
-                imgcontainer = $(`.detail ${j} > .imgContainer`),
-                titlecontainer = $(`.detail ${j} > .titleContainer`),
-                imgtext1 = $(`.detail ${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
-                imgtext2 = $(`.detail ${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
-                heading = (j === 1) ? $(`.heading ${j}, .fa-vr-cardboard`) : $(`.heading ${j}`),
-                detailsH1 = $(`.detail ${j} > .titleContainer > .title`),
-                textContent = $(`.detail ${j} > .textContent`),
-                exlinks = $(`.ex-links ${j} > a`),
-                backbutton = $(`.backbutton ${j}`);
+        var clickImg = (j) => {
+            return () => {
+                currentJ = j;
+                const
+                    thumbImg = $(`.thumbimg${j}`),
+                    projectImg = $(`.projectImg${j}`),
+                    imgcontainer = $(`.detail${j} > .imgContainer`),
+                    titlecontainer = $(`.detail${j} > .titleContainer`),
+                    imgtext1 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
+                    imgtext2 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
+                    heading = (j === 1) ? $(`.heading${j}, .fa-vr-cardboard`) : $(`.heading${j}`),
+                    detailsH1 = $(`.detail${j} > .titleContainer > .title`),
+                    textContent = $(`.detail${j} > .textContent`),
+                    exlinks = $(`.ex-links${j} > a`),
+                    backbutton = $(`.backbutton${j}`);
 
 
-            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).play();
-            detailsPage = true;
+                detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).play();
+                detailsPage = true;
+            };
         };
 
         var backclick = (j) => {
             return () => {
                 const
-                    thumbImg = $(`.thumbimg ${j}`),
-                    projectImg = $(`.projectImg ${j}`),
-                    imgcontainer = $(`.detail ${j} > .imgContainer`),
-                    titlecontainer = $(`.detail ${j} > .titleContainer`),
-                    imgtext1 = $(`.detail ${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
-                    imgtext2 = $(`.detail ${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
-                    heading = (j === 1) ? $(`.heading ${j}, .fa-vr-cardboard`) : $(`.heading ${j}`),
-                    detailsH1 = $(`.detail ${j} > .titleContainer > .title`),
-                    textContent = $(`.detail ${j} > .textContent`),
-                    exlinks = $(`.ex-links ${j} > a`),
-                    backbutton = $(`.backbutton ${j}`);
+                    thumbImg = $(`.thumbimg${j}`),
+                    projectImg = $(`.projectImg${j}`),
+                    imgcontainer = $(`.detail${j} > .imgContainer`),
+                    titlecontainer = $(`.detail${j} > .titleContainer`),
+                    imgtext1 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
+                    imgtext2 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
+                    heading = (j === 1) ? $(`.heading${j}, .fa-vr-cardboard`) : $(`.heading${j}`),
+                    detailsH1 = $(`.detail${j} > .titleContainer > .title`),
+                    textContent = $(`.detail${j} > .textContent`),
+                    exlinks = $(`.ex-links${j} > a`),
+                    backbutton = $(`.backbutton${j}`);
 
                 detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).reverse('#rev');
                 detailsPage = false;
@@ -460,8 +462,8 @@ $(document).ready(
         };
 
         for (let j = 1; j < 5; j += 1) {
-            $(`.thumbimg ${j}`).click(clickImg(j));
-            $(`.backbutton ${j}`).click(backclick(j));
+            $(`.thumbimg${j}`).click(clickImg(j));
+            $(`.backbutton${j}`).click(backclick(j));
         }
 
         var project1text = [[],
@@ -477,15 +479,15 @@ $(document).ready(
             const text2 = project1text[j][length][1];
             // console.log(text1, text2, project1text);
             var tni = new TimelineMax({ paused: true })
-                .to(imgtext1, 0.5, { yPercent: '-100' })
-                .to(imgtext2, 0.5, { yPercent: '-100' }, 0)
+                .to(imgtext1, 0.3, { yPercent: '-100' })
+                .to(imgtext2, 0.3, { yPercent: '-100' }, 0)
                 .set(imgtext1, { text: text1 })
                 .set(imgtext2, { text: text2 })
-                .fromTo(prevslide, 0.5, { xPercent: 0 }, { xPercent: '-120', zIndex: 0, ease: Power3.easeInOut })
-                .fromTo(nextslide, 0.5, { xPercent: 120, zIndex: 1, autoAlpha: 1 }, { xPercent: 0, className: '+=active', ease: Power3.easeInOut })
+                .fromTo(prevslide, 0.3, { xPercent: 0 }, { xPercent: '-120', zIndex: 0, ease: Power3.easeInOut })
+                .fromTo(nextslide, 0.3, { xPercent: 120, zIndex: 1, autoAlpha: 1 }, { xPercent: 0, className: '+=active', ease: Power3.easeInOut })
                 .set(prevslide, { autoAlpha: 0, className: '-=active', scale: 1 })
-                .to(imgtext1, 0.5, { yPercent: 0 })
-                .to(imgtext2, 0.5, { yPercent: 0 }, '-=0.5');
+                .to(imgtext1, 0.3, { yPercent: 0 })
+                .to(imgtext2, 0.3, { yPercent: 0 }, '-=0.3');
 
             tni.play();
         }
@@ -654,10 +656,10 @@ $(document).ready(
             .to('div.skillsContainer', 0.1, { color: '#ffd000' }, '-=0.25')
             .to('div.skillsContainer', 0.1, { backgroundColor: '#0f1214' })
             .to('.main-logo-sk', 0.25, { opacity: 1 })
+            .fromTo('.skillsGrid1', 0.3, { autoAlpha: 0 }, { autoAlpha: 1 })
             .fromTo('.skillsContent', 0.5, { y: '10%', autoAlpha: 0 }, { y: '0%', autoAlpha: 1 })
-            .staggerFromTo('.allskills', 0.5, { sclae: 0, autoAlpha: 0, y: '-50%' },
+            .staggerFromTo('.allskills', 0.4, { autoAlpha: 0, y: '-50%' },
                 {
-                    scale: 1,
                     autoAlpha: 1,
                     y: '0%',
                     ease: Back.easeOut.config(2),
@@ -698,7 +700,7 @@ $(document).ready(
         // var scrollWidth = scrollDiv.get(0).scrollWidth;
         getclientwidth = () => {
             if (($(window).width() < $(window).height()) && $(window).width() < 600) {
-                clientWidth = scrollDiv.width() + ((scrollDiv.outerWidth() - scrollDiv.width()) / 4);
+                clientWidth = scrollDiv.width() + ((scrollDiv.outerWidth() - scrollDiv.width()) / 5);
                 return clientWidth;
             }
             clientWidth = scrollDiv.innerWidth();
@@ -794,7 +796,7 @@ $(document).ready(
                 .to('.cssh2', 0.1, { autoAlpha: 0 })
                 .to('.nonhtml5', 0.25, { margin: '-10% 0 0 0' })
                 .to('.css1, .css2, .css3, .css4', 3, { text: { value: randomText, oldClass: 'css1', newClass: 'js1' }, ease: Power1.easeIn }, '#line1')
-                .to('.css4js', 1.5, { text: { value: ` ${wishes} `, newClass: 'jsbig' }, ease: Power1.easeOut }, '#line2')
+                .to('.css4js', 1.5, { text: { value: `${wishes} `, newClass: 'jsbig' }, ease: Power1.easeOut }, '#line2')
                 .to('.css4js', 0.5, { text: '', ease: Power1.easeOut })
                 .to(wishanimation, 1.5, { autoAlpha: 1 }, '-=0.5')
                 .to(wishanimation, 1.5, { autoAlpha: 0 })
@@ -802,7 +804,7 @@ $(document).ready(
                 .to('.css4js', 1.5, { text: { value: `  Its   ${currentDay}  `, newClass: 'jsbig' }, ease: Power1.easeIn }, '#line4')
                 .to('.css4js', 1.5, { text: { value: `  The   ${currentDate} `, newClass: 'jsbig' }, ease: Power1.easeIn })
                 .to('.css4js', 1.5, { text: { value: ` of ${currentMonth}  `, newClass: 'jsbig' }, ease: Power1.easeIn })
-                .to('.css4js', 1.5, { text: { value: `    ${currentYear}  `, newClass: 'jsbig' }, ease: Power1.easeIn })
+                .to('.css4js', 1.5, { text: { value: ` ${currentYear}`, newClass: 'jsbig' }, ease: Power1.easeIn })
                 .to('.css4js', 1.5, { text: '', ease: Power1.easeIn });
             return s3;
         };
@@ -1017,19 +1019,22 @@ $(document).ready(
             .to('div.aboutContainer', 0.1, { backgroundColor: '#0f1214' })
             .to('.main-logo-ab', 0.25, { opacity: 1 })
             .fromTo('.aboutImg-container > img', 1, { yPercent: '-150' }, { yPercent: '0', ease: Power1.easeOut })
-            .staggerFromTo('.about-img-text > p', 1, { yPercent: '-200', autoAlpha: 0 }, { yPercent: '0', autoAlpha: 1, ease: Power1.easeOut }, -0.5)
+            .staggerFromTo('.about-img-text > p', 0.8, { yPercent: '-200', autoAlpha: 0 }, { yPercent: '0', autoAlpha: 1, ease: Power1.easeOut }, -0.4)
             .to('.backgroundWrapper', 1, { autoAlpha: 0 })
-            .set('.backgroundWrapper', { backgroundColor: 'none' });
+            .set('.backgroundWrapper', { backgroundColor: 'none' })
+            .fromTo('.aboutContent > p', 0.2, { autoAlpha: 0 }, { autoAlpha: 1 });
 
 
         $('div.aboutContainer').click(() => {
             if (!ta.isActive()) {
                 $('div#bottomSectionContainer').toggleClass('goup');
                 if ($('div#bottomSectionContainer').hasClass('goup')) {
-                    ta.play().timeScale(1);
+                    ta.play().timeScale(2);
                 } else {
-                    ta.reverse().timeScale(3);
-                    tap.reverse(0.99).timeScale(10);
+                    ta.reverse().timeScale(4);
+                    setTimeout(() => {
+                        tap.progress(0);
+                    }, 1000);
                 }
             }
         });
@@ -1081,7 +1086,7 @@ $(document).ready(
                 tap.reverse(1).timeScale(2);
             } else {
                 allActiveTimelines.push(tap);
-                tap.play().timeScale(1);
+                tap.play().timeScale(1.5);
             }
         }
     },

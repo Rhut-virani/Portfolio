@@ -45,7 +45,7 @@ body {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-     supported by Chrome and Opera */
+                                  supported by Chrome and Opera */
 }
 
 ::-webkit-scrollbar {
@@ -206,25 +206,40 @@ path {
     padding-left: 5%;
   }
 }
-.brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
+.brand-container .nameContainer .mainpage-text1,
+.brand-container .nameContainer .mainpage-text2,
+.brand-container .nameContainer .mainpage-text3,
+.brand-container .nameContainer .mainpage-text4 {
   font-weight: 300;
   font-size: 1.5rem;
   border-right: 2px solid transparent;
 }
 @media (min-width: 600px) and (orientation: portrait) {
-  .brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
+  .brand-container .nameContainer .mainpage-text1,
+.brand-container .nameContainer .mainpage-text2,
+.brand-container .nameContainer .mainpage-text3,
+.brand-container .nameContainer .mainpage-text4 {
     font-size: 2rem;
   }
 }
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
-  .brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
+  .brand-container .nameContainer .mainpage-text1,
+.brand-container .nameContainer .mainpage-text2,
+.brand-container .nameContainer .mainpage-text3,
+.brand-container .nameContainer .mainpage-text4 {
     font-size: 2rem;
   }
 }
 @media (min-width: 1200px) {
-  .brand-container .nameContainer .mainpage-text1, .brand-container .nameContainer .mainpage-text2, .brand-container .nameContainer .mainpage-text3, .brand-container .nameContainer .mainpage-text4 {
+  .brand-container .nameContainer .mainpage-text1,
+.brand-container .nameContainer .mainpage-text2,
+.brand-container .nameContainer .mainpage-text3,
+.brand-container .nameContainer .mainpage-text4 {
     font-size: 2.5rem;
   }
+}
+.brand-container .nameContainer #longtextdiv {
+  min-height: 5rem;
 }
 .brand-container .logo-wrapper {
   position: relative;
@@ -402,7 +417,10 @@ path {
 /* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
 /* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
 /* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
-.waitForClass, .waitForClass2, .waitForClass3, .waitForClass4 {
+.waitForClass,
+.waitForClass2,
+.waitForClass3,
+.waitForClass4 {
   display: none;
 }
 
@@ -420,7 +438,10 @@ path {
   font-size: 1.5rem;
 }
 
-.project span, .contact span, .skills span, .about span {
+.project span,
+.contact span,
+.skills span,
+.about span {
   opacity: 1;
   display: inline-block;
   font-weight: 300;
@@ -429,18 +450,27 @@ path {
   font-size: 1.2rem;
 }
 @media (min-width: 600px) and (orientation: portrait) {
-  .project span, .contact span, .skills span, .about span {
+  .project span,
+.contact span,
+.skills span,
+.about span {
     width: 3vw;
   }
 }
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
-  .project span, .contact span, .skills span, .about span {
+  .project span,
+.contact span,
+.skills span,
+.about span {
     width: 2vw;
     font-size: 1.5rem;
   }
 }
 @media (min-width: 1200px) {
-  .project span, .contact span, .skills span, .about span {
+  .project span,
+.contact span,
+.skills span,
+.about span {
     width: 1.5vw;
   }
 }
@@ -506,7 +536,8 @@ path {
 }
 
 /* navtext animation */
-.widerText, .widerText2 {
+.widerText,
+.widerText2 {
   display: inline-block;
   font-weight: 300;
   transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);
@@ -514,30 +545,39 @@ path {
   font-size: 1.2rem;
 }
 @media (min-width: 600px) and (orientation: portrait) {
-  .widerText, .widerText2 {
+  .widerText,
+.widerText2 {
     width: 3vw;
   }
 }
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
-  .widerText, .widerText2 {
+  .widerText,
+.widerText2 {
     width: 2vw;
     font-size: 1.5rem;
   }
 }
 @media (min-width: 1200px) {
-  .widerText, .widerText2 {
+  .widerText,
+.widerText2 {
     width: 1.5vw;
   }
 }
 
-.projectContainer:hover > div > .widerText, .contactContainer:hover > div > .widerText, .skillsContainer:hover > div > .widerText2, .aboutContainer:hover > div > .widerText2 {
+.projectContainer:hover > div > .widerText,
+.contactContainer:hover > div > .widerText,
+.skillsContainer:hover > div > .widerText2,
+.aboutContainer:hover > div > .widerText2 {
   width: 10%;
 }
 
 /* <-------------------------  individual sections ------------------------------->  */
 /* <-------------------------  individual sections ------------------------------->  */
 /* <-------------------------  individual sections ------------------------------->  */
-#leftSectionContainer, #rightSectionContainer, #topSectionContainer, #bottomSectionContainer {
+#leftSectionContainer,
+#rightSectionContainer,
+#topSectionContainer,
+#bottomSectionContainer {
   position: absolute;
   background-color: #0F1214;
   height: 100vh;
@@ -547,7 +587,10 @@ path {
   display: none;
 }
 
-.projectTransitionHelper, .contactTransitionHelper, .aboutTransitionHelper, .skillsTransitionHelper {
+.projectTransitionHelper,
+.contactTransitionHelper,
+.aboutTransitionHelper,
+.skillsTransitionHelper {
   position: absolute;
   background-color: #ffd000;
   height: 100vh;
@@ -556,7 +599,10 @@ path {
   display: none;
 }
 
-.projectPageContainer > p, .contactPageContainer > p, .aboutPageContainer > p, .skillsPageContainer > p {
+.projectPageContainer > p,
+.contactPageContainer > p,
+.aboutPageContainer > p,
+.skillsPageContainer > p {
   color: #0F1214;
   font-size: 2rem;
   text-align: center;
@@ -948,7 +994,8 @@ path {
     display: block;
   }
 }
-.skillsGrid1 .leftarrow, .skillsGrid1 .rightarrow {
+.skillsGrid1 .leftarrow,
+.skillsGrid1 .rightarrow {
   display: inline-block;
   display: flex;
   align-items: center;
@@ -963,7 +1010,8 @@ path {
   box-sizing: border-box;
 }
 @media (min-width: 1200px) {
-  .skillsGrid1 .leftarrow, .skillsGrid1 .rightarrow {
+  .skillsGrid1 .leftarrow,
+.skillsGrid1 .rightarrow {
     display: none;
   }
 }
@@ -1171,18 +1219,21 @@ path {
   font-style: italic;
   line-height: 1rem;
 }
-.bs4 .jsbig, .bs4 .css4js {
+.bs4 .jsbig,
+.bs4 .css4js {
   font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
 }
 @media (max-width: 599px) {
-  .bs4 .jsbig, .bs4 .css4js {
+  .bs4 .jsbig,
+.bs4 .css4js {
     font-size: 2rem;
   }
 }
 @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
-  .bs4 .jsbig, .bs4 .css4js {
+  .bs4 .jsbig,
+.bs4 .css4js {
     font-size: 1.5rem;
   }
 }
@@ -1222,11 +1273,7 @@ path {
 }
 @media (max-width: 599px) {
   .react1 {
-<<<<<<< HEAD
     font-size: 1.5rem;
-=======
-    font-size: 0.75rem;
->>>>>>> 9a43ddd54be514fea6cc000b130d9c01131fb701
   }
 }
 
@@ -1297,7 +1344,8 @@ path {
   align-self: center;
 }
 
-.emailContainer, .greetingsContainer {
+.emailContainer,
+.greetingsContainer {
   flex: 1;
   overflow: hidden;
   text-align: center;
@@ -1306,7 +1354,8 @@ path {
   justify-content: center;
   align-items: center;
 }
-.emailContainer a, .greetingsContainer a {
+.emailContainer a,
+.greetingsContainer a {
   text-decoration: none;
 }
 
@@ -1331,7 +1380,8 @@ path {
   display: flex;
   width: 100%;
 }
-.links .linkedin, .links .phone {
+.links .linkedin,
+.links .phone {
   display: inline-block;
   flex: 1;
   height: 10vh;
@@ -1348,16 +1398,19 @@ path {
   justify-content: center;
 }
 @media (max-width: 599px) {
-  .links .linkedin, .links .phone {
+  .links .linkedin,
+.links .phone {
     font-size: 10vw;
   }
 }
 @media (min-width: 1200px) {
-  .links .linkedin, .links .phone {
+  .links .linkedin,
+.links .phone {
     font-size: 4vw;
   }
 }
-.links .linkedin a, .links .phone a {
+.links .linkedin a,
+.links .phone a {
   text-decoration: none;
   color: inherit;
 }

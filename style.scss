@@ -1,4 +1,4 @@
-$bkcolor  : #0F1214;
+$bkcolor : #0F1214;
 $txtcolor1: #f4f4f4;
 $txtcolor2: #EFF2F3;
 $acntcolor: #ffd000;
@@ -6,19 +6,33 @@ $pureblack: #111111;
 
 
 @mixin phone-only {
-  @media (max-width: 599px) { @content; }
+  @media (max-width: 599px) {
+    @content;
+  }
 }
+
 @mixin phone-landscape-only {
-  @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) { @content; }
+  @media (min-width: 600px) and (max-width: 900px) and (orientation: landscape) {
+    @content;
+  }
 }
-@mixin tablet-portrait-up{
-  @media (min-width: 600px) and (orientation: portrait) { @content; }
+
+@mixin tablet-portrait-up {
+  @media (min-width: 600px) and (orientation: portrait) {
+    @content;
+  }
 }
+
 @mixin tablet-landscape-up {
-  @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape)  { @content; }
+  @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+    @content;
+  }
 }
+
 @mixin desktop-up {
-  @media (min-width: 1200px) { @content; }
+  @media (min-width: 1200px) {
+    @content;
+  }
 }
 
 
@@ -26,49 +40,60 @@ $pureblack: #111111;
    <#########################################------Laptop Desktop--------########################################################>
    <#########################################------Laptop Desktop--------########################################################>*/
 
-html{
-      -webkit-tap-highlight-color: transparent;
-      @include desktop-up{
-        font-size: 16px;
-      }
-      @include tablet-portrait-up{
-        font-size: 14px;
-      }
-      @include tablet-landscape-up{
-        font-size: 14px;
-      }
-      @include phone-only{
-        font-size: 12px
-      }
+html {
+  -webkit-tap-highlight-color: transparent;
+
+  @include desktop-up {
+    font-size: 16px;
+  }
+
+  @include tablet-portrait-up {
+    font-size: 14px;
+  }
+
+  @include tablet-landscape-up {
+    font-size: 14px;
+  }
+
+  @include phone-only {
+    font-size: 12px
+  }
 
 }
 
-body{
-    display: none;
-    font-family: 'Work Sans', sans-serif;
-    background-color: $bkcolor;
-    color: $txtcolor1;
-    margin: 0%;
-    line-height: 1.5;
-    overflow: hidden;
+body {
+  display: none;
+  font-family: 'Work Sans', sans-serif;
+  background-color: $bkcolor;
+  color: $txtcolor1;
+  margin: 0%;
+  line-height: 1.5;
+  overflow: hidden;
 
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 
 ::-webkit-scrollbar {
-  width: 0% !important;  /* remove scrollbar space */
+  width: 0% !important;
+  /* remove scrollbar space */
   height: 0% !important;
-  background: transparent; 
+  background: transparent;
 }
 
 
-.resizing{
+.resizing {
   position: absolute;
   top: 0;
   left: 0;
@@ -78,38 +103,43 @@ body{
   z-index: 2000;
   visibility: hidden;
   opacity: 0;
-    p{
+
+  p {
     opacity: 0;
     visibility: hidden;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     text-align: center;
     margin: 0;
-    }
-    .resizingHelper{
-      position: relative;
-      top: 50%;
-      left: 50%;
-      width: 50vw;
-      height: 50vh;
-      transform: translate(-50%,-50%);
-    }
-    .landscapeOnly{
-      font-size: 1rem;
+  }
 
+  .resizingHelper {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 50vw;
+    height: 50vh;
+    transform: translate(-50%, -50%);
+  }
+
+  .landscapeOnly {
+    font-size: 1rem;
+
+  }
+
+  .allrest {
+    font-size: 2rem;
+
+    @include phone-only {
+      font-size: 2.5rem;
     }
-    .allrest{
-      font-size: 2rem;
-      @include phone-only{
-        font-size: 2.5rem;
-      }      
-    }
+  }
 
 }
 
-.mainpage{
+.mainpage {
   visibility: unset;
   opacity: unset;
   height: 100vh;
@@ -117,7 +147,7 @@ body{
   overflow: hidden;
 }
 
-%logo-pr-1{
+%logo-pr-1 {
   width: 70%;
   height: auto;
   opacity: 0;
@@ -125,33 +155,38 @@ body{
   left: 15%;
   position: absolute;
 }
-%logo-pr-2{
+
+%logo-pr-2 {
   height: 70%;
   width: auto;
   opacity: 0;
   transform: rotate(-10deg);
-  position: absolute;  
+  position: absolute;
   left: 0.5vw;
 }
-.main-logo-pr{
+
+.main-logo-pr {
   @extend %logo-pr-1;
-  top: 1%; 
+  top: 1%;
 }
-.main-logo-co{
+
+.main-logo-co {
   @extend %logo-pr-1;
-  top: 1%; 
+  top: 1%;
 }
+
 .main-logo-sk {
   @extend %logo-pr-2;
   bottom: 15%;
 }
+
 .main-logo-ab {
   @extend %logo-pr-2;
-  top: 15%; 
+  top: 15%;
 }
 
 
-path{
+path {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -160,7 +195,7 @@ path{
   fill: $bkcolor;
 }
 
-.brand-container{
+.brand-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -170,18 +205,21 @@ path{
   left: 10vh;
   width: calc(100vw - 20vh);
   height: 80vh;
-    @include phone-landscape-only{
-      flex-direction: row;
-    }
-    @include tablet-landscape-up{
-      flex-direction: row;
-    }
-    @include desktop-up{
-      flex-direction: row;
-    }
-  
+
+  @include phone-landscape-only {
+    flex-direction: row;
+  }
+
+  @include tablet-landscape-up {
+    flex-direction: row;
+  }
+
+  @include desktop-up {
+    flex-direction: row;
+  }
+
   /* Name section */
-  .nameContainer{
+  .nameContainer {
     flex: 1;
     order: 2;
     text-align: center;
@@ -191,62 +229,79 @@ path{
     display: flex;
     flex-direction: column;
     justify-content: center;
-      @include phone-landscape-only{
-        text-align: left; 
-        order: 1;
-        padding-left: 5%; 
+    @include phone-landscape-only {
+      text-align: left;
+      order: 1;
+      padding-left: 5%;
+    }
+
+    @include tablet-landscape-up {
+      text-align: left;
+      order: 1;
+      padding-left: 5%;
+    }
+
+    @include desktop-up {
+      text-align: left;
+      order: 1;
+      padding-left: 5%;
+    }
+
+    .mainpage-text1,
+    .mainpage-text2,
+    .mainpage-text3,
+    .mainpage-text4 {
+      font-weight: 300;
+      font-size: 1.5rem;
+      border-right: 2px solid transparent;
+
+      @include tablet-portrait-up {
+        font-size: 2rem;
       }
-      @include tablet-landscape-up{
-        text-align: left; 
-        order: 1;
-        padding-left: 5%;
+
+      @include tablet-landscape-up {
+        font-size: 2rem;
       }
-      @include desktop-up{
-        text-align: left; 
-        order: 1;
-        padding-left: 5%;
+
+      @include desktop-up {
+        font-size: 2.5rem;
       }
-        .mainpage-text1, .mainpage-text2, .mainpage-text3, .mainpage-text4{
-          font-weight: 300;
-          font-size: 1.5rem;
-          border-right: 2px solid transparent;
-            @include tablet-portrait-up{
-              font-size: 2rem;
-            }
-            @include tablet-landscape-up{
-              font-size: 2rem;
-            }
-            @include desktop-up{
-              font-size: 2.5rem;
-            }
-        }
+    }
+    #longtextdiv{
+      
+      min-height: 5rem;
+    }
   }
-  .logo-wrapper{
+
+  .logo-wrapper {
     position: relative;
     transform: rotate(-10deg);
     flex: 1;
     order: 1;
     overflow: hidden;
-    @include tablet-landscape-up{
+
+    @include tablet-landscape-up {
       order: 2;
     }
-    .logo-png{
+
+    .logo-png {
       object-fit: contain;
       height: 72%;
       width: 101%;
       position: absolute;
       top: 40%;
       left: 50%;
-      transform: translate(-50%,-40%);
+      transform: translate(-50%, -40%);
       opacity: 0;
     }
-    #logo-svg{
+
+    #logo-svg {
       height: 70%;
       width: 100%;
       position: absolute;
       top: 40.2%;
       left: 50%;
-      transform: translate(-50%,-40%);
+      transform: translate(-50%, -40%);
     }
   }
 }
@@ -255,56 +310,64 @@ path{
 
 /* entire background text */
 
-.floatingText{
-    font-size: 2rem;
-    width: 2rem;
-    padding: 2% 0 2% 2%;
-    display: inline-block;
-    transition: all 250ms ease-out;
-    transform: scale(1);
-    cursor: pointer;
-    font-weight: 200;
-    color: $txtcolor2;
-    text-align: right;
-      &:hover{
-        /* disable hover animation on mobile devices */
-        transform: initial; 
-          @include desktop-up{
-            transform: scale(1.8);
-            color: $acntcolor;
-          }
-    
-      } 
-      @include phone-landscape-only{
-        padding: 1% 0 1% 1% ;
-        width: 1rem;
-      }
-      @include tablet-portrait-up{
-        padding: 1% 0 1% 1%;
-      }
-      @include desktop-up{
-        padding: 0.5% 0 0.5% 0.5%;
-        font-size: 2.5rem;
-        width: 1.5rem;
-      }
+.floatingText {
+  font-size: 2rem;
+  width: 2rem;
+  padding: 2% 0 2% 2%;
+  display: inline-block;
+  transition: all 250ms ease-out;
+  transform: scale(1);
+  cursor: pointer;
+  font-weight: 200;
+  color: $txtcolor2;
+  text-align: right;
+
+  &:hover {
+    /* disable hover animation on mobile devices */
+    transform: initial;
+
+    @include desktop-up {
+      transform: scale(1.8);
+      color: $acntcolor;
+    }
+
   }
 
-.floatingmainText{
-    display: inline-block;
-    padding: 2% 0 2% 2%;
-    font-size: 2rem;
-    @include phone-landscape-only{
-      padding: 1% 0 1% 1%;
-      width: 1rem;
-    }
-    @include tablet-portrait-up{
-      padding: 1% 0 1% 1%;
-    }
-    @include desktop-up{
-      padding: 0.5% 0 0.5% 0.5%;
-      font-size: 2.5rem;
-      width: 1.5rem;
-    }
+  @include phone-landscape-only {
+    padding: 1% 0 1% 1%;
+    width: 1rem;
+  }
+
+  @include tablet-portrait-up {
+    padding: 1% 0 1% 1%;
+  }
+
+  @include desktop-up {
+    padding: 0.5% 0 0.5% 0.5%;
+    font-size: 2.5rem;
+    width: 1.5rem;
+  }
+}
+
+.floatingmainText {
+  display: inline-block;
+  padding: 2% 0 2% 2%;
+  font-size: 2rem;
+
+  @include phone-landscape-only {
+    padding: 1% 0 1% 1%;
+    width: 1rem;
+  }
+
+  @include tablet-portrait-up {
+    padding: 1% 0 1% 1%;
+  }
+
+  @include desktop-up {
+    padding: 0.5% 0 0.5% 0.5%;
+    font-size: 2.5rem;
+    width: 1.5rem;
+  }
 }
 
 
@@ -315,7 +378,7 @@ path{
 /*< ---------------------------------------------------------------------- website launch button ----------------------------------------------------------------------*/
 /*< ---------------------------------------------------------------------- website launch button ----------------------------------------------------------------------*/
 
-.buttonContainer{
+.buttonContainer {
   width: 30%;
   height: 15%;
   position: absolute;
@@ -331,194 +394,227 @@ path{
   z-index: 200;
   letter-spacing: 0.5rem;
   font-weight: 300;
-  @include phone-only{
+
+  @include phone-only {
     width: 40vw;
     height: 10vh;
     bottom: 10%;
     left: 50%;
   }
-  @include desktop-up{
+
+  @include desktop-up {
     bottom: 5%;
     font-size: 3rem;
   }
-    .correctWebsite{
-      border: none;
-      padding: none;
-      font-family: inherit;
-      font-size: inherit;
-      text-decoration: none;
-      background: $bkcolor;
-      color: $txtcolor2;
-      width: 100%;
-      height: 100%;   
-      font-weight: 300;
-      font-size: 2rem;
-        &:focus { 
-          outline: none; 
-        }
-        @include desktop-up{
-          font-weight: 200;
-          font-size: 3rem;
-        }
-    }
 
-    .buttonAnimationHelper{
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background-color: $txtcolor1;
-        @include phone-only{
-            display: none;
-        }
-        p{
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-          cursor: pointer;
-          margin: 0;
-          color: $bkcolor 
-        }
-    }
-}
-  
-
-
-
-
-
-/* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
-/* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
-/* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
-  
-  .waitForClass, .waitForClass2, .waitForClass3, .waitForClass4{
-      display:none;
-  }
-
-  %allsection-name-Container{
-    text-align: center;
+  .correctWebsite {
+    border: none;
+    padding: none;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    background: $bkcolor;
     color: $txtcolor2;
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+    font-size: 2rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include desktop-up {
+      font-weight: 200;
+      font-size: 3rem;
+    }
+  }
+
+  .buttonAnimationHelper {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    z-index: 100;
+    background-color: $txtcolor1;
+
+    @include phone-only {
+      display: none;
+    }
+
+    p {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      margin: 0;
+      color: $bkcolor
+    }
+  }
+}
+
+
+
+
+
+
+/* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
+/* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
+/* -----------------------------------------------------------------------All mainsections header ------------------------------------------------------------------ */
+
+.waitForClass,
+.waitForClass2,
+.waitForClass3,
+.waitForClass4 {
+  display: none;
+}
+
+%allsection-name-Container {
+  text-align: center;
+  color: $txtcolor2;
+  position: absolute;
+  z-index: 100;
+}
+
+%allsectionnameContainerdiv {
+  top: 50%;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+%project-span {
+  opacity: 1;
+  display: inline-block;
+  font-weight: 300;
+  color: $acntcolor;
+  width: 3vw;
+  font-size: 1.2rem;
+
+  @include tablet-portrait-up {
+    width: 3vw;
   }
 
-  %allsectionnameContainerdiv{
-    top: 50%;
-    position: relative;
-    cursor: pointer;
+  @include tablet-landscape-up {
+    width: 2vw;
     font-size: 1.5rem;
-  } 
-  
-  %project-span{
-    opacity: 1; 
-    display: inline-block;
-    font-weight: 300;
-    color: $acntcolor;
+  }
+
+  @include desktop-up {
+    width: 1.5vw;
+  }
+}
+
+.projectContainer {
+  @extend %allsection-name-Container;
+  width: 10vh;
+  height: 100vh;
+
+  @include phone-only {
+    width: 10vw;
+  }
+
+  div {
+    @extend %allsectionnameContainerdiv;
+    transform: translate(-50%, -50%) rotate(90deg);
+    left: 50%;
+    width: 100vh;
+  }
+}
+
+.contactContainer {
+  @extend %allsection-name-Container;
+  width: 10vh;
+  height: 100vh;
+  right: 0%;
+
+  @include phone-only {
+    width: 10vw;
+  }
+
+  div {
+    @extend %allsectionnameContainerdiv;
+    transform: translate(-50%, -50%) rotate(270deg);
+    right: -50%;
+    width: 100vh;
+  }
+}
+
+.skillsContainer {
+  @extend %allsection-name-Container;
+  width: 100vw;
+  height: 10vh;
+
+  @include phone-only {
+    height: 10vw;
+  }
+
+  div {
+    @extend %allsectionnameContainerdiv;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.aboutContainer {
+  @extend %allsection-name-Container;
+  width: 100vw;
+  height: 10vh;
+  bottom: 0%;
+
+  @include phone-only {
+    height: 10vw;
+  }
+
+  div {
+    @extend %allsectionnameContainerdiv;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.project span,
+.contact span,
+.skills span,
+.about span {
+  @extend %project-span;
+}
+
+
+
+
+/* navtext animation */
+
+.widerText,
+.widerText2 {
+  display: inline-block;
+  font-weight: 300;
+  transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);
+  width: 3vw;
+  font-size: 1.2rem;
+
+  @include tablet-portrait-up {
     width: 3vw;
-    font-size: 1.2rem;
-      @include tablet-portrait-up{
-        width: 3vw;
-      }
-      @include tablet-landscape-up{
-        width: 2vw;
-        font-size: 1.5rem;
-      }
-      @include desktop-up{
-        width: 1.5vw;
-      }
-  }
-  
-  .projectContainer{
-    @extend %allsection-name-Container;
-    width: 10vh;
-    height: 100vh;
-      @include phone-only{
-        width: 10vw;
-      }
-      div{
-        @extend %allsectionnameContainerdiv;
-        transform: translate(-50%,-50%) rotate(90deg);
-        left: 50%;
-        width: 100vh;
-      }
-  }
-  .contactContainer{
-    @extend %allsection-name-Container;
-    width: 10vh;
-    height: 100vh;
-    right: 0%;
-    @include phone-only{
-      width: 10vw;
-    }
-      div{
-        @extend %allsectionnameContainerdiv;
-        transform: translate(-50%,-50%) rotate(270deg);
-        right: -50%;
-        width: 100vh;
-      }
-  }
-  .skillsContainer{
-    @extend %allsection-name-Container;
-    width: 100vw;
-    height: 10vh;
-    @include phone-only{
-      height: 10vw;
-    }
-      div{
-        @extend %allsectionnameContainerdiv;
-        left: 50%;
-        transform: translate(-50%,-50%);
-      }
   }
 
-  .aboutContainer{
-    @extend %allsection-name-Container;
-    width: 100vw;
-    height: 10vh;
-    bottom: 0%;
-    @include phone-only{
-      height: 10vw;
-    }
-      div{
-        @extend %allsectionnameContainerdiv;
-        left: 50%;
-        transform: translate(-50%,-50%);
-      }
+  @include tablet-landscape-up {
+    width: 2vw;
+    font-size: 1.5rem;
   }
 
-  .project span, .contact span, .skills span, .about span{
-    @extend %project-span;
+  @include desktop-up {
+    width: 1.5vw;
   }
- 
+}
+
+.projectContainer:hover>div>.widerText,
+.contactContainer:hover>div>.widerText,
+.skillsContainer:hover>div>.widerText2,
+.aboutContainer:hover>div>.widerText2 {
+  width: 10%;
+}
 
 
 
-  /* navtext animation */
 
-  .widerText, .widerText2{
-    display: inline-block;
-    font-weight: 300;
-    transition: all 0.7s cubic-bezier(0.49, -0.19, 0.32, 0.88);  
-    width: 3vw;
-    font-size: 1.2rem;
-      @include tablet-portrait-up{
-        width: 3vw;
-      }
-      @include tablet-landscape-up{
-        width: 2vw;
-        font-size: 1.5rem;
-      }
-      @include desktop-up{
-        width: 1.5vw;
-      }
-  }
-
-  .projectContainer:hover > div > .widerText ,  .contactContainer:hover > div > .widerText,   .skillsContainer:hover > div > .widerText2 ,  .aboutContainer:hover > div > .widerText2 {
-      width:10%;
-  }
-
-
-
-  
 
 
 /* <-------------------------  individual sections ------------------------------->  */
@@ -528,7 +624,10 @@ path{
 
 
 
-#leftSectionContainer, #rightSectionContainer, #topSectionContainer, #bottomSectionContainer{
+#leftSectionContainer,
+#rightSectionContainer,
+#topSectionContainer,
+#bottomSectionContainer {
   position: absolute;
   background-color: $bkcolor;
   height: 100vh;
@@ -538,7 +637,10 @@ path{
   display: none;
 }
 
-.projectTransitionHelper, .contactTransitionHelper, .aboutTransitionHelper, .skillsTransitionHelper{
+.projectTransitionHelper,
+.contactTransitionHelper,
+.aboutTransitionHelper,
+.skillsTransitionHelper {
   position: absolute;
   background-color: $acntcolor;
   height: 100vh;
@@ -548,7 +650,10 @@ path{
 }
 
 
-.projectPageContainer > p , .contactPageContainer> p, .aboutPageContainer > p, .skillsPageContainer > p{
+.projectPageContainer>p,
+.contactPageContainer>p,
+.aboutPageContainer>p,
+.skillsPageContainer>p {
   color: $bkcolor;
   font-size: 2rem;
   text-align: center;
@@ -557,323 +662,370 @@ path{
 
 }
 
-  /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
-  /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
-  /*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
-  .pageIndicator{
-    position: absolute;
-    left: 1%;
-    top: 50%;
-    height: 50vh;
-    transform: translateY(-50%);
-    width: 5vh;
-    background-color: transparent;
-    z-index: 201;
-    .indication{
-      height: 24%;
-      cursor: pointer; 
-      flex-direction: column;
-      display: flex;
-       p{
-        flex: 1;
-        top: 25%;
-        left: 0;
-        position: relative;
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 300;
-        margin: 0%;
-          // @include phone-only{
-          //   font-size: 3rem;
-          // }
-        }
+/*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
+/*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
+/*<------------------------------------------------------- Left section Contents---------------------------------------------------------------------------------> */
+.pageIndicator {
+  position: absolute;
+  left: 1%;
+  top: 50%;
+  height: 50vh;
+  transform: translateY(-50%);
+  width: 5vh;
+  background-color: transparent;
+  z-index: 201;
+
+  .indication {
+    height: 24%;
+    cursor: pointer;
+    flex-direction: column;
+    display: flex;
+
+    p {
+      flex: 1;
+      top: 25%;
+      left: 0;
+      position: relative;
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 300;
+      margin: 0%;
+      // @include phone-only{
+      //   font-size: 3rem;
+      // }
     }
+  }
+}
+
+%p-t-content {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  background-color: $bkcolor;
+  z-index: 200;
+}
+
+.projectPageContainer {
+  width: calc(100vw - 10vh);
+  height: 100vh;
+  background-color: $bkcolor;
+  position: relative;
+  top: 0vh;
+  left: 0vh;
+  overflow: hidden;
+
+  @include phone-only {
+    width: calc(100vw - 10vw);
   }
 
-  %p-t-content {
-    width: 100%;
-    position: absolute;
-    height: 100%;
-    background-color: $bkcolor;
-    z-index: 200;
+  .p-t-Left {
+    @extend %p-t-content;
+    left: -100%;
   }
-  .projectPageContainer{
-    width: calc(100vw - 10vh);
-    height: 100vh;
-    background-color: $bkcolor;
-    position: relative;
-    top: 0vh;
-    left: 0vh ;
-    overflow: hidden;
-      @include phone-only{
-        width: calc(100vw - 10vw);
-      }
-    .p-t-Left{
-      @extend %p-t-content;
-      left: -100%;
-    }
-    .p-t-Right{
-      @extend %p-t-content;
-      right: -100%
-    }
-    .container{
-      min-width: 100%;
-      min-height: 100%;
-      margin:0;
+
+  .p-t-Right {
+    @extend %p-t-content;
+    right: -100%
+  }
+
+  .container {
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+
+    .home {
+      height: 100vh;
+      width: 100%;
+      margin: 0;
       padding: 0;
+      position: absolute;
 
-        .home{
-          height: 100vh;
-          width: 100%;
-          margin:0;
-          padding: 0;
+      .projectDetailContainer {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: stretch;
+
+        span.heading {
+          font-size: 3.5rem;
+          letter-spacing: 0.5rem;
+          font-family: 'lato';
+          text-align: center;
+          -webkit-text-stroke-width: 2px;
+          -webkit-text-stroke-color: $acntcolor;
+          color: transparent;
+          z-index: 199;
           position: absolute;
-          .projectDetailContainer{
-            display: flex;
-            width: 100%;
-            height: 100%;
-            flex-direction: column;
-            align-items: stretch;
-            span.heading{
-              font-size: 3.5rem;
-              letter-spacing: 0.5rem;
-              font-family: 'lato';
-              text-align: center;
-              -webkit-text-stroke-width: 2px;
-              -webkit-text-stroke-color: $acntcolor;
-              color: transparent;
-              z-index: 199;
-              position: absolute;
-              top: 50%;
-              left: 55%;
-              transform: translate(-50%, -50%);
-              width: 75%;
-              pointer-events: none;
-                @include tablet-portrait-up{
-                  font-size: 5rem;
-                  -webkit-text-stroke-width: 2px;
-                  left: 50%;
-                  width: 80%;
-                }
-                @include tablet-landscape-up{
-                  font-size: 7rem;
-                }
-                @include desktop-up{
-                  font-size: 9rem;
-                  width: 90%;
-                  -webkit-text-stroke-width: 3px;
-                }
-            }
-            .thumbImg{
-              width: 100%;
-              height: 100vh;
-              object-fit: cover;
-              position: absolute;
-              z-index: 100;
-            }
-              .thumbimg3{
-                filter: invert(1);
-            }
-            .fa-vr-cardboard{
-              z-index: 199;
+          top: 50%;
+          left: 55%;
+          transform: translate(-50%, -50%);
+          width: 75%;
+          pointer-events: none;
+
+          @include tablet-portrait-up {
+            font-size: 5rem;
+            -webkit-text-stroke-width: 2px;
+            left: 50%;
+            width: 80%;
+          }
+
+          @include tablet-landscape-up {
+            font-size: 7rem;
+          }
+
+          @include desktop-up {
+            font-size: 9rem;
+            width: 90%;
+            -webkit-text-stroke-width: 3px;
+          }
+        }
+
+        .thumbImg {
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          position: absolute;
+          z-index: 100;
+        }
+
+        .thumbimg3 {
+          filter: invert(1);
+        }
+
+        .fa-vr-cardboard {
+          z-index: 199;
+          font-size: 2rem;
+          position: absolute;
+          bottom: 5%;
+          right: 5%;
+          color: $acntcolor;
+
+          @include desktop-up {
+            font-size: 4rem;
+          }
+        }
+
+        .titleContainer {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-weight: 300;
+
+          .title {
+            font-size: 1.5rem;
+
+            @include tablet-landscape-up {
               font-size: 2rem;
-              position: absolute;
-              bottom: 5%;
-              right: 5%;
-              color: $acntcolor;
-                @include desktop-up{
-                  font-size: 4rem;
-                }
-            }
-            .titleContainer{
-              flex: 1;
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
-              font-weight: 300;
-              .title{
-                font-size: 1.5rem;
-                  @include tablet-landscape-up{
-                  font-size: 2rem;
-                  }
-                  @include desktop-up{
-                    font-size: 2.5rem;
-                  }
-              }
-              .back{
-                position: absolute;
-                padding-left: 3%;
-                left: 1vw;
-                font-size: 1.8rem;
-                color: $acntcolor;
-                cursor: pointer;
-                z-index: 1;
-              }
             }
 
-            .imgContainer{
-              flex: 6;
-              width: 100%;
-              padding: 1% 1%;
-              box-sizing: border-box;
-              flex-direction: column;
-              display: flex;
-              overflow: hidden;
-              justify-content: center;
-              align-items: center;
-                @include phone-landscape-only{
-                  flex-direction: row;
-                }
-                @include desktop-up{
-                  flex-direction: row;
-                }
-              .title{
-                  text-align: center;
-                  flex: 1;
-                  font-size: 2.5rem;
-                  color: $txtcolor1;
-                  align-self: center;
-                  margin: 0;
-                  font-weight: 200;
-              }
-              .projectImg{
-                  flex: 6;
-                  height: 100%;
-                  width: 95%;
-                  padding-top: 1%;
-                  position: relative;
-                  overflow: hidden;
-                  align-self: center;
-                  cursor: e-resize;
-                    @include desktop-up{
-                      width: 100%;
-                    }
-                  .pi-div{
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    .pi{
-                      object-fit: contain;
-                      height: 100%;
-                      width: 100%;
-                    }
-                  }
-              }
-              .external-links{
-                width: 30vw;
-                text-align: center;
-                font-size: 2rem;
-                display: flex;
-                flex-direction: row;
-                flex: 1;
-                margin: 1%;
-                align-items: center;
-                  @include phone-landscape-only{
-                    flex-direction: column;
-                    font-size: 1.5rem;
-                    width: 20vw;
-                  }
-                  @include desktop-up{
-                  flex-direction: column;
-                  font-size: 3rem;
-                  width: 20vw;
-                  }
-                  a{
-                      flex: 1;
-                      cursor: pointer;
-                      text-decoration: none;
-                      color: inherit;
-                      i:hover{
-                        color: $acntcolor;
-                    }
-                  }
-              }
-              .pitext{
-                font-family: "Work Sans";
-                font-size: 3.5vw;
-                z-index: 5;
-                text-shadow: 2px 2px 2px #000;
-                font-weight: 500;
-                flex: 2;
-                margin: 1%;
-                box-sizing: border-box;
-                padding: 1%;
-                min-width: 30vw;
-                  @include phone-landscape-only{
-                    font-size: 2vw;
-                    min-width: 16vw;
-                  }
-                  @include tablet-portrait-up{
-                    font-size: 3vw;
-                    flex: 1;
-                  }
-                  @include tablet-landscape-up{
-                    font-size: 2.5vw;
-                  }
-                  @include desktop-up{
-                    font-size: 2vw;
-                    min-width: 16vw;
-                  }
-                div{
-                  overflow: hidden;
-                  text-align: center;
-                }
-              }
-          
+            @include desktop-up {
+              font-size: 2.5rem;
             }
-            .textContent{
-              flex : 2;
+          }
+
+          .back {
+            position: absolute;
+            padding-left: 3%;
+            left: 1vw;
+            font-size: 1.8rem;
+            color: $acntcolor;
+            cursor: pointer;
+            z-index: 1;
+          }
+        }
+
+        .imgContainer {
+          flex: 6;
+          width: 100%;
+          padding: 1% 1%;
+          box-sizing: border-box;
+          flex-direction: column;
+          display: flex;
+          overflow: hidden;
+          justify-content: center;
+          align-items: center;
+
+          @include phone-landscape-only {
+            flex-direction: row;
+          }
+
+          @include desktop-up {
+            flex-direction: row;
+          }
+
+          .title {
+            text-align: center;
+            flex: 1;
+            font-size: 2.5rem;
+            color: $txtcolor1;
+            align-self: center;
+            margin: 0;
+            font-weight: 200;
+          }
+
+          .projectImg {
+            flex: 6;
+            height: 100%;
+            width: 95%;
+            padding-top: 1%;
+            position: relative;
+            overflow: hidden;
+            align-self: center;
+            cursor: e-resize;
+
+            @include desktop-up {
               width: 100%;
-              padding: 3%;
-              color: $txtcolor1;
-              text-align: justify;
+            }
+
+            .pi-div {
+              position: absolute;
+              height: 100%;
+              width: 100%;
+
+              .pi {
+                object-fit: contain;
+                height: 100%;
+                width: 100%;
+              }
+            }
+          }
+
+          .external-links {
+            width: 30vw;
+            text-align: center;
+            font-size: 2rem;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            margin: 1%;
+            align-items: center;
+
+            @include phone-landscape-only {
+              flex-direction: column;
+              font-size: 1.5rem;
+              width: 20vw;
+            }
+
+            @include desktop-up {
+              flex-direction: column;
+              font-size: 3rem;
+              width: 20vw;
+            }
+
+            a {
+              flex: 1;
+              cursor: pointer;
+              text-decoration: none;
+              color: inherit;
+
+              i:hover {
+                color: $acntcolor;
+              }
+            }
+          }
+
+          .pitext {
+            font-family: "Work Sans";
+            font-size: 3.5vw;
+            z-index: 5;
+            text-shadow: 2px 2px 2px #000;
+            font-weight: 500;
+            flex: 2;
+            margin: 1%;
+            box-sizing: border-box;
+            padding: 1%;
+            min-width: 30vw;
+
+            @include phone-landscape-only {
+              font-size: 2vw;
+              min-width: 16vw;
+            }
+
+            @include tablet-portrait-up {
+              font-size: 3vw;
+              flex: 1;
+            }
+
+            @include tablet-landscape-up {
+              font-size: 2.5vw;
+            }
+
+            @include desktop-up {
+              font-size: 2vw;
+              min-width: 16vw;
+            }
+
+            div {
               overflow: hidden;
-              box-sizing: border-box;
-                @include phone-only{
-                  flex: 3;
-                }
-                @include tablet-portrait-up{
-                  padding: 1.5%;
-                }
-                @include desktop-up{
-                  flex : 1.5;
-                  padding: 1%;
-                }
-                  p{
-                      padding: 0 5% 5% 5%;
-                      margin: 0%;
-                      font-size: 1.5rem;
-                      text-align: center;
-                      font-weight: 200;
-                      @include phone-only{
-                          font-size: 1.2rem
-                      }
-                      @include desktop-up{
-                        padding: 0% 1%;
-                        font-size: 2vw;
-                      }
-                    a{
-                      text-decoration: underline;
-                      color: inherit;
-                    }
-                  }
+              text-align: center;
+            }
+          }
+
+        }
+
+        .textContent {
+          flex: 2;
+          width: 100%;
+          padding: 3%;
+          color: $txtcolor1;
+          text-align: justify;
+          overflow: hidden;
+          box-sizing: border-box;
+
+          @include phone-only {
+            flex: 3;
+          }
+
+          @include tablet-portrait-up {
+            padding: 1.5%;
+          }
+
+          @include desktop-up {
+            flex: 1.5;
+            padding: 1%;
+          }
+
+          p {
+            padding: 0 5% 5% 5%;
+            margin: 0%;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: 200;
+
+            @include phone-only {
+              font-size: 1.2rem
+            }
+
+            @include desktop-up {
+              padding: 0% 1%;
+              font-size: 2vw;
+            }
+
+            a {
+              text-decoration: underline;
+              color: inherit;
             }
           }
         }
+      }
     }
   }
-
-
-  
-
+}
 
 
 
 
 
 
-  
+
+
+
+
+
 
 
 
@@ -881,7 +1033,7 @@ path{
 /* <------------------------------------------------------------------------------------ top section --------------------------------------------------------------> */
 /* <------------------------------------------------------------------------------------ top section --------------------------------------------------------------> */
 
-.skillsPageContainer{
+.skillsPageContainer {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -892,14 +1044,17 @@ path{
   width: 100vw;
   height: 90vh;
   overflow: hidden;
-    @include phone-only{
-      height: calc(100vh - 10vw);
-    }
-    @include desktop-up{
-      flex-direction: row;
-    }
+
+  @include phone-only {
+    height: calc(100vh - 10vw);
+  }
+
+  @include desktop-up {
+    flex-direction: row;
+  }
 }
-.skillsGrid1{
+
+.skillsGrid1 {
   flex: 1;
   box-sizing: border-box;
   width: 100%;
@@ -908,193 +1063,224 @@ path{
   display: flex;
   padding: 0%;
   background-color: $acntcolor;
-    @include desktop-up{
-      height: 100%;
-      padding: 2%;
-      display: block;
+
+  @include desktop-up {
+    height: 100%;
+    padding: 2%;
+    display: block;
+  }
+
+  .leftarrow,
+  .rightarrow {
+    display: inline-block;
+    // position: relative;
+    // top: 50%;
+    // transform: translate(0, -50%);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex: 0.5;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #0f1214;
+    padding: 2%;
+    align-self: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    @include desktop-up {
+      display: none;
     }
-    .leftarrow, .rightarrow{
-      display: inline-block;
-      // position: relative;
-      // top: 50%;
-      // transform: translate(0, -50%);
-      display: flex;
-      align-items: center;
-      height: 100%;
-      flex: 0.5;
-      text-align: center;
-      font-size: 1.5rem;
-      color: #0f1214;
-      padding: 2%;
-      align-self: center;
-      justify-content: center;
-      box-sizing: border-box;
-      @include desktop-up{
-        display: none;
+  }
+
+  .allSkillsContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    flex: 10;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-self: center;
+    overflow: hidden;
+    padding: 2vw;
+    flex: 10;
+
+    @include desktop-up {
+      align-items: stretch;
+      flex: 1;
+      padding: 2% 0%;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    &:after {
+      // to add proper space after the last bubble
+      content: '.';
+      opacity: 0;
+
+      @include desktop-up {
+        content: none;
       }
     }
-    .allSkillsContainer{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: row;
+
+    .allskills {
+      background-color: $txtcolor2;
+      border-radius: 50%;
+      box-shadow: 3px 4px #1f1f1f;
+      position: relative;
+      cursor: pointer;
       box-sizing: border-box;
-      flex: 10;
-      align-items: center;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-self: center;
-      overflow: hidden;
-      padding: 2vw;
-      flex:10;
-    
-        @include desktop-up{
-          align-items: stretch;
-          flex: 1;
-          padding: 2% 0%;
-          justify-content: space-around;
-          flex-wrap: wrap;
-        }
-      &:after{ // to add proper space after the last bubble
-            content: '.';
-            opacity: 0;
-          @include desktop-up{
-            content: none;
-          }
+      width: calc(100vw/8);
+      height: calc(100vw/8);
+      margin: 0% 5%;
+
+      @include phone-only {
+        min-width: 40vw;
+        height: 40vw;
+        margin: 0% 20vw;
       }
-    
-      .allskills{
-        background-color: $txtcolor2;
-        border-radius: 50%;
-        box-shadow: 3px 4px #1f1f1f;
-        position: relative;
-        cursor: pointer;
-        box-sizing: border-box;
-        width: calc(100vw/8);
+
+      @include phone-landscape-only {
+        min-width: 20vh;
+        height: 20vh;
+        margin: 7%;
+      }
+
+      @include tablet-portrait-up {
+        min-width: calc(100vw/8);
         height: calc(100vw/8);
         margin: 0% 5%;
-          @include phone-only{
-            min-width: 40vw;
-            height: 40vw;
-            margin: 0% 20vw;
-          }
-          @include phone-landscape-only{
-            min-width: 20vh;
-            height: 20vh;
-            margin: 7%;
-          }
-          @include tablet-portrait-up{
-            min-width: calc(100vw/8);
-            height: calc(100vw/8);
-            margin: 0% 5%;
-          }
-          @include tablet-landscape-up{
-            min-width: calc(100vw/8);
-            height: calc(100vw/8);
-            margin: 0% 5%;
-          }
-      
-          @include desktop-up{
-            margin: 0% 5%;
-            width: 8vw;
-            height: 8vw;
-          }
-          div{
-            color: $bkcolor;
-            font-size: 1.3rem;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            font-family: 'Lato', serif;
-            font-weight: 400;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-              p{
-                flex: 1;
-                position: absolute;
-                justify-content: center;
-                align-items: center;
-                margin: 0%;
-                @include phone-only{
-                  font-size: 2rem;
-                }
-              }
-              .skillName4{
-                font-size: 3rem;
-                  @include phone-only{
-                    font-size: 6rem;
-                  }
-                  @include desktop-up{
-                    font-size: 4rem;
-                  }
-              }
-
-              img.skillName4{
-                padding: 20%;
-                height: 60%;
-                @include tablet-landscape-up{
-                  height: 40%;
-                }
-                @include phone-only{
-                  height: 50%;
-                }
-              }
-          }
       }
-      
-      .skills6{
-        div {
-          img.skillName4{
-            padding: 20%;
+
+      @include tablet-landscape-up {
+        min-width: calc(100vw/8);
+        height: calc(100vw/8);
+        margin: 0% 5%;
+      }
+
+      @include desktop-up {
+        margin: 0% 5%;
+        width: 8vw;
+        height: 8vw;
+      }
+
+      div {
+        color: $bkcolor;
+        font-size: 1.3rem;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        font-family: 'Lato', serif;
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          flex: 1;
+          position: absolute;
+          justify-content: center;
+          align-items: center;
+          margin: 0%;
+
+          @include phone-only {
+            font-size: 2rem;
+          }
+        }
+
+        .skillName4 {
+          font-size: 3rem;
+
+          @include phone-only {
+            font-size: 6rem;
+          }
+
+          @include desktop-up {
+            font-size: 4rem;
+          }
+        }
+
+        img.skillName4 {
+          padding: 20%;
+          height: 60%;
+
+          @include tablet-landscape-up {
+            height: 40%;
+          }
+
+          @include phone-only {
             height: 50%;
-            @include tablet-landscape-up{
-              height: 30%;
-            }
-            @include phone-only{
-              height: 40%;
-            }
           }
         }
       }
     }
+
+    .skills6 {
+      div {
+        img.skillName4 {
+          padding: 20%;
+          height: 50%;
+
+          @include tablet-landscape-up {
+            height: 30%;
+          }
+
+          @include phone-only {
+            height: 40%;
+          }
+        }
+      }
+    }
+  }
 }
 
-.skillsGrid2{
+.skillsGrid2 {
   flex: 2.5;
   width: 100%;
   // height: 70%;
   overflow: hidden;
-    @include desktop-up{
-      flex: 2;
-      height: 100%;
-    }
-  .skillsContent{
+
+  @include desktop-up {
+    flex: 2;
+    height: 100%;
+  }
+
+  .skillsContent {
     height: 100%;
     margin: 2% 5%;
-      .cssh2{
-        font-size: 1.5rem;
-        // margin: -5% 0% 0% 0%;
-        margin: 0% 0% 0% 0%;
-        font-weight: normal;
-        @include tablet-portrait-up{
-          font-size: 2rem;
-        }
-        @include tablet-landscape-up{
-          font-size: 1.5rem;
-        }
+
+    .cssh2 {
+      font-size: 1.5rem;
+      // margin: -5% 0% 0% 0%;
+      margin: 0% 0% 0% 0%;
+      font-weight: normal;
+
+      @include tablet-portrait-up {
+        font-size: 2rem;
       }
-      p{
+
+      @include tablet-landscape-up {
         font-size: 1.5rem;
-        text-align: justify;
-        font-weight: 300;
-        @include tablet-portrait-up{
-          font-size: 1.5rem;
-        }
-        @include tablet-landscape-up{
-          font-size: 1.5rem;         }
       }
+    }
+
+    p {
+      font-size: 1.5rem;
+      text-align: justify;
+      font-weight: 300;
+
+      @include tablet-portrait-up {
+        font-size: 1.5rem;
+      }
+
+      @include tablet-landscape-up {
+        font-size: 1.5rem;
+      }
+    }
   }
 
 }
@@ -1102,81 +1288,97 @@ path{
 
 
 
-.bs4{
+.bs4 {
   padding: 1%;
   // margin: -5% 0% 0% 0%;
   margin: 0% 0% 0% 0%;
-  .css4js{
+
+  .css4js {
     line-height: 0;
   }
-  .js1{
+
+  .js1 {
     color: $acntcolor;
     font-style: italic;
     line-height: 1rem;
   }
-  .jsbig, .css4js{
+
+  .jsbig,
+  .css4js {
     font-size: 2.5rem;
     font-weight: 400;
     letter-spacing: 0.1rem;
-    @include phone-only{
+
+    @include phone-only {
       font-size: 2rem;
     }
-    @include phone-landscape-only{
+
+    @include phone-landscape-only {
       font-size: 1.5rem;
     }
   }
 }
 
-.sun{
+.sun {
   position: absolute;
   left: 50%;
   top: 25%;
   transform: translate(-50%, -25%);
   width: auto;
-  height: 50vh;    
-    @include phone-only(){
-        width: 50vw;
-        height: auto;
-    }
-    @include tablet-portrait-up{
-        width: 50vw;
-        height: auto;
-    }
-    @include desktop-up{
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
+  height: 50vh;
+
+  @include phone-only() {
+    width: 50vw;
+    height: auto;
+  }
+
+  @include tablet-portrait-up {
+    width: 50vw;
+    height: auto;
+  }
+
+  @include desktop-up {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.react1{
+.react1 {
   color: $acntcolor;
   font-style: italic;
   line-height: 1rem;
   font-size: 1.5rem;
-  @include phone-only{
-    font-size: 1.5rem; 
+
+  @include phone-only {
+    font-size: 1.5rem;
   }
 }
-.reacth1{
+
+.reacth1 {
   color: $acntcolor;
   font-style: italic;
   font-size: 1.5rem;
   margin-right: 1%;
-  @include tablet-portrait-up{
-  font-size: 1.5rem;
+
+  @include tablet-portrait-up {
+    font-size: 1.5rem;
   }
-  @include phone-only{
+
+  @include phone-only {
     font-size: 1rem;
   }
 }
-.react2{
+
+.react2 {
   margin: 0 0 0 3%;
   text-align: center
 }
-.react3{
+
+.react3 {
   margin: 0 0 0 6%;
 }
-.css4n{
+
+.css4n {
   font-size: 2.5rem;
   color: $acntcolor;
 }
@@ -1194,26 +1396,28 @@ path{
 /* <----------------------------------------------------------------------right-----------------------------------------------------------------------------------> */
 /* <----------------------------------------------------------------------right-----------------------------------------------------------------------------------> */
 
-.contactPageContainer{
+.contactPageContainer {
   width: calc(100vw - 10vh);
   height: 100vh;
   background-color: $acntcolor;
   position: relative;
   top: 0vh;
-  left: 10vh ;
+  left: 10vh;
   overflow: hidden;
-    @include phone-only{
-      width: calc(100vw - 10vw);
-      left: 10vw; 
-    }
-    .container{
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-content: space-around;
-      height: 100%;
-      width: 100%;
-    }
+
+  @include phone-only {
+    width: calc(100vw - 10vw);
+    left: 10vw;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 %email-greetings {
@@ -1224,7 +1428,9 @@ path{
   flex: 1;
   align-self: center;
 }
-.emailContainer, .greetingsContainer{
+
+.emailContainer,
+.greetingsContainer {
   flex: 1;
   overflow: hidden;
   text-align: center;
@@ -1232,35 +1438,41 @@ path{
   width: 100%;
   justify-content: center;
   align-items: center;
-    a{
-      text-decoration: none;
-    }
+
+  a {
+    text-decoration: none;
+  }
 }
 
-.email{
+.email {
   @extend %email-greetings;
   font-size: 4vw;
   letter-spacing: 1vw;
-  @include desktop-up{
+
+  @include desktop-up {
     // letter-spacing: 1rem;
   }
 }
-.greetings{
+
+.greetings {
   @extend %email-greetings;
   font-size: 10vw;
-    @include desktop-up{
-      font-size: 7vw;
-    }
+
+  @include desktop-up {
+    font-size: 7vw;
+  }
 }
 
-.links{
+.links {
   flex: 1;
   height: 10vh;
   text-align: center;
   justify-content: center;
   display: flex;
   width: 100%;
-  .linkedin, .phone{
+
+  .linkedin,
+  .phone {
     display: inline-block;
     flex: 1;
     height: 10vh;
@@ -1275,16 +1487,19 @@ path{
     display: flex;
     align-items: center;
     justify-content: center;
-        @include phone-only{
-          font-size: 10vw;
-        }
-        @include desktop-up{
-          font-size: 4vw
-        }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
+
+    @include phone-only {
+      font-size: 10vw;
+    }
+
+    @include desktop-up {
+      font-size: 4vw
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 }
 
@@ -1297,29 +1512,33 @@ path{
 
 
 
-.aboutPageContainer{
+.aboutPageContainer {
   height: 90vh;
   width: 100vw;
   position: relative;
   top: 10vh;
-  left: 0vh ;
-    @include phone-only{
-      height: calc(100vh - 10vw);
-      top: 10vw;
-    }
-  .aboutWrapper{
+  left: 0vh;
+
+  @include phone-only {
+    height: calc(100vh - 10vw);
+    top: 10vw;
+  }
+
+  .aboutWrapper {
     width: 100%;
     height: 100%;
     background: url("../assets/aboutImages/1.jpg") no-repeat;
-    background-position: center; 
+    background-position: center;
     background-size: cover;
-    .backgroundWrapper{
+
+    .backgroundWrapper {
       background-position: center;
       background-size: cover;
       width: 100%;
       height: 100%;
     }
-    .aboutContent{
+
+    .aboutContent {
       overflow: hidden;
       height: 100%;
       width: 100%;
@@ -1329,25 +1548,28 @@ path{
       background-size: cover;
       z-index: 100;
       box-sizing: border-box;
-      p{
+
+      p {
         font-size: 10vw;
-        padding: 0; 
+        padding: 0;
         overflow-x: hidden;
         overflow-y: hidden;
         -webkit-text-stroke: 2px $pureblack;
         color: #f4f4f4;
         font-family: "Lato";
         margin: 0;
-        @include phone-landscape-only{
+
+        @include phone-landscape-only {
           font-size: 5vw;
           -webkit-text-stroke-width: 2px;
         }
-        
-        @include desktop-up{
+
+        @include desktop-up {
           font-size: 5vw;
           -webkit-text-stroke-width: 3px;
         }
-        span{
+
+        span {
           opacity: 0;
           position: absolute;
           left: 50%;
@@ -1356,13 +1578,15 @@ path{
           text-align: center;
           padding: 5% 10%;
           z-index: 350;
-          @include phone-only{
+
+          @include phone-only {
             padding: 30% 10%;
           }
         }
       }
     }
-    .about-img-text{
+
+    .about-img-text {
       color: $acntcolor;
       font-size: 1.2rem;
       font-family: 'Dancing Script', cursive;
@@ -1373,16 +1597,19 @@ path{
       bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
-        p{
-          margin: auto;
-          letter-spacing: 1rem;
-          @include phone-only{
-            letter-spacing: 0.5rem;
-          }
-          @include tablet-landscape-up{
-            letter-spacing: 0.8rem;
-          }
+
+      p {
+        margin: auto;
+        letter-spacing: 1rem;
+
+        @include phone-only {
+          letter-spacing: 0.5rem;
         }
+
+        @include tablet-landscape-up {
+          letter-spacing: 0.8rem;
+        }
+      }
     }
   }
 }
