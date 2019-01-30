@@ -18,9 +18,21 @@ const
     // eslint-disable-next-line max-len
     // $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper, .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer'),
     $allcontainer = $('.projectContainer, .contactContainer, .skillsContainer, .aboutContainer'),
-    better = ($(window).width() < $(window).height()) ? $(window).width() : $(window).height();
-    // better = 600,
-    // lt12 = undefined,
+    better = ($(window).width() < $(window).height()) ? $(window).width() : $(window).height(),
+    isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+
+let strokenumber;
+
+if (isSafari) {
+    strokenumber = 1000;
+} else {
+    strokenumber = -1000;
+}
+
+// better = 600,
+// lt12 = undefined,
+
 
 // lets do the preparation before the any page animation starts
 first = () => {
@@ -88,9 +100,9 @@ $(document).ready(
                 .yoyo(isyoyo)
                 .set(whatnottoshow, { autoAlpha: 0 })
                 .set(whattoshow, { autoAlpha: 1 })
-                .fromTo('#l-back-R', 4, { strokeDashoffset: -1000 }, { strokeDashoffset: 0, ease: Power2.easeOut })
-                .fromTo('#l-front-R', 4, { strokeDashoffset: -1000 }, { strokeDashoffset: 0, ease: Power2.easeOut }, '-=4')
-                .fromTo('#l-front-D', 2, { strokeDashoffset: -1000 }, { strokeDashoffset: 0 }, '-=2')
+                .fromTo('#l-back-R', 4, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0, ease: Power2.easeOut })
+                .fromTo('#l-front-R', 4, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0, ease: Power2.easeOut }, '-=4')
+                .fromTo('#l-front-D', 2, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0 }, '-=2')
                 .add(tweentoadd);
 
 
@@ -160,9 +172,9 @@ $(document).ready(
         function removeClass() {
             // var lt12 = new TimelineMax({paused:true, onComplete:bannerAnimation})
             var lt12 = new TimelineMax({ paused: true })
-                .to('#back-R', 4, { strokeDashoffset: 0, ease: Power2.easeOut })
-                .to('#front-R', 4, { strokeDashoffset: 0, ease: Power2.easeOut }, 0)
-                .to('#front-D', 1.5, { strokeDashoffset: 0 }, '-=1.5')
+                .fromTo('#back-R', 4, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0, ease: Power2.easeOut })
+                .fromTo('#front-R', 4, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0, ease: Power2.easeOut }, 0)
+                .fromTo('#front-D', 1.5, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0 }, '-=1.5')
                 .call(bannerAnimation)
                 .to('.logo-png', 1, { opacity: 1 })
                 .to('.main-logo-pr', 1, { opacity: 1 }, '-=1')
@@ -891,6 +903,7 @@ $(document).ready(
                 skillRunning = s5;
                 setTimeout(() => {
                     // eslint-disable-next-line no-console
+                    console.log('Node server:-');
                     console.log(currentTime);
                     console.log('WhySoSerious');
                 }, 7000);
@@ -955,13 +968,13 @@ $(document).ready(
             if ($('.skills7').hasClass('active')) {
                 s8 = gets7Timeline().play().timeScale(1);
                 skillRunning = s7;
-                locals = JSON.parse(localStorage.getItem('times')) || [' '];
+                locals = JSON.parse(localStorage.getItem('times')) || [];
                 locals.push(moment().format('h:mm:ss a, Do MMMM YYYY'));
                 localStorage.setItem('times', JSON.stringify(locals));
-                console.log(`Not a database its just localStorage, you have clicked Mongo ${locals.length} times on`);
+                console.log(`Not a database its just localStorage, you have clicked Mongo ${locals.length} times on :`);
                 // eslint-disable-next-line no-restricted-syntax
                 for (var k in locals) {
-                    console.log(locals[k]);
+                    console.log(`${k}. ${locals[k]}`);
                 }
             } else {
                 s7.reverse().timeScale(5);
