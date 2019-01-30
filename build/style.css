@@ -1762,7 +1762,7 @@ path {
           box-sizing: border-box;
 }
 .aboutPageContainer .aboutWrapper .aboutContent p {
-  font-size: 10vw;
+  font-size: 8vw;
   padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -1775,6 +1775,11 @@ path {
   .aboutPageContainer .aboutWrapper .aboutContent p {
     font-size: 5vw;
     -webkit-text-stroke-width: 2px;
+  }
+}
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+  .aboutPageContainer .aboutWrapper .aboutContent p {
+    font-size: 5vw;
   }
 }
 @media (min-width: 1200px) {

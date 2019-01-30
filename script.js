@@ -18,29 +18,29 @@ const
     // eslint-disable-next-line max-len
     // $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper, .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer'),
     $allcontainer = $('.projectContainer, .contactContainer, .skillsContainer, .aboutContainer'),
-    // better = (screen.width>screen.height) ? screen.width : screen.height;
-    better = 600,
+    better = ($(window).width() < $(window).height()) ? $(window).width() : $(window).height();
+    // better = 600,
     // lt12 = undefined,
 
-    // lets do the preparation before the any page animation starts
-    first = () => {
-        const svgContainer = $('#logo-svg'),
-            svgUrl = './assets/logo/logo-bw.svg',
-            // eslint-disable-next-line no-unused-vars
-            svg = svgContainer.load(svgUrl);
+// lets do the preparation before the any page animation starts
+first = () => {
+    const svgContainer = $('#logo-svg'),
+        svgUrl = './assets/logo/logo-bw.svg',
+        // eslint-disable-next-line no-unused-vars
+        svg = svgContainer.load(svgUrl);
 
-        TweenLite.set('.resizing', { autoAlpha: 1 });
-        TweenLite.set($allcontainer, { pointerEvents: 'none' });
-        TweenLite.set('.brand-container', { autoAlpha: 0 });
-        TweenLite.set($home.not($activeSection), { autoAlpha: 0 });
-        TweenLite.set($slide.not($activeSection), { autoAlpha: 0 });
-        TweenLite.set($('.indication.active'), { color: '#ffd000' });
-        TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', { autoAlpha: 0, color: '#ffd000', margin: '0.5%' });
-        TweenLite.set('.sun', { autoAlpha: 0 });
-        TweenLite.set('.pageIndicator > div', { autoAlpha: 0, xPercent: -10 });
-        TweenLite.set('.projectPageContainer', { autoAlpha: 0, yPercent: -2 });
-        TweenLite.set('.titleContainer, .imgContainer, .textContent', { autoAlpha: 0 });
-    };
+    TweenLite.set('.resizing', { autoAlpha: 1 });
+    TweenLite.set($allcontainer, { pointerEvents: 'none' });
+    TweenLite.set('.brand-container', { autoAlpha: 0 });
+    TweenLite.set($home.not($activeSection), { autoAlpha: 0 });
+    TweenLite.set($slide.not($activeSection), { autoAlpha: 0 });
+    TweenLite.set($('.indication.active'), { color: '#ffd000' });
+    TweenLite.set('.html5, .html5body, .bs1, .bs2, .bs3', { autoAlpha: 0, color: '#ffd000', margin: '0.5%' });
+    TweenLite.set('.sun', { autoAlpha: 0 });
+    TweenLite.set('.pageIndicator > div', { autoAlpha: 0, xPercent: -10 });
+    TweenLite.set('.projectPageContainer', { autoAlpha: 0, yPercent: -2 });
+    TweenLite.set('.titleContainer, .imgContainer, .textContent', { autoAlpha: 0 });
+};
 
 // running the first function to set all specific variable to their desired state.
 first();
@@ -627,11 +627,11 @@ $(document).ready(
             isSkillRunning = $('.allskills').hasClass('active');
 
             if (isreversed) {
-                tsp.reverse(0);
+                tsp.progress(0);
 
                 // checking if any skills globes are open or not , if open reverse them as well
                 if (isSkillRunning) {
-                    skillRunning.reverse(0.9);
+                    skillRunning.reverse(0.1);
 
                     //  removing '.active' so that if anytime the skill is not open and user goes back reverse doesnt run unnecessarily,     as revere is dependant
                     //  on the presence of active
@@ -700,7 +700,7 @@ $(document).ready(
         // var scrollWidth = scrollDiv.get(0).scrollWidth;
         getclientwidth = () => {
             if (($(window).width() < $(window).height()) && $(window).width() < 600) {
-                clientWidth = scrollDiv.width() + ((scrollDiv.outerWidth() - scrollDiv.width()) / 5);
+                clientWidth = scrollDiv.width() + ((scrollDiv.outerWidth() - scrollDiv.width()) / 6);
                 return clientWidth;
             }
             clientWidth = scrollDiv.innerWidth();

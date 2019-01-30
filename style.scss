@@ -1550,7 +1550,7 @@ path {
       box-sizing: border-box;
 
       p {
-        font-size: 10vw;
+        font-size: 8vw;
         padding: 0;
         overflow-x: hidden;
         overflow-y: hidden;
@@ -1563,7 +1563,9 @@ path {
           font-size: 5vw;
           -webkit-text-stroke-width: 2px;
         }
-
+        @include tablet-landscape-up{
+          font-size: 5vw;
+        }
         @include desktop-up {
           font-size: 5vw;
           -webkit-text-stroke-width: 3px;
