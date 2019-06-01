@@ -400,7 +400,7 @@ $(document).ready(
                 scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn);
             };
         };
-        for (let l = 1; l < 6; l += 1) {
+        for (let l = 1; l < 7; l += 1) {
             $(`.indicator${l}`).click(clickIndi(l));
         }
 
@@ -473,7 +473,7 @@ $(document).ready(
             };
         };
 
-        for (let j = 1; j < 6; j += 1) {
+        for (let j = 1; j < 7; j += 1) {
             $(`.thumbimg${j}`).click(clickImg(j));
             $(`.backbutton${j}`).click(backclick(j));
         }
@@ -484,6 +484,7 @@ $(document).ready(
             [['Choose', 'Device'], ['Song', 'Info'], ['Play', 'Music']],
             [['Search', 'Movies'], ['Additional', 'Info'], ['View', 'Cast'], ['Get', 'Details']],
             [['G.O.T', 'Countdown'], ['House', 'Themes'], ['Your Fav.', 'Quotes']],
+            [['Search', 'Twitter-Memes'], ['Download', 'Images']],
         ];
 
 
@@ -515,7 +516,7 @@ $(document).ready(
             slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2);
         }
 
-        for (let j = 1; j < 6; j += 1) {
+        for (let j = 1; j < 7; j += 1) {
             $(`.pi${j}-div`).click(() => {
                 slideshowbutton(j);
             });

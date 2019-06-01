@@ -617,7 +617,6 @@ path {
   position: absolute;
   left: 1%;
   top: 50%;
-  height: 50vh;
   transform: translateY(-50%);
   width: 5vh;
   background-color: transparent;
