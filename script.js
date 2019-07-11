@@ -431,8 +431,7 @@ $(document).ready(
             return dl;
         };
 
-        var clickImg = (j) => {
-            return () => {
+        var clickImg = (j) => () => {
                 currentJ = j;
                 const
                     thumbImg = $(`.thumbimg${j}`),
@@ -451,10 +450,8 @@ $(document).ready(
                 detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).play();
                 detailsPage = true;
             };
-        };
 
-        var backclick = (j) => {
-            return () => {
+        var backclick = (j) => () => {
                 const
                     thumbImg = $(`.thumbimg${j}`),
                     projectImg = $(`.projectImg${j}`),
@@ -471,7 +468,6 @@ $(document).ready(
                 detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).reverse('#rev');
                 detailsPage = false;
             };
-        };
 
         for (let j = 1; j < 7; j += 1) {
             $(`.thumbimg${j}`).click(clickImg(j));
@@ -552,7 +548,7 @@ $(document).ready(
             .set('div#rightSectionContainer , .contactTransitionHelper', { display: 'block' })
             .to('div.contactContainer', 0.1, { color: 'black', zIndex: 203 })
             .fromTo('.contactTransitionHelper', 0.75, { xPercent: '101', autoAlpha: 1 }, { xPercent: '0' })
-            .fromTo('div.contactContainer', 0.55, { left: () => { return ''; }, right: 0 }, { left: () => { return 0; }, right: '' })
+            .fromTo('div.contactContainer', 0.55, { left: () => '', right: 0 }, { left: () => 0, right: '' })
             .fromTo('div#rightSectionContainer', 0.75, { xPercent: '100', autoAlpha: 1 }, { xPercent: '0' })
             .to('div.contactContainer', 0.1, { color: '#ffd000' }, '-=0.25')
             .to('div.contactContainer', 0.1, { backgroundColor: '#0f1214' })
@@ -1029,7 +1025,7 @@ $(document).ready(
             .set('.backgroundWrapper', { backgroundColor: '#0f1214' })
             .to('div.aboutContainer', 0.1, { color: 'black', zIndex: 203 })
             .fromTo('.aboutTransitionHelper', 0.75, { yPercent: '101', autoAlpha: 1 }, { yPercent: '0' })
-            .fromTo('div.aboutContainer', 0.55, { top: () => { return ''; }, bottom: 0 }, { top: () => { return 0; }, bottom: '' })
+            .fromTo('div.aboutContainer', 0.55, { top: () => '', bottom: 0 }, { top: () => 0, bottom: '' })
             .fromTo('div#bottomSectionContainer', 0.75, { yPercent: '100', autoAlpha: 1 }, { yPercent: '0' })
             .to('div.aboutContainer', 0.1, { color: '#ffd000' }, '-=0.25')
             .to('div.aboutContainer', 0.1, { backgroundColor: '#0f1214' })

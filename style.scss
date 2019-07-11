@@ -229,6 +229,7 @@ path {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     @include phone-landscape-only {
       text-align: left;
       order: 1;
@@ -267,8 +268,9 @@ path {
         font-size: 2.5rem;
       }
     }
-    #longtextdiv{
-      
+
+    #longtextdiv {
+
       min-height: 5rem;
     }
   }
@@ -1562,9 +1564,11 @@ path {
           font-size: 5vw;
           -webkit-text-stroke-width: 2px;
         }
-        @include tablet-landscape-up{
+
+        @include tablet-landscape-up {
           font-size: 5vw;
         }
+
         @include desktop-up {
           font-size: 5vw;
           -webkit-text-stroke-width: 3px;
