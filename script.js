@@ -5,33 +5,22 @@ const
     devicewidth = $(window).innerWidth(),
     allActiveTimelines = [],
     $home = $('.home'),
-    // $heading = $('.heading'),
     $slide = $('.pi-div'),
     $activeSection = $('.active'),
-    //   $container = $('.container'),
     $indi = $('.indication'),
-    //   $indicator1 = $('.indicator1'),
-    //   $indicator2 = $('.indicator2'),
-    //   $indicator3 = $('.indicator3'),
     $ptLeft = $('.p-t-Left'),
     $ptRight = $('.p-t-Right'),
-    // eslint-disable-next-line max-len
-    // $allContent = $('#leftSectionContainer, .projectTransitionHelper, #rightSectionContainer, .contactTransitionHelper, #topSectionContainer, .skillsTransitionHelper, #bottomSectionContainer, .aboutTransitionHelper, .projectPageContainer, .contactPageContainer, .aboutPageContainer, .skillsPageContainer'),
     $allcontainer = $('.projectContainer, .contactContainer, .skillsContainer, .aboutContainer'),
     better = ($(window).width() < $(window).height()) ? $(window).width() : $(window).height(),
     isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 
 let strokenumber;
-
 if (isSafari) {
     strokenumber = 1000;
 } else {
     strokenumber = -1000;
 }
-
-// better = 600,
-// lt12 = undefined,
 
 
 // lets do the preparation before the any page animation starts
@@ -60,7 +49,17 @@ first();
 
 $(document).ready(
     () => {
-        const url = ['./assets/aboutImages/1.jpg', './assets/aboutImages/2.jpg', './assets/aboutImages/3.jpg', './assets/aboutImages/4.jpg', './assets/aboutImages/5.jpg', './assets/aboutImages/6.jpg', './assets/p1.jpg', './assets/p2.jpg', './assets/p3.jpg', './assets/p4.jpg'];
+        const url = [
+            './assets/aboutImages/1.jpg',
+            './assets/aboutImages/2.jpg',
+            './assets/aboutImages/3.jpg',
+            './assets/aboutImages/4.jpg',
+            './assets/aboutImages/5.jpg',
+            './assets/aboutImages/6.jpg',
+            './assets/p1.jpg',
+            './assets/p2.jpg',
+            './assets/p3.jpg',
+            './assets/p4.jpg'];
         // eslint-disable-next-line prefer-const
         // eslint-disable-next-line no-restricted-syntax
         for (const k in url) {
@@ -69,10 +68,10 @@ $(document).ready(
 
         // eslint-disable-next-line no-unused-vars
         const svg2 = $('.resizingHelper').load('./assets/logo/logo-bw-l.svg');
-        var resizepage = new TimelineMax({ paused: true });
+        let resizepage = new TimelineMax({ paused: true });
 
         function loading() {
-            var whattoshow,
+            let whattoshow,
                 whatnottoshow,
                 isyoyo,
                 rtimes,
@@ -125,13 +124,12 @@ $(document).ready(
         });
 
 
-        for (var i = 1; i <= better; i++) {
+        for (let i = 1; i <= better; i++) {
             $('.mainpage').append(`<a class="floatingText"> ${(String.fromCharCode(Math.floor(Math.random() * (126 - 33)) + 33))} </a>`);
         }
 
         swing = () => {
-            // var st = new TimelineMax({ onComplete: removeClass})
-            var st = new TimelineMax({ paused: true })
+            const st = new TimelineMax({ paused: true })
                 .to('.buttonContainer', 0.5, { className: '+=swing', autoAlpha: 0 })
                 .staggerTo('.swing', 0.005, { autoAlpha: 0, ease: Power2.easeOut }, 0.005, 0)
                 .staggerTo('.floatingmainText', 0.005, { color: '#ffd000' }, 0.001, 0)
@@ -170,8 +168,7 @@ $(document).ready(
         };
 
         function removeClass() {
-            // var lt12 = new TimelineMax({paused:true, onComplete:bannerAnimation})
-            var lt12 = new TimelineMax({ paused: true })
+            const lt12 = new TimelineMax({ paused: true })
                 .fromTo('#back-R', 4, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0, ease: Power2.easeOut })
                 .fromTo('#front-R', 4, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0, ease: Power2.easeOut }, 0)
                 .fromTo('#front-D', 1.5, { strokeDashoffset: strokenumber }, { strokeDashoffset: 0 }, '-=1.5')
@@ -197,7 +194,7 @@ $(document).ready(
 
         function bannerAnimation() {
             // eslint-disable-next-line no-unused-vars
-            var bt = new TimelineMax({ onComplete: bannerInfinite })
+            const bt = new TimelineMax({ onComplete: bannerInfinite })
                 .to('.mainpage-text1', 3, { text: { value: 'Hey,' } })
                 .fromTo('.mainpage-text1', 0.5, { borderRightColor: '#ffd00020' }, { borderRightColor: '#ffd000', repeat: 5, ease: SteppedEase.config(37) }, '-=3')
                 .set('.mainpage-text1', { borderRight: 'none' })
@@ -208,7 +205,7 @@ $(document).ready(
 
         function bannerInfinite() {
             // eslint-disable-next-line no-unused-vars
-            var btInfinite = new TimelineMax({ repeat: -1, repeatDelay: 0 })
+            const btInfinite = new TimelineMax({ repeat: -1, repeatDelay: 0 })
                 .to('.mainpage-text3', 3, { text: { value: 'Full Stack Web Developer' } })
                 .to('.mainpage-text3', 0.5, { text: { value: ' ' } }, '+=0.5')
                 .to('.mainpage-text3', 3, { text: { value: 'Based In Toronto' } })
@@ -224,7 +221,7 @@ $(document).ready(
         // website launch button and aniimation function
         // selecting text with specific letter and
         // giving it a specific class so they can be animated afterwards
-        var btn = new TimelineMax({ paused: true })
+        const btn = new TimelineMax({ paused: true })
             .fromTo('.buttonAnimationHelper', 0.5, { y: '-110%', autoAlpha: 1 }, { yPercent: 0, autoAlpha: 1, ease: Power4.easeOut });
 
         $('.buttonContainer').mouseenter(() => {
@@ -273,8 +270,8 @@ $(document).ready(
 
 
         $('.logo-wrapper').mousemove((e) => {
-            var posX = -((e.clientX / $(window).width()) - 0.5);
-            var posY = -((e.clientY / $(window).height()) - 0.5);
+            const posX = -((e.clientX / $(window).width()) - 0.5);
+            const posY = -((e.clientY / $(window).height()) - 0.5);
             TweenMax.to($('.logo-wrapper'), 0.7, { xPercent: 20 * posX, yPercent: 20 * posY, ease: Power1.easeOut });
         });
 
@@ -287,10 +284,10 @@ $(document).ready(
 
         // project button and left section transition timeline
 
-        var detailsPage = false;
-        var currentJ = 1;
+        let detailsPage = false;
+        let currentJ = 1;
 
-        var tp = new TimelineMax({ paused: true })
+        const tp = new TimelineMax({ paused: true })
             .set('div#leftSectionContainer , .projectTransitionHelper', { display: 'block' })
             .to('div.projectContainer', 0.1, { color: 'black', zIndex: 203 })
             .to('.main-logo-pr', 0.25, { opacity: 0 })
@@ -340,7 +337,7 @@ $(document).ready(
         // scroll function that handles the scrolling animation between projects
 
         function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn) {
-            var tl = new TimelineMax({ paused: true })
+            const tl = new TimelineMax({ paused: true })
                 .to($ptLeft, 0.3, { ease: Power4.easeOut, xPercent: '51%' })
                 .to(indicatorfade, 0.1, { className: '-=active', color: '#f4f4f4', scale: 1 })
                 .to(indicatorIn, 0.1, { className: '+=active', color: '#ffd000', scale: 1.2 }, '-=0.25')
@@ -389,7 +386,7 @@ $(document).ready(
 
 
         // eslint-disable-next-line arrow-body-style
-        var clickIndi = (l) => {
+        const clickIndi = (l) => {
             return (e) => {
                 const sectionIn = $(`.home.section${l}`),
                     sectionfade = $('.home.active'),
@@ -406,7 +403,7 @@ $(document).ready(
 
 
         // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
-        var dl = new TimelineMax({ paused: true });
+        const dl = new TimelineMax({ paused: true });
 
         detail = (thumbImg, projectImg, detailsH1, textContent, _detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton) => {
             dl.progress(0).clear(); // get rid of tween in previous version of timeline
@@ -431,50 +428,50 @@ $(document).ready(
             return dl;
         };
 
-        var clickImg = (j) => () => {
-                currentJ = j;
-                const
-                    thumbImg = $(`.thumbimg${j}`),
-                    projectImg = $(`.projectImg${j}`),
-                    imgcontainer = $(`.detail${j} > .imgContainer`),
-                    titlecontainer = $(`.detail${j} > .titleContainer`),
-                    imgtext1 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
-                    imgtext2 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
-                    heading = (j === 1) ? $(`.heading${j}, .fa-vr-cardboard`) : $(`.heading${j}`),
-                    detailsH1 = $(`.detail${j} > .titleContainer > .title`),
-                    textContent = $(`.detail${j} > .textContent`),
-                    exlinks = $(`.ex-links${j} > a`),
-                    backbutton = $(`.backbutton${j}`);
+        const clickImg = j => () => {
+            currentJ = j;
+            const
+                thumbImg = $(`.thumbimg${j}`),
+                projectImg = $(`.projectImg${j}`),
+                imgcontainer = $(`.detail${j} > .imgContainer`),
+                titlecontainer = $(`.detail${j} > .titleContainer`),
+                imgtext1 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
+                imgtext2 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
+                heading = (j === 1) ? $(`.heading${j}, .fa-vr-cardboard`) : $(`.heading${j}`),
+                detailsH1 = $(`.detail${j} > .titleContainer > .title`),
+                textContent = $(`.detail${j} > .textContent`),
+                exlinks = $(`.ex-links${j} > a`),
+                backbutton = $(`.backbutton${j}`);
 
 
-                detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).play();
-                detailsPage = true;
-            };
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).play();
+            detailsPage = true;
+        };
 
-        var backclick = (j) => () => {
-                const
-                    thumbImg = $(`.thumbimg${j}`),
-                    projectImg = $(`.projectImg${j}`),
-                    imgcontainer = $(`.detail${j} > .imgContainer`),
-                    titlecontainer = $(`.detail${j} > .titleContainer`),
-                    imgtext1 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
-                    imgtext2 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
-                    heading = (j === 1) ? $(`.heading${j}, .fa-vr-cardboard`) : $(`.heading${j}`),
-                    detailsH1 = $(`.detail${j} > .titleContainer > .title`),
-                    textContent = $(`.detail${j} > .textContent`),
-                    exlinks = $(`.ex-links${j} > a`),
-                    backbutton = $(`.backbutton${j}`);
+        const backclick = j => () => {
+            const
+                thumbImg = $(`.thumbimg${j}`),
+                projectImg = $(`.projectImg${j}`),
+                imgcontainer = $(`.detail${j} > .imgContainer`),
+                titlecontainer = $(`.detail${j} > .titleContainer`),
+                imgtext1 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-1 > div`),
+                imgtext2 = $(`.detail${j} > .imgContainer > .pitext > .project-i-text-2 > div`),
+                heading = (j === 1) ? $(`.heading${j}, .fa-vr-cardboard`) : $(`.heading${j}`),
+                detailsH1 = $(`.detail${j} > .titleContainer > .title`),
+                textContent = $(`.detail${j} > .textContent`),
+                exlinks = $(`.ex-links${j} > a`),
+                backbutton = $(`.backbutton${j}`);
 
-                detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).reverse('#rev');
-                detailsPage = false;
-            };
+            detail(thumbImg, projectImg, detailsH1, textContent, detailsPage, heading, exlinks, imgtext1, imgtext2, imgcontainer, titlecontainer, backbutton).reverse('#rev');
+            detailsPage = false;
+        };
 
         for (let j = 1; j < 7; j += 1) {
             $(`.thumbimg${j}`).click(clickImg(j));
             $(`.backbutton${j}`).click(backclick(j));
         }
 
-        var project1text = [[],
+        const project1text = [[],
             [['Immersive', 'Environment'], ['Vr', 'Experiance'], ['Visual', 'Clues'], ['Fun ', 'Trivia']],
             [['2 Player ', 'Game '], ['Vibrant', 'Colors'], ['Engaging &', 'Fun'], ['Scores &', 'Timers'], ['Simple &', 'Easy']],
             [['Choose', 'Device'], ['Song', 'Info'], ['Play', 'Music']],
@@ -489,7 +486,7 @@ $(document).ready(
             const text1 = project1text[j][length][0];
             const text2 = project1text[j][length][1];
             // console.log(text1, text2, project1text);
-            var tni = new TimelineMax({ paused: true })
+            const tni = new TimelineMax({ paused: true })
                 .to(imgtext1, 0.3, { yPercent: '-100' })
                 .to(imgtext2, 0.3, { yPercent: '-100' }, 0)
                 .set(imgtext1, { text: text1 })
@@ -519,8 +516,8 @@ $(document).ready(
         }
 
         $('.projectImg').mousemove((e) => {
-            var posX = (e.clientX / $(window).width()) - 0.5;
-            var posY = (e.clientY / $(window).height()) - 0.5;
+            const posX = (e.clientX / $(window).width()) - 0.5;
+            const posY = (e.clientY / $(window).height()) - 0.5;
 
             TweenMax.to($('.projectImg'), 0.5, {
                 rotationY: 5 * posX,
@@ -538,7 +535,7 @@ $(document).ready(
 
         // contact button and right section
 
-        var tc = new TimelineMax({
+        const tc = new TimelineMax({
             paused: true,
             // onComplete: contactText,
             // onCompleteParams:[false],
@@ -568,7 +565,7 @@ $(document).ready(
             }
         });
 
-        var tcp = new TimelineMax({ paused: true })
+        const tcp = new TimelineMax({ paused: true })
             .fromTo('.greetings', 0.5, { autoAlpha: 0, yPercent: '-10' }, { autoAlpha: 1, yPercent: '0' })
             .fromTo('.email', 0.5, { autoAlpha: 0, yPercent: '-10' }, { autoAlpha: 1, yPercent: '0' })
             .fromTo('.links', 0.5, { autoAlpha: 0, yPercent: '-10' }, { autoAlpha: 1, yPercent: '0' });
@@ -592,7 +589,7 @@ $(document).ready(
 
         // Skills button and top section transition which also calls the oncomplete skillstext function
 
-        var locals,
+        let locals,
             randomText = ' ',
             r = 0,
             numberofR;
@@ -606,17 +603,17 @@ $(document).ready(
             r += 1;
         }
 
-        var currentTime = moment().format('hh:mm:ss a');
+        let currentTime = moment().format('hh:mm:ss a');
         setInterval(() => {
             currentTime = moment().format('hh:mm:ss a');
         }, 1000);
-        var currentMonth = moment().format('MMMM');
-        var currentDay = moment().format('dddd');
-        var currentDate = moment().format('Do');
-        var currentYear = moment().format('YYYY');
+        const currentMonth = moment().format('MMMM');
+        const currentDay = moment().format('dddd');
+        const currentDate = moment().format('Do');
+        const currentYear = moment().format('YYYY');
         // var timeZone = moment().format('Z');
-        var wishes;
-        var wishanimation;
+        let wishes;
+        let wishanimation;
 
         if (moment().format('k') >= 12 && moment().format('k') < 17) {
             wishes = 'Good AfterNoon';
@@ -630,8 +627,8 @@ $(document).ready(
         }
 
 
-        var isSkillRunning;
-        var skillRunning;
+        let isSkillRunning;
+        let skillRunning;
 
         skillsText = (isreversed) => {
             // if any of the skills have class active meaning they are running so value will be true
@@ -652,7 +649,7 @@ $(document).ready(
                 tsp.play();
             }
         };
-        var ts = new TimelineMax({
+        const ts = new TimelineMax({
             paused: true,
             onComplete: skillsText,
             onCompleteParams: [false],
@@ -682,7 +679,7 @@ $(document).ready(
 
         // animation as soon as the skills page loads
         // text content and the skill displaying globes
-        var tsp = new TimelineMax({ paused: true })
+        const tsp = new TimelineMax({ paused: true })
             .staggerFromTo('.skillName1', 0.3, { yPercent: '-40', autoAlpha: 0 }, { yPercent: '0', autoAlpha: 1 }, 0.05)
             .staggerTo('.skillName1', 0.3, { yPercent: '40', autoAlpha: 0 }, 0.05)
             .staggerFromTo('.skillName2', 0.3, { yPercent: '-40', autoAlpha: 0 }, { yPercent: '0', autoAlpha: 1 }, 0.05)
@@ -703,8 +700,8 @@ $(document).ready(
                 }
             }
         });
-        var scrollDiv = $('.allSkillsContainer');
-        var clientWidth;
+        const scrollDiv = $('.allSkillsContainer');
+        let clientWidth;
         // var clientWidth1 = $(window).width();
         // var nophone = scrollDiv.innerWidth();
         // var phone = scrollDiv.width();
@@ -731,7 +728,7 @@ $(document).ready(
         // Skills names animation
 
         // HTML5 skill
-        var s1 = new TimelineMax({ paused: true });
+        let s1 = new TimelineMax({ paused: true });
         gets1Timeline = () => {
             s1.progress(0).clear(); // get rid of tween in previous version of timeline
             s1
@@ -759,7 +756,7 @@ $(document).ready(
         });
 
         // CSS3 skills
-        var s2 = new TimelineMax({ paused: true });
+        let s2 = new TimelineMax({ paused: true });
         gets2Timeline = () => {
             s2.progress(0).clear(); // get rid of tween in previous version of timeline
             s2
@@ -797,7 +794,7 @@ $(document).ready(
 
         // --------------------JS Skill--------------------------------
         //-------------------------------------------------------------
-        var s3 = new TimelineMax({ paused: true });
+        let s3 = new TimelineMax({ paused: true });
         gets3Timeline = () => {
             s3.progress(0).clear();// get rid of tween in previous version of timeline
             s3
@@ -830,7 +827,7 @@ $(document).ready(
             }
         });
 
-        var s4 = new TimelineMax({ paused: true });
+        let s4 = new TimelineMax({ paused: true });
         gets4Timeline = () => {
             s4.progress(0).clear(); // --------get rid of tween in previous version of timeline
             s4
@@ -876,7 +873,7 @@ $(document).ready(
             }
         });
 
-        var s5 = new TimelineMax({ paused: true });
+        let s5 = new TimelineMax({ paused: true });
         gets5Timeline = () => {
             s5.progress(0).clear(); // get rid of tween in previous version of timeline
             s5
@@ -912,7 +909,7 @@ $(document).ready(
         });
 
         // BootStrap skill
-        var s6 = new TimelineMax({ paused: true });
+        let s6 = new TimelineMax({ paused: true });
         gets6Timeline = () => {
             s6.progress(0).clear(); // get rid of tween in previous version of timeline
             s6
@@ -947,7 +944,7 @@ $(document).ready(
             }
         });
         // Mongo skill
-        var s7 = new TimelineMax({ paused: true });
+        const s7 = new TimelineMax({ paused: true });
         gets7Timeline = () => {
             s7.progress(0).clear();// get rid of tween in previous version of timeline
             s7
@@ -972,7 +969,7 @@ $(document).ready(
                 localStorage.setItem('times', JSON.stringify(locals));
                 console.log(`Not a database its just localStorage, you have clicked Mongo ${locals.length} times on :`);
                 // eslint-disable-next-line no-restricted-syntax
-                for (var k in locals) {
+                for (const k in locals) {
                     console.log(`${k}. ${locals[k]}`);
                 }
             } else {
@@ -981,7 +978,7 @@ $(document).ready(
         });
 
         // Express skill
-        var s8 = new TimelineMax({ paused: true });
+        let s8 = new TimelineMax({ paused: true });
         gets8Timeline = () => {
             s8.progress(0).clear();// get rid of tween in previous version of timeline
             s8
@@ -1013,8 +1010,8 @@ $(document).ready(
 
 
         // about button and bottom section
-        var scrollAboutSpan1 = $('.aboutContent > p > span.span1');
-        var ta = new TimelineMax({
+        const scrollAboutSpan1 = $('.aboutContent > p > span.span1');
+        const ta = new TimelineMax({
             paused: true,
             onComplete: aboutText,
             onCompleteParams: [false],
@@ -1051,7 +1048,7 @@ $(document).ready(
             }
         });
 
-        var tap = new TimelineMax({ paused: true, repeat: -1 })
+        const tap = new TimelineMax({ paused: true, repeat: -1 })
 
             .staggerFromTo(scrollAboutSpan1, 1, { autoAlpha: 0, x: '-50%', y: '40%' }, { autoAlpha: 1, y: '0%' }, 3, '#span1')
             .staggerTo(scrollAboutSpan1, 0.5, { autoAlpha: 0, y: '-20%' }, 3, '#span1+=2.8')
