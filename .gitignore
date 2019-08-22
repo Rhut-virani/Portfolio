@@ -1,1 +1,8 @@
 node_modules/
+build/
+dist/
+
+*Gruntfile.js
+*.scss
+*.map
+*.eslintrc.js
