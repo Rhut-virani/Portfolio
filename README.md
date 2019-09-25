@@ -9,8 +9,7 @@ Was it fun? Absolutely.
 
 How did it turn out? - I will let you be the judge. 
 
-
-### View all my projects with links to the projects and the github code. -- http://www.rhutvirani.com
+View all my projects with links to the projects and the github code. -- http://www.rhutvirani.com
 
 ## Lots of animation (Greensock Library)
 ##### maybe too much ??
