@@ -1,12 +1,16 @@
 # Portfolio
 <p align="center"> Html Css JavaScript</p>
+
 My adventure in making a showcase website without a front-end framework or library.
+
 Was it easy? nope. 
+
 Was it fun? Absolutely.
+
 How did it turn out? - I will let you be the judge. 
 
 
-## View all my projects with links to the projects and the github code. -- http://www.rhutvirani.com
+### View all my projects with links to the projects and the github code. -- http://www.rhutvirani.com
 
 ## Lots of animation (Greensock Library)
 ##### maybe too much ??
