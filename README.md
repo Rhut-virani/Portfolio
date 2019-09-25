@@ -1,5 +1,5 @@
 # Portfolio
-<p align="center>Html Css JavaScript</p>
+<p align="center"> Html Css JavaScript</p>
 My adventure in making a showcase website without a front-end framework or library.
 Was it easy? nope. 
 Was it fun? Absolutely.
