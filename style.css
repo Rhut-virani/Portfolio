@@ -28,7 +28,7 @@ html {
 body {
   display: none;
   font-family: "Work Sans", sans-serif;
-  background-color: #0F1214;
+  background-color: #0f1214;
   color: #f4f4f4;
   margin: 0%;
   line-height: 1.5;
@@ -45,7 +45,7 @@ body {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+                                   supported by Chrome and Opera */
 }
 
 ::-webkit-scrollbar {
@@ -61,7 +61,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0F1214;
+  background-color: #0f1214;
   z-index: 2000;
   visibility: hidden;
   opacity: 0;
@@ -144,7 +144,7 @@ path {
   left: 0%;
   stroke-dasharray: 1000;
   stroke-dashoffset: -1000;
-  fill: #0F1214;
+  fill: #0f1214;
 }
 
 .brand-container {
@@ -282,7 +282,7 @@ path {
   transform: scale(1);
   cursor: pointer;
   font-weight: 200;
-  color: #EFF2F3;
+  color: #eff2f3;
   text-align: right;
 }
 .floatingText:hover {
@@ -378,9 +378,9 @@ path {
   font-family: inherit;
   font-size: inherit;
   text-decoration: none;
-  background: #EFF2F3;
-  color: #0F1214;
-  width: 100%;
+  background: #eff2f3;
+  color: #0f1214;
+  width: 99%;
   height: 100%;
   font-weight: 300;
   font-size: 2rem;
@@ -398,7 +398,7 @@ path {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #0F1214;
+  background-color: #0f1214;
 }
 @media (max-width: 599px) {
   .buttonContainer .buttonAnimationHelper {
@@ -426,7 +426,7 @@ path {
 
 .aboutContainer, .skillsContainer, .contactContainer, .projectContainer {
   text-align: center;
-  color: #EFF2F3;
+  color: #eff2f3;
   position: absolute;
   z-index: 100;
 }
@@ -579,7 +579,7 @@ path {
 #topSectionContainer,
 #bottomSectionContainer {
   position: absolute;
-  background-color: #0F1214;
+  background-color: #0f1214;
   height: 100vh;
   width: 100vw;
   z-index: 202;
@@ -603,7 +603,7 @@ path {
 .contactPageContainer > p,
 .aboutPageContainer > p,
 .skillsPageContainer > p {
-  color: #0F1214;
+  color: #0f1214;
   font-size: 2rem;
   text-align: center;
   overflow: hidden;
@@ -643,14 +643,14 @@ path {
   width: 100%;
   position: absolute;
   height: 100%;
-  background-color: #0F1214;
+  background-color: #0f1214;
   z-index: 200;
 }
 
 .projectPageContainer {
   width: calc(100vw - 10vh);
   height: 100vh;
-  background-color: #0F1214;
+  background-color: #0f1214;
   position: relative;
   top: 0vh;
   left: 0vh;
@@ -658,7 +658,7 @@ path {
 }
 @media (max-width: 599px) {
   .projectPageContainer {
-    width: calc(100vw - 10vw);
+    width: 90vw;
   }
 }
 .projectPageContainer .p-t-Left {
@@ -1048,14 +1048,14 @@ path {
   }
 }
 .skillsGrid1 .allSkillsContainer .allskills {
-  background-color: #EFF2F3;
+  background-color: #eff2f3;
   border-radius: 50%;
   box-shadow: 3px 4px #1f1f1f;
   position: relative;
   cursor: pointer;
   box-sizing: border-box;
-  width: calc(100vw/8);
-  height: calc(100vw/8);
+  width: 12.5vw;
+  height: 12.5vw;
   margin: 0% 5%;
 }
 @media (max-width: 599px) {
@@ -1074,15 +1074,15 @@ path {
 }
 @media (min-width: 600px) and (orientation: portrait) {
   .skillsGrid1 .allSkillsContainer .allskills {
-    min-width: calc(100vw/8);
-    height: calc(100vw/8);
+    min-width: 12.5vw;
+    height: 12.5vw;
     margin: 0% 5%;
   }
 }
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .skillsGrid1 .allSkillsContainer .allskills {
-    min-width: calc(100vw/8);
-    height: calc(100vw/8);
+    min-width: 12.5vw;
+    height: 12.5vw;
     margin: 0% 5%;
   }
 }
@@ -1094,7 +1094,7 @@ path {
   }
 }
 .skillsGrid1 .allSkillsContainer .allskills div {
-  color: #0F1214;
+  color: #0f1214;
   font-size: 1.3rem;
   overflow: hidden;
   width: 100%;
@@ -1321,7 +1321,7 @@ path {
 }
 @media (max-width: 599px) {
   .contactPageContainer {
-    width: calc(100vw - 10vw);
+    width: 90vw;
     left: 10vw;
   }
 }
@@ -1336,7 +1336,7 @@ path {
 
 .greetings, .email {
   font-weight: 300;
-  color: #0F1214;
+  color: #0f1214;
   font-family: "Nunito", sans-serif;
   margin: 3%;
   flex: 1;
@@ -1386,7 +1386,7 @@ path {
   height: 10vh;
   max-width: 10vh;
   font-size: 5vw;
-  color: #0F1214;
+  color: #0f1214;
   padding: 1%;
   border-radius: 50%;
   background: aliceblue;
