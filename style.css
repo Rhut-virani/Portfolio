@@ -1380,7 +1380,8 @@ path {
   width: 100%;
 }
 .links .linkedin,
-.links .phone {
+.links .phone,
+.links .github {
   display: inline-block;
   flex: 1;
   height: 10vh;
@@ -1398,18 +1399,21 @@ path {
 }
 @media (max-width: 599px) {
   .links .linkedin,
-.links .phone {
+.links .phone,
+.links .github {
     font-size: 10vw;
   }
 }
 @media (min-width: 1200px) {
   .links .linkedin,
-.links .phone {
+.links .phone,
+.links .github {
     font-size: 4vw;
   }
 }
 .links .linkedin a,
-.links .phone a {
+.links .phone a,
+.links .github a {
   text-decoration: none;
   color: inherit;
 }
