@@ -6,4 +6,4 @@ dist/
 *.scss
 *.map
 *.eslintrc.js
-
+*.prettierrc.json
