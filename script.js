@@ -722,7 +722,6 @@ $(document).ready(() => {
     ];
 
     function slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2) {
-        console.log(j, length);
         const text1 = project1text[j][length][0];
         const text2 = project1text[j][length][1];
         // console.log(text1, text2, project1text);

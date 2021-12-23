@@ -7,3 +7,4 @@ dist/
 *.map
 *.eslintrc.js
 *.prettierrc.json
+*.min.js
