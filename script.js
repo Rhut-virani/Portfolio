@@ -3,6 +3,8 @@
 /* eslint-disable no-tabs */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
+import { projectTextData, urlData } from './helper/data.js';
+
 const devicenumber = $(window).innerWidth() + $(window).innerHeight(),
     devicewidth = $(window).innerWidth(),
     allActiveTimelines = [],
@@ -30,7 +32,7 @@ if (isSafari) {
 }
 
 // preparation before the any page animation starts
-first = () => {
+const first = () => {
     const svgContainer = $('#logo-svg'),
         svgUrl = './assets/logo/logo-bw.svg',
         // eslint-disable-next-line no-unused-vars
@@ -59,18 +61,7 @@ first = () => {
 first();
 
 $(document).ready(() => {
-    const url = [
-        './assets/aboutImages/1.jpg',
-        './assets/aboutImages/2.jpg',
-        './assets/aboutImages/3.jpg',
-        './assets/aboutImages/4.jpg',
-        './assets/aboutImages/5.jpg',
-        './assets/aboutImages/6.jpg',
-        './assets/p1.jpg',
-        './assets/p2.jpg',
-        './assets/p4.jpg',
-        './assets/p7.jpg',
-    ];
+    const url = urlData;
     // eslint-disable-next-line prefer-const
     // eslint-disable-next-line no-restricted-syntax
     for (const k in url) {
@@ -81,7 +72,7 @@ $(document).ready(() => {
     const svg2 = $('.resizingHelper').load('./assets/logo/logo-bw-l.svg');
     let resizepage = new TimelineMax({ paused: true });
 
-    function loading() {
+    const loading = () => {
         let whattoshow, whatnottoshow, isyoyo, rtimes, tweentoadd;
         if (
             !!window.orientation &&
@@ -100,10 +91,10 @@ $(document).ready(() => {
             isyoyo = false;
             tweentoadd = TweenLite.to('.resizing', 0.25, { autoAlpha: 0 }, '-=4');
         }
-        resizepage.progress(0).invalidate();
+        resizepage.invalidate();
         resizepage.clear();
         resizepage.kill();
-        resizepage = new TimelineMax({ paused: true })
+        resizepage
             .repeat(rtimes)
             .yoyo(isyoyo)
             .set(whatnottoshow, { autoAlpha: 0 })
@@ -131,7 +122,7 @@ $(document).ready(() => {
             .add(tweentoadd);
 
         resizepage.play(0.2).timeScale(4);
-    }
+    };
 
     setTimeout(() => {
         $('body').show();
@@ -158,7 +149,7 @@ $(document).ready(() => {
         );
     }
 
-    swing = () => {
+    const swing = () => {
         const st = new TimelineMax({ paused: true })
             .to('.buttonContainer', 0.5, { className: '+=swing', autoAlpha: 0 })
             .staggerTo('.swing', 0.005, { autoAlpha: 0, ease: Power2.easeOut }, 0.005, 0)
@@ -221,7 +212,7 @@ $(document).ready(() => {
         st.play().timeScale(1.5);
     };
 
-    function removeClass() {
+    const removeClass = () => {
         const lt12 = new TimelineMax({ paused: true })
             .fromTo(
                 '#back-R',
@@ -260,9 +251,9 @@ $(document).ready(() => {
             $('.project, .contact, .skills, .about').attr('class', ' ');
             $('.floatingmainText').remove();
         }, 2000);
-    }
+    };
 
-    function bannerAnimation() {
+    const bannerAnimation = () => {
         // eslint-disable-next-line no-unused-vars
         const bt = new TimelineMax({ onComplete: bannerInfinite })
             .to('.mainpage-text1', 3, { text: { value: 'Hey,' } })
@@ -291,9 +282,9 @@ $(document).ready(() => {
                 '-=5',
             )
             .set('.mainpage-text2', { borderRight: 'none' });
-    }
+    };
 
-    function bannerInfinite() {
+    const bannerInfinite = () => {
         // eslint-disable-next-line no-unused-vars
         const btInfinite = new TimelineMax({ repeat: -1, repeatDelay: 0 })
             .to('.mainpage-text3', 3, {
@@ -319,7 +310,7 @@ $(document).ready(() => {
                 },
                 0,
             );
-    }
+    };
 
     // website launch button and aniimation function
     // selecting text with specific letter and
@@ -410,7 +401,7 @@ $(document).ready(() => {
                 tp.play().timeScale(1.5);
             } else {
                 tp.reverse(0).timeScale(3);
-                run = () => {
+                const run = () => {
                     const thumbImg = $(`.thumbimg${currentJ}`),
                         projectImg = $(`.projectImg${currentJ}`),
                         heading =
@@ -426,9 +417,9 @@ $(document).ready(() => {
                         detailsH1 = $(`.detail${currentJ} > .titleContainer > .title`),
                         textContent = $(`.detail${currentJ} > .textContent`),
                         exlinks = $(`ex-links${currentJ} > a`),
-                        backbutton = $(`.backbutton${currentJ}`);
-                    imgcontainer = $(`.detail${currentJ} > .imgContainer`);
-                    titlecontainer = $(`.detail${currentJ} > .titleContainer`);
+                        backbutton = $(`.backbutton${currentJ}`),
+                        imgcontainer = $(`.detail${currentJ} > .imgContainer`),
+                        titlecontainer = $(`.detail${currentJ} > .titleContainer`);
 
                     detail(
                         thumbImg,
@@ -455,7 +446,7 @@ $(document).ready(() => {
 
     // scroll function that handles the scrolling animation between projects
 
-    function scroll(sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn) {
+    const scroll = (sectionIn, sectionfade, indicatorIn, indicatorfade, headingfade, headingIn) => {
         const tl = new TimelineMax({ paused: true })
             .to($ptLeft, 0.3, { ease: Power4.easeOut, xPercent: '51%' })
             .to(indicatorfade, 0.1, {
@@ -472,9 +463,9 @@ $(document).ready(() => {
             .to($ptLeft, 0.4, { ease: Power4.easeIn, xPercent: '-51%' }, '-=0.4')
             .fromTo(headingIn, 0.2, { autoAlpha: 0 }, { className: '+=active', autoAlpha: 1 });
         tl.play();
-    }
+    };
 
-    scrolling = (e) => {
+    const scrolling = (e) => {
         // checking if the previous tween is finished or the detainls page is open or not
         if (scroll.isTweening || detailsPage) {
             return;
@@ -537,7 +528,7 @@ $(document).ready(() => {
     // Project Detail function thats reveals details of each project and disables the scrolling while user is inside the details page
     const dl = new TimelineMax({ paused: true });
 
-    detail = (
+    const detail = (
         thumbImg,
         projectImg,
         detailsH1,
@@ -673,55 +664,9 @@ $(document).ready(() => {
         $(`.backbutton${j}`).click(backclick(j));
     }
 
-    const project1text = [
-        [],
-        [
-            ['Immersive', 'Environment'],
-            ['Vr', 'Experiance'],
-            ['Visual', 'Clues'],
-            ['Fun ', 'Trivia'],
-        ],
-        [
-            ['2 Player ', 'Game '],
-            ['Vibrant', 'Colors'],
-            ['Engaging &', 'Fun'],
-            ['Scores &', 'Timers'],
-            ['Simple &', 'Easy'],
-        ],
-        [
-            ['Search', 'sitters'],
-            ['Join as', 'dog sitter'],
-            ['compare', 'sitters'],
-        ],
-        [
-            ['Find', 'Tatto contests'],
-            ['Create', 'contest'],
-            ['Instant ', 'messaging'],
-            ['Submit', 'design'],
-        ],
-        [
-            ['Search', 'Movies'],
-            ['Additional', 'Info'],
-            ['View', 'Cast'],
-            ['Get', 'Details'],
-        ],
-        [
-            ['G.O.T', 'Countdown'],
-            ['House', 'Themes'],
-            ['Your Fav.', 'Quotes'],
-        ],
-        [
-            ['Search', 'Twitter-Memes'],
-            ['Download', 'Images'],
-        ],
-        [
-            ['Choose', 'Device'],
-            ['Song', 'Info'],
-            ['Play', 'Music'],
-        ],
-    ];
+    const project1text = projectTextData;
 
-    function slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2) {
+    const slideshow = (nextslide, prevslide, length, j, imgtext1, imgtext2) => {
         const text1 = project1text[j][length][0];
         const text2 = project1text[j][length][1];
         // console.log(text1, text2, project1text);
@@ -747,8 +692,9 @@ $(document).ready(() => {
             .to(imgtext2, 0.3, { yPercent: 0 }, '-=0.3');
 
         tni.play();
-    }
-    function slideshowbutton(j) {
+    };
+
+    const slideshowbutton = (j) => {
         const nextslide =
             $(`.pi${j}-div.active`).next(`.pi${j}-div`).length === 0
                 ? $(`.pi${j}-div.active`).prevAll(`.pi${j}-div`).last()
@@ -756,10 +702,10 @@ $(document).ready(() => {
         const prevslide = $(`.pi${j}-div.active`);
         // eslint-disable-next-line prefer-destructuring
         const length = $(`.pi${j}-div.active`).nextAll(`.pi${j}-div`).length;
-        imgtext1 = $(`.detail${j}> .imgContainer > .pitext > .project-i-text-1 > div`);
-        imgtext2 = $(`.detail${j}> .imgContainer > .pitext > .project-i-text-2 > div`);
+        const imgtext1 = $(`.detail${j}> .imgContainer > .pitext > .project-i-text-1 > div`);
+        const imgtext2 = $(`.detail${j}> .imgContainer > .pitext > .project-i-text-2 > div`);
         slideshow(nextslide, prevslide, length, j, imgtext1, imgtext2);
-    }
+    };
 
     for (let j = 1; j < 9; j += 1) {
         $(`.pi${j}-div`).click(() => {
@@ -786,6 +732,15 @@ $(document).ready(() => {
 
     // contact button and right section
 
+    const contactText = (isreversed) => {
+        // if any of the skills have class active meaning they are running so value will be true
+
+        if (isreversed) {
+            tcp.reverse(0).timeScale(2);
+        } else {
+            tcp.play();
+        }
+    };
     const tc = new TimelineMax({
         paused: true,
         // onComplete: contactText,
@@ -842,16 +797,6 @@ $(document).ready(() => {
         .fromTo('.email', 0.5, { autoAlpha: 0, yPercent: '-10' }, { autoAlpha: 1, yPercent: '0' })
         .fromTo('.links', 0.5, { autoAlpha: 0, yPercent: '-10' }, { autoAlpha: 1, yPercent: '0' });
 
-    function contactText(isreversed) {
-        // if any of the skills have class active meaning they are running so value will be true
-
-        if (isreversed) {
-            tcp.reverse(0).timeScale(2);
-        } else {
-            tcp.play();
-        }
-    }
-
     // <#########################################------SKILLS - TOP SECTION--------################################################################>
     // <#########################################------SKILLS - TOP SECTION--------################################################################>
     // <#########################################------SKILLS - TOP SECTION--------################################################################>
@@ -898,7 +843,7 @@ $(document).ready(() => {
     let isSkillRunning;
     let skillRunning;
 
-    skillsText = (isreversed) => {
+    const skillsText = (isreversed) => {
         // if any of the skills have class active meaning they are running so value will be true
         isSkillRunning = $('.allskills').hasClass('active');
 
@@ -1020,7 +965,7 @@ $(document).ready(() => {
     // var nophone = scrollDiv.innerWidth();
     // var phone = scrollDiv.width();
     // var scrollWidth = scrollDiv.get(0).scrollWidth;
-    getclientwidth = () => {
+    const getclientwidth = () => {
         if ($(window).width() < $(window).height() && $(window).width() < 600) {
             clientWidth = scrollDiv.width() + (scrollDiv.outerWidth() - scrollDiv.width()) / 6;
             return clientWidth;
@@ -1043,7 +988,7 @@ $(document).ready(() => {
 
     // HTML5 skill
     let s1 = new TimelineMax({ paused: true });
-    gets1Timeline = () => {
+    const gets1Timeline = () => {
         s1.progress(0).clear(); // get rid of tween in previous version of timeline
         s1.set('.html5body', { xPercent: -50 })
             .set('.html5', { xPercent: -50 })
@@ -1086,7 +1031,7 @@ $(document).ready(() => {
 
     // CSS3 skills
     let s2 = new TimelineMax({ paused: true });
-    gets2Timeline = () => {
+    const gets2Timeline = () => {
         s2.progress(0).clear(); // get rid of tween in previous version of timeline
         s2.fromTo('.skills2', 0.5, { scale: 1 }, { ease: Power4.easeIn, scale: 1.1, zIndex: 100 })
             .set($('.allskills').not('.skills2'), { pointerEvents: 'none' })
@@ -1157,7 +1102,7 @@ $(document).ready(() => {
     // --------------------JS Skill--------------------------------
     //-------------------------------------------------------------
     let s3 = new TimelineMax({ paused: true });
-    gets3Timeline = () => {
+    const gets3Timeline = () => {
         s3.progress(0).clear(); // get rid of tween in previous version of timeline
         s3.fromTo('.skills3', 0.5, { scale: 1 }, { ease: Power4.easeIn, scale: 1.1, zIndex: 100 })
             .set($('.allskills').not('.skills3'), { pointerEvents: 'none' })
@@ -1247,7 +1192,7 @@ $(document).ready(() => {
     });
 
     let s4 = new TimelineMax({ paused: true });
-    gets4Timeline = () => {
+    const gets4Timeline = () => {
         s4.progress(0).clear(); // --------get rid of tween in previous version of timeline
         s4.fromTo('.skills4', 0.5, { scale: 1 }, { ease: Power4.easeIn, scale: 1.1, zIndex: 100 })
             .set($('.allskills').not('.skills4'), { pointerEvents: 'none' })
@@ -1313,7 +1258,7 @@ $(document).ready(() => {
     });
 
     let s5 = new TimelineMax({ paused: true });
-    gets5Timeline = () => {
+    const gets5Timeline = () => {
         s5.progress(0).clear(); // get rid of tween in previous version of timeline
         s5.fromTo('.skills5', 0.5, { scale: 1 }, { ease: Power4.easeIn, scale: 1.1, zIndex: 100 })
             .set($('.allskills').not('.skills5'), { pointerEvents: 'none' })
@@ -1380,7 +1325,7 @@ $(document).ready(() => {
 
     // BootStrap skill
     let s6 = new TimelineMax({ paused: true });
-    gets6Timeline = () => {
+    const gets6Timeline = () => {
         s6.progress(0).clear(); // get rid of tween in previous version of timeline
         s6.set('.html5body', { xPercent: -100 })
             .set('.html5', { xPercent: -100 })
@@ -1430,7 +1375,7 @@ $(document).ready(() => {
     });
     // Mongo skill
     const s7 = new TimelineMax({ paused: true });
-    gets7Timeline = () => {
+    const gets7Timeline = () => {
         s7.progress(0).clear(); // get rid of tween in previous version of timeline
         s7.fromTo('.skills7', 0.5, { scale: 1 }, { ease: Power4.easeIn, scale: 1.1, zIndex: 100 })
             .set($('.allskills').not('.skills7'), { pointerEvents: 'none' })
@@ -1498,7 +1443,7 @@ $(document).ready(() => {
 
     // Express skill
     let s8 = new TimelineMax({ paused: true });
-    gets8Timeline = () => {
+    const gets8Timeline = () => {
         s8.progress(0).clear(); // get rid of tween in previous version of timeline
         s8.fromTo('.skills8', 0.5, { scale: 1 }, { ease: Power4.easeIn, scale: 1.1, zIndex: 100 })
             .set($('.allskills').not('.skills8'), { pointerEvents: 'none' })
