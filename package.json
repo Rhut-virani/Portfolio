@@ -37,5 +37,10 @@
     "bugs": {
         "url": "https://github.com/Rhut-virani/Safe-Project/issues"
     },
-    "homepage": "https://github.com/Rhut-virani/Safe-Project#readme"
+    "homepage": "https://github.com/Rhut-virani/Safe-Project#readme",
+    "browserslist": [
+        "last 2 versions",
+        "> 1%",
+        "not dead"
+    ]
 }
