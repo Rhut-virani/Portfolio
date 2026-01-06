@@ -1,18 +1,18 @@
 module.exports = function (grunt) {
+    grunt.loadNpmTasks('@lodder/grunt-postcss');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+
     grunt.initConfig({
         postcss: {
             options: {
                 map: false, // Disable sourcemaps for production
-                // or
-                map: {
-                    inline: false, // save all sourcemaps as separate files...
-                    annotation: 'dist/css/maps/', // ...to the specified directory
-                },
-
                 processors: [
-                    require('pixrem')(), // add fallbacks for rem units
                     require('autoprefixer')(), // add vendor prefixes
-                    require('cssnano')(), // minify the result
+                    require('pixrem')(), // add fallbacks for rem units
+                    require('cssnano')({
+                        preset: 'default',
+                    }), // minify the result
                 ],
             },
             dist: {
@@ -46,10 +46,6 @@ module.exports = function (grunt) {
             },
         },
     });
-    grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    // Register tasks
     grunt.registerTask('build', ['clean:dist', 'postcss', 'copy']);
     grunt.registerTask('default', ['build']);
 };
