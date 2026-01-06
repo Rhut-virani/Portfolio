@@ -41,7 +41,19 @@ module.exports = function (grunt) {
                     // Copy helper directory
                     { expand: true, src: ['helper/**'], dest: 'dist/' },
                     // Copy all assets
-                    { expand: true, src: ['assets/**'], dest: 'dist/' },
+                    // Ensure all assets are copied with their full path
+                    {
+                        expand: true,
+                        cwd: 'assets/',
+                        src: ['**/*.{jpg,jpeg,png,svg}'],
+                        dest: 'dist/assets/',
+                    },
+                    // Copy other asset files that might be needed
+                    {
+                        expand: true,
+                        src: ['assets/logo/**', 'assets/SVG/**', 'assets/project/**'],
+                        dest: 'dist/',
+                    },
                 ],
             },
         },
